@@ -263,7 +263,7 @@ function DiscoveryFeed({
                     <p className="text-white/60 text-sm">175 study spots across 10 London universities</p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-fog-gold/20 text-fog-gold text-sm font-medium group-hover:bg-fog-gold/30 transition-colors">
+                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors" style={{ backgroundColor: '#2e2927', color: '#ffffff' }}>
                   Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
