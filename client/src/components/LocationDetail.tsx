@@ -1,8 +1,9 @@
 /**
  * LocationDetail — Full-screen detail view
  * London Fog design: large hero image, editorial layout, frosted glass elements
+ * Includes Google Maps buttons and improved UX
  */
-import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send } from 'lucide-react';
+import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map } from 'lucide-react';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -105,6 +106,17 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
+/** Build a Google Maps search URL for a location */
+function getGoogleMapsUrl(location: Location): string {
+  const query = encodeURIComponent(`${location.name}, ${location.neighborhood}, London`);
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
+/** Build a Google Maps directions URL */
+function getDirectionsUrl(location: Location): string {
+  return `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}&destination_place_id=&travelmode=transit`;
+}
+
 export default function LocationDetail({ location, onBack }: LocationDetailProps) {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { getReviewsForLocation } = useReviews();
@@ -182,6 +194,28 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
               <div className="text-xs text-muted-foreground">Comfort</div>
             </div>
           </div>
+        </div>
+
+        {/* Google Maps Action Buttons */}
+        <div className="flex gap-3">
+          <a
+            href={getGoogleMapsUrl(location)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-xl font-medium text-sm transition-colors shadow-sm"
+          >
+            <Map className="w-4 h-4" />
+            View on Google Maps
+          </a>
+          <a
+            href={getDirectionsUrl(location)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-fog-sage hover:bg-fog-sage/90 text-white rounded-xl font-medium text-sm transition-colors shadow-sm"
+          >
+            <Navigation className="w-4 h-4" />
+            Get Directions
+          </a>
         </div>
 
         {/* Atmosphere */}

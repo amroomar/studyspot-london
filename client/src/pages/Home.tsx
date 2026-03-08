@@ -2,6 +2,7 @@
  * Home — Main app shell
  * London Fog design: atmospheric, warm, editorial
  * Combines discovery feed, map, search, favorites, badges
+ * Fixed: filter state shared with map, improved UX
  */
 import { useState, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -18,7 +19,7 @@ import BadgesPage from '@/pages/BadgesPage';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { GamificationProvider } from '@/contexts/GamificationContext';
 import { ReviewsProvider } from '@/contexts/ReviewsContext';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, X } from 'lucide-react';
 
 type Tab = 'home' | 'map' | 'search' | 'favorites' | 'badges';
 
@@ -32,40 +33,96 @@ const CATEGORY_HERO: Record<string, string> = {
   'Hotel Lounge': HERO_IMAGES.hotel,
 };
 
-function DiscoveryFeed({ onSelectLocation }: { onSelectLocation: (loc: Location) => void }) {
-  const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
-  const [sortBy, setSortBy] = useState<'score' | 'name'>('score');
+function applyFilters(locations: Location[], filters: Filters, sortBy: 'score' | 'name'): Location[] {
+  let result = locations;
 
-  const neighborhoods = useMemo(() => {
-    const hoods = new Set(allLocations.map(l => l.neighborhood));
-    return Array.from(hoods).sort();
-  }, []);
+  if (filters.searchQuery) {
+    const q = filters.searchQuery.toLowerCase();
+    result = result.filter(l => l.name.toLowerCase().includes(q) || l.neighborhood.toLowerCase().includes(q));
+  }
+  if (filters.category !== 'All') result = result.filter(l => l.category === filters.category);
+  if (filters.neighborhood !== 'All') result = result.filter(l => l.neighborhood === filters.neighborhood);
+  if (filters.noiseMax < 5) result = result.filter(l => l.noiseLevel <= filters.noiseMax);
+  if (filters.wifi) result = result.filter(l => l.wifi === 'yes');
+  if (filters.plugs) result = result.filter(l => l.plugSockets === 'yes');
+  if (filters.laptopFriendly) result = result.filter(l => l.laptopFriendly === 'yes');
+  if (filters.priceLevel !== 'All') result = result.filter(l => l.priceLevel === filters.priceLevel);
+  if (filters.minScore > 0) result = result.filter(l => l.studyScore >= filters.minScore);
 
-  const filteredLocations = useMemo(() => {
-    let result = allLocations;
+  if (sortBy === 'score') result = [...result].sort((a, b) => b.studyScore - a.studyScore);
+  else result = [...result].sort((a, b) => a.name.localeCompare(b.name));
 
-    if (filters.searchQuery) {
-      const q = filters.searchQuery.toLowerCase();
-      result = result.filter(l => l.name.toLowerCase().includes(q) || l.neighborhood.toLowerCase().includes(q));
-    }
-    if (filters.category !== 'All') result = result.filter(l => l.category === filters.category);
-    if (filters.neighborhood !== 'All') result = result.filter(l => l.neighborhood === filters.neighborhood);
-    if (filters.noiseMax < 5) result = result.filter(l => l.noiseLevel <= filters.noiseMax);
-    if (filters.wifi) result = result.filter(l => l.wifi === 'yes');
-    if (filters.plugs) result = result.filter(l => l.plugSockets === 'yes');
-    if (filters.laptopFriendly) result = result.filter(l => l.laptopFriendly === 'yes');
-    if (filters.priceLevel !== 'All') result = result.filter(l => l.priceLevel === filters.priceLevel);
-    if (filters.minScore > 0) result = result.filter(l => l.studyScore >= filters.minScore);
+  return result;
+}
 
-    if (sortBy === 'score') result = [...result].sort((a, b) => b.studyScore - a.studyScore);
-    else result = [...result].sort((a, b) => a.name.localeCompare(b.name));
+/** Active filter indicator chips */
+function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: (f: Filters) => void }) {
+  const chips: { label: string; clear: () => void }[] = [];
 
-    return result;
-  }, [filters, sortBy]);
+  if (filters.category !== 'All') chips.push({ label: filters.category, clear: () => onChange({ ...filters, category: 'All' }) });
+  if (filters.neighborhood !== 'All') chips.push({ label: filters.neighborhood, clear: () => onChange({ ...filters, neighborhood: 'All' }) });
+  if (filters.wifi) chips.push({ label: 'Wi-Fi', clear: () => onChange({ ...filters, wifi: false }) });
+  if (filters.plugs) chips.push({ label: 'Plugs', clear: () => onChange({ ...filters, plugs: false }) });
+  if (filters.laptopFriendly) chips.push({ label: 'Laptop Friendly', clear: () => onChange({ ...filters, laptopFriendly: false }) });
+  if (filters.noiseMax < 5) chips.push({ label: `Noise ≤${filters.noiseMax}`, clear: () => onChange({ ...filters, noiseMax: 5 }) });
+  if (filters.priceLevel !== 'All') chips.push({ label: filters.priceLevel, clear: () => onChange({ ...filters, priceLevel: 'All' }) });
+  if (filters.minScore > 0) chips.push({ label: `Score ≥${filters.minScore}`, clear: () => onChange({ ...filters, minScore: 0 }) });
 
+  if (chips.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-2 mb-4">
+      {chips.map((chip, i) => (
+        <motion.button
+          key={chip.label}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          onClick={chip.clear}
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-medium hover:bg-primary/20 transition-colors"
+        >
+          {chip.label}
+          <X className="w-3 h-3" />
+        </motion.button>
+      ))}
+      {chips.length > 1 && (
+        <button
+          onClick={() => onChange(DEFAULT_FILTERS)}
+          className="px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors underline"
+        >
+          Clear all
+        </button>
+      )}
+    </div>
+  );
+}
+
+function DiscoveryFeed({
+  onSelectLocation,
+  filters,
+  setFilters,
+  filteredLocations,
+  sortBy,
+  setSortBy,
+  neighborhoods,
+}: {
+  onSelectLocation: (loc: Location) => void;
+  filters: Filters;
+  setFilters: (f: Filters) => void;
+  filteredLocations: Location[];
+  sortBy: 'score' | 'name';
+  setSortBy: (s: 'score' | 'name') => void;
+  neighborhoods: string[];
+}) {
   // Top-rated for featured section
-  const topRated = useMemo(() => allLocations.filter(l => l.studyScore >= 8.5).slice(0, 8), []);
-  const hiddenGems = useMemo(() => allLocations.filter(l => l.category === 'Hidden Gem').sort((a, b) => b.studyScore - a.studyScore).slice(0, 6), []);
+  const topRated = useMemo(() =>
+    [...allLocations].sort((a, b) => b.studyScore - a.studyScore).slice(0, 8),
+  []);
+  const hiddenGems = useMemo(() =>
+    allLocations.filter(l => l.category === 'Hidden Gem').sort((a, b) => b.studyScore - a.studyScore).slice(0, 6),
+  []);
+
+  const hasActiveFilters = JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS);
 
   return (
     <div className="pb-24 lg:pb-8">
@@ -105,7 +162,9 @@ function DiscoveryFeed({ onSelectLocation }: { onSelectLocation: (loc: Location)
             <button
               key={cat}
               onClick={() => setFilters({ ...DEFAULT_FILTERS, category: cat })}
-              className="relative shrink-0 w-36 h-24 rounded-xl overflow-hidden group"
+              className={`relative shrink-0 w-36 h-24 rounded-xl overflow-hidden group ${
+                filters.category === cat ? 'ring-2 ring-primary ring-offset-2' : ''
+              }`}
             >
               <img src={img} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -115,45 +174,50 @@ function DiscoveryFeed({ onSelectLocation }: { onSelectLocation: (loc: Location)
         </div>
       </div>
 
-      {/* Top Rated Section */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Top Rated</h2>
-          <button
-            onClick={() => { setFilters({ ...DEFAULT_FILTERS, minScore: 8 }); }}
-            className="flex items-center gap-1 text-sm text-primary hover:underline"
-          >
-            See all <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-        <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
-          {topRated.map((loc, i) => (
-            <div key={loc.id} className="shrink-0 w-64">
-              <LocationCard location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+      {/* Show Top Rated & Hidden Gems only when no active filters */}
+      {!hasActiveFilters && (
+        <>
+          {/* Top Rated Section */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Top Rated</h2>
+              <button
+                onClick={() => { setFilters({ ...DEFAULT_FILTERS, minScore: 8 }); }}
+                className="flex items-center gap-1 text-sm text-primary hover:underline"
+              >
+                See all <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
+              {topRated.map((loc, i) => (
+                <div key={loc.id} className="shrink-0 w-64">
+                  <LocationCard location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Hidden Gems Section */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Hidden Gems</h2>
-          <button
-            onClick={() => setFilters({ ...DEFAULT_FILTERS, category: 'Hidden Gem' })}
-            className="flex items-center gap-1 text-sm text-primary hover:underline"
-          >
-            See all <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-        <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
-          {hiddenGems.map((loc, i) => (
-            <div key={loc.id} className="shrink-0 w-64">
-              <LocationCard location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+          {/* Hidden Gems Section */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Hidden Gems</h2>
+              <button
+                onClick={() => setFilters({ ...DEFAULT_FILTERS, category: 'Hidden Gem' })}
+                className="flex items-center gap-1 text-sm text-primary hover:underline"
+              >
+                See all <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
+              {hiddenGems.map((loc, i) => (
+                <div key={loc.id} className="shrink-0 w-64">
+                  <LocationCard location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* All Locations with Filters */}
       <div>
@@ -179,18 +243,35 @@ function DiscoveryFeed({ onSelectLocation }: { onSelectLocation: (loc: Location)
           </div>
         </div>
 
+        {/* Active filter chips */}
+        <ActiveFilterChips filters={filters} onChange={setFilters} />
+
         <p className="text-sm text-muted-foreground mb-4">{filteredLocations.length} spots found</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredLocations.slice(0, 60).map((loc, i) => (
-            <LocationCard key={loc.id} location={loc} onClick={() => onSelectLocation(loc)} index={i} />
-          ))}
-        </div>
-
-        {filteredLocations.length > 60 && (
-          <div className="text-center py-8">
-            <p className="text-sm text-muted-foreground">Showing 60 of {filteredLocations.length} results. Use filters to narrow down.</p>
+        {filteredLocations.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-lg text-muted-foreground mb-2">No spots match your filters</p>
+            <button
+              onClick={() => setFilters(DEFAULT_FILTERS)}
+              className="text-primary hover:underline text-sm"
+            >
+              Clear all filters
+            </button>
           </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filteredLocations.slice(0, 60).map((loc, i) => (
+                <LocationCard key={loc.id} location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+              ))}
+            </div>
+
+            {filteredLocations.length > 60 && (
+              <div className="text-center py-8">
+                <p className="text-sm text-muted-foreground">Showing 60 of {filteredLocations.length} results. Use filters to narrow down.</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -200,12 +281,22 @@ function DiscoveryFeed({ onSelectLocation }: { onSelectLocation: (loc: Location)
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
+  const [sortBy, setSortBy] = useState<'score' | 'name'>('score');
 
   const handleSelectLocation = useCallback((loc: Location) => {
     setSelectedLocation(loc);
   }, []);
 
-  const filteredForMap = useMemo(() => allLocations, []);
+  const neighborhoods = useMemo(() => {
+    const hoods = new Set(allLocations.map(l => l.neighborhood));
+    return Array.from(hoods).sort();
+  }, []);
+
+  // Shared filtered locations — used by both discovery feed and map
+  const filteredLocations = useMemo(() =>
+    applyFilters(allLocations, filters, sortBy),
+  [filters, sortBy]);
 
   return (
     <FavoritesProvider>
@@ -216,10 +307,20 @@ export default function Home() {
 
             {/* Main content area */}
             <main className={`${activeTab === 'map' ? '' : 'container pt-4 lg:pt-20'}`}>
-              {activeTab === 'home' && <DiscoveryFeed onSelectLocation={handleSelectLocation} />}
+              {activeTab === 'home' && (
+                <DiscoveryFeed
+                  onSelectLocation={handleSelectLocation}
+                  filters={filters}
+                  setFilters={setFilters}
+                  filteredLocations={filteredLocations}
+                  sortBy={sortBy}
+                  setSortBy={setSortBy}
+                  neighborhoods={neighborhoods}
+                />
+              )}
               {activeTab === 'map' && (
                 <div className="fixed inset-0 lg:top-14">
-                  <MapPage locations={filteredForMap} onSelectLocation={handleSelectLocation} />
+                  <MapPage locations={filteredLocations} onSelectLocation={handleSelectLocation} />
                 </div>
               )}
               {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}

@@ -1,6 +1,7 @@
 /**
  * LocationCard — London Fog design
  * Large image, frosted glass info overlay, warm shadows
+ * Fixed: removed redundant tag display (Wi-Fi/Laptop shown as icons, not also as tags)
  */
 import { Heart, Wifi, Plug, Volume2, MapPin } from 'lucide-react';
 import { type Location } from '@/lib/locations';
@@ -22,12 +23,12 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
   const image = getLocationImage(location.name, location.category);
 
   const noiseLabel = location.noiseLevel <= 2 ? 'Quiet' : location.noiseLevel <= 3 ? 'Moderate' : 'Lively';
-  const tags = [
-    location.wifi === 'yes' && 'Wi-Fi',
-    location.laptopFriendly === 'yes' && 'Laptop-friendly',
-    noiseLabel,
-    ...(location.tags || []).slice(0, 2),
-  ].filter(Boolean).slice(0, 4);
+
+  // Only show actual descriptive tags, not attribute duplicates
+  const EXCLUDED_TAGS = new Set(['wi-fi', 'wifi', 'laptop-friendly', 'laptop friendly', 'quiet', 'moderate', 'lively', 'loud', 'very quiet', 'plugs', 'plug sockets', 'free wifi', 'good wifi']);
+  const displayTags = (location.tags || [])
+    .filter(tag => !EXCLUDED_TAGS.has(tag.toLowerCase()))
+    .slice(0, 3);
 
   return (
     <motion.div
@@ -78,7 +79,7 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
             <span>{location.priceLevel}</span>
           </div>
 
-          {/* Quick attributes */}
+          {/* Quick attributes — icons only, no redundant tags */}
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
             {location.wifi === 'yes' && (
               <span className="flex items-center gap-1"><Wifi className="w-3.5 h-3.5 text-fog-sage" /> Wi-Fi</span>
@@ -89,14 +90,16 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
             <span className="flex items-center gap-1"><Volume2 className="w-3.5 h-3.5 text-fog-sage" /> {noiseLabel}</span>
           </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {tags.map((tag, i) => (
-              <span key={i} className="bg-secondary text-secondary-foreground text-[11px] px-2 py-0.5 rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
+          {/* Descriptive tags only */}
+          {displayTags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {displayTags.map((tag, i) => (
+                <span key={i} className="bg-secondary text-secondary-foreground text-[11px] px-2 py-0.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
