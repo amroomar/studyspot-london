@@ -4,6 +4,8 @@
  * Includes Google Maps buttons and improved UX
  */
 import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles } from 'lucide-react';
+import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
+import ConfirmReportButtons from '@/components/ConfirmReportButtons';
 import { VibeDetailPanel } from '@/components/LiveVibeBadge';
 import { socialVideos } from '@/lib/socialVideos';
 import { type Location } from '@/lib/locations';
@@ -225,12 +227,24 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
           <VibeDetailPanel locationId={location.id} />
         </div>
 
-        {/* Community Submitted Badge */}
+        {/* Community Submitted Badge + Verification */}
         {'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted && (
-          <div className="flex items-center gap-2 px-4 py-3 bg-fog-sage/10 rounded-xl border border-fog-sage/20">
-            <Sparkles className="w-4 h-4 text-fog-sage" />
-            <span className="text-sm font-medium text-fog-sage">Community Submitted</span>
-            <span className="text-xs text-muted-foreground">by {(location as any).submittedBy || 'Anonymous'}</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 flex-wrap px-4 py-3 bg-fog-sage/10 rounded-xl border border-fog-sage/20">
+              <Sparkles className="w-4 h-4 text-fog-sage" />
+              <span className="text-sm font-medium text-fog-sage">Community Submitted</span>
+              <span className="text-xs text-muted-foreground">by {(location as any).submittedBy || 'Anonymous'}</span>
+              {(location as any).verificationStatus && (
+                <VerificationBadge status={(location as any).verificationStatus as VerificationStatus} />
+              )}
+            </div>
+            {/* Confirm & Report buttons */}
+            <div className="px-4 py-3 bg-card rounded-xl border border-border/50">
+              <ConfirmReportButtons
+                submissionId={(location as any).id}
+                confirmationCount={(location as any).confirmationCount || 0}
+              />
+            </div>
           </div>
         )}
 

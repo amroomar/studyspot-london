@@ -1,10 +1,11 @@
 /**
  * SubmissionsContext — Community-submitted study spots
- * Now backed by tRPC API + PostgreSQL database + S3 image storage
- * All submissions are shared across all users and devices
+ * Now backed by tRPC API + database + S3 image storage
+ * Includes verification status, confirmation count, and report count
  */
 import { createContext, useContext, type ReactNode } from 'react';
 import { trpc } from '@/lib/trpc';
+import type { VerificationStatus } from '@/components/VerificationBadge';
 
 export interface SubmittedSpot {
   id: number;
@@ -29,6 +30,10 @@ export interface SubmittedSpot {
   tags: string[];
   images: string[];
   status: "pending" | "approved" | "rejected";
+  verificationStatus: VerificationStatus;
+  googlePlaceId: string | null;
+  confirmationCount: number;
+  reportCount: number;
   createdAt: Date;
   updatedAt: Date;
   isCommunitySubmitted: true;
@@ -88,6 +93,10 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
   // Transform raw data to SubmittedSpot format
   const submissions: SubmittedSpot[] = (rawSubmissions || []).map(row => ({
     ...row,
+    verificationStatus: (row.verificationStatus || 'unverified') as VerificationStatus,
+    googlePlaceId: row.googlePlaceId || null,
+    confirmationCount: row.confirmationCount || 0,
+    reportCount: row.reportCount || 0,
     isCommunitySubmitted: true as const,
   }));
 

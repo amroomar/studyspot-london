@@ -60,8 +60,26 @@ export const communitySubmissions = mysqlTable("community_submissions", {
   // Image URLs as JSON-encoded text (e.g. '["https://...","https://..."]')
   images: text("images").notNull(),
 
-  // Moderation
+  // Moderation & Verification
   status: mysqlEnum("status", ["pending", "approved", "rejected"]).default("approved").notNull(),
+
+  /** Verification status from automatic + community checks */
+  verificationStatus: mysqlEnum("verificationStatus", [
+    "unverified",
+    "verified",
+    "community_verified",
+    "pending_verification",
+    "flagged",
+  ]).default("unverified").notNull(),
+
+  /** Google Places place_id if matched */
+  googlePlaceId: varchar("googlePlaceId", { length: 255 }),
+
+  /** Number of community confirmations ("I have studied here") */
+  confirmationCount: int("confirmationCount").default(0).notNull(),
+
+  /** Number of reports */
+  reportCount: int("reportCount").default(0).notNull(),
 
   // Timestamps
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -70,3 +88,44 @@ export const communitySubmissions = mysqlTable("community_submissions", {
 
 export type CommunitySubmission = typeof communitySubmissions.$inferSelect;
 export type InsertCommunitySubmission = typeof communitySubmissions.$inferInsert;
+
+/**
+ * Location confirmations — users confirming "I have studied here"
+ */
+export const locationConfirmations = mysqlTable("location_confirmations", {
+  id: int("id").autoincrement().primaryKey(),
+  /** FK to community_submissions */
+  submissionId: int("submissionId").notNull(),
+  /** FK to users */
+  userId: int("userId").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type LocationConfirmation = typeof locationConfirmations.$inferSelect;
+export type InsertLocationConfirmation = typeof locationConfirmations.$inferInsert;
+
+/**
+ * Location reports — users reporting problematic locations
+ */
+export const locationReports = mysqlTable("location_reports", {
+  id: int("id").autoincrement().primaryKey(),
+  /** FK to community_submissions */
+  submissionId: int("submissionId").notNull(),
+  /** FK to users */
+  userId: int("userId").notNull(),
+  /** Report reason */
+  reason: mysqlEnum("reason", [
+    "fake_location",
+    "unsafe_location",
+    "incorrect_information",
+    "not_a_study_spot",
+  ]).notNull(),
+  /** Optional additional details */
+  details: text("details"),
+  /** Report status */
+  status: mysqlEnum("status", ["pending", "reviewed", "dismissed"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type LocationReport = typeof locationReports.$inferSelect;
+export type InsertLocationReport = typeof locationReports.$inferInsert;

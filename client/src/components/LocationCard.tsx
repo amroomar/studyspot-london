@@ -4,6 +4,7 @@
  * Fixed: removed redundant tag display (Wi-Fi/Laptop shown as icons, not also as tags)
  */
 import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles } from 'lucide-react';
+import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
 import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
@@ -72,6 +73,9 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
               <div className="bg-fog-sage/90 backdrop-blur-sm text-white rounded-full px-2.5 py-1.5 text-[10px] font-semibold flex items-center gap-1">
                 <Sparkles className="w-3 h-3" /> Community
               </div>
+            )}
+            {isCommunity && (location as any).verificationStatus && (location as any).verificationStatus !== 'unverified' && (
+              <VerificationBadge status={(location as any).verificationStatus as VerificationStatus} compact />
             )}
           </div>
         </div>

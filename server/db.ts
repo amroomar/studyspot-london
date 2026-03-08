@@ -1,6 +1,18 @@
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, communitySubmissions, type InsertCommunitySubmission, type CommunitySubmission } from "../drizzle/schema";
+import {
+  InsertUser,
+  users,
+  communitySubmissions,
+  locationConfirmations,
+  locationReports,
+  type InsertCommunitySubmission,
+  type CommunitySubmission,
+  type InsertLocationConfirmation,
+  type LocationConfirmation,
+  type InsertLocationReport,
+  type LocationReport,
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -149,4 +161,202 @@ export async function deleteSubmission(id: number): Promise<void> {
   if (!db) throw new Error("Database not available");
 
   await db.delete(communitySubmissions).where(eq(communitySubmissions.id, id));
+}
+
+/** Update verification status */
+export async function updateVerificationStatus(
+  id: number,
+  verificationStatus: "unverified" | "verified" | "community_verified" | "pending_verification" | "flagged",
+  googlePlaceId?: string
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const updateData: Record<string, unknown> = { verificationStatus };
+  if (googlePlaceId !== undefined) {
+    updateData.googlePlaceId = googlePlaceId;
+  }
+
+  await db.update(communitySubmissions).set(updateData).where(eq(communitySubmissions.id, id));
+}
+
+/** Update submission fields (admin edit) */
+export async function updateSubmission(
+  id: number,
+  data: Partial<Pick<CommunitySubmission, "name" | "category" | "neighborhood" | "address" | "atmosphere" | "verificationStatus" | "status">>
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(communitySubmissions).set(data).where(eq(communitySubmissions.id, id));
+}
+
+// ─── Location Confirmations ─────────────────────────────────────────────────
+
+/** Add a confirmation ("I have studied here") */
+export async function addConfirmation(submissionId: number, userId: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // Check if user already confirmed
+  const existing = await db
+    .select()
+    .from(locationConfirmations)
+    .where(
+      and(
+        eq(locationConfirmations.submissionId, submissionId),
+        eq(locationConfirmations.userId, userId)
+      )
+    )
+    .limit(1);
+
+  if (existing.length > 0) {
+    throw new Error("You have already confirmed this location");
+  }
+
+  // Insert confirmation
+  await db.insert(locationConfirmations).values({ submissionId, userId });
+
+  // Increment count on submission
+  await db
+    .update(communitySubmissions)
+    .set({
+      confirmationCount: sql`${communitySubmissions.confirmationCount} + 1`,
+    })
+    .where(eq(communitySubmissions.id, submissionId));
+
+  // Check if we should auto-upgrade to community_verified (5+ confirmations)
+  const submission = await getSubmissionById(submissionId);
+  if (submission && submission.confirmationCount >= 5 && submission.verificationStatus !== "flagged") {
+    await updateVerificationStatus(submissionId, "community_verified");
+  }
+}
+
+/** Check if a user has confirmed a location */
+export async function hasUserConfirmed(submissionId: number, userId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const rows = await db
+    .select()
+    .from(locationConfirmations)
+    .where(
+      and(
+        eq(locationConfirmations.submissionId, submissionId),
+        eq(locationConfirmations.userId, userId)
+      )
+    )
+    .limit(1);
+
+  return rows.length > 0;
+}
+
+/** Get confirmation count for a submission */
+export async function getConfirmationCount(submissionId: number): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const rows = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(locationConfirmations)
+    .where(eq(locationConfirmations.submissionId, submissionId));
+
+  return rows[0]?.count ?? 0;
+}
+
+// ─── Location Reports ───────────────────────────────────────────────────────
+
+/** Add a report */
+export async function addReport(
+  submissionId: number,
+  userId: number,
+  reason: "fake_location" | "unsafe_location" | "incorrect_information" | "not_a_study_spot",
+  details?: string
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // Check if user already reported this location
+  const existing = await db
+    .select()
+    .from(locationReports)
+    .where(
+      and(
+        eq(locationReports.submissionId, submissionId),
+        eq(locationReports.userId, userId)
+      )
+    )
+    .limit(1);
+
+  if (existing.length > 0) {
+    throw new Error("You have already reported this location");
+  }
+
+  // Insert report
+  await db.insert(locationReports).values({ submissionId, userId, reason, details });
+
+  // Increment report count on submission
+  await db
+    .update(communitySubmissions)
+    .set({
+      reportCount: sql`${communitySubmissions.reportCount} + 1`,
+    })
+    .where(eq(communitySubmissions.id, submissionId));
+
+  // Check if we should auto-flag (3+ reports)
+  const submission = await getSubmissionById(submissionId);
+  if (submission && submission.reportCount >= 3) {
+    await updateVerificationStatus(submissionId, "flagged");
+  }
+}
+
+/** Check if a user has reported a location */
+export async function hasUserReported(submissionId: number, userId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const rows = await db
+    .select()
+    .from(locationReports)
+    .where(
+      and(
+        eq(locationReports.submissionId, submissionId),
+        eq(locationReports.userId, userId)
+      )
+    )
+    .limit(1);
+
+  return rows.length > 0;
+}
+
+/** Get all reports for a submission (admin) */
+export async function getReportsForSubmission(submissionId: number): Promise<LocationReport[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(locationReports)
+    .where(eq(locationReports.submissionId, submissionId))
+    .orderBy(desc(locationReports.createdAt));
+}
+
+/** Get all pending reports (admin) */
+export async function getAllPendingReports(): Promise<LocationReport[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(locationReports)
+    .where(eq(locationReports.status, "pending"))
+    .orderBy(desc(locationReports.createdAt));
+}
+
+/** Update report status (admin) */
+export async function updateReportStatus(id: number, status: "pending" | "reviewed" | "dismissed"): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(locationReports).set({ status }).where(eq(locationReports.id, id));
 }

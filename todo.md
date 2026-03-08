@@ -84,3 +84,19 @@
 - [x] Add keywords meta tag to homepage
 - [x] Optimize page title to 30-60 characters (57 chars)
 - [x] Add meta description (50-160 characters) (145 chars)
+
+## Verification System for Community Submissions
+- [x] Update database schema: add verification_status, confirmation_count, report_count fields to community_submissions
+- [x] Create location_confirmations table (user confirms "I have studied here")
+- [x] Create location_reports table (user reports with reason)
+- [x] Implement automatic location verification via Google Places API on submission
+- [x] Add community confirmation button ("I have studied here") on location detail pages
+- [x] Auto-upgrade to "Community Verified" at 5+ confirmations
+- [x] Add report system with reasons (Fake, Unsafe, Incorrect info, Not a study spot)
+- [x] Auto-flag locations with multiple reports as "Flagged for Review"
+- [x] Build admin moderation panel (approve, reject, edit, remove submissions)
+- [x] Show pending locations queue for unverified submissions
+- [x] Add verification badges on location cards
+- [x] Add verification badges on map pins (via LocationCard)
+- [x] Add verification badges on location detail pages
+- [x] Write vitest tests for verification system (29 tests passing)
