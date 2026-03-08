@@ -2,7 +2,7 @@
  * SocialDiscoveryPage — Social Discovery feed
  * London Fog design: atmospheric, warm, editorial
  * Displays real TikTok, Instagram, and YouTube videos of London study spots
- * Features: search, platform filter, tag filter, location matching
+ * Features: search, platform filter, tag filter, location matching, REAL THUMBNAILS
  */
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -60,43 +60,69 @@ const TAG_COLORS: Record<string, string> = {
   'hidden-gem': 'bg-purple-100 text-purple-700',
 };
 
-// Generate thumbnail placeholder based on platform
+// Platform gradient fallbacks for when thumbnail is missing
+const PLATFORM_GRADIENTS: Record<string, string> = {
+  TikTok: 'from-gray-900 via-gray-800 to-gray-900',
+  Instagram: 'from-purple-900 via-pink-800 to-orange-900',
+  YouTube: 'from-red-900 via-red-800 to-gray-900',
+};
+
+/**
+ * VideoThumbnail — Shows real thumbnail image with graceful fallback
+ * Falls back to platform-branded gradient if no thumbnail URL or image fails to load
+ */
 function VideoThumbnail({ video }: { video: SocialVideo }) {
   const platform = PLATFORM_CONFIG[video.platform];
-  
-  // Use a gradient based on platform as fallback
-  const gradients: Record<string, string> = {
-    TikTok: 'from-gray-900 via-gray-800 to-gray-900',
-    Instagram: 'from-purple-900 via-pink-800 to-orange-900',
-    YouTube: 'from-red-900 via-red-800 to-gray-900',
-  };
+  const [imgError, setImgError] = useState(false);
+  const hasThumbnail = video.thumbnailUrl && !imgError;
 
   return (
-    <div className={`relative w-full aspect-[9/12] rounded-xl overflow-hidden bg-gradient-to-br ${gradients[video.platform]} group`}>
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 rounded-full bg-white/10 blur-xl" />
-      </div>
-      
+    <div className="relative w-full aspect-[9/12] rounded-xl overflow-hidden group">
+      {/* Real thumbnail image */}
+      {hasThumbnail ? (
+        <img
+          src={video.thumbnailUrl}
+          alt={video.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={() => setImgError(true)}
+          loading="lazy"
+        />
+      ) : (
+        /* Fallback gradient */
+        <div className={`w-full h-full bg-gradient-to-br ${PLATFORM_GRADIENTS[video.platform]}`}>
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 rounded-full bg-white/10 blur-xl" />
+          </div>
+        </div>
+      )}
+
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+
       {/* Play button overlay */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-all group-hover:scale-110">
+        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/35 group-hover:scale-110 transition-all duration-300 shadow-lg">
           <Play className="w-6 h-6 text-white fill-white ml-0.5" />
         </div>
       </div>
 
       {/* Platform badge */}
       <div className="absolute top-3 left-3">
-        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full ${platform.bgColor} ${platform.textColor} text-xs font-medium shadow-lg`}>
+        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full ${platform.bgColor} ${platform.textColor} text-xs font-medium shadow-lg backdrop-blur-sm`}>
           {platform.icon}
           <span>{video.platform}</span>
         </div>
       </div>
 
-      {/* Creator badge */}
+      {/* Creator badge at bottom */}
       <div className="absolute bottom-3 left-3 right-3">
-        <p className="text-white/90 text-xs font-medium truncate">{video.creator}</p>
+        <p className="text-white text-xs font-semibold truncate drop-shadow-md">{video.creator}</p>
+      </div>
+
+      {/* Thumbnail indicator dot — green for real, amber for fallback */}
+      <div className="absolute top-3 right-3">
+        <div className={`w-2 h-2 rounded-full ${hasThumbnail ? 'bg-green-400' : 'bg-amber-400'} shadow-sm`} title={hasThumbnail ? 'Real thumbnail' : 'Platform placeholder'} />
       </div>
     </div>
   );
@@ -293,6 +319,11 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
     filteredVideos.filter(v => v.matchedLocationId).length,
   [filteredVideos]);
 
+  // Count thumbnails
+  const thumbCount = useMemo(() =>
+    socialVideos.filter(v => v.thumbnailUrl).length,
+  []);
+
   return (
     <div className="pb-24 lg:pb-8">
       {/* Header */}
@@ -404,6 +435,7 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
         <p className="text-xs text-muted-foreground">
           {filteredVideos.length} video{filteredVideos.length !== 1 ? 's' : ''}
           {matchedCount > 0 && ` · ${matchedCount} linked to study spots`}
+          {thumbCount > 0 && ` · ${thumbCount} with thumbnails`}
         </p>
       </div>
 

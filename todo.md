@@ -47,3 +47,12 @@
 - [ ] Smooth transitions
 - [ ] Clickable map previews
 - [ ] Better spacing and layout consistency
+
+## Video Thumbnail Enhancement
+- [ ] Research thumbnail extraction for YouTube (img.youtube.com pattern), TikTok (oEmbed), Instagram (oEmbed)
+- [ ] Build script to extract video IDs and generate thumbnail URLs for all 82 videos
+- [ ] Update socialVideos.ts data with real thumbnailUrl values
+- [ ] Update SocialDiscoveryPage video cards to show thumbnail images
+- [ ] Update LocationDetail social videos section to show thumbnails
+- [ ] Test all platforms render correctly with fallback for broken thumbnails
+- [ ] Polish card layout with proper aspect ratios and hover effects

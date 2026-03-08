@@ -296,13 +296,35 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
                     rel="noopener noreferrer"
                     className="flex items-start gap-3 p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
                   >
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                      video.platform === 'TikTok' ? 'bg-black text-white' :
-                      video.platform === 'Instagram' ? 'bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white' :
-                      'bg-red-600 text-white'
-                    }`}>
-                      <Play className="w-4 h-4 fill-current" />
-                    </div>
+                    {/* Thumbnail or platform icon */}
+                    {video.thumbnailUrl ? (
+                      <div className="w-16 h-20 rounded-lg overflow-hidden shrink-0 relative">
+                        <img
+                          src={video.thumbnailUrl}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                          <Play className="w-4 h-4 text-white fill-white" />
+                        </div>
+                        <div className={`absolute top-1 left-1 w-4 h-4 rounded flex items-center justify-center ${
+                          video.platform === 'TikTok' ? 'bg-black' :
+                          video.platform === 'Instagram' ? 'bg-gradient-to-br from-purple-600 to-orange-400' :
+                          'bg-red-600'
+                        }`}>
+                          <Play className="w-2 h-2 text-white fill-white" />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${
+                        video.platform === 'TikTok' ? 'bg-black text-white' :
+                        video.platform === 'Instagram' ? 'bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white' :
+                        'bg-red-600 text-white'
+                      }`}>
+                        <Play className="w-5 h-5 fill-current" />
+                      </div>
+                    )}
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">{video.title}</p>
                       <p className="text-xs text-muted-foreground mt-0.5">{video.creator} · {video.platform}</p>
