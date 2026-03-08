@@ -16,12 +16,13 @@ import MapPage from '@/pages/MapPage';
 import SearchPage from '@/pages/SearchPage';
 import FavoritesPage from '@/pages/FavoritesPage';
 import BadgesPage from '@/pages/BadgesPage';
+import SocialDiscoveryPage from '@/pages/SocialDiscoveryPage';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { GamificationProvider } from '@/contexts/GamificationContext';
 import { ReviewsProvider } from '@/contexts/ReviewsContext';
 import { ChevronRight, X } from 'lucide-react';
 
-type Tab = 'home' | 'map' | 'search' | 'favorites' | 'badges';
+type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
 // Category hero images mapping
 const CATEGORY_HERO: Record<string, string> = {
@@ -324,6 +325,7 @@ export default function Home() {
                 </div>
               )}
               {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
+              {activeTab === 'social' && <SocialDiscoveryPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
               {activeTab === 'favorites' && <FavoritesPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
               {activeTab === 'badges' && <BadgesPage />}
             </main>

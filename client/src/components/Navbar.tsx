@@ -1,10 +1,11 @@
 /**
  * Navbar — London Fog design
  * Frosted glass navigation bar, fixed at bottom on mobile, top on desktop
+ * Tabs: Discover, Search, Social, Map, Saved, Badges
  */
-import { Home, Map, Heart, Award, Search } from 'lucide-react';
+import { Home, Map, Heart, Award, Search, Play } from 'lucide-react';
 
-type Tab = 'home' | 'map' | 'search' | 'favorites' | 'badges';
+type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
 interface NavbarProps {
   activeTab: Tab;
@@ -14,6 +15,7 @@ interface NavbarProps {
 const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
   { id: 'home', label: 'Discover', icon: Home },
   { id: 'search', label: 'Search', icon: Search },
+  { id: 'social', label: 'Social', icon: Play },
   { id: 'map', label: 'Map', icon: Map },
   { id: 'favorites', label: 'Saved', icon: Heart },
   { id: 'badges', label: 'Badges', icon: Award },
@@ -49,13 +51,13 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
       </nav>
 
       {/* Mobile bottom nav */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 glass border-t border-border/50 px-2 pb-[env(safe-area-inset-bottom)]">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 glass border-t border-border/50 px-1 pb-[env(safe-area-inset-bottom)]">
         <div className="flex items-center justify-around py-2">
           {tabs.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
               onClick={() => onTabChange(id)}
-              className={`flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all ${
+              className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl transition-all ${
                 activeTab === id
                   ? 'text-primary'
                   : 'text-muted-foreground'

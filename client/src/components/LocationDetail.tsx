@@ -3,7 +3,8 @@
  * London Fog design: large hero image, editorial layout, frosted glass elements
  * Includes Google Maps buttons and improved UX
  */
-import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map } from 'lucide-react';
+import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play } from 'lucide-react';
+import { socialVideos } from '@/lib/socialVideos';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -278,6 +279,41 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
             </a>
           )}
         </div>
+
+        {/* Social Videos — show if any matched videos exist */}
+        {(() => {
+          const matchedVideos = socialVideos.filter(v => v.matchedLocationId === location.id);
+          if (matchedVideos.length === 0) return null;
+          return (
+            <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/50">
+              <h2 className="text-lg mb-3" style={{ fontFamily: 'var(--font-display)' }}>Social Videos ({matchedVideos.length})</h2>
+              <div className="space-y-3">
+                {matchedVideos.map(video => (
+                  <a
+                    key={video.id}
+                    href={video.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 p-3 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+                  >
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
+                      video.platform === 'TikTok' ? 'bg-black text-white' :
+                      video.platform === 'Instagram' ? 'bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 text-white' :
+                      'bg-red-600 text-white'
+                    }`}>
+                      <Play className="w-4 h-4 fill-current" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">{video.title}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{video.creator} · {video.platform}</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0 mt-1" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Reviews */}
         <div>
