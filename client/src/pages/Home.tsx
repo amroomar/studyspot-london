@@ -1,8 +1,8 @@
 /**
  * Home — Main app shell
  * London Fog design: atmospheric, warm, editorial
- * Combines discovery feed, map, search, favorites, badges
- * Fixed: filter state shared with map, improved UX
+ * Combines discovery feed, map, search, favorites, badges, social, submit
+ * Features: community submissions, live vibe, heatmap, community discoveries
  */
 import { useState, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -17,10 +17,13 @@ import SearchPage from '@/pages/SearchPage';
 import FavoritesPage from '@/pages/FavoritesPage';
 import BadgesPage from '@/pages/BadgesPage';
 import SocialDiscoveryPage from '@/pages/SocialDiscoveryPage';
+import SubmitSpotPage from '@/pages/SubmitSpotPage';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { GamificationProvider } from '@/contexts/GamificationContext';
 import { ReviewsProvider } from '@/contexts/ReviewsContext';
-import { ChevronRight, X } from 'lucide-react';
+import { SubmissionsProvider, useSubmissions } from '@/contexts/SubmissionsContext';
+import { LiveVibeProvider } from '@/contexts/LiveVibeContext';
+import { ChevronRight, X, Sparkles, Users } from 'lucide-react';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
@@ -47,7 +50,7 @@ function applyFilters(locations: Location[], filters: Filters, sortBy: 'score' |
   if (filters.wifi) result = result.filter(l => l.wifi === 'yes');
   if (filters.plugs) result = result.filter(l => l.plugSockets === 'yes');
   if (filters.laptopFriendly) result = result.filter(l => l.laptopFriendly === 'yes');
-  if (filters.priceLevel !== 'All') result = result.filter(l => l.priceLevel === filters.priceLevel);
+  if (filters.priceLevel !== 'All') result = result.filter(l => l.priceLevel === 'All' ? true : l.priceLevel === filters.priceLevel);
   if (filters.minScore > 0) result = result.filter(l => l.studyScore >= filters.minScore);
 
   if (sortBy === 'score') result = [...result].sort((a, b) => b.studyScore - a.studyScore);
@@ -73,7 +76,7 @@ function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: 
 
   return (
     <div className="flex flex-wrap gap-2 mb-4">
-      {chips.map((chip, i) => (
+      {chips.map((chip) => (
         <motion.button
           key={chip.label}
           initial={{ opacity: 0, scale: 0.9 }}
@@ -98,6 +101,64 @@ function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: 
   );
 }
 
+/** Community Discoveries Section — shows user-submitted spots */
+function CommunityDiscoveries({ onSelectLocation }: { onSelectLocation: (loc: Location) => void }) {
+  const { submissions } = useSubmissions();
+
+  if (submissions.length === 0) return null;
+
+  // Convert submissions to Location-like objects for display
+  const communityLocations: Location[] = submissions.map(sub => ({
+    id: sub.id + 100000,
+    name: sub.name,
+    category: sub.category,
+    neighborhood: sub.neighborhood,
+    address: sub.address,
+    lat: sub.lat || 51.515,
+    lng: sub.lng || -0.1,
+    wifi: sub.wifi ? 'yes' : 'no',
+    plugSockets: sub.plugSockets ? 'yes' : 'no',
+    noiseLevel: sub.noiseLevel,
+    lightingQuality: sub.lightingQuality,
+    seatingComfort: sub.seatingComfort,
+    laptopFriendly: sub.laptopFriendly ? 'yes' : 'no',
+    priceLevel: sub.priceLevel,
+    studyScore: sub.studyScore || 7.0,
+    atmosphere: sub.atmosphere,
+    tags: sub.tags,
+    openingHours: sub.openingHours || '',
+    bestTimeStudy: '',
+    website: sub.website || '',
+    // Extra community fields
+    isCommunitySubmitted: true,
+    submittedBy: sub.submittedBy,
+    images: sub.images,
+  } as Location & { isCommunitySubmitted: boolean; submittedBy: string; images: string[] }));
+
+  return (
+    <div className="mb-8">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-fog-sage/10 flex items-center justify-center">
+            <Users className="w-4 h-4 text-fog-sage" />
+          </div>
+          <div>
+            <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Community Discoveries</h2>
+            <p className="text-xs text-muted-foreground">{submissions.length} spots submitted by users</p>
+          </div>
+        </div>
+      </div>
+      <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
+        {communityLocations.map((loc, i) => (
+          <div key={loc.id} className="shrink-0 w-64">
+            <LocationCard location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function DiscoveryFeed({
   onSelectLocation,
   filters,
@@ -115,7 +176,6 @@ function DiscoveryFeed({
   setSortBy: (s: 'score' | 'name') => void;
   neighborhoods: string[];
 }) {
-  // Top-rated for featured section
   const topRated = useMemo(() =>
     [...allLocations].sort((a, b) => b.studyScore - a.studyScore).slice(0, 8),
   []);
@@ -148,7 +208,7 @@ function DiscoveryFeed({
                 Find your perfect<br />study spot
               </h1>
               <p className="text-white/70 text-base sm:text-lg max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
-                Discover {allLocations.length} curated cafes, libraries, and hidden gems across London.
+                Discover {allLocations.length}+ curated cafes, libraries, and hidden gems across London.
               </p>
             </motion.div>
           </div>
@@ -174,6 +234,9 @@ function DiscoveryFeed({
           ))}
         </div>
       </div>
+
+      {/* Community Discoveries */}
+      {!hasActiveFilters && <CommunityDiscoveries onSelectLocation={onSelectLocation} />}
 
       {/* Show Top Rated & Hidden Gems only when no active filters */}
       {!hasActiveFilters && (
@@ -284,6 +347,7 @@ export default function Home() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [sortBy, setSortBy] = useState<'score' | 'name'>('score');
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
 
   const handleSelectLocation = useCallback((loc: Location) => {
     setSelectedLocation(loc);
@@ -303,43 +367,65 @@ export default function Home() {
     <FavoritesProvider>
       <ReviewsProvider>
         <GamificationProvider>
-          <div className="min-h-screen bg-background">
-            <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
-
-            {/* Main content area */}
-            <main className={`${activeTab === 'map' ? '' : 'container pt-4 lg:pt-20'}`}>
-              {activeTab === 'home' && (
-                <DiscoveryFeed
-                  onSelectLocation={handleSelectLocation}
-                  filters={filters}
-                  setFilters={setFilters}
-                  filteredLocations={filteredLocations}
-                  sortBy={sortBy}
-                  setSortBy={setSortBy}
-                  neighborhoods={neighborhoods}
+          <SubmissionsProvider>
+            <LiveVibeProvider>
+              <div className="min-h-screen bg-background">
+                <Navbar
+                  activeTab={activeTab}
+                  onTabChange={setActiveTab}
+                  onAddSpot={() => setShowSubmitModal(true)}
                 />
-              )}
-              {activeTab === 'map' && (
-                <div className="fixed inset-0 lg:top-14">
-                  <MapPage locations={filteredLocations} onSelectLocation={handleSelectLocation} />
-                </div>
-              )}
-              {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
-              {activeTab === 'social' && <SocialDiscoveryPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
-              {activeTab === 'favorites' && <FavoritesPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
-              {activeTab === 'badges' && <BadgesPage />}
-            </main>
 
-            {/* Location detail overlay */}
-            <AnimatePresence>
-              {selectedLocation && (
-                <LocationDetail
-                  location={selectedLocation}
-                  onBack={() => setSelectedLocation(null)}
-                />
-              )}
-            </AnimatePresence>
-          </div>
+                {/* Main content area */}
+                <main className={`${activeTab === 'map' ? '' : 'container pt-4 lg:pt-20'}`}>
+                  {activeTab === 'home' && (
+                    <DiscoveryFeed
+                      onSelectLocation={handleSelectLocation}
+                      filters={filters}
+                      setFilters={setFilters}
+                      filteredLocations={filteredLocations}
+                      sortBy={sortBy}
+                      setSortBy={setSortBy}
+                      neighborhoods={neighborhoods}
+                    />
+                  )}
+                  {activeTab === 'map' && (
+                    <div className="fixed inset-0 lg:top-14">
+                      <MapPage locations={filteredLocations} onSelectLocation={handleSelectLocation} />
+                    </div>
+                  )}
+                  {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'social' && <SocialDiscoveryPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'favorites' && <FavoritesPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'badges' && <BadgesPage />}
+                </main>
+
+                {/* Location detail overlay */}
+                <AnimatePresence>
+                  {selectedLocation && (
+                    <LocationDetail
+                      location={selectedLocation}
+                      onBack={() => setSelectedLocation(null)}
+                    />
+                  )}
+                </AnimatePresence>
+
+                {/* Submit Spot Modal */}
+                <AnimatePresence>
+                  {showSubmitModal && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed inset-0 z-50 bg-background overflow-y-auto custom-scrollbar"
+                    >
+                      <SubmitSpotPage onClose={() => setShowSubmitModal(false)} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </LiveVibeProvider>
+          </SubmissionsProvider>
         </GamificationProvider>
       </ReviewsProvider>
     </FavoritesProvider>

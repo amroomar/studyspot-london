@@ -3,7 +3,8 @@
  * Large image, frosted glass info overlay, warm shadows
  * Fixed: removed redundant tag display (Wi-Fi/Laptop shown as icons, not also as tags)
  */
-import { Heart, Wifi, Plug, Volume2, MapPin } from 'lucide-react';
+import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles } from 'lucide-react';
+import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -20,7 +21,8 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
   const { toggleFavorite, isFavorite } = useFavorites();
   const [imgLoaded, setImgLoaded] = useState(false);
   const fav = isFavorite(location.id);
-  const image = getLocationImage(location.name, location.category);
+  const isCommunity = 'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted;
+  const image = isCommunity && (location as any).images?.[0] ? (location as any).images[0] : getLocationImage(location.name, location.category);
 
   const noiseLabel = location.noiseLevel <= 2 ? 'Quiet' : location.noiseLevel <= 3 ? 'Moderate' : 'Lively';
 
@@ -61,9 +63,16 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
             <Heart className={`w-4.5 h-4.5 transition-colors ${fav ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
           </button>
           {/* Category badge */}
-          <div className="absolute bottom-3 left-3 glass rounded-full px-3 py-1.5 text-xs font-medium text-fog-charcoal flex items-center gap-1.5">
-            <span>{CATEGORY_ICONS[location.category] || '📍'}</span>
-            <span>{location.category}</span>
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+            <div className="glass rounded-full px-3 py-1.5 text-xs font-medium text-fog-charcoal flex items-center gap-1.5">
+              <span>{CATEGORY_ICONS[location.category] || '📍'}</span>
+              <span>{location.category}</span>
+            </div>
+            {isCommunity && (
+              <div className="bg-fog-sage/90 backdrop-blur-sm text-white rounded-full px-2.5 py-1.5 text-[10px] font-semibold flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> Community
+              </div>
+            )}
           </div>
         </div>
 
@@ -88,6 +97,7 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
               <span className="flex items-center gap-1"><Plug className="w-3.5 h-3.5 text-fog-sage" /> Plugs</span>
             )}
             <span className="flex items-center gap-1"><Volume2 className="w-3.5 h-3.5 text-fog-sage" /> {noiseLabel}</span>
+            <VibeBadgeCompact locationId={location.id} />
           </div>
 
           {/* Descriptive tags only */}

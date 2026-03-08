@@ -3,7 +3,8 @@
  * London Fog design: large hero image, editorial layout, frosted glass elements
  * Includes Google Maps buttons and improved UX
  */
-import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play } from 'lucide-react';
+import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles } from 'lucide-react';
+import { VibeDetailPanel } from '@/components/LiveVibeBadge';
 import { socialVideos } from '@/lib/socialVideos';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
@@ -218,6 +219,20 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
             Get Directions
           </a>
         </div>
+
+        {/* Live Study Vibe */}
+        <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/50">
+          <VibeDetailPanel locationId={location.id} />
+        </div>
+
+        {/* Community Submitted Badge */}
+        {'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted && (
+          <div className="flex items-center gap-2 px-4 py-3 bg-fog-sage/10 rounded-xl border border-fog-sage/20">
+            <Sparkles className="w-4 h-4 text-fog-sage" />
+            <span className="text-sm font-medium text-fog-sage">Community Submitted</span>
+            <span className="text-xs text-muted-foreground">by {(location as any).submittedBy || 'Anonymous'}</span>
+          </div>
+        )}
 
         {/* Atmosphere */}
         {location.atmosphere && (

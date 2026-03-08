@@ -2,12 +2,13 @@
  * MapPage — Interactive map of London study spots
  * Uses pre-built MapView component with Google Maps
  * London Fog design: warm tones, frosted glass preview cards
- * Improved: preview cards with View Details + Get Directions, better pin interactions
+ * Features: study score pins, heatmap toggle, preview cards
  */
 import { MapView } from '@/components/Map';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
-import { Heart, MapPin, X, Navigation, ExternalLink, Wifi, Plug, Volume2 } from 'lucide-react';
+import { Heart, MapPin, X, Navigation, ExternalLink, Wifi, Plug, Volume2, Flame, Map as MapIcon } from 'lucide-react';
+import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -24,13 +25,14 @@ function getDirectionsUrl(location: Location): string {
 
 export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [showHeatmap, setShowHeatmap] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
   const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
+  const heatmapRef = useRef<google.maps.visualization.HeatmapLayer | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
+  const heatmapLibLoaded = useRef(false);
 
-  const handleMapReady = useCallback((map: google.maps.Map) => {
-    mapRef.current = map;
-
+  const createMarkers = useCallback((map: google.maps.Map) => {
     // Clear existing markers
     markersRef.current.forEach(m => (m.map = null));
     markersRef.current = [];
@@ -52,10 +54,10 @@ export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
           cursor: pointer;
           transition: transform 0.2s, box-shadow 0.2s;
           white-space: nowrap;
+          opacity: ${showHeatmap ? '0.4' : '1'};
         ">${loc.studyScore.toFixed(1)}</div>
       `;
 
-      // Hover effect
       markerEl.addEventListener('mouseenter', () => {
         markerEl.style.transform = 'scale(1.15)';
         markerEl.style.zIndex = '100';
@@ -79,14 +81,65 @@ export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
 
       markersRef.current.push(marker);
     });
-  }, [locations]);
+  }, [locations, showHeatmap]);
 
-  // Update markers when locations change (filter propagation)
+  const loadHeatmapLibrary = useCallback(async () => {
+    if (heatmapLibLoaded.current) return;
+    try {
+      await google.maps.importLibrary('visualization');
+      heatmapLibLoaded.current = true;
+    } catch (e) {
+      console.error('Failed to load visualization library:', e);
+    }
+  }, []);
+
+  const updateHeatmap = useCallback(async (map: google.maps.Map) => {
+    // Remove existing heatmap
+    if (heatmapRef.current) {
+      heatmapRef.current.setMap(null);
+      heatmapRef.current = null;
+    }
+
+    if (!showHeatmap) return;
+
+    await loadHeatmapLibrary();
+
+    // Create weighted heatmap data — higher study scores = more weight
+    const heatmapData = locations.map(loc => ({
+      location: new google.maps.LatLng(loc.lat, loc.lng),
+      weight: loc.studyScore * loc.studyScore, // Square for more contrast
+    }));
+
+    heatmapRef.current = new google.maps.visualization.HeatmapLayer({
+      data: heatmapData,
+      map,
+      radius: 40,
+      opacity: 0.7,
+      gradient: [
+        'rgba(0, 0, 0, 0)',
+        'rgba(122, 139, 111, 0.3)',  // fog-sage light
+        'rgba(122, 139, 111, 0.5)',
+        'rgba(196, 162, 101, 0.6)',  // fog-gold
+        'rgba(196, 162, 101, 0.8)',
+        'rgba(196, 162, 101, 1)',
+        'rgba(212, 120, 55, 1)',     // warm amber
+      ],
+    });
+  }, [showHeatmap, locations, loadHeatmapLibrary]);
+
+  const handleMapReady = useCallback((map: google.maps.Map) => {
+    mapRef.current = map;
+    createMarkers(map);
+    updateHeatmap(map);
+  }, [createMarkers, updateHeatmap]);
+
+  // Update markers and heatmap when locations or heatmap toggle changes
   useEffect(() => {
     if (mapRef.current) {
-      handleMapReady(mapRef.current);
+      createMarkers(mapRef.current);
+      updateHeatmap(mapRef.current);
     }
-  }, [locations, handleMapReady]);
+  }, [locations, showHeatmap, createMarkers, updateHeatmap]);
 
   const noiseLabel = (level: number) => level <= 2 ? 'Quiet' : level <= 3 ? 'Moderate' : 'Lively';
 
@@ -99,10 +152,56 @@ export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
         onMapReady={handleMapReady}
       />
 
-      {/* Location count badge */}
-      <div className="absolute top-4 left-4 glass rounded-full px-4 py-2 shadow-lg z-10">
-        <span className="text-sm font-medium text-fog-charcoal">{locations.length} study spots</span>
+      {/* Top controls */}
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+        {/* Location count badge */}
+        <div className="glass rounded-full px-4 py-2 shadow-lg">
+          <span className="text-sm font-medium text-fog-charcoal">{locations.length} study spots</span>
+        </div>
+
+        {/* Heatmap toggle */}
+        <button
+          onClick={() => setShowHeatmap(prev => !prev)}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
+            showHeatmap
+              ? 'bg-fog-gold text-white'
+              : 'glass text-fog-charcoal hover:bg-white/90'
+          }`}
+        >
+          {showHeatmap ? (
+            <>
+              <MapIcon className="w-4 h-4" /> Pins View
+            </>
+          ) : (
+            <>
+              <Flame className="w-4 h-4" /> Study Heatmap
+            </>
+          )}
+        </button>
       </div>
+
+      {/* Heatmap legend */}
+      <AnimatePresence>
+        {showHeatmap && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute top-16 right-4 z-10 glass rounded-xl px-4 py-3 shadow-lg"
+          >
+            <p className="text-xs font-semibold text-fog-charcoal mb-2">Study Density</p>
+            <div className="flex items-center gap-1.5">
+              <div className="w-24 h-3 rounded-full" style={{
+                background: 'linear-gradient(to right, rgba(122,139,111,0.3), rgba(196,162,101,0.8), rgba(212,120,55,1))'
+              }} />
+            </div>
+            <div className="flex justify-between mt-1">
+              <span className="text-[10px] text-muted-foreground">Low</span>
+              <span className="text-[10px] text-muted-foreground">High</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Selected location preview card */}
       <AnimatePresence>
@@ -150,7 +249,7 @@ export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
                   </div>
 
                   {/* Quick attributes */}
-                  <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground flex-wrap">
                     {selectedLocation.wifi === 'yes' && (
                       <span className="flex items-center gap-0.5"><Wifi className="w-3 h-3 text-fog-sage" /> Wi-Fi</span>
                     )}
@@ -158,6 +257,7 @@ export default function MapPage({ locations, onSelectLocation }: MapPageProps) {
                       <span className="flex items-center gap-0.5"><Plug className="w-3 h-3 text-fog-sage" /> Plugs</span>
                     )}
                     <span className="flex items-center gap-0.5"><Volume2 className="w-3 h-3 text-fog-sage" /> {noiseLabel(selectedLocation.noiseLevel)}</span>
+                    <VibeBadgeCompact locationId={selectedLocation.id} />
                   </div>
 
                   {/* Category */}
