@@ -79,3 +79,8 @@
 - [x] Create database schema for university spots (client-side data file, 175 spots)
 - [x] Build tRPC API routes for university spots (client-side data, no API needed)
 - [x] Write vitest tests for UniMode (20 tests passing)
+
+## SEO Fixes
+- [x] Add keywords meta tag to homepage
+- [x] Optimize page title to 30-60 characters (57 chars)
+- [x] Add meta description (50-160 characters) (145 chars)

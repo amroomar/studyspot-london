@@ -4,7 +4,7 @@
  * Combines discovery feed, map, search, favorites, badges, social, submit
  * Features: community submissions, live vibe, heatmap, community discoveries
  */
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { locations as allLocations, type Location } from '@/lib/locations';
 import { HERO_IMAGES } from '@/lib/images';
@@ -381,6 +381,14 @@ function DiscoveryFeed({
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
+
+  useEffect(() => {
+    document.title = 'StudySpot London \u2014 Best Cafes, Libraries & Study Spaces';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Discover 310+ curated study spots across London. Find quiet cafes, libraries, coworking spaces, and university study rooms with reviews and maps.');
+    }
+  }, []);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [sortBy, setSortBy] = useState<'score' | 'name'>('score');
