@@ -46,3 +46,36 @@
 - [x] Fix CommunityDiscoveries type mapping
 - [x] Write vitest tests for submissions router (5 tests passing)
 - [x] Verify full end-to-end flow
+
+## UniMode (University Mode)
+
+### Phase 1 — University Study Spot Database
+- [x] Research study spots for UCL (10-20 spaces + 5-10 nearby cafes)
+- [x] Research study spots for King's College London
+- [x] Research study spots for Imperial College London
+- [x] Research study spots for London School of Economics
+- [x] Research study spots for Queen Mary University
+- [x] Research study spots for City University London
+- [x] Research study spots for SOAS
+- [x] Research study spots for University of Westminster
+- [x] Research study spots for Royal Holloway
+- [x] Research study spots for University of the Arts London
+- [x] Build unified university study spots dataset (175 locations across 10 universities)
+- [x] Categorize locations (Library, Keycard, Campus Lounge, Bookable Room, Computer Lab, Campus Cafe, Nearby Cafe, Public Library, Creative Workspace)
+- [x] Collect access rules (Public, Students Only, Keycard Required, Booking Required)
+- [x] Collect study attributes (quietness, wifi, plugs, laptop-friendly, group study, creative-friendly)
+- [x] Add environment tags (Quiet, Deep Work, Creative Friendly, Aesthetic, Natural Light, Group Study, Silent Study)
+- [x] Collect images for locations (using Unsplash category-based images)
+
+### Phase 2 — UniMode Feature Integration
+- [x] Add "Enter UniMode" button on homepage
+- [x] Build university selector screen
+- [x] Build UniMode dashboard (Libraries, Keycard Spaces, Nearby Cafes, Creative Workspaces)
+- [x] Build university campus map view with pins
+- [x] Add access type filters (Students Only, Public, Keycard, Bookable)
+- [x] Build campus cafe discovery section
+- [x] Add Creative Friendly tags and filtering
+- [x] Enable community submissions for campus spots (toast placeholder)
+- [x] Create database schema for university spots (client-side data file, 175 spots)
+- [x] Build tRPC API routes for university spots (client-side data, no API needed)
+- [x] Write vitest tests for UniMode (20 tests passing)

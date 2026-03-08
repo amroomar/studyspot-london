@@ -23,7 +23,8 @@ import { GamificationProvider } from '@/contexts/GamificationContext';
 import { ReviewsProvider } from '@/contexts/ReviewsContext';
 import { SubmissionsProvider, useSubmissions } from '@/contexts/SubmissionsContext';
 import { LiveVibeProvider } from '@/contexts/LiveVibeContext';
-import { ChevronRight, X, Sparkles, Users } from 'lucide-react';
+import { ChevronRight, X, Sparkles, Users, GraduationCap, ArrowRight } from 'lucide-react';
+import { Link } from 'wouter';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
@@ -240,6 +241,36 @@ function DiscoveryFeed({
           ))}
         </div>
       </div>
+
+      {/* UniMode CTA Banner */}
+      {!hasActiveFilters && (
+        <Link href="/uni">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-8 relative overflow-hidden rounded-2xl cursor-pointer group"
+          >
+            <div className="relative p-6 sm:p-8 bg-gradient-to-r from-fog-charcoal via-fog-charcoal/95 to-fog-sage/30">
+              <div className="absolute inset-0 grain" />
+              <div className="relative flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-fog-gold/20 flex items-center justify-center">
+                    <GraduationCap className="w-6 h-6 text-fog-gold" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg text-white font-semibold" style={{ fontFamily: 'var(--font-display)' }}>UniMode</h3>
+                    <p className="text-white/60 text-sm">175 study spots across 10 London universities</p>
+                  </div>
+                </div>
+                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-fog-gold/20 text-fog-gold text-sm font-medium group-hover:bg-fog-gold/30 transition-colors">
+                  Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </Link>
+      )}
 
       {/* Community Discoveries */}
       {!hasActiveFilters && <CommunityDiscoveries onSelectLocation={onSelectLocation} />}

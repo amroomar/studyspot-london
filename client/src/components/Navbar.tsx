@@ -4,7 +4,8 @@
  * Tabs: Discover, Search, Social, Map, Saved, Badges
  * Features: "Add a Spot" button
  */
-import { Home, Map, Heart, Award, Search, Play, Plus } from 'lucide-react';
+import { Home, Map, Heart, Award, Search, Play, Plus, GraduationCap } from 'lucide-react';
+import { Link } from 'wouter';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
@@ -48,6 +49,13 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
                 {label}
               </button>
             ))}
+            {/* UniMode link — desktop */}
+            <Link href="/uni">
+              <span className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-fog-gold/10 text-fog-gold border border-fog-gold/20 hover:bg-fog-gold/20 transition-all cursor-pointer">
+                <GraduationCap className="w-4 h-4" />
+                UniMode
+              </span>
+            </Link>
             {/* Add Spot button — desktop */}
             <button
               onClick={onAddSpot}
