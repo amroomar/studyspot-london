@@ -1,62 +1,130 @@
 /**
  * SubmissionsContext — Community-submitted study spots
- * Persists to localStorage, provides add/list/approve functionality
- * Submitted spots get a "Community Submitted" badge
+ * Now backed by tRPC API + PostgreSQL database + S3 image storage
+ * All submissions are shared across all users and devices
  */
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
-import { type Location } from '@/lib/locations';
+import { createContext, useContext, type ReactNode } from 'react';
+import { trpc } from '@/lib/trpc';
 
-export interface SubmittedSpot extends Location {
-  submittedAt: string;
+export interface SubmittedSpot {
+  id: number;
+  userId: number | null;
   submittedBy: string;
-  status: 'pending' | 'approved';
-  images: string[]; // base64 data URLs
+  name: string;
+  category: string;
+  neighborhood: string;
+  address: string;
+  lat: number;
+  lng: number;
+  website: string | null;
+  priceLevel: string;
+  atmosphere: string | null;
+  noiseLevel: number;
+  wifiQuality: number;
+  lightingQuality: number;
+  seatingComfort: number;
+  laptopFriendly: number;
+  crowdLevel: number;
+  studyScore: number;
+  tags: string[];
+  images: string[];
+  status: "pending" | "approved" | "rejected";
+  createdAt: Date;
+  updatedAt: Date;
   isCommunitySubmitted: true;
+}
+
+interface SubmissionInput {
+  name: string;
+  category: string;
+  neighborhood: string;
+  address: string;
+  lat: number;
+  lng: number;
+  website?: string;
+  priceLevel: string;
+  atmosphere?: string;
+  noiseLevel: number;
+  wifiQuality: number;
+  lightingQuality: number;
+  seatingComfort: number;
+  laptopFriendly: number;
+  crowdLevel: number;
+  studyScore: number;
+  tags: string[];
+  images: string[]; // S3 URLs (already uploaded)
+  submittedBy?: string;
 }
 
 interface SubmissionsContextType {
   submissions: SubmittedSpot[];
-  addSubmission: (spot: Omit<SubmittedSpot, 'id' | 'submittedAt' | 'status' | 'isCommunitySubmitted'>) => void;
+  addSubmission: (spot: SubmissionInput) => Promise<void>;
   approvedSubmissions: SubmittedSpot[];
   pendingCount: number;
+  isLoading: boolean;
+  uploadImage: (base64: string, mimeType: string, fileName?: string) => Promise<string>;
 }
 
 const SubmissionsContext = createContext<SubmissionsContextType | null>(null);
 
-const STORAGE_KEY = 'studyspot-submissions';
-
-function loadSubmissions(): SubmittedSpot[] {
-  try {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
-  } catch {
-    return [];
-  }
-}
-
 export function SubmissionsProvider({ children }: { children: ReactNode }) {
-  const [submissions, setSubmissions] = useState<SubmittedSpot[]>(loadSubmissions);
+  const utils = trpc.useUtils();
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
-  }, [submissions]);
+  // Fetch all approved submissions from the database
+  const { data: rawSubmissions, isLoading } = trpc.submissions.list.useQuery(undefined, {
+    staleTime: 30_000, // Cache for 30 seconds
+  });
 
-  const addSubmission = useCallback((spot: Omit<SubmittedSpot, 'id' | 'submittedAt' | 'status' | 'isCommunitySubmitted'>) => {
-    const newSpot: SubmittedSpot = {
-      ...spot,
-      id: Date.now() + Math.floor(Math.random() * 1000),
-      submittedAt: new Date().toISOString(),
-      status: 'approved', // Auto-approve for demo — in production this would be 'pending'
-      isCommunitySubmitted: true,
-    };
-    setSubmissions(prev => [newSpot, ...prev]);
-  }, []);
+  // Create submission mutation
+  const createMutation = trpc.submissions.create.useMutation({
+    onSuccess: () => {
+      utils.submissions.list.invalidate();
+    },
+  });
+
+  // Upload image mutation
+  const uploadMutation = trpc.submissions.uploadImage.useMutation();
+
+  // Transform raw data to SubmittedSpot format
+  const submissions: SubmittedSpot[] = (rawSubmissions || []).map(row => ({
+    ...row,
+    isCommunitySubmitted: true as const,
+  }));
+
+  const addSubmission = async (spot: SubmissionInput) => {
+    await createMutation.mutateAsync({
+      name: spot.name,
+      category: spot.category,
+      neighborhood: spot.neighborhood,
+      address: spot.address,
+      lat: spot.lat,
+      lng: spot.lng,
+      website: spot.website,
+      priceLevel: spot.priceLevel,
+      atmosphere: spot.atmosphere,
+      noiseLevel: spot.noiseLevel,
+      wifiQuality: spot.wifiQuality,
+      lightingQuality: spot.lightingQuality,
+      seatingComfort: spot.seatingComfort,
+      laptopFriendly: spot.laptopFriendly,
+      crowdLevel: spot.crowdLevel,
+      studyScore: spot.studyScore,
+      tags: spot.tags,
+      images: spot.images,
+      submittedBy: spot.submittedBy,
+    });
+  };
+
+  const uploadImage = async (base64: string, mimeType: string, fileName?: string): Promise<string> => {
+    const result = await uploadMutation.mutateAsync({ base64, mimeType, fileName });
+    return result.url;
+  };
 
   const approvedSubmissions = submissions.filter(s => s.status === 'approved');
   const pendingCount = submissions.filter(s => s.status === 'pending').length;
 
   return (
-    <SubmissionsContext.Provider value={{ submissions, addSubmission, approvedSubmissions, pendingCount }}>
+    <SubmissionsContext.Provider value={{ submissions, addSubmission, approvedSubmissions, pendingCount, isLoading, uploadImage }}>
       {children}
     </SubmissionsContext.Provider>
   );

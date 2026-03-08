@@ -108,32 +108,38 @@ function CommunityDiscoveries({ onSelectLocation }: { onSelectLocation: (loc: Lo
   if (submissions.length === 0) return null;
 
   // Convert submissions to Location-like objects for display
-  const communityLocations: Location[] = submissions.map(sub => ({
+  const communityLocations: (Location & { isCommunitySubmitted: boolean; submittedBy: string; images: string[] })[] = submissions.map(sub => ({
     id: sub.id + 100000,
     name: sub.name,
+    type: sub.category,
     category: sub.category,
     neighborhood: sub.neighborhood,
     address: sub.address,
     lat: sub.lat || 51.515,
     lng: sub.lng || -0.1,
-    wifi: sub.wifi ? 'yes' : 'no',
-    plugSockets: sub.plugSockets ? 'yes' : 'no',
+    wifi: sub.wifiQuality >= 3 ? 'yes' : 'limited',
+    plugSockets: sub.laptopFriendly >= 3 ? 'yes' : 'limited',
     noiseLevel: sub.noiseLevel,
-    lightingQuality: sub.lightingQuality,
-    seatingComfort: sub.seatingComfort,
-    laptopFriendly: sub.laptopFriendly ? 'yes' : 'no',
+    lightingQuality: sub.lightingQuality >= 4 ? 'excellent' : sub.lightingQuality >= 3 ? 'good' : 'average',
+    seatingComfort: sub.seatingComfort >= 4 ? 'excellent' : sub.seatingComfort >= 3 ? 'good' : 'average',
+    laptopFriendly: sub.laptopFriendly >= 3 ? 'yes' : 'limited',
+    crowdLevel: sub.crowdLevel <= 2 ? 'low' : sub.crowdLevel <= 3 ? 'moderate' : 'high',
+    tableSize: 'standard',
     priceLevel: sub.priceLevel,
     studyScore: sub.studyScore || 7.0,
-    atmosphere: sub.atmosphere,
+    atmosphere: sub.atmosphere || '',
     tags: sub.tags,
-    openingHours: sub.openingHours || '',
+    openingHours: 'Check venue',
     bestTimeStudy: '',
+    coffeeQuality: sub.category === 'Cafe' ? 'good' : 'N/A',
+    peakBusyTimes: 'Varies',
     website: sub.website || '',
+    image: sub.images?.[0] || '',
     // Extra community fields
     isCommunitySubmitted: true,
     submittedBy: sub.submittedBy,
-    images: sub.images,
-  } as Location & { isCommunitySubmitted: boolean; submittedBy: string; images: string[] }));
+    images: sub.images || [],
+  }));
 
   return (
     <div className="mb-8">

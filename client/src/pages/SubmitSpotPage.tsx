@@ -2,6 +2,7 @@
  * SubmitSpotPage — Multi-step form for community study spot submissions
  * London Fog design: warm, editorial, clean
  * Steps: Basic Info → Location → Environment → Images → Tags → Review
+ * Images are uploaded to S3, submission is persisted to database via tRPC
  */
 import { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,7 +10,7 @@ import { MapView } from '@/components/Map';
 import { useSubmissions } from '@/contexts/SubmissionsContext';
 import {
   ArrowLeft, ArrowRight, MapPin, Camera, Tag, Check, X, Upload,
-  Wifi, Plug, Volume2, Sun, Armchair, Laptop, Users, Star, Sparkles
+  Wifi, Plug, Volume2, Sun, Armchair, Laptop, Users, Star, Sparkles, Loader2
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -56,7 +57,10 @@ interface FormData {
   seatingComfort: number;
   laptopFriendly: number;
   crowdLevel: number;
-  images: string[];
+  /** Preview data URLs for display in the form */
+  imagePreviewUrls: string[];
+  /** Raw File objects for upload */
+  imageFiles: File[];
   tags: string[];
   submittedBy: string;
   priceLevel: string;
@@ -77,7 +81,8 @@ const INITIAL_FORM: FormData = {
   seatingComfort: 3,
   laptopFriendly: 3,
   crowdLevel: 3,
-  images: [],
+  imagePreviewUrls: [],
+  imageFiles: [],
   tags: [],
   submittedBy: '',
   priceLevel: '£-££',
@@ -126,8 +131,9 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [mapPickerActive, setMapPickerActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { addSubmission } = useSubmissions();
+  const { addSubmission, uploadImage } = useSubmissions();
   const mapRef = useRef<google.maps.Map | null>(null);
   const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
 
@@ -139,7 +145,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
     const files = e.target.files;
     if (!files) return;
 
-    const maxImages = 5 - form.images.length;
+    const maxImages = 5 - form.imagePreviewUrls.length;
     const toProcess = Array.from(files).slice(0, maxImages);
 
     toProcess.forEach(file => {
@@ -152,19 +158,20 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
         const result = ev.target?.result as string;
         setForm(prev => ({
           ...prev,
-          images: [...prev.images, result].slice(0, 5),
+          imagePreviewUrls: [...prev.imagePreviewUrls, result].slice(0, 5),
+          imageFiles: [...prev.imageFiles, file].slice(0, 5),
         }));
       };
       reader.readAsDataURL(file);
     });
-    // Reset input
     if (fileInputRef.current) fileInputRef.current.value = '';
-  }, [form.images.length]);
+  }, [form.imagePreviewUrls.length]);
 
   const removeImage = useCallback((index: number) => {
     setForm(prev => ({
       ...prev,
-      images: prev.images.filter((_, i) => i !== index),
+      imagePreviewUrls: prev.imagePreviewUrls.filter((_, i) => i !== index),
+      imageFiles: prev.imageFiles.filter((_, i) => i !== index),
     }));
   }, []);
 
@@ -182,63 +189,85 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
       case 1: return !!(form.name && form.type && form.neighborhood && form.address);
       case 2: return !!(form.lat && form.lng);
       case 3: return true;
-      case 4: return form.images.length >= 1;
+      case 4: return form.imagePreviewUrls.length >= 1;
       case 5: return form.tags.length >= 1;
       case 6: return true;
       default: return false;
     }
   };
 
-  const handleSubmit = () => {
-    // Calculate study score from attributes
-    const wifiScore = form.wifiQuality >= 4 ? 2 : form.wifiQuality >= 3 ? 1 : 0;
-    const noiseScore = form.noiseLevel <= 2 ? 2 : form.noiseLevel <= 3 ? 1 : 0;
-    const lightScore = form.lightingQuality >= 4 ? 1.5 : form.lightingQuality >= 3 ? 0.75 : 0;
-    const seatScore = form.seatingComfort >= 4 ? 1.5 : form.seatingComfort >= 3 ? 0.75 : 0;
-    const laptopScore = form.laptopFriendly >= 4 ? 1.5 : form.laptopFriendly >= 3 ? 0.75 : 0;
-    const crowdScore = form.crowdLevel <= 2 ? 1.5 : form.crowdLevel <= 3 ? 0.75 : 0;
-    const studyScore = Math.min(10, Math.round((wifiScore + noiseScore + lightScore + seatScore + laptopScore + crowdScore + 1) * 10) / 10);
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
-    addSubmission({
-      name: form.name,
-      type: form.type,
-      category: form.type,
-      neighborhood: form.neighborhood,
-      address: form.address,
-      lat: form.lat,
-      lng: form.lng,
-      website: form.website,
-      atmosphere: form.description,
-      wifi: form.wifiQuality >= 3 ? 'yes' : 'limited',
-      plugSockets: form.laptopFriendly >= 3 ? 'yes' : 'limited',
-      noiseLevel: form.noiseLevel,
-      lightingQuality: form.lightingQuality >= 4 ? 'excellent' : form.lightingQuality >= 3 ? 'good' : 'average',
-      seatingComfort: form.seatingComfort >= 4 ? 'excellent' : form.seatingComfort >= 3 ? 'good' : 'average',
-      laptopFriendly: form.laptopFriendly >= 3 ? 'yes' : 'limited',
-      crowdLevel: form.crowdLevel <= 2 ? 'low' : form.crowdLevel <= 3 ? 'moderate' : 'high',
-      tableSize: 'standard',
-      tags: form.tags,
-      openingHours: 'Check venue',
-      priceLevel: form.priceLevel,
-      coffeeQuality: form.type === 'Cafe' ? 'good' : 'N/A',
-      bestTimeStudy: 'Morning / Afternoon',
-      peakBusyTimes: 'Varies',
-      studyScore,
-      image: form.images[0] || '',
-      images: form.images,
-      submittedBy: form.submittedBy || 'Anonymous',
-    });
+    try {
+      // 1. Upload all images to S3
+      const imageUrls: string[] = [];
+      for (const file of form.imageFiles) {
+        const reader = new FileReader();
+        const base64 = await new Promise<string>((resolve) => {
+          reader.onload = (ev) => {
+            const dataUrl = ev.target?.result as string;
+            // Strip the data:image/...;base64, prefix
+            const base64Data = dataUrl.split(',')[1];
+            resolve(base64Data);
+          };
+          reader.readAsDataURL(file);
+        });
 
-    toast.success('Study spot submitted! 🎉', {
-      description: 'Your spot has been added to the community feed.',
-    });
-    onClose();
+        const url = await uploadImage(base64, file.type, file.name);
+        imageUrls.push(url);
+      }
+
+      // 2. Calculate study score from attributes
+      const wifiScore = form.wifiQuality >= 4 ? 2 : form.wifiQuality >= 3 ? 1 : 0;
+      const noiseScore = form.noiseLevel <= 2 ? 2 : form.noiseLevel <= 3 ? 1 : 0;
+      const lightScore = form.lightingQuality >= 4 ? 1.5 : form.lightingQuality >= 3 ? 0.75 : 0;
+      const seatScore = form.seatingComfort >= 4 ? 1.5 : form.seatingComfort >= 3 ? 0.75 : 0;
+      const laptopScore = form.laptopFriendly >= 4 ? 1.5 : form.laptopFriendly >= 3 ? 0.75 : 0;
+      const crowdScore = form.crowdLevel <= 2 ? 1.5 : form.crowdLevel <= 3 ? 0.75 : 0;
+      const studyScore = Math.min(10, Math.round((wifiScore + noiseScore + lightScore + seatScore + laptopScore + crowdScore + 1) * 10) / 10);
+
+      // 3. Submit to database via tRPC
+      await addSubmission({
+        name: form.name,
+        category: form.type,
+        neighborhood: form.neighborhood,
+        address: form.address,
+        lat: form.lat,
+        lng: form.lng,
+        website: form.website || undefined,
+        priceLevel: form.priceLevel,
+        atmosphere: form.description || undefined,
+        noiseLevel: form.noiseLevel,
+        wifiQuality: form.wifiQuality,
+        lightingQuality: form.lightingQuality,
+        seatingComfort: form.seatingComfort,
+        laptopFriendly: form.laptopFriendly,
+        crowdLevel: form.crowdLevel,
+        studyScore,
+        tags: form.tags,
+        images: imageUrls,
+        submittedBy: form.submittedBy || undefined,
+      });
+
+      toast.success('Study spot submitted!', {
+        description: 'Your spot has been added and is now visible to everyone.',
+      });
+      onClose();
+    } catch (error) {
+      console.error('Submission failed:', error);
+      toast.error('Submission failed', {
+        description: 'Please try again. If the problem persists, check your connection.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleMapReady = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
 
-    // Add a draggable marker at the center
     const marker = new google.maps.marker.AdvancedMarkerElement({
       map,
       position: { lat: form.lat, lng: form.lng },
@@ -256,7 +285,6 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
       }
     });
 
-    // Also allow clicking the map to move marker
     map.addListener('click', (e: google.maps.MapMouseEvent) => {
       if (e.latLng) {
         const lat = e.latLng.lat();
@@ -302,37 +330,28 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                   {step > s.id ? <Check className="w-4 h-4" /> : s.id}
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className={`flex-1 h-0.5 mx-1 rounded-full transition-colors ${
-                    step > s.id ? 'bg-fog-sage' : 'bg-border'
-                  }`} />
+                  <div className={`flex-1 h-0.5 mx-1 rounded ${step > s.id ? 'bg-fog-sage' : 'bg-border'}`} />
                 )}
               </div>
-            ))}
-          </div>
-          <div className="flex justify-between mt-1.5">
-            {STEPS.map(s => (
-              <span key={s.id} className={`text-[10px] ${step === s.id ? 'text-primary font-medium' : 'text-muted-foreground'}`}>
-                {s.title}
-              </span>
             ))}
           </div>
         </div>
       </div>
 
       {/* Form content */}
-      <div className="max-w-2xl mx-auto px-4 py-6 pb-32">
+      <div className="max-w-2xl mx-auto px-4 py-6 pb-28">
         <AnimatePresence mode="wait">
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
               <div>
                 <h2 className="text-2xl mb-1" style={{ fontFamily: 'var(--font-display)' }}>Tell us about this spot</h2>
-                <p className="text-sm text-muted-foreground">Share the basic details of the study location.</p>
+                <p className="text-sm text-muted-foreground">Share a study spot you love with the community.</p>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">Location Name *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Location Name *</label>
                   <input
                     type="text"
                     value={form.name}
@@ -343,7 +362,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">Location Type *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Location Type *</label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {LOCATION_TYPES.map(type => (
                       <button
@@ -352,7 +371,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                         onClick={() => updateForm({ type })}
                         className={`px-3 py-2.5 rounded-xl text-sm font-medium border transition-all ${
                           form.type === type
-                            ? 'border-primary bg-primary/10 text-primary'
+                            ? 'border-primary bg-primary/10 text-primary shadow-sm'
                             : 'border-border bg-card text-foreground hover:border-primary/30'
                         }`}
                       >
@@ -363,21 +382,19 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">Neighborhood *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Neighborhood *</label>
                   <select
                     value={form.neighborhood}
                     onChange={e => updateForm({ neighborhood: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                   >
-                    <option value="">Select neighborhood</option>
-                    {NEIGHBORHOODS.map(n => (
-                      <option key={n} value={n}>{n}</option>
-                    ))}
+                    <option value="">Select neighborhood...</option>
+                    {NEIGHBORHOODS.map(n => <option key={n} value={n}>{n}</option>)}
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">Full Address *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Full Address *</label>
                   <input
                     type="text"
                     value={form.address}
@@ -389,21 +406,22 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1.5">Price Level</label>
+                    <label className="block text-sm font-medium text-foreground mb-1.5">Price Level</label>
                     <select
                       value={form.priceLevel}
                       onChange={e => updateForm({ priceLevel: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                     >
                       <option value="Free">Free</option>
-                      <option value="£">£ Budget</option>
-                      <option value="£-££">£-££ Moderate</option>
-                      <option value="££-£££">££-£££ Premium</option>
-                      <option value="£££+">£££+ Luxury</option>
+                      <option value="£">£</option>
+                      <option value="£-££">£-££</option>
+                      <option value="££">££</option>
+                      <option value="££-£££">££-£££</option>
+                      <option value="£££">£££</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1.5">Website (optional)</label>
+                    <label className="block text-sm font-medium text-foreground mb-1.5">Website (optional)</label>
                     <input
                       type="url"
                       value={form.website}
@@ -415,7 +433,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1.5">Your Name (optional)</label>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Your Name (optional)</label>
                   <input
                     type="text"
                     value={form.submittedBy}
@@ -428,19 +446,18 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
             </motion.div>
           )}
 
-          {/* Step 2: Map Location */}
+          {/* Step 2: Location on Map */}
           {step === 2 && (
             <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
               <div>
                 <h2 className="text-2xl mb-1" style={{ fontFamily: 'var(--font-display)' }}>Pin the location</h2>
-                <p className="text-sm text-muted-foreground">Drag the marker or click the map to set the exact location.</p>
+                <p className="text-sm text-muted-foreground">Drag the pin or click the map to set the exact location.</p>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+              <div className="rounded-2xl overflow-hidden border border-border" style={{ height: '400px' }}>
                 <MapView
-                  className="h-[350px] sm:h-[400px]"
                   initialCenter={{ lat: form.lat, lng: form.lng }}
-                  initialZoom={13}
+                  initialZoom={15}
                   onMapReady={handleMapReady}
                 />
               </div>
@@ -453,7 +470,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     step="0.0001"
                     value={form.lat}
                     onChange={e => updateForm({ lat: parseFloat(e.target.value) || 51.5074 })}
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-card text-foreground text-sm"
                   />
                 </div>
                 <div>
@@ -463,40 +480,34 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     step="0.0001"
                     value={form.lng}
                     onChange={e => updateForm({ lng: parseFloat(e.target.value) || -0.1278 })}
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-card text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    className="w-full px-3 py-2 rounded-lg border border-border bg-card text-foreground text-sm"
                   />
                 </div>
               </div>
-
-              {mapPickerActive && (
-                <p className="text-xs text-fog-sage flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5" /> Map is interactive — drag the marker or tap to set location
-                </p>
-              )}
             </motion.div>
           )}
 
-          {/* Step 3: Environment / Study Attributes */}
+          {/* Step 3: Environment Ratings */}
           {step === 3 && (
             <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
               <div>
                 <h2 className="text-2xl mb-1" style={{ fontFamily: 'var(--font-display)' }}>Rate the environment</h2>
-                <p className="text-sm text-muted-foreground">These ratings help calculate the Study Score.</p>
+                <p className="text-sm text-muted-foreground">Help others know what to expect when studying here.</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1.5">Describe the atmosphere</label>
+                <label className="block text-sm font-medium text-foreground mb-1.5">Describe the atmosphere</label>
                 <textarea
                   value={form.description}
                   onChange={e => updateForm({ description: e.target.value })}
-                  placeholder="e.g. Minimalist cafe with large windows and quiet seating areas. Great natural light in the morning."
+                  placeholder="What makes this spot special for studying? Describe the vibe, ambiance, and what you love about it..."
                   rows={3}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"
                 />
               </div>
 
               <div className="space-y-5">
-                <RatingSlider label="Noise Level" icon={Volume2} value={form.noiseLevel} onChange={v => updateForm({ noiseLevel: v })} lowLabel="Silent" highLabel="Loud" />
+                <RatingSlider label="Noise Level" icon={Volume2} value={form.noiseLevel} onChange={v => updateForm({ noiseLevel: v })} lowLabel="Silent" highLabel="Noisy" />
                 <RatingSlider label="Wi-Fi Quality" icon={Wifi} value={form.wifiQuality} onChange={v => updateForm({ wifiQuality: v })} lowLabel="None" highLabel="Excellent" />
                 <RatingSlider label="Lighting Quality" icon={Sun} value={form.lightingQuality} onChange={v => updateForm({ lightingQuality: v })} lowLabel="Dim" highLabel="Bright" />
                 <RatingSlider label="Seating Comfort" icon={Armchair} value={form.seatingComfort} onChange={v => updateForm({ seatingComfort: v })} lowLabel="Basic" highLabel="Very Comfy" />
@@ -511,21 +522,20 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
             <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
               <div>
                 <h2 className="text-2xl mb-1" style={{ fontFamily: 'var(--font-display)' }}>Add photos</h2>
-                <p className="text-sm text-muted-foreground">Upload 1-5 photos of the study spot. The first image will be the cover.</p>
+                <p className="text-sm text-muted-foreground">Upload 1-5 photos of the study spot. The first image will be the cover. Images will be stored permanently.</p>
               </div>
 
-              {/* Upload area */}
               <div
-                onClick={() => form.images.length < 5 && fileInputRef.current?.click()}
+                onClick={() => form.imagePreviewUrls.length < 5 && fileInputRef.current?.click()}
                 className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
-                  form.images.length >= 5
+                  form.imagePreviewUrls.length >= 5
                     ? 'border-border/50 opacity-50 cursor-not-allowed'
                     : 'border-primary/30 hover:border-primary/60 cursor-pointer hover:bg-primary/5'
                 }`}
               >
                 <Upload className="w-10 h-10 mx-auto mb-3 text-muted-foreground" />
                 <p className="text-sm font-medium text-foreground mb-1">
-                  {form.images.length >= 5 ? 'Maximum 5 images reached' : 'Click to upload photos'}
+                  {form.imagePreviewUrls.length >= 5 ? 'Maximum 5 images reached' : 'Click to upload photos'}
                 </p>
                 <p className="text-xs text-muted-foreground">JPG, PNG up to 5MB each</p>
                 <input
@@ -538,10 +548,9 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                 />
               </div>
 
-              {/* Image preview grid */}
-              {form.images.length > 0 && (
+              {form.imagePreviewUrls.length > 0 && (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {form.images.map((img, i) => (
+                  {form.imagePreviewUrls.map((img, i) => (
                     <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                       <img src={img} alt={`Upload ${i + 1}`} className="w-full h-full object-cover" />
                       {i === 0 && (
@@ -561,7 +570,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
               )}
 
               <p className="text-xs text-muted-foreground text-center">
-                {form.images.length}/5 images uploaded {form.images.length < 1 && '(minimum 1 required)'}
+                {form.imagePreviewUrls.length}/5 images uploaded {form.imagePreviewUrls.length < 1 && '(minimum 1 required)'}
               </p>
             </motion.div>
           )}
@@ -605,10 +614,9 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="bg-card rounded-2xl border border-border overflow-hidden">
-                {/* Cover image */}
-                {form.images[0] && (
+                {form.imagePreviewUrls[0] && (
                   <div className="relative aspect-[16/9]">
-                    <img src={form.images[0]} alt="Cover" className="w-full h-full object-cover" />
+                    <img src={form.imagePreviewUrls[0]} alt="Cover" className="w-full h-full object-cover" />
                     <div className="absolute top-3 left-3 flex items-center gap-2">
                       <span className="bg-fog-sage text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
                         <Sparkles className="w-3 h-3" /> Community Submitted
@@ -656,9 +664,9 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     </div>
                   )}
 
-                  {form.images.length > 1 && (
+                  {form.imagePreviewUrls.length > 1 && (
                     <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
-                      {form.images.slice(1).map((img, i) => (
+                      {form.imagePreviewUrls.slice(1).map((img, i) => (
                         <img key={i} src={img} alt={`Photo ${i + 2}`} className="w-20 h-20 rounded-lg object-cover shrink-0" />
                       ))}
                     </div>
@@ -680,7 +688,8 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
           {step > 1 ? (
             <button
               onClick={() => setStep(s => s - 1)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 transition-colors"
+              disabled={isSubmitting}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-foreground bg-secondary hover:bg-secondary/80 transition-colors disabled:opacity-50"
             >
               <ArrowLeft className="w-4 h-4" /> Back
             </button>
@@ -703,9 +712,18 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
           ) : (
             <button
               onClick={handleSubmit}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold bg-fog-sage text-white hover:bg-fog-sage/90 shadow-sm transition-all"
+              disabled={isSubmitting}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold bg-fog-sage text-white hover:bg-fog-sage/90 shadow-sm transition-all disabled:opacity-50"
             >
-              <Sparkles className="w-4 h-4" /> Submit Study Spot
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" /> Uploading...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" /> Submit Study Spot
+                </>
+              )}
             </button>
           )}
         </div>
