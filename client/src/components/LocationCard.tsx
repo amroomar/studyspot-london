@@ -81,15 +81,15 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
         </div>
 
         {/* Info */}
-        <div className="p-3 sm:p-4">
-          <h3 className="font-semibold text-sm sm:text-base leading-tight mb-1 text-foreground group-hover:text-primary transition-colors truncate" style={{ fontFamily: 'var(--font-body)' }}>
+        <div className="p-4">
+          <h3 className="font-semibold text-base leading-tight mb-1 text-foreground group-hover:text-primary transition-colors" style={{ fontFamily: 'var(--font-body)' }}>
             {location.name}
           </h3>
-          <div className="flex items-center gap-1 text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 min-w-0">
-            <MapPin className="w-3 sm:w-3.5 h-3 sm:h-3.5 flex-shrink-0" />
-            <span className="truncate">{location.neighborhood}</span>
-            <span className="mx-1 opacity-40 flex-shrink-0">·</span>
-            <span className="flex-shrink-0">{location.priceLevel}</span>
+          <div className="flex items-center gap-1 text-muted-foreground text-sm mb-3">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>{location.neighborhood}</span>
+            <span className="mx-1 opacity-40">·</span>
+            <span>{location.priceLevel}</span>
           </div>
 
           {/* Quick attributes — icons only, no redundant tags */}
