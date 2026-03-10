@@ -205,16 +205,16 @@ function DiscoveryFeed({
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
           <div className="absolute inset-0 grain" />
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-12">
+          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 lg:p-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-3 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
-                Find your perfect<br />study spot
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl text-white mb-2 sm:mb-3 leading-tight truncate-2" style={{ fontFamily: 'var(--font-display)' }}>
+                Find your perfect study spot
               </h1>
-              <p className="text-white/70 text-base sm:text-lg max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="text-white/70 text-xs sm:text-base lg:text-lg max-w-lg line-clamp-2" style={{ fontFamily: 'var(--font-body)' }}>
                 Discover {allLocations.length}+ curated cafes, libraries, and hidden gems across London.
               </p>
             </motion.div>
@@ -224,19 +224,19 @@ function DiscoveryFeed({
 
       {/* Featured Categories — Horizontal scroll */}
       <div className="mb-8">
-        <h2 className="text-xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>Explore by Type</h2>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 custom-scrollbar" style={{ scrollbarWidth: 'none' }}>
+        <h2 className="text-lg sm:text-xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>Explore by Type</h2>
+        <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 -mx-4 px-4 custom-scrollbar" style={{ scrollbarWidth: 'none' }}>
           {Object.entries(CATEGORY_HERO).map(([cat, img]) => (
             <button
               key={cat}
               onClick={() => setFilters({ ...DEFAULT_FILTERS, category: cat })}
-              className={`relative shrink-0 w-36 h-24 rounded-xl overflow-hidden group ${
+              className={`relative shrink-0 w-32 sm:w-36 h-20 sm:h-24 rounded-xl overflow-hidden group transition-transform duration-200 hover:scale-105 ${
                 filters.category === cat ? 'ring-2 ring-primary ring-offset-2' : ''
               }`}
             >
               <img src={img} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <span className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium leading-tight">{cat}</span>
+              <span className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2 text-white text-xs font-medium leading-tight truncate">{cat}</span>
             </button>
           ))}
         </div>
@@ -251,20 +251,23 @@ function DiscoveryFeed({
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8 relative overflow-hidden rounded-2xl cursor-pointer group"
           >
-            <div className="relative p-6 sm:p-8 bg-gradient-to-r from-fog-charcoal via-fog-charcoal/95 to-fog-sage/30">
+            <div className="relative p-4 sm:p-8 bg-gradient-to-r from-fog-charcoal via-fog-charcoal/95 to-fog-sage/30">
               <div className="absolute inset-0 grain" />
-              <div className="relative flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-fog-gold/20 flex items-center justify-center">
-                    <GraduationCap className="w-6 h-6 text-fog-gold" />
+              <div className="relative flex items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg sm:rounded-xl bg-fog-gold/20 flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="w-5 sm:w-6 h-5 sm:h-6 text-fog-gold" />
                   </div>
-                  <div>
-                    <h3 className="text-lg text-white font-semibold" style={{ fontFamily: 'var(--font-display)' }}>UniMode</h3>
-                    <p className="text-white/60 text-sm">175 study spots across 10 London universities</p>
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-lg text-white font-semibold truncate" style={{ fontFamily: 'var(--font-display)' }}>UniMode</h3>
+                    <p className="text-white/60 text-xs sm:text-sm truncate">175 spots across 10 universities</p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors" style={{ backgroundColor: '#2e2927', color: '#ffffff' }}>
+                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors hover:scale-105" style={{ backgroundColor: '#2e2927', color: '#ffffff' }}>
                   Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <div className="sm:hidden flex items-center justify-center w-8 h-8 rounded-lg" style={{ backgroundColor: '#2e2927' }}>
+                  <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>

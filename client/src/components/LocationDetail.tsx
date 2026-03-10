@@ -160,42 +160,47 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
         </div>
 
         {/* Bottom info on hero */}
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-white/80 text-sm">{CATEGORY_ICONS[location.category]} {location.category}</span>
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+          <div className="flex items-center gap-2 mb-1 sm:mb-2">
+            <span className="text-white/80 text-xs sm:text-sm truncate">{CATEGORY_ICONS[location.category]} {location.category}</span>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-display)' }}>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 truncate" style={{ fontFamily: 'var(--font-display)' }}>
             {location.name}
           </h1>
-          <div className="flex items-center gap-2 text-white/80 text-sm">
-            <MapPin className="w-4 h-4" />
-            <span>{location.neighborhood}</span>
-            <span className="mx-1">·</span>
-            <span>{location.priceLevel}</span>
+          <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm min-w-0">
+            <MapPin className="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" />
+            <span className="truncate">{location.neighborhood}</span>
+            <span className="mx-1 flex-shrink-0">·</span>
+            <span className="flex-shrink-0">{location.priceLevel}</span>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-6 pb-24">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="max-w-2xl mx-auto px-3 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6 pb-24"
+      >
         {/* Score + Quick Stats */}
-        <div className="flex items-center gap-4 p-4 bg-card rounded-2xl shadow-sm border border-border/50">
-          <div className="w-16 h-16 rounded-2xl bg-fog-gold/10 flex flex-col items-center justify-center">
-            <span className="score-badge text-2xl text-fog-gold">{location.studyScore.toFixed(1)}</span>
-            <span className="text-[10px] text-muted-foreground">Score</span>
+        <div className="flex items-center gap-2 sm:gap-4 p-3 sm:p-4 bg-card rounded-2xl shadow-sm border border-border/50">
+          <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-fog-gold/10 flex flex-col items-center justify-center flex-shrink-0">
+            <span className="score-badge text-xl sm:text-2xl text-fog-gold">{location.studyScore.toFixed(1)}</span>
+            <span className="text-[9px] sm:text-[10px] text-muted-foreground">Score</span>
           </div>
-          <div className="flex-1 grid grid-cols-3 gap-2">
-            <div className="text-center">
-              <div className="text-sm font-medium text-foreground">{noiseLabels[location.noiseLevel] || 'Moderate'}</div>
-              <div className="text-xs text-muted-foreground">Noise</div>
+          <div className="flex-1 grid grid-cols-3 gap-1 sm:gap-2">
+            <div className="text-center min-w-0">
+              <div className="text-xs sm:text-sm font-medium text-foreground truncate">{noiseLabels[location.noiseLevel] || 'Moderate'}</div>
+              <div className="text-[10px] sm:text-xs text-muted-foreground">Noise</div>
             </div>
-            <div className="text-center">
-              <div className="text-sm font-medium text-foreground capitalize">{location.lightingQuality}</div>
-              <div className="text-xs text-muted-foreground">Lighting</div>
+            <div className="text-center min-w-0">
+              <div className="text-xs sm:text-sm font-medium text-foreground capitalize truncate">{location.lightingQuality}</div>
+              <div className="text-[10px] sm:text-xs text-muted-foreground">Lighting</div>
             </div>
-            <div className="text-center">
-              <div className="text-sm font-medium text-foreground capitalize">{location.seatingComfort}</div>
-              <div className="text-xs text-muted-foreground">Comfort</div>
+            <div className="text-center min-w-0">
+              <div className="text-xs sm:text-sm font-medium text-foreground capitalize truncate">{location.seatingComfort}</div>
+              <div className="text-[10px] sm:text-xs text-muted-foreground">Comfort</div>
             </div>
           </div>
         </div>
@@ -396,7 +401,7 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
