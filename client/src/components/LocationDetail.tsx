@@ -126,7 +126,9 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
   const { getReviewsForLocation } = useReviews();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const fav = isFavorite(location.id);
-  const image = getLocationImage(location.name, location.category);
+  const image = location.image && !location.image.includes('source.unsplash')
+    ? location.image
+    : getLocationImage(location.name, location.category);
   const reviews = getReviewsForLocation(location.id);
 
   const noiseLabels: Record<number, string> = { 1: 'Very Quiet', 2: 'Quiet', 3: 'Moderate', 4: 'Lively', 5: 'Loud' };

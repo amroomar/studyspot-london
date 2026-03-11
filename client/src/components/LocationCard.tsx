@@ -23,7 +23,11 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
   const [imgLoaded, setImgLoaded] = useState(false);
   const fav = isFavorite(location.id);
   const isCommunity = 'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted;
-  const image = isCommunity && (location as any).images?.[0] ? (location as any).images[0] : getLocationImage(location.name, location.category);
+  const image = isCommunity && (location as any).images?.[0]
+    ? (location as any).images[0]
+    : location.image && !location.image.includes('source.unsplash')
+      ? location.image
+      : getLocationImage(location.name, location.category);
 
   const noiseLabel = location.noiseLevel <= 2 ? 'Quiet' : location.noiseLevel <= 3 ? 'Moderate' : 'Lively';
 

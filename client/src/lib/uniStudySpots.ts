@@ -457,7 +457,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Check website for details",
     "atmosphere": "The UK's national library, a vast and impressive space for focused research and study.",
     "studyScore": 10.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/HPBVwXLjasdKjXkr.jpg?Expires=1804687425&Signature=TaMHghGpLK-N0ppLYGcVQW9Q~R9RzaSkqskZszl~fME19vgg~J9hIldh-ErZIrXf4ETbIDddI4bXaQDNShJYqWiQ-8D3HunDAYDtFtuycR1EIhWS-wmz~sfE0zEwcQYNb5I2CWwagRVNQxJuNT1D3cdKeRFvYqZyY~Vy493hT1y4wKA3ey0AJa~Sm1vJdsBFCzVqE2iDp28JGCfm~njueBdatKb8SuOqg5rpRfzjnpdTIg0cfnjcc471ra2Zg-CdBNvplenVL6cX~7-MqySXXufa0uwIU175HThahp0zL2cXu9aCj6HCzg9gAIzC-VAhpRMg1VXv8May-IUSWTS~~A__&Key-Pair-Id=K2HSFNDJXOU9YS"
+    "image": "https://c8.alamy.com/comp/H67J5Y/the-kings-library-in-the-british-library-london-H67J5Y.jpg"
   },
   {
     "id": 15,
@@ -621,7 +621,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "24/7 during the second semester",
     "atmosphere": "A 19th-century neo-Gothic building, formerly the home of the Public Record Office. It has a dodecagonal reading room and a former medieval chapel.",
     "studyScore": 9.0,
-    "image": "https://www.kcl.ac.uk/maughan-library-refurbishment"
+    "image": "https://c8.alamy.com/comp/GHP095/domed-reading-room-maughan-library-kings-college-london-london-united-GHP095.jpg"
   },
   {
     "id": 21,
@@ -832,7 +832,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Bookable during university hours",
     "atmosphere": "A room designed for group work and collaboration.",
-    "studyScore": 7.0
+    "studyScore": 7.0,
+    "image": "https://www.kcl.ac.uk/newh/assets/ioppn/library/ioppn-library-2-800x450.jpg"
   },
   {
     "id": 29,
@@ -1354,7 +1355,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Sun 7am-6pm",
     "atmosphere": "A cosy, intimate space that enjoys a loyal local following.",
     "studyScore": 7.0,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/06/3e/8a/50/the-coffee-room.jpg"
+    "image": "https://onthegrid.city/imager/s3_amazonaws_com/onthegrid.city/assets/grid/london/mile-end-bow/the-coffee-room/DSC_0807_299006722e285f47655d17d1c9136337.jpg"
   },
   {
     "id": 49,
@@ -1380,7 +1381,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 11am-3pm",
     "atmosphere": "A modern public library with a range of services and study spaces.",
     "studyScore": 7.0,
-    "image": "https://www.adjaye.com/wp-content/uploads/2020/07/01_Hero_Idea-Store-Whitechapel_72.jpg"
+    "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep4kXt8XdEnaoZYCt3HI1HkP-TcetpbJQMs80NBMcTV0B5IhVYES-qnbAJT3vvfieHLlUdFwh7sWoJQCYb0h0zJAtuz91ZoNz56eIaVXKrIAtR5mX9kNuCae8mBok1Z3mIIPYN4_g=w203-h270-k-no"
   },
   {
     "id": 50,
@@ -1618,7 +1619,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Varies, check website",
     "atmosphere": "A large arts centre with various public spaces, including a library, that are suitable for studying.",
     "studyScore": 7.0,
-    "image": "https://www.thecityofldn.com/wp-content/uploads/2022/07/Barbican-Centre-2-2000x1335.jpg"
+    "image": "https://www.allthelibraries.com/wp-content/uploads/2017/01/barbican-library-london-1000x750.jpg"
   },
   {
     "id": 59,
@@ -1701,7 +1702,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Varies, check website",
     "atmosphere": "A bright, modern café tucked away in Clerkenwell, built for productivity.",
     "studyScore": 7.0,
-    "image": "https://fwdcoffee.co.uk/cdn/shop/files/457409323_1163538814710309_3797560980920389004_n.jpg?v=1740489149&width=1500"
+    "image": "https://fwdcoffee.co.uk/cdn/shop/files/437391696_962232085604603_3916929244090356713_n.jpg?v=1740489612&width=3200"
   },
   {
     "id": 62,
@@ -1861,7 +1862,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri: 7:00-22:00, Sat-Sun: 8:30-17:30",
     "atmosphere": "A spacious and stylish coffee house with a rustic design, offering a great environment for both individual and group study.",
     "studyScore": 8.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/HvMMHiFIzkhBzoCZ.jpeg?Expires=1804687290&Signature=Z1TcJKc95EelkWYWjTAee6BSyWqom6GSXNuglAV63fh4HZ7H8kXXCtOdZ9k6VwmNXrESnmqUVA35U9OXFPF9YWEoBgj4vpgJ1muL9wWBptJFQ~cab48KfKeVfgFJj~mmLd7FLdc1rExN5nNkdDyulaGVn-2YAsCtay~lWxJkn5oE52GnhzA1jNJKkwgdx5HIycPwBoEJd3L6iF52-LlHoCfH8XsV7uguPyOOuE~6BuNWW69rdjklanCwgPwtyNTY5yOef6ig3KDF~cuGAzXohUlPtVw-vaokUpXZKV9i01mImvFSdP7uaKmvPB1PSAIaBv4Diiwj6v~SRekuuBeYTw__&Key-Pair-Id=K2HSFNDJXOU9YS"
+    "image": "https://cdn.shopify.com/s/files/1/0633/2169/6559/files/Ozone-Shoreditch-5.jpg?v=1681888203"
   },
   {
     "id": 68,
@@ -2009,7 +2010,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-5pm",
     "atmosphere": "A campus cafe.",
-    "studyScore": 5.0
+    "studyScore": 5.0,
+    "image": "https://www.thornlighting.com/en/about-us/press/thorn-luminaires-add-a-fresh-look-to-the-newly-refurbished-city-university-of-london/ec_gb_2017_a_22_london_university_568x372.jpg/@@images/e85e3df7-a728-40bf-8d16-06d905d28b2d.jpeg"
   },
   {
     "id": 74,
@@ -2034,7 +2036,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-4:30pm",
     "atmosphere": "A cafe in the Tait Building with a garden.",
-    "studyScore": 6.0
+    "studyScore": 6.0,
+    "image": "https://stemkogroup.com/wp-content/uploads/2019/11/City-University-Tait-Building.jpg"
   },
   {
     "id": 75,
@@ -2242,7 +2245,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A social learning space on the lower ground floor of the Cavendish campus.",
-    "studyScore": 6.0
+    "studyScore": 6.0,
+    "image": "https://alcema.co.uk/wp-content/uploads/2022/08/image00001-800x600.jpg"
   },
   {
     "id": 83,
@@ -2319,7 +2323,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A bustling campus cafe, good for a quick bite and some light work.",
-    "studyScore": 4.0
+    "studyScore": 4.0,
+    "image": "https://www.westminster.ac.uk/sites/default/public-files/styles/panel_image_1_2_768px_/public/general-images/_0003_highres_20130610_UoW_Regents_0073.jpg?itok=hHaiZ5wO"
   },
   {
     "id": 86,
@@ -2372,7 +2377,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Check their website",
     "atmosphere": "A calm, modern space with sustainable values, great for focused work.",
     "studyScore": 9.0,
-    "image": "https://1.bp.blogspot.com/-9X2-3Y-Q8_Q/XbZ-J3wQ3-I/AAAAAAAA3-k/Z8-j8-j_j_Q-j_j_j_j_j_j_j_j_j_j/s1600/kiss-the-hippo-fitzrovia-london-specialty-coffee.jpg"
+    "image": "https://images.squarespace-cdn.com/content/v1/62ce8b5390e2f52570b9c13a/1659545709461-8T43O07QRRPDUVFFYWM7/Kiss-The-Hippo-london-coffee-shop-10.jpg"
   },
   {
     "id": 88,
@@ -2424,7 +2429,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Check their website",
     "atmosphere": "A minimalist cafe with a dependable work-friendly vibe.",
     "studyScore": 8.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/eTxNHVnSxzYdYbMo.jpg?Expires=1804687651&Signature=bEmJYconFP855PFZbcM1UUeiZ45nRnambf1yr7w3dm0joRN9z-CJs84wLNEtGKXo8pEhBojsv18sr~Un06BinyPWTYwt1~73JkmrY0BJP3k3CQdLTV5NagvIzxYGswcVtj7elUfg4w65gb5famRe-TjGFxc69IfCRQEBV5tGjt1DmZJ~HQek6Se25A5FoqhGdHrgUA44Fae~t8U0mjw2ddXRSU1WfkxC373ZIaInSI~5pDzdJO8rvVYHI0Emy4akaYyRLM1XOjNaPaWoXzi~zB6OLmSAaViUMqd0he96Hp8aCrz0jNJ1g9~pYR~IInpdOhiR1OcGgUdk0QO8oD4cmw__&Key-Pair-Id=K2HSFNDJXOU9YS"
+    "image": "https://www.urban75.org/blog/images/store-street-espresso-coffee-bar-03.jpg"
   },
   {
     "id": 90,
@@ -2606,7 +2611,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A large refectory with a variety of food options, can be noisy during peak hours.",
-    "studyScore": 4.0
+    "studyScore": 4.0,
+    "image": "https://www.targetenglishinternational.com/wp-content/uploads/2021/11/London-Harrow-Refectory-480x480.jpg"
   },
   {
     "id": 97,
@@ -2920,7 +2926,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 8am-12am",
     "atmosphere": "A quiet study space where you can be sure of having a desk.",
-    "studyScore": 8.0
+    "studyScore": 8.0,
+    "image": "https://i.ytimg.com/vi/JjCj8JN2s2o/maxresdefault.jpg"
   },
   {
     "id": 109,
@@ -3206,7 +3213,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Check website for hours",
     "atmosphere": "A modern and iconic library with various study spaces.",
     "studyScore": 8.0,
-    "image": "https://archello.s3.eu-central-1.amazonaws.com/images/2018/03/22/351.1521712235.583.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d Peckham_Library_-_geograph.org.uk_-_1423385.jpg/1280px-Peckham_Library_-_geograph.org.uk_-_1423385.jpg"
   },
   {
     "id": 120,
@@ -3232,7 +3239,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A world-renowned library with vast reading rooms and a silent, scholarly atmosphere.",
-    "studyScore": 10.0
+    "studyScore": 10.0,
+    "image": "https://c8.alamy.com/comp/H67J5Y/the-kings-library-in-the-british-library-london-H67J5Y.jpg"
   },
   {
     "id": 121,
@@ -3311,7 +3319,8 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A new, modern library with a variety of study spaces and resources.",
-    "studyScore": 9.0
+    "studyScore": 9.0,
+    "image": "https://res.cloudinary.com/stanton-williams/image/upload/q_auto,f_auto,w_1920/v1696259469/SW-00-Marshgate-Hufton-Crow-Photo-09.jpg"
   },
   {
     "id": 124,
@@ -3547,7 +3556,8 @@ export const uniStudySpots: UniStudySpot[] = [
     "atmosphere": "Student common room in the historic Royal School of Mines building. Comfortable seating for informal study and socialising.",
     "studyScore": 6.8,
     "universityId": "imperial",
-    "id": 132
+    "id": 132,
+    "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/IMG_1361--tojpeg_1478602379292_x2.jpg"
   },
   {
     "name": "Charing Cross Campus Library",
@@ -3652,7 +3662,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Daily 10am-5:30pm",
     "atmosphere": "The stunning V&A Museum cafe with ornate Victorian interiors. A beautiful and inspiring space for creative work, though not ideal for long study sessions.",
     "studyScore": 7.0,
-    "image": "https://www.vam.ac.uk/blog/wp-content/uploads/2019/03/RE_18_03_20_V_and_A_Museum_009-1100x733.jpg",
+    "image": "https://assets-cdn.vam.ac.uk/2017/06/27/09/19/51/e1b44075-ad8e-4499-a211-4360359242e8/320.jpg",
     "id": 136,
     "universityId": "imperial"
   },
@@ -3680,7 +3690,8 @@ export const uniStudySpots: UniStudySpot[] = [
     "atmosphere": "Artisan cafe on Exhibition Road popular with Imperial students. Quality coffee and pastries in a relaxed setting with some laptop-friendly seating.",
     "studyScore": 7.2,
     "universityId": "imperial",
-    "id": 137
+    "id": 137,
+    "image": "https://www.brian-coffee-spot.com/wp-content/uploads/wow-slider-plugin/266/images/dsc_9372.jpg"
   },
   {
     "name": "EL&N South Kensington",
@@ -4244,7 +4255,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 10am-7pm, Sat 10am-5pm",
     "atmosphere": "Camden public library near LSE campus with quiet study areas, free WiFi, and computer access. A reliable alternative when the LSE Library is full.",
     "studyScore": 7.5,
-    "image": "https://www.designinglibraries.org.uk/wp-content/uploads/2021/09/holborn-library-refurb-2.jpg",
+    "image": "https://designinglibraries.org.uk/media/qx3d1qik/holborn-library007.jpg?width=1172&height=659&v=1dbd5f72864e1a0",
     "id": 158,
     "universityId": "lse"
   },
@@ -4429,7 +4440,8 @@ export const uniStudySpots: UniStudySpot[] = [
     "atmosphere": "A popular study spot for students, known for its excellent coffee and two-story layout that accommodates both solo and group study sessions. Its proximity to Senate House makes it a convenient option for SOAS students.",
     "studyScore": 8.0,
     "universityId": "soas",
-    "id": 165
+    "id": 165,
+    "image": "https://images.ctfassets.net/v3n26e09qg2r/52p4E0T0G8C8g2k2q2W2oY/1b9b4b4c8c2c8c0c8c8c8c8c8c8c8c8c/store-street-espresso-london.jpg"
   },
   {
     "name": "Redemption Roasters",
@@ -4452,7 +4464,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri: 7:30am-6pm, Sat-Sun: 8am-6pm",
     "atmosphere": "A coffee shop with a social mission, Redemption Roasters offers specialty coffee in a relaxed setting. It's a good spot for a quick coffee break or a short study session.",
     "studyScore": 6.0,
-    "image": "https://redemptionroasters.com/cdn/shop/files/RR_BLOOMSBURY_2022_29.jpg?v=1689262119&width=1500",
+    "image": "https://redemptionroasters.com/cdn/shop/files/General_Banners_1000px_x_2500px_0012_RedemptionRoasters_June_Lifestyle_Shoot_043.webp?v=1721124428&width=3840",
     "id": 166,
     "universityId": "soas"
   },
@@ -4613,7 +4625,7 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri: 8am-5pm, Sat-Sun: 9am-5pm",
     "atmosphere": "A cozy and quiet basement cafe, popular with locals and students. It's a great spot for focused work and reading, with a welcoming and relaxed atmosphere.",
     "studyScore": 8.0,
-    "image": "https://images.squarespace-cdn.com/content/v1/55d2068ee4b0574b636d536d/1439837896257-C2Y6D4V2R0S9A9E8L9L9/ke17ZwdGBToddI8pDm48kK60W-ob1oA2gL5y-UG-g2wUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96U-d332v7G3M0323-sEXK12K4U-N5D3iOBx3B90_Y2lCg_XO18YhVz_B/image-asset.jpeg",
+    "image": "https://cdn.squaremeal.co.uk/restaurants/4157/bloomsbury_coffee_house_2012_-_bch_web.jpg?w=918&h=520&fit=crop&auto=format%2Ccompress",
     "id": 172,
     "universityId": "soas"
   },

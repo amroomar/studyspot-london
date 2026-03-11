@@ -106,3 +106,11 @@
 - [x] Search and collect real photos for 175 UniMode university spots (156/175)
 - [x] Update UniMode data file with real venue images
 - [x] Verify all images display correctly — all 55 tests pass
+
+## Image Fix — Replace ALL Placeholders
+- [x] Diagnose why main location images show placeholders (LocationCard/Detail ignored image field)
+- [x] Diagnose why UniMode images appear grey/broken (getUniSpotImage not receiving image param)
+- [x] Fix main location image rendering — 295/310 have permanent real images (95%)
+- [x] Fix UniMode image rendering — 149/175 have permanent real images (85%)
+- [x] Replace all manuscdn temporary URLs with permanent URLs
+- [x] Verify images display correctly — all 55 tests pass
