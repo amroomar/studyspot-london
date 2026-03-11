@@ -1,6 +1,6 @@
 /**
  * Image utility for UniMode study spots
- * Maps location types to curated Unsplash images
+ * Uses real venue photos when available, falls back to category-based Unsplash images
  */
 
 const UNI_TYPE_IMAGES: Record<string, string[]> = {
@@ -80,7 +80,14 @@ function simpleHash(str: string): number {
   return Math.abs(hash);
 }
 
-export function getUniSpotImage(name: string, locationType: string): string {
+/**
+ * Get the image for a UniMode study spot.
+ * Uses the real venue image if available, otherwise falls back to a category-based generic image.
+ */
+export function getUniSpotImage(name: string, locationType: string, image?: string): string {
+  // Use real venue image if available
+  if (image) return image;
+  // Fallback to category-based generic image
   const images = UNI_TYPE_IMAGES[locationType] || UNI_TYPE_IMAGES['Campus Study Lounge']!;
   const index = simpleHash(name) % images.length;
   return images[index]!;

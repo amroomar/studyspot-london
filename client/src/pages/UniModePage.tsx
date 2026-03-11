@@ -134,7 +134,7 @@ function applyUniFilters(spots: UniStudySpot[], filters: UniFilters, sortBy: str
 
 function UniSpotCard({ spot, onClick, index = 0 }: { spot: UniStudySpot; onClick: () => void; index?: number }) {
   const [imgLoaded, setImgLoaded] = useState(false);
-  const image = getUniSpotImage(spot.name, spot.locationType);
+  const image = getUniSpotImage(spot.name, spot.locationType, spot.image);
 
   return (
     <motion.div
@@ -222,7 +222,7 @@ function UniSpotCard({ spot, onClick, index = 0 }: { spot: UniStudySpot; onClick
 // ─── UniSpotDetail ─────────────────────────────────────────────────────────
 
 function UniSpotDetail({ spot, onBack }: { spot: UniStudySpot; onBack: () => void }) {
-  const image = getUniSpotImage(spot.name, spot.locationType);
+  const image = getUniSpotImage(spot.name, spot.locationType, spot.image);
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}&travelmode=transit`;
 
   return (
@@ -656,7 +656,7 @@ function CampusMapView({
               </button>
               <div className="flex gap-3">
                 <img
-                  src={getUniSpotImage(previewSpot.name, previewSpot.locationType)}
+                  src={getUniSpotImage(previewSpot.name, previewSpot.locationType, previewSpot.image)}
                   alt={previewSpot.name}
                   className="w-20 h-20 rounded-xl object-cover shrink-0"
                 />

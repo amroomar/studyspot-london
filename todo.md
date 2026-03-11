@@ -100,3 +100,9 @@
 - [x] Add verification badges on map pins (via LocationCard)
 - [x] Add verification badges on location detail pages
 - [x] Write vitest tests for verification system (29 tests passing)
+
+## Accurate Location Images (Round 2)
+- [x] Re-apply real venue photos to 310 main locations from previous search (306/310)
+- [x] Search and collect real photos for 175 UniMode university spots (156/175)
+- [x] Update UniMode data file with real venue images
+- [x] Verify all images display correctly — all 55 tests pass
