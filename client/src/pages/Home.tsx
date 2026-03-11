@@ -6,6 +6,7 @@
  * Improved: smoother animations, sleeker UI, dark mode support, load-more pagination
  */
 import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useCity } from '@/contexts/CityContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { locations as allLocations, type Location } from '@/lib/locations';
 import { HERO_IMAGES } from '@/lib/images';
@@ -613,6 +614,9 @@ function HomeInner() {
 }
 
 export default function Home() {
+  const { setCity } = useCity();
+  useEffect(() => { setCity('london'); }, [setCity]);
+
   return (
     <FavoritesProvider>
       <ReviewsProvider>

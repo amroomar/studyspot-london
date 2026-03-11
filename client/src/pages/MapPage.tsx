@@ -20,6 +20,8 @@ interface MapPageProps {
   showCommunityOnly?: boolean;
   onToggleCommunityOnly?: () => void;
   communityCount?: number;
+  defaultCenter?: { lat: number; lng: number };
+  defaultZoom?: number;
 }
 
 /** Build a Google Maps directions URL */
@@ -27,7 +29,7 @@ function getDirectionsUrl(location: Location): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}&travelmode=transit`;
 }
 
-export default function MapPage({ locations, onSelectLocation, showCommunityOnly, onToggleCommunityOnly, communityCount = 0 }: MapPageProps) {
+export default function MapPage({ locations, onSelectLocation, showCommunityOnly, onToggleCommunityOnly, communityCount = 0, defaultCenter, defaultZoom }: MapPageProps) {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -148,8 +150,8 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
     <div className="relative w-full h-full">
       <MapView
         className="w-full h-full"
-        initialCenter={{ lat: 51.515, lng: -0.1 }}
-        initialZoom={12}
+        initialCenter={defaultCenter || { lat: 51.515, lng: -0.1 }}
+        initialZoom={defaultZoom || 12}
         onMapReady={handleMapReady}
       />
 

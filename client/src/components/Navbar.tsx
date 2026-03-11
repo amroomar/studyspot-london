@@ -1,11 +1,11 @@
 /**
- * Navbar — London Fog design
+ * Navbar — London Fog / Bristol Harbour design
  * Frosted glass navigation bar, fixed at bottom on mobile, top on desktop
  * Tabs: Discover, Search, Social, Map, Saved, Badges
- * Features: "Add a Spot" button, Dark mode toggle
+ * Features: "Add a Spot" button, Dark mode toggle, City switcher
  */
-import { Home, Map, Heart, Award, Search, Play, Plus, GraduationCap, Moon, Sun } from 'lucide-react';
-import { Link } from 'wouter';
+import { Home, Map, Heart, Award, Search, Play, Plus, GraduationCap, Moon, Sun, ArrowLeftRight } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 import { useTheme } from '@/contexts/ThemeContext';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
@@ -14,6 +14,7 @@ interface NavbarProps {
   activeTab: Tab;
   onTabChange: (tab: Tab) => void;
   onAddSpot?: () => void;
+  cityPrefix?: string; // e.g. "/bristol" or "" for London
 }
 
 const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
@@ -25,8 +26,24 @@ const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
   { id: 'badges', label: 'Badges', icon: Award },
 ];
 
-export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProps) {
+export default function Navbar({ activeTab, onTabChange, onAddSpot, cityPrefix = '' }: NavbarProps) {
   const { theme, toggleTheme, switchable } = useTheme();
+  const isBristol = cityPrefix === '/bristol';
+  const cityLabel = isBristol ? 'Bristol' : 'London';
+  const cityBadgeClass = isBristol
+    ? 'bg-cyan-600/10 text-cyan-500'
+    : 'bg-fog-sage/10 text-fog-sage';
+  const uniHref = isBristol ? '/bristol/uni' : '/uni';
+  const uniBadgeClass = isBristol
+    ? 'bg-cyan-600/10 text-cyan-500 border-cyan-600/20 hover:bg-cyan-600/20'
+    : 'bg-fog-gold/10 text-fog-gold border-fog-gold/20 hover:bg-fog-gold/20';
+  const addBtnClass = isBristol
+    ? 'bg-cyan-600 text-white hover:bg-cyan-600/90'
+    : 'bg-fog-sage text-white hover:bg-fog-sage/90';
+  const addBtnMobileClass = isBristol
+    ? 'bg-cyan-600 text-white'
+    : 'bg-fog-sage text-white';
+  const addLabelClass = isBristol ? 'text-cyan-600' : 'text-fog-sage';
 
   return (
     <>
@@ -34,8 +51,19 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-30 glass border-b border-border/50 px-6 py-3">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
-            <span className="text-xs bg-fog-sage/10 text-fog-sage px-2 py-0.5 rounded-full font-medium">London</span>
+            <Link href="/">
+              <span className="text-xl text-foreground cursor-pointer hover:opacity-80 transition-opacity" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
+            </Link>
+            <Link href={isBristol ? '/bristol' : '/'}>
+              <span className={`text-xs ${cityBadgeClass} px-2 py-0.5 rounded-full font-medium cursor-pointer hover:opacity-80 transition-opacity`}>{cityLabel}</span>
+            </Link>
+            {/* City switcher */}
+            <Link href={isBristol ? '/' : '/bristol'}>
+              <span className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-0.5 rounded-full border border-border/50 cursor-pointer transition-colors">
+                <ArrowLeftRight className="w-3 h-3" />
+                {isBristol ? 'London' : 'Bristol'}
+              </span>
+            </Link>
           </div>
           <div className="flex items-center gap-1">
             {tabs.map(({ id, label, icon: Icon }) => (
@@ -53,8 +81,8 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
               </button>
             ))}
             {/* UniMode link — desktop */}
-            <Link href="/uni">
-              <span className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-fog-gold/10 text-fog-gold border border-fog-gold/20 hover:bg-fog-gold/20 transition-all cursor-pointer">
+            <Link href={uniHref}>
+              <span className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border transition-all cursor-pointer ${uniBadgeClass}`}>
                 <GraduationCap className="w-4 h-4" />
                 UniMode
               </span>
@@ -72,7 +100,7 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
             {/* Add Spot button — desktop */}
             <button
               onClick={onAddSpot}
-              className="ml-1 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-fog-sage text-white hover:bg-fog-sage/90 transition-all shadow-sm"
+              className={`ml-1 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm ${addBtnClass}`}
             >
               <Plus className="w-4 h-4" />
               Add a Spot
@@ -102,10 +130,10 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
             onClick={onAddSpot}
             className="flex flex-col items-center gap-0.5 px-2 py-1.5"
           >
-            <div className="w-10 h-10 -mt-5 rounded-full bg-fog-sage text-white flex items-center justify-center shadow-lg border-4 border-background">
+            <div className={`w-10 h-10 -mt-5 rounded-full ${addBtnMobileClass} flex items-center justify-center shadow-lg border-4 border-background`}>
               <Plus className="w-5 h-5" />
             </div>
-            <span className="text-[10px] font-medium text-fog-sage">Add</span>
+            <span className={`text-[10px] font-medium ${addLabelClass}`}>Add</span>
           </button>
 
           {tabs.slice(3).map(({ id, label, icon: Icon }) => (

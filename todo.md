@@ -179,3 +179,35 @@
 - [x] Trigger notification on new review submission
 - [x] Add notification bell with badge count to admin panel
 - [x] Add notifications tab with review details, mark-as-read, mark-all-read, and delete
+
+## StudySpot Bristol — New City Section
+
+### Research
+- [x] Research Bristol study cafes, libraries, coworking spaces, hidden gems (100+ spots)
+- [x] Research Bristol universities and their campus study spots for UniMode
+
+### Data Files
+- [x] Build Bristol locations data file with all study spots (100 locations)
+- [x] Build Bristol university study spots data file for UniMode (20 spots: UoB 12, UWE 8)
+- [x] Collect real images for Bristol locations
+- [x] Build Bristol social videos data file (12 videos)
+
+### Architecture
+- [x] Create city selector / routing architecture (London vs Bristol)
+- [x] Create Bristol-specific color scheme (harbour-teal/cyan distinct from London fog-sage/gold)
+- [x] Create CityContext for city state management
+
+### Bristol Pages & Features
+- [x] Bristol Home/Discover page with Bristol color scheme
+- [x] Bristol Search page (shared component with Bristol data)
+- [x] Bristol Map page (centered on Bristol: 51.4545, -2.5879)
+- [x] Bristol Social page with Bristol-specific videos (12 videos)
+- [x] Bristol Favorites & Badges (shared components)
+- [x] Bristol UniMode with UoB and UWE (20 campus spots)
+- [x] Bristol community submissions support (shared SubmitSpotPage)
+- [x] Wire Bristol into admin panel and shared features
+
+### Integration
+- [x] City selector on landing page (/cities)
+- [x] Navbar city switcher (ArrowLeftRight icon)
+- [x] Tests for Bristol features (25 tests passing)

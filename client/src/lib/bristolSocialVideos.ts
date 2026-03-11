@@ -1,0 +1,163 @@
+/**
+ * Bristol Social Videos — TikTok & Instagram content about Bristol study spots
+ */
+
+export interface BristolSocialVideo {
+  id: number;
+  platform: 'tiktok' | 'instagram';
+  url: string;
+  thumbnail: string;
+  title: string;
+  creator: string;
+  tags: string[];
+  neighborhood: string;
+  likes: number;
+  views: number;
+}
+
+export const bristolSocialVideos: BristolSocialVideo[] = [
+  {
+    id: 1,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=300&h=400&fit=crop',
+    title: 'Best cafes to study in Bristol ☕📚',
+    creator: '@bristolstudent',
+    tags: ['study', 'cafe', 'bristol'],
+    neighborhood: 'Clifton',
+    likes: 12400,
+    views: 89000,
+  },
+  {
+    id: 2,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=400&fit=crop',
+    title: 'Hidden study spots in Stokes Croft 🎨',
+    creator: '@bristolvibes',
+    tags: ['hidden gem', 'stokes croft', 'study'],
+    neighborhood: 'Stokes Croft',
+    likes: 8700,
+    views: 45000,
+  },
+  {
+    id: 3,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1568667256549-094345857637?w=300&h=400&fit=crop',
+    title: 'UoB library tour - where to study 📖',
+    creator: '@uoblife',
+    tags: ['university', 'library', 'tour'],
+    neighborhood: 'Clifton',
+    likes: 23100,
+    views: 156000,
+  },
+  {
+    id: 4,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&h=400&fit=crop',
+    title: 'Coworking spaces with harbour views 🌊',
+    creator: '@bristolfreelancer',
+    tags: ['coworking', 'harbourside', 'views'],
+    neighborhood: 'Harbourside',
+    likes: 5600,
+    views: 32000,
+  },
+  {
+    id: 5,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=300&h=400&fit=crop',
+    title: 'Study with me at Boston Tea Party 🍵',
+    creator: '@studywithme_bristol',
+    tags: ['study with me', 'cafe', 'aesthetic'],
+    neighborhood: 'Stokes Croft',
+    likes: 18900,
+    views: 112000,
+  },
+  {
+    id: 6,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=300&h=400&fit=crop',
+    title: 'Wills Memorial Building study vibes ✨',
+    creator: '@bristolarchitecture',
+    tags: ['architecture', 'historic', 'study'],
+    neighborhood: 'Clifton',
+    likes: 31200,
+    views: 198000,
+  },
+  {
+    id: 7,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=300&h=400&fit=crop',
+    title: 'Outdoor study spots in Bristol parks 🌿',
+    creator: '@greenbrislol',
+    tags: ['outdoor', 'parks', 'nature'],
+    neighborhood: 'Redland',
+    likes: 7800,
+    views: 54000,
+  },
+  {
+    id: 8,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=400&fit=crop',
+    title: 'UWE Frenchay campus study guide 📝',
+    creator: '@uwelife',
+    tags: ['uwe', 'campus', 'guide'],
+    neighborhood: 'Frenchay',
+    likes: 9400,
+    views: 67000,
+  },
+  {
+    id: 9,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300&h=400&fit=crop',
+    title: 'Bedminster cafe crawl for studying 🚶',
+    creator: '@southbristol',
+    tags: ['bedminster', 'cafe crawl', 'study'],
+    neighborhood: 'Bedminster',
+    likes: 4200,
+    views: 28000,
+  },
+  {
+    id: 10,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=300&h=400&fit=crop',
+    title: 'Bristol Central Library - a hidden gem 💎',
+    creator: '@bristollibraries',
+    tags: ['library', 'central', 'free'],
+    neighborhood: 'City Centre',
+    likes: 15600,
+    views: 98000,
+  },
+  {
+    id: 11,
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@bristoluni',
+    thumbnail: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=300&h=400&fit=crop',
+    title: 'Gloucester Road indie cafe study spots ☕',
+    creator: '@gloucesterrd',
+    tags: ['gloucester road', 'indie', 'cafe'],
+    neighborhood: 'Bishopston',
+    likes: 6300,
+    views: 41000,
+  },
+  {
+    id: 12,
+    platform: 'instagram',
+    url: 'https://www.instagram.com/visitbristol',
+    thumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=400&fit=crop',
+    title: 'Late night study spots in Bristol 🌙',
+    creator: '@bristolnightowl',
+    tags: ['late night', '24/7', 'study'],
+    neighborhood: 'City Centre',
+    likes: 11800,
+    views: 82000,
+  },
+];

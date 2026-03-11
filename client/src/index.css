@@ -46,6 +46,12 @@
   --color-fog-sage: oklch(0.58 0.05 145);
   --color-fog-gold: oklch(0.72 0.1 75);
   --color-fog-warm: oklch(0.95 0.015 75);
+  /* Bristol Harbour custom colors */
+  --color-harbour-deep: oklch(0.22 0.03 230);
+  --color-harbour-teal: oklch(0.55 0.12 200);
+  --color-harbour-cyan: oklch(0.65 0.12 220);
+  --color-harbour-sky: oklch(0.78 0.08 220);
+  --color-harbour-mist: oklch(0.95 0.01 220);
   --font-display: 'DM Serif Display', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'Space Grotesk', monospace;

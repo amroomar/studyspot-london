@@ -226,9 +226,12 @@ type TagFilter = string;
 interface SocialDiscoveryPageProps {
   locations: Location[];
   onSelectLocation: (loc: Location) => void;
+  customVideos?: SocialVideo[];
+  cityName?: string;
 }
 
-export default function SocialDiscoveryPage({ locations, onSelectLocation }: SocialDiscoveryPageProps) {
+export default function SocialDiscoveryPage({ locations, onSelectLocation, customVideos, cityName = 'London' }: SocialDiscoveryPageProps) {
+  const activeVideos = customVideos || socialVideos;
   const [searchQuery, setSearchQuery] = useState('');
   const [platformFilter, setPlatformFilter] = useState<Platform>('All');
   const [selectedTags, setSelectedTags] = useState<TagFilter[]>([]);
@@ -239,13 +242,13 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
   // All available tags
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
-    socialVideos.forEach(v => v.tags.forEach(t => tagSet.add(t)));
+    activeVideos.forEach(v => v.tags.forEach(t => tagSet.add(t)));
     return Array.from(tagSet).sort();
-  }, []);
+  }, [activeVideos]);
 
   // Filtered videos
   const filteredVideos = useMemo(() => {
-    let result = [...socialVideos];
+    let result = [...activeVideos];
 
     // Search
     if (searchQuery.trim()) {
@@ -271,7 +274,7 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
     }
 
     return result;
-  }, [searchQuery, platformFilter, selectedTags]);
+  }, [searchQuery, platformFilter, selectedTags, activeVideos]);
 
   // Lazy loading with intersection observer
   useEffect(() => {
@@ -294,7 +297,7 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
   // Reset visible count when filters change
   useEffect(() => {
     setVisibleCount(24);
-  }, [searchQuery, platformFilter, selectedTags]);
+  }, [searchQuery, platformFilter, selectedTags, activeVideos]);
 
   const handleViewLocation = useCallback((locationId: number) => {
     const loc = locations.find(l => l.id === locationId);
@@ -309,11 +312,11 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
 
   const platforms: Platform[] = ['All', 'TikTok', 'Instagram', 'YouTube'];
   const platformCounts = useMemo(() => ({
-    All: socialVideos.length,
-    TikTok: socialVideos.filter(v => v.platform === 'TikTok').length,
-    Instagram: socialVideos.filter(v => v.platform === 'Instagram').length,
-    YouTube: socialVideos.filter(v => v.platform === 'YouTube').length,
-  }), []);
+    All: activeVideos.length,
+    TikTok: activeVideos.filter(v => v.platform === 'TikTok').length,
+    Instagram: activeVideos.filter(v => v.platform === 'Instagram').length,
+    YouTube: activeVideos.filter(v => v.platform === 'YouTube').length,
+  }), [activeVideos]);
 
   const matchedCount = useMemo(() =>
     filteredVideos.filter(v => v.matchedLocationId).length,
@@ -321,8 +324,8 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
 
   // Count thumbnails
   const thumbCount = useMemo(() =>
-    socialVideos.filter(v => v.thumbnailUrl).length,
-  []);
+    activeVideos.filter(v => v.thumbnailUrl).length,
+  [activeVideos]);
 
   return (
     <div className="pb-24 lg:pb-8">
@@ -337,7 +340,7 @@ export default function SocialDiscoveryPage({ locations, onSelectLocation }: Soc
             Social Discovery
           </h1>
           <p className="text-muted-foreground text-sm" style={{ fontFamily: 'var(--font-body)' }}>
-            Discover London study spots through real videos from TikTok, Instagram, and YouTube.
+            Discover {cityName} study spots through real videos from TikTok, Instagram, and YouTube.
           </p>
         </motion.div>
       </div>
