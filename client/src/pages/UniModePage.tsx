@@ -71,7 +71,7 @@ function quietnessColor(level: number): string {
 function scoreColor(score: number): string {
   if (score >= 8.5) return 'bg-emerald-500 text-white';
   if (score >= 7) return 'bg-fog-sage text-white';
-  if (score >= 5) return 'bg-fog-gold text-fog-charcoal';
+  if (score >= 5) return 'bg-fog-gold text-white dark:text-fog-charcoal';
   return 'bg-muted text-muted-foreground';
 }
 
@@ -244,7 +244,7 @@ function UniSpotDetail({ spot, onBack }: { spot: UniStudySpot; onBack: () => voi
 
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/90 transition-colors"
+          className="absolute top-4 left-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-card transition-colors text-foreground"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>

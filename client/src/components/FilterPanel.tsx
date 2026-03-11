@@ -212,7 +212,7 @@ export default function FilterPanel({ filters, onChange, neighborhoods, resultCo
                       <div className={`ml-auto w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
                         filters[key] ? 'border-primary bg-primary' : 'border-border'
                       }`}>
-                        {filters[key] && <div className="w-2 h-2 rounded-full bg-white" />}
+                        {filters[key] && <div className="w-2 h-2 rounded-full bg-primary-foreground" />}
                       </div>
                     </button>
                   ))}

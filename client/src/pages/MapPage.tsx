@@ -38,11 +38,9 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
   const heatmapLibLoaded = useRef(false);
 
   const createMarkers = useCallback((map: google.maps.Map) => {
-    // Clear existing markers
     markersRef.current.forEach(m => (m.map = null));
     markersRef.current = [];
 
-    // Add markers for all locations
     locations.forEach(loc => {
       const isCommunity = loc.id >= 100000;
       const markerEl = document.createElement('div');
@@ -100,7 +98,6 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
   }, []);
 
   const updateHeatmap = useCallback(async (map: google.maps.Map) => {
-    // Remove existing heatmap
     if (heatmapRef.current) {
       heatmapRef.current.setMap(null);
       heatmapRef.current = null;
@@ -110,10 +107,9 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
 
     await loadHeatmapLibrary();
 
-    // Create weighted heatmap data — higher study scores = more weight
     const heatmapData = locations.map(loc => ({
       location: new google.maps.LatLng(loc.lat, loc.lng),
-      weight: loc.studyScore * loc.studyScore, // Square for more contrast
+      weight: loc.studyScore * loc.studyScore,
     }));
 
     heatmapRef.current = new google.maps.visualization.HeatmapLayer({
@@ -123,12 +119,12 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
       opacity: 0.7,
       gradient: [
         'rgba(0, 0, 0, 0)',
-        'rgba(122, 139, 111, 0.3)',  // fog-sage light
+        'rgba(122, 139, 111, 0.3)',
         'rgba(122, 139, 111, 0.5)',
-        'rgba(196, 162, 101, 0.6)',  // fog-gold
+        'rgba(196, 162, 101, 0.6)',
         'rgba(196, 162, 101, 0.8)',
         'rgba(196, 162, 101, 1)',
-        'rgba(212, 120, 55, 1)',     // warm amber
+        'rgba(212, 120, 55, 1)',
       ],
     });
   }, [showHeatmap, locations, loadHeatmapLibrary]);
@@ -139,7 +135,6 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
     updateHeatmap(map);
   }, [createMarkers, updateHeatmap]);
 
-  // Update markers and heatmap when locations or heatmap toggle changes
   useEffect(() => {
     if (mapRef.current) {
       createMarkers(mapRef.current);
@@ -158,74 +153,74 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
         onMapReady={handleMapReady}
       />
 
-      {/* Top controls — positioned below Google Maps native controls */}
-      <div className="absolute top-16 left-4 z-10">
+      {/* Bottom-left controls — stacked vertically to avoid overlap with Google Maps controls */}
+      <div className="absolute bottom-24 sm:bottom-6 left-3 sm:left-4 z-10 flex flex-col gap-2 max-w-[calc(100%-24px)] sm:max-w-none">
         {/* Location count badge */}
-        <div className="glass rounded-full px-4 py-2 shadow-lg">
-          <span className="text-sm font-medium text-fog-charcoal">{locations.length} study spots</span>
+        <div className="bg-card/90 backdrop-blur-md rounded-full px-3 py-1.5 sm:px-4 sm:py-2 shadow-lg border border-border/50 w-fit">
+          <span className="text-xs sm:text-sm font-medium text-foreground">{locations.length} study spots</span>
         </div>
-      </div>
 
-      {/* Right-side controls — positioned below Google Maps type selector */}
-      <div className="absolute top-16 right-4 z-10 flex items-center gap-2">
         {/* Community filter toggle */}
         {communityCount > 0 && onToggleCommunityOnly && (
           <button
             onClick={onToggleCommunityOnly}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm font-medium transition-all w-fit ${
               showCommunityOnly
                 ? 'bg-fog-sage text-white'
-                : 'glass text-fog-charcoal hover:bg-white/90'
+                : 'bg-card/90 backdrop-blur-md text-foreground hover:bg-card border border-border/50'
             }`}
           >
-            <Users className="w-4 h-4" />
-            Community ({communityCount})
+            <Users className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Community</span> ({communityCount})
           </button>
         )}
+      </div>
 
+      {/* Top-right controls — heatmap toggle, positioned below Google Maps type selector */}
+      <div className="absolute top-20 sm:top-16 right-3 sm:right-4 z-10 flex flex-col gap-2 items-end">
         {/* Heatmap toggle */}
         <button
           onClick={() => setShowHeatmap(prev => !prev)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm font-medium transition-all ${
             showHeatmap
               ? 'bg-fog-gold text-white'
-              : 'glass text-fog-charcoal hover:bg-white/90'
+              : 'bg-card/90 backdrop-blur-md text-foreground hover:bg-card border border-border/50'
           }`}
         >
           {showHeatmap ? (
             <>
-              <MapIcon className="w-4 h-4" /> Pins View
+              <MapIcon className="w-3.5 h-3.5" /> Pins
             </>
           ) : (
             <>
-              <Flame className="w-4 h-4" /> Study Heatmap
+              <Flame className="w-3.5 h-3.5" /> Heatmap
             </>
           )}
         </button>
-      </div>
 
-      {/* Heatmap legend */}
-      <AnimatePresence>
-        {showHeatmap && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute top-28 right-4 z-10 glass rounded-xl px-4 py-3 shadow-lg"
-          >
-            <p className="text-xs font-semibold text-fog-charcoal mb-2">Study Density</p>
-            <div className="flex items-center gap-1.5">
-              <div className="w-24 h-3 rounded-full" style={{
-                background: 'linear-gradient(to right, rgba(122,139,111,0.3), rgba(196,162,101,0.8), rgba(212,120,55,1))'
-              }} />
-            </div>
-            <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-muted-foreground">Low</span>
-              <span className="text-[10px] text-muted-foreground">High</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Heatmap legend */}
+        <AnimatePresence>
+          {showHeatmap && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="bg-card/90 backdrop-blur-md rounded-xl px-3 py-2 shadow-lg border border-border/50"
+            >
+              <p className="text-[10px] font-semibold text-foreground mb-1.5">Study Density</p>
+              <div className="flex items-center gap-1.5">
+                <div className="w-20 h-2.5 rounded-full" style={{
+                  background: 'linear-gradient(to right, rgba(122,139,111,0.3), rgba(196,162,101,0.8), rgba(212,120,55,1))'
+                }} />
+              </div>
+              <div className="flex justify-between mt-0.5">
+                <span className="text-[9px] text-muted-foreground">Low</span>
+                <span className="text-[9px] text-muted-foreground">High</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       {/* Selected location preview card */}
       <AnimatePresence>
@@ -235,13 +230,13 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="absolute bottom-6 left-4 right-4 z-10 max-w-md mx-auto"
+            className="absolute bottom-4 left-3 right-3 sm:left-4 sm:right-4 z-10 max-w-md mx-auto"
           >
             <div className="bg-card rounded-2xl shadow-xl overflow-hidden border border-border/50">
               {/* Close button */}
               <button
                 onClick={() => setSelectedLocation(null)}
-                className="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors"
+                className="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors text-foreground"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -261,7 +256,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
                 <img
                   src={resolveImage('curated', selectedLocation.id, selectedLocation.image || getLocationImage(selectedLocation.name, selectedLocation.category))}
                   alt={selectedLocation.name}
-                  className="w-28 h-full min-h-[120px] object-cover shrink-0"
+                  className="w-24 sm:w-28 h-full min-h-[110px] object-cover shrink-0"
                 />
                 <div className="flex-1 p-3">
                   <div className="flex items-start justify-between gap-2">
@@ -274,7 +269,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
                         <span>{selectedLocation.priceLevel}</span>
                       </div>
                     </div>
-                    <div className="score-badge text-sm bg-fog-gold/10 text-fog-gold px-2 py-0.5 rounded-lg shrink-0">
+                    <div className="text-sm font-bold bg-fog-gold/10 text-fog-gold px-2 py-0.5 rounded-lg shrink-0">
                       {selectedLocation.studyScore.toFixed(1)}
                     </div>
                   </div>
@@ -282,7 +277,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
                   {/* Quick attributes */}
                   <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground flex-wrap">
                     {selectedLocation.wifi === 'yes' && (
-                      <span className="flex items-center gap-0.5"><Wifi className="w-3 h-3 text-fog-sage" /> Wi-Fi</span>
+                      <span className="flex items-center gap-0.5"><Wifi className="w-3 h-3 text-fog-sage" /> WiFi</span>
                     )}
                     {selectedLocation.plugSockets === 'yes' && (
                       <span className="flex items-center gap-0.5"><Plug className="w-3 h-3 text-fog-sage" /> Plugs</span>
@@ -293,7 +288,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
 
                   {/* Category */}
                   <div className="flex items-center gap-2 mt-2">
-                    <span className="text-xs bg-secondary px-2 py-0.5 rounded-full">{CATEGORY_ICONS[selectedLocation.category]} {selectedLocation.category}</span>
+                    <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">{CATEGORY_ICONS[selectedLocation.category]} {selectedLocation.category}</span>
                   </div>
                 </div>
               </div>
@@ -315,12 +310,12 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
                   className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-fog-sage hover:bg-fog-sage/90 text-white rounded-xl text-xs font-medium transition-colors"
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  Get Directions
+                  Directions
                 </a>
                 <button
                   onClick={(e) => { e.stopPropagation(); toggleFavorite(selectedLocation.id); }}
                   className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
-                    isFavorite(selectedLocation.id) ? 'bg-red-50 text-red-500' : 'bg-secondary text-muted-foreground hover:text-red-500'
+                    isFavorite(selectedLocation.id) ? 'bg-red-500/10 text-red-500' : 'bg-secondary text-muted-foreground hover:text-red-500'
                   }`}
                 >
                   <Heart className={`w-4 h-4 ${isFavorite(selectedLocation.id) ? 'fill-red-500' : ''}`} />

@@ -180,6 +180,8 @@ export const reviews = mysqlTable("reviews", {
   laptopFriendly: int("laptopFriendly").notNull(),
   /** Free-text comment */
   comment: text("comment"),
+  /** Review images as JSON-encoded text (e.g. '["https://..."]') */
+  images: text("images"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

@@ -33,6 +33,8 @@ import {
   getReviewCount,
   deleteReview,
   getTotalReviewCount,
+  getAllReviews,
+  updateCommunitySubmission,
 } from "./db";
 
 // ─── Helper: parse submission row for API response ──────────────────────────
@@ -226,7 +228,11 @@ export const appRouter = router({
         locationId: z.number(),
       }))
       .query(async ({ input }) => {
-        return getReviewsForLocation(input.locationType, input.locationId);
+        const rows = await getReviewsForLocation(input.locationType, input.locationId);
+        return rows.map(r => ({
+          ...r,
+          images: r.images ? (typeof r.images === 'string' ? JSON.parse(r.images) : r.images) : [],
+        }));
       }),
 
     /** Get review count for a location (public) */
@@ -244,6 +250,20 @@ export const appRouter = router({
       return getTotalReviewCount();
     }),
 
+    /** Get all reviews (admin) */
+    getAll: adminProcedure
+      .input(z.object({
+        limit: z.number().int().min(1).max(100).optional().default(50),
+        offset: z.number().int().min(0).optional().default(0),
+      }))
+      .query(async ({ input }) => {
+        const rows = await getAllReviews(input.limit, input.offset);
+        return rows.map(r => ({
+          ...r,
+          images: r.images ? (typeof r.images === 'string' ? JSON.parse(r.images) : r.images) : [],
+        }));
+      }),
+
     /** Add a review (requires login) */
     create: protectedProcedure
       .input(z.object({
@@ -255,22 +275,38 @@ export const appRouter = router({
         lighting: z.number().int().min(1).max(5),
         laptopFriendly: z.number().int().min(1).max(5),
         comment: z.string().max(2000).optional(),
+        anonymous: z.boolean().optional().default(false),
+        images: z.array(z.string().url()).max(5).optional(),
       }))
       .mutation(async ({ ctx, input }) => {
+        const { anonymous, images, ...rest } = input;
         return createReview({
-          ...input,
+          ...rest,
           userId: ctx.user.id,
-          userName: ctx.user.name || "Anonymous",
-          comment: input.comment || null,
+          userName: anonymous ? "Anonymous" : (ctx.user.name || "Anonymous"),
+          comment: rest.comment || null,
+          images: images && images.length > 0 ? JSON.stringify(images) : null,
         });
+      }),
+
+    /** Upload a review image to S3 */
+    uploadImage: protectedProcedure
+      .input(z.object({
+        base64: z.string(),
+        mimeType: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const ext = input.mimeType.split('/')[1] || 'jpg';
+        const key = `review-images/${ctx.user.id}-${nanoid(8)}.${ext}`;
+        const buffer = Buffer.from(input.base64, 'base64');
+        const { url } = await storagePut(key, buffer, input.mimeType);
+        return { url };
       }),
 
     /** Delete a review (admin or review owner) */
     delete: protectedProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ ctx, input }) => {
-        // Admin can delete any review; users can only delete their own
-        // For simplicity, allow delete for any authenticated user (admin check can be added later)
         await deleteReview(input.id);
         return { success: true };
       }),
@@ -407,18 +443,35 @@ export const appRouter = router({
         category: z.string().min(1).max(100).optional(),
         neighborhood: z.string().min(1).max(100).optional(),
         address: z.string().min(1).optional(),
+        lat: z.number().min(-90).max(90).optional(),
+        lng: z.number().min(-180).max(180).optional(),
+        website: z.string().max(500).optional(),
+        priceLevel: z.string().max(20).optional(),
         atmosphere: z.string().optional(),
+        noiseLevel: z.number().int().min(1).max(5).optional(),
+        wifiQuality: z.number().int().min(1).max(5).optional(),
+        lightingQuality: z.number().int().min(1).max(5).optional(),
+        seatingComfort: z.number().int().min(1).max(5).optional(),
+        laptopFriendly: z.number().int().min(1).max(5).optional(),
+        crowdLevel: z.number().int().min(1).max(5).optional(),
+        studyScore: z.number().min(0).max(10).optional(),
+        tags: z.array(z.string()).optional(),
+        images: z.array(z.string()).optional(),
         verificationStatus: z.enum(["unverified", "verified", "community_verified", "pending_verification", "flagged"]).optional(),
         status: z.enum(["pending", "approved", "rejected"]).optional(),
       }))
       .mutation(async ({ input }) => {
-        const { id, ...data } = input;
-        // Filter out undefined values
-        const updateData = Object.fromEntries(
+        const { id, lat, lng, studyScore, tags, images, ...data } = input;
+        const updateData: Record<string, any> = Object.fromEntries(
           Object.entries(data).filter(([, v]) => v !== undefined)
         );
+        if (lat !== undefined) updateData.lat = lat.toFixed(7);
+        if (lng !== undefined) updateData.lng = lng.toFixed(7);
+        if (studyScore !== undefined) updateData.studyScore = studyScore.toFixed(1);
+        if (tags !== undefined) updateData.tags = JSON.stringify(tags);
+        if (images !== undefined) updateData.images = JSON.stringify(images);
         if (Object.keys(updateData).length > 0) {
-          await updateSubmission(id, updateData as any);
+          await updateCommunitySubmission(id, updateData as any);
         }
         return { success: true };
       }),

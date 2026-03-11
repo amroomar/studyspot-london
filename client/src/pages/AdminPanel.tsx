@@ -1,6 +1,6 @@
 /**
  * AdminPanel — Moderation dashboard for community submissions
- * Features: submission list, verification management, report review, status controls
+ * Features: submission list, verification management, report review, reviews management, community spot editing
  * London Fog design: warm tones, editorial layout
  */
 import { useState } from 'react';
@@ -26,9 +26,14 @@ import {
   ChevronUp,
   Users,
   MapPin,
+  Star,
+  Pencil,
+  Save,
+  X,
+  MessageSquare,
 } from 'lucide-react';
 
-type Tab = 'submissions' | 'reports';
+type Tab = 'submissions' | 'reports' | 'reviews';
 
 const ImageMgmtIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -94,14 +99,14 @@ export default function AdminPanel() {
           <div className="flex items-center gap-3 mb-4">
             <Link href="/">
               <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 text-foreground" />
               </button>
             </Link>
             <div>
               <h1 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-                Moderation Panel
+                Admin Panel
               </h1>
-              <p className="text-sm text-muted-foreground">Manage community submissions and reports</p>
+              <p className="text-sm text-muted-foreground">Manage submissions, reviews, reports & images</p>
             </div>
           </div>
 
@@ -117,26 +122,19 @@ export default function AdminPanel() {
 
           {/* Tabs */}
           <div className="flex gap-1">
-            <button
-              onClick={() => setActiveTab('submissions')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === 'submissions'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:bg-secondary'
-              }`}
-            >
-              Submissions
-            </button>
-            <button
-              onClick={() => setActiveTab('reports')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === 'reports'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:bg-secondary'
-              }`}
-            >
-              Reports
-            </button>
+            {(['submissions', 'reports', 'reviews'] as Tab[]).map(tab => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${
+                  activeTab === tab
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-secondary'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -147,10 +145,13 @@ export default function AdminPanel() {
           <SubmissionsTab expandedId={expandedId} setExpandedId={setExpandedId} />
         )}
         {activeTab === 'reports' && <ReportsTab />}
+        {activeTab === 'reviews' && <ReviewsTab />}
       </div>
     </div>
   );
 }
+
+// ─── Submissions Tab with inline editing ──────────────────────────────────────
 
 function SubmissionsTab({
   expandedId,
@@ -161,6 +162,7 @@ function SubmissionsTab({
 }) {
   const utils = trpc.useUtils();
   const { data: submissions, isLoading } = trpc.submissions.listAll.useQuery();
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const updateStatusMutation = trpc.submissions.updateStatus.useMutation({
     onSuccess: () => {
@@ -176,6 +178,16 @@ function SubmissionsTab({
       utils.submissions.listAll.invalidate();
       utils.submissions.list.invalidate();
       toast.success('Verification status updated');
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const editMutation = trpc.submissions.edit.useMutation({
+    onSuccess: () => {
+      utils.submissions.listAll.invalidate();
+      utils.submissions.list.invalidate();
+      toast.success('Submission updated');
+      setEditingId(null);
     },
     onError: (err) => toast.error(err.message),
   });
@@ -202,7 +214,6 @@ function SubmissionsTab({
     );
   }
 
-  // Sort: flagged first, then pending, then by date
   const sorted = [...submissions].sort((a, b) => {
     const priority: Record<string, number> = { flagged: 0, pending_verification: 1, unverified: 2, community_verified: 3, verified: 4 };
     const statusPriority: Record<string, number> = { pending: 0, approved: 1, rejected: 2 };
@@ -225,14 +236,15 @@ function SubmissionsTab({
 
       {sorted.map((sub) => {
         const isExpanded = expandedId === sub.id;
+        const isEditing = editingId === sub.id;
         return (
           <div
             key={sub.id}
             className={`border rounded-xl overflow-hidden transition-colors ${
               sub.verificationStatus === 'flagged'
-                ? 'border-red-200 bg-red-50/30'
+                ? 'border-red-500/30 bg-red-500/5'
                 : sub.status === 'pending'
-                ? 'border-yellow-200 bg-yellow-50/30'
+                ? 'border-yellow-500/30 bg-yellow-500/5'
                 : 'border-border bg-card'
             }`}
           >
@@ -243,7 +255,7 @@ function SubmissionsTab({
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-medium text-sm truncate">{sub.name}</span>
+                  <span className="font-medium text-sm truncate text-foreground">{sub.name}</span>
                   <VerificationBadge status={sub.verificationStatus as VerificationStatus} compact />
                   <StatusBadge status={sub.status} />
                 </div>
@@ -277,113 +289,147 @@ function SubmissionsTab({
             {/* Expanded details */}
             {isExpanded && (
               <div className="px-4 pb-4 border-t border-border/50 pt-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Address</div>
-                    <div className="text-sm">{sub.address}</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Coordinates</div>
-                    <div className="text-sm">{sub.lat.toFixed(5)}, {sub.lng.toFixed(5)}</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Study Score</div>
-                    <div className="text-sm font-medium">{sub.studyScore.toFixed(1)}/10</div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">Google Place ID</div>
-                    <div className="text-sm font-mono text-xs">{sub.googlePlaceId || '—'}</div>
-                  </div>
-                  {sub.atmosphere && (
-                    <div className="sm:col-span-2">
-                      <div className="text-xs text-muted-foreground mb-1">Atmosphere</div>
-                      <div className="text-sm">{sub.atmosphere}</div>
+                {isEditing ? (
+                  <SubmissionEditForm
+                    submission={sub}
+                    onSave={(data) => editMutation.mutate({ id: sub.id, ...data })}
+                    onCancel={() => setEditingId(null)}
+                    isSaving={editMutation.isPending}
+                  />
+                ) : (
+                  <>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Address</div>
+                        <div className="text-sm text-foreground">{sub.address}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Coordinates</div>
+                        <div className="text-sm text-foreground">{sub.lat.toFixed(5)}, {sub.lng.toFixed(5)}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Study Score</div>
+                        <div className="text-sm font-medium text-foreground">{sub.studyScore.toFixed(1)}/10</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Price Level</div>
+                        <div className="text-sm text-foreground">{sub.priceLevel || '—'}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Ratings</div>
+                        <div className="text-sm text-foreground">
+                          Noise: {sub.noiseLevel} · WiFi: {sub.wifiQuality} · Light: {sub.lightingQuality} · Comfort: {sub.seatingComfort} · Laptop: {sub.laptopFriendly}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-1">Google Place ID</div>
+                        <div className="text-sm font-mono text-xs text-foreground">{sub.googlePlaceId || '—'}</div>
+                      </div>
+                      {sub.atmosphere && (
+                        <div className="sm:col-span-2">
+                          <div className="text-xs text-muted-foreground mb-1">Atmosphere</div>
+                          <div className="text-sm text-foreground">{sub.atmosphere}</div>
+                        </div>
+                      )}
+                      {sub.tags && sub.tags.length > 0 && (
+                        <div className="sm:col-span-2">
+                          <div className="text-xs text-muted-foreground mb-1">Tags</div>
+                          <div className="flex flex-wrap gap-1">
+                            {sub.tags.map((tag: string, i: number) => (
+                              <span key={i} className="bg-secondary text-secondary-foreground text-xs px-2 py-0.5 rounded-full">{tag}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Images */}
-                {sub.images && sub.images.length > 0 && (
-                  <div className="mb-4">
-                    <div className="text-xs text-muted-foreground mb-2">Images</div>
-                    <div className="flex gap-2 overflow-x-auto">
-                      {sub.images.map((img: string, i: number) => (
-                        <img
-                          key={i}
-                          src={img}
-                          alt={`${sub.name} ${i + 1}`}
-                          className="w-20 h-20 rounded-lg object-cover border border-border"
-                        />
-                      ))}
+                    {/* Images */}
+                    {sub.images && sub.images.length > 0 && (
+                      <div className="mb-4">
+                        <div className="text-xs text-muted-foreground mb-2">Images</div>
+                        <div className="flex gap-2 overflow-x-auto">
+                          {sub.images.map((img: string, i: number) => (
+                            <img
+                              key={i}
+                              src={img}
+                              alt={`${sub.name} ${i + 1}`}
+                              className="w-20 h-20 rounded-lg object-cover border border-border"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Actions */}
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="gap-1"
+                        onClick={() => setEditingId(sub.id)}
+                      >
+                        <Pencil className="w-3.5 h-3.5" /> Edit
+                      </Button>
+                      {sub.status !== 'approved' && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="gap-1 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/10"
+                          onClick={() => updateStatusMutation.mutate({ id: sub.id, status: 'approved' })}
+                          disabled={updateStatusMutation.isPending}
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Approve
+                        </Button>
+                      )}
+                      {sub.status !== 'rejected' && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="gap-1 text-red-500 border-red-500/30 hover:bg-red-500/10"
+                          onClick={() => updateStatusMutation.mutate({ id: sub.id, status: 'rejected' })}
+                          disabled={updateStatusMutation.isPending}
+                        >
+                          <XCircle className="w-3.5 h-3.5" /> Reject
+                        </Button>
+                      )}
+                      {sub.verificationStatus !== 'verified' && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="gap-1"
+                          onClick={() => updateVerificationMutation.mutate({ id: sub.id, verificationStatus: 'verified' })}
+                          disabled={updateVerificationMutation.isPending}
+                        >
+                          <Shield className="w-3.5 h-3.5" /> Mark Verified
+                        </Button>
+                      )}
+                      {sub.verificationStatus === 'flagged' && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="gap-1"
+                          onClick={() => updateVerificationMutation.mutate({ id: sub.id, verificationStatus: 'unverified' })}
+                          disabled={updateVerificationMutation.isPending}
+                        >
+                          Unflag
+                        </Button>
+                      )}
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="gap-1 text-red-500 hover:text-red-700 hover:bg-red-500/10 ml-auto"
+                        onClick={() => {
+                          if (confirm('Are you sure you want to delete this submission?')) {
+                            deleteMutation.mutate({ id: sub.id });
+                          }
+                        }}
+                        disabled={deleteMutation.isPending}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" /> Delete
+                      </Button>
                     </div>
-                  </div>
+                  </>
                 )}
-
-                {/* Actions */}
-                <div className="flex flex-wrap gap-2">
-                  {/* Status actions */}
-                  {sub.status !== 'approved' && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1 text-emerald-600 border-emerald-200 hover:bg-emerald-50"
-                      onClick={() => updateStatusMutation.mutate({ id: sub.id, status: 'approved' })}
-                      disabled={updateStatusMutation.isPending}
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5" /> Approve
-                    </Button>
-                  )}
-                  {sub.status !== 'rejected' && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1 text-red-600 border-red-200 hover:bg-red-50"
-                      onClick={() => updateStatusMutation.mutate({ id: sub.id, status: 'rejected' })}
-                      disabled={updateStatusMutation.isPending}
-                    >
-                      <XCircle className="w-3.5 h-3.5" /> Reject
-                    </Button>
-                  )}
-
-                  {/* Verification actions */}
-                  {sub.verificationStatus !== 'verified' && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1"
-                      onClick={() => updateVerificationMutation.mutate({ id: sub.id, verificationStatus: 'verified' })}
-                      disabled={updateVerificationMutation.isPending}
-                    >
-                      <Shield className="w-3.5 h-3.5" /> Mark Verified
-                    </Button>
-                  )}
-                  {sub.verificationStatus === 'flagged' && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1"
-                      onClick={() => updateVerificationMutation.mutate({ id: sub.id, verificationStatus: 'unverified' })}
-                      disabled={updateVerificationMutation.isPending}
-                    >
-                      Unflag
-                    </Button>
-                  )}
-
-                  {/* Delete */}
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="gap-1 text-red-500 hover:text-red-700 hover:bg-red-50 ml-auto"
-                    onClick={() => {
-                      if (confirm('Are you sure you want to delete this submission?')) {
-                        deleteMutation.mutate({ id: sub.id });
-                      }
-                    }}
-                    disabled={deleteMutation.isPending}
-                  >
-                    <Trash2 className="w-3.5 h-3.5" /> Delete
-                  </Button>
-                </div>
               </div>
             )}
           </div>
@@ -392,6 +438,253 @@ function SubmissionsTab({
     </div>
   );
 }
+
+// ─── Submission Edit Form ─────────────────────────────────────────────────────
+
+function SubmissionEditForm({
+  submission,
+  onSave,
+  onCancel,
+  isSaving,
+}: {
+  submission: any;
+  onSave: (data: any) => void;
+  onCancel: () => void;
+  isSaving: boolean;
+}) {
+  const [form, setForm] = useState({
+    name: submission.name || '',
+    category: submission.category || '',
+    neighborhood: submission.neighborhood || '',
+    address: submission.address || '',
+    atmosphere: submission.atmosphere || '',
+    website: submission.website || '',
+    priceLevel: submission.priceLevel || '',
+    noiseLevel: submission.noiseLevel || 3,
+    wifiQuality: submission.wifiQuality || 3,
+    lightingQuality: submission.lightingQuality || 3,
+    seatingComfort: submission.seatingComfort || 3,
+    laptopFriendly: submission.laptopFriendly || 3,
+    crowdLevel: submission.crowdLevel || 3,
+    studyScore: submission.studyScore || 7,
+    lat: submission.lat || 0,
+    lng: submission.lng || 0,
+  });
+
+  const handleSave = () => {
+    onSave({
+      name: form.name,
+      category: form.category,
+      neighborhood: form.neighborhood,
+      address: form.address,
+      atmosphere: form.atmosphere || undefined,
+      website: form.website || undefined,
+      priceLevel: form.priceLevel,
+      noiseLevel: form.noiseLevel,
+      wifiQuality: form.wifiQuality,
+      lightingQuality: form.lightingQuality,
+      seatingComfort: form.seatingComfort,
+      laptopFriendly: form.laptopFriendly,
+      crowdLevel: form.crowdLevel,
+      studyScore: form.studyScore,
+      lat: form.lat,
+      lng: form.lng,
+    });
+  };
+
+  const inputClass = "w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all";
+  const labelClass = "text-xs text-muted-foreground mb-1 block";
+
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>Name</label>
+          <input className={inputClass} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Category</label>
+          <input className={inputClass} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Neighborhood</label>
+          <input className={inputClass} value={form.neighborhood} onChange={e => setForm(f => ({ ...f, neighborhood: e.target.value }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Address</label>
+          <input className={inputClass} value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Website</label>
+          <input className={inputClass} value={form.website} onChange={e => setForm(f => ({ ...f, website: e.target.value }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Price Level</label>
+          <select className={inputClass} value={form.priceLevel} onChange={e => setForm(f => ({ ...f, priceLevel: e.target.value }))}>
+            <option value="Free">Free</option>
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+          </select>
+        </div>
+        <div>
+          <label className={labelClass}>Study Score (0-10)</label>
+          <input type="number" min="0" max="10" step="0.1" className={inputClass} value={form.studyScore} onChange={e => setForm(f => ({ ...f, studyScore: parseFloat(e.target.value) || 0 }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Atmosphere</label>
+          <input className={inputClass} value={form.atmosphere} onChange={e => setForm(f => ({ ...f, atmosphere: e.target.value }))} />
+        </div>
+      </div>
+
+      {/* Ratings */}
+      <div>
+        <div className="text-xs text-muted-foreground mb-2">Ratings (1-5)</div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {[
+            { key: 'noiseLevel', label: 'Noise' },
+            { key: 'wifiQuality', label: 'WiFi' },
+            { key: 'lightingQuality', label: 'Lighting' },
+            { key: 'seatingComfort', label: 'Comfort' },
+            { key: 'laptopFriendly', label: 'Laptop' },
+            { key: 'crowdLevel', label: 'Crowd' },
+          ].map(({ key, label }) => (
+            <div key={key}>
+              <label className={labelClass}>{label}</label>
+              <input
+                type="number"
+                min="1"
+                max="5"
+                className={inputClass}
+                value={(form as any)[key]}
+                onChange={e => setForm(f => ({ ...f, [key]: parseInt(e.target.value) || 1 }))}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Coordinates */}
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>Latitude</label>
+          <input type="number" step="0.0000001" className={inputClass} value={form.lat} onChange={e => setForm(f => ({ ...f, lat: parseFloat(e.target.value) || 0 }))} />
+        </div>
+        <div>
+          <label className={labelClass}>Longitude</label>
+          <input type="number" step="0.0000001" className={inputClass} value={form.lng} onChange={e => setForm(f => ({ ...f, lng: parseFloat(e.target.value) || 0 }))} />
+        </div>
+      </div>
+
+      <div className="flex gap-2">
+        <Button size="sm" className="gap-1" onClick={handleSave} disabled={isSaving}>
+          <Save className="w-3.5 h-3.5" /> {isSaving ? 'Saving...' : 'Save Changes'}
+        </Button>
+        <Button size="sm" variant="outline" className="gap-1" onClick={onCancel}>
+          <X className="w-3.5 h-3.5" /> Cancel
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Reviews Tab ──────────────────────────────────────────────────────────────
+
+function ReviewsTab() {
+  const utils = trpc.useUtils();
+  const { data: reviews, isLoading } = trpc.reviews.getAll.useQuery({ limit: 100, offset: 0 });
+
+  const deleteMutation = trpc.reviews.delete.useMutation({
+    onSuccess: () => {
+      utils.reviews.getAll.invalidate();
+      utils.reviews.getForLocation.invalidate();
+      utils.reviews.getCount.invalidate();
+      utils.reviews.getTotalCount.invalidate();
+      toast.success('Review deleted');
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  if (isLoading) {
+    return <div className="text-center py-12 text-muted-foreground">Loading reviews...</div>;
+  }
+
+  if (!reviews || reviews.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <MessageSquare className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
+        <p className="text-muted-foreground">No reviews yet.</p>
+      </div>
+    );
+  }
+
+  const locationTypeLabel = (t: string) => {
+    switch (t) {
+      case 'curated': return 'Curated';
+      case 'uni': return 'UniMode';
+      case 'community': return 'Community';
+      default: return t;
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="text-sm text-muted-foreground mb-4">
+        {reviews.length} total reviews
+      </div>
+
+      {reviews.map((review) => {
+        const avg = ((review.quietness + review.wifiQuality + review.comfort + review.lighting + review.laptopFriendly) / 5).toFixed(1);
+        const images: string[] = Array.isArray(review.images) ? review.images : [];
+        return (
+          <div key={review.id} className="border border-border rounded-xl p-4 bg-card">
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-medium text-foreground">{review.userName || 'Anonymous'}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {locationTypeLabel(review.locationType)} #{review.locationId}
+                  </span>
+                  <span className="text-xs font-medium text-fog-gold">{avg}/5</span>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {new Date(review.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  {' · '}
+                  Q:{review.quietness} W:{review.wifiQuality} C:{review.comfort} L:{review.lighting} LP:{review.laptopFriendly}
+                </div>
+              </div>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="gap-1 text-red-500 hover:text-red-700 hover:bg-red-500/10 shrink-0"
+                onClick={() => {
+                  if (confirm('Delete this review?')) {
+                    deleteMutation.mutate({ id: review.id });
+                  }
+                }}
+                disabled={deleteMutation.isPending}
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </Button>
+            </div>
+            {review.comment && (
+              <p className="text-sm text-foreground/80 mt-1">{review.comment}</p>
+            )}
+            {images.length > 0 && (
+              <div className="flex gap-2 mt-2 overflow-x-auto">
+                {images.map((url, i) => (
+                  <img key={i} src={url} alt="" className="w-16 h-16 rounded-lg object-cover border border-border" />
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Reports Tab ──────────────────────────────────────────────────────────────
 
 function ReportsTab() {
   const utils = trpc.useUtils();
@@ -432,11 +725,11 @@ function ReportsTab() {
       </div>
 
       {reports.map((report) => (
-        <div key={report.id} className="border border-red-200 rounded-xl p-4 bg-red-50/30">
+        <div key={report.id} className="border border-red-500/30 rounded-xl p-4 bg-red-500/5">
           <div className="flex items-start justify-between gap-3 mb-2">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-sm font-medium text-red-700">
+                <span className="text-sm font-medium text-red-500">
                   {REASON_LABELS[report.reason] || report.reason}
                 </span>
                 <span className="text-xs text-muted-foreground">
@@ -478,11 +771,13 @@ function ReportsTab() {
   );
 }
 
+// ─── Status Badge ─────────────────────────────────────────────────────────────
+
 function StatusBadge({ status }: { status: string }) {
   const config: Record<string, { label: string; className: string }> = {
-    pending: { label: 'Pending', className: 'bg-yellow-100 text-yellow-700' },
-    approved: { label: 'Approved', className: 'bg-emerald-100 text-emerald-700' },
-    rejected: { label: 'Rejected', className: 'bg-red-100 text-red-700' },
+    pending: { label: 'Pending', className: 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-400' },
+    approved: { label: 'Approved', className: 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' },
+    rejected: { label: 'Rejected', className: 'bg-red-500/20 text-red-600 dark:text-red-400' },
   };
   const c = config[status] || config.pending;
   return (

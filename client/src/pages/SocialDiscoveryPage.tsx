@@ -46,18 +46,18 @@ const PLATFORM_CONFIG = {
 
 // Tag display config
 const TAG_COLORS: Record<string, string> = {
-  aesthetic: 'bg-pink-100 text-pink-700',
-  study: 'bg-blue-100 text-blue-700',
-  cafe: 'bg-amber-100 text-amber-700',
-  library: 'bg-emerald-100 text-emerald-700',
-  coworking: 'bg-violet-100 text-violet-700',
-  quiet: 'bg-teal-100 text-teal-700',
-  'laptop-friendly': 'bg-indigo-100 text-indigo-700',
-  free: 'bg-green-100 text-green-700',
-  vlog: 'bg-rose-100 text-rose-700',
-  review: 'bg-orange-100 text-orange-700',
-  food: 'bg-yellow-100 text-yellow-700',
-  'hidden-gem': 'bg-purple-100 text-purple-700',
+  aesthetic: 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300',
+  study: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+  cafe: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  library: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+  coworking: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  quiet: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
+  'laptop-friendly': 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
+  free: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
+  vlog: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
+  review: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  food: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300',
+  'hidden-gem': 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
 };
 
 // Platform gradient fallbacks for when thumbnail is missing
@@ -186,7 +186,7 @@ function VideoCard({
             {video.tags.slice(0, 3).map(tag => (
               <span
                 key={tag}
-                className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${TAG_COLORS[tag] || 'bg-gray-100 text-gray-600'}`}
+                className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${TAG_COLORS[tag] || 'bg-secondary text-secondary-foreground'}`}
               >
                 {tag}
               </span>

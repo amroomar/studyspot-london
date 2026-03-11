@@ -13,6 +13,7 @@ export interface Review {
   lighting: number;
   laptopFriendly: number;
   comment: string | null;
+  images: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -34,7 +35,11 @@ interface ReviewsContextType {
     lighting: number;
     laptopFriendly: number;
     comment?: string;
+    anonymous?: boolean;
+    images?: string[];
   }) => Promise<void>;
+  /** Upload a review image */
+  uploadImage: (base64: string, mimeType: string) => Promise<string>;
   /** Delete a review */
   deleteReview: (id: number) => Promise<void>;
   /** Get average rating for reviews */
@@ -48,7 +53,6 @@ export function ReviewsProvider({ children }: { children: ReactNode }) {
 
   const createMutation = trpc.reviews.create.useMutation({
     onSuccess: (_data, variables) => {
-      // Invalidate the specific location's reviews
       utils.reviews.getForLocation.invalidate({
         locationType: variables.locationType,
         locationId: variables.locationId,
@@ -61,9 +65,10 @@ export function ReviewsProvider({ children }: { children: ReactNode }) {
     },
   });
 
+  const uploadMutation = trpc.reviews.uploadImage.useMutation();
+
   const deleteMutation = trpc.reviews.delete.useMutation({
     onSuccess: () => {
-      // Invalidate all review queries
       utils.reviews.getForLocation.invalidate();
       utils.reviews.getCount.invalidate();
       utils.reviews.getTotalCount.invalidate();
@@ -79,9 +84,16 @@ export function ReviewsProvider({ children }: { children: ReactNode }) {
     lighting: number;
     laptopFriendly: number;
     comment?: string;
+    anonymous?: boolean;
+    images?: string[];
   }) => {
     await createMutation.mutateAsync(data);
   }, [createMutation]);
+
+  const uploadImage = useCallback(async (base64: string, mimeType: string): Promise<string> => {
+    const result = await uploadMutation.mutateAsync({ base64, mimeType });
+    return result.url;
+  }, [uploadMutation]);
 
   const deleteReviewFn = useCallback(async (id: number) => {
     await deleteMutation.mutateAsync({ id });
@@ -100,7 +112,6 @@ export function ReviewsProvider({ children }: { children: ReactNode }) {
     locationType: 'curated' | 'uni' | 'community',
     locationId: number
   ) => {
-    // This will be called as a hook from components
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const query = trpc.reviews.getForLocation.useQuery(
       { locationType, locationId },
@@ -117,6 +128,7 @@ export function ReviewsProvider({ children }: { children: ReactNode }) {
     <ReviewsContext.Provider value={{
       useLocationReviews,
       addReview,
+      uploadImage,
       deleteReview: deleteReviewFn,
       getAverageFromReviews,
     }}>

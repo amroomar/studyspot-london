@@ -158,3 +158,17 @@
 
 ### Reviews Bug
 - [x] Reviews don't show up to everyone — migrated from localStorage to database-backed tRPC
+
+### Reviews Enhancement
+- [x] Add image upload support to reviews
+- [x] Add sorting options (date, rating) to reviews
+- [x] Allow reviewers to choose name or remain anonymous
+- [x] Add review images to schema and storage
+
+### Admin Portal Enhancement
+- [x] Add reviews management section to admin portal (view, delete reviews)
+- [x] Add community spot editing in admin portal (edit name, category, address, etc.)
+
+### Dark Mode & Mobile Fixes
+- [x] Fix icons not visible in dark mode
+- [x] Fix mobile map button overlap

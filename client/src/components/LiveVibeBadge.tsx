@@ -74,7 +74,7 @@ export function VibeDetailPanel({ locationId }: { locationId: number }) {
                     ? vibe.status === 'very-busy' ? 'bg-red-500' :
                       vibe.status === 'moderate' ? 'bg-amber-500' :
                       vibe.status === 'good-vibe' ? 'bg-blue-500' : 'bg-emerald-500'
-                    : 'bg-gray-200'
+                    : 'bg-muted'
                 }`}
               />
             ))}

@@ -3,7 +3,7 @@
  * London Fog design: large hero image, editorial layout, frosted glass elements
  * Includes Google Maps buttons and improved UX
  */
-import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles } from 'lucide-react';
+import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles, Camera, X, User, UserX, ArrowUpDown } from 'lucide-react';
 import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
 import ConfirmReportButtons from '@/components/ConfirmReportButtons';
 import { VibeDetailPanel } from '@/components/LiveVibeBadge';
@@ -15,7 +15,7 @@ import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { useReviews, type Review } from '@/contexts/ReviewsContext';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { toast } from 'sonner';
 
 interface LocationDetailProps {
@@ -38,18 +38,66 @@ function AttributeRow({ icon: Icon, label, value, color }: { icon: any; label: s
 }
 
 function ReviewForm({ locationType, locationId, onSubmit }: { locationType: 'curated' | 'uni' | 'community'; locationId: number; onSubmit: () => void }) {
-  const { addReview } = useReviews();
+  const { addReview, uploadImage } = useReviews();
   const [ratings, setRatings] = useState({ quietness: 4, wifiQuality: 4, comfort: 4, lighting: 4, laptopFriendly: 4 });
   const [comment, setComment] = useState('');
+  const [anonymous, setAnonymous] = useState(false);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    if (imageUrls.length + files.length > 5) {
+      toast.error('Maximum 5 images per review');
+      return;
+    }
+    setUploading(true);
+    try {
+      for (const file of Array.from(files)) {
+        if (file.size > 5 * 1024 * 1024) {
+          toast.error(`${file.name} is too large (max 5MB)`);
+          continue;
+        }
+        const base64 = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = reader.result as string;
+            resolve(result.split(',')[1]);
+          };
+          reader.readAsDataURL(file);
+        });
+        const url = await uploadImage(base64, file.type);
+        setImageUrls(prev => [...prev, url]);
+      }
+    } catch (err: any) {
+      toast.error('Failed to upload image. Please log in first.');
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
+
+  const removeImage = (idx: number) => {
+    setImageUrls(prev => prev.filter((_, i) => i !== idx));
+  };
 
   const handleSubmit = async () => {
     if (!comment.trim()) { toast.error('Please add a comment'); return; }
     setSubmitting(true);
     try {
-      await addReview({ locationType, locationId, ...ratings, comment: comment.trim() });
+      await addReview({
+        locationType, locationId, ...ratings,
+        comment: comment.trim(),
+        anonymous,
+        images: imageUrls.length > 0 ? imageUrls : undefined,
+      });
       toast.success('Review submitted!');
       setComment('');
+      setImageUrls([]);
+      setAnonymous(false);
       onSubmit();
     } catch (e: any) {
       toast.error(e?.message || 'Failed to submit review. Please log in first.');
@@ -95,7 +143,48 @@ function ReviewForm({ locationType, locationId, onSubmit }: { locationType: 'cur
         placeholder="Share your study experience..."
         className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground text-sm resize-none h-24 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
       />
-      <Button onClick={handleSubmit} disabled={submitting} className="w-full bg-primary text-primary-foreground gap-2">
+
+      {/* Image upload */}
+      <div>
+        <input ref={fileInputRef} type="file" accept="image/*" multiple className="hidden" onChange={handleImageUpload} />
+        <div className="flex items-center gap-2 flex-wrap">
+          {imageUrls.map((url, idx) => (
+            <div key={idx} className="relative w-16 h-16 rounded-lg overflow-hidden border border-border">
+              <img src={url} alt="" className="w-full h-full object-cover" />
+              <button onClick={() => removeImage(idx)} className="absolute top-0.5 right-0.5 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center">
+                <X className="w-3 h-3 text-white" />
+              </button>
+            </div>
+          ))}
+          {imageUrls.length < 5 && (
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="w-16 h-16 rounded-lg border-2 border-dashed border-border hover:border-primary/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+            >
+              {uploading ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" /> : <Camera className="w-5 h-5" />}
+            </button>
+          )}
+        </div>
+        <p className="text-xs text-muted-foreground mt-1">Add up to 5 photos (max 5MB each)</p>
+      </div>
+
+      {/* Anonymous toggle */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setAnonymous(!anonymous)}
+          className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors border ${
+            anonymous
+              ? 'bg-muted border-border text-foreground'
+              : 'border-border/50 text-muted-foreground hover:border-border'
+          }`}
+        >
+          {anonymous ? <UserX className="w-4 h-4" /> : <User className="w-4 h-4" />}
+          {anonymous ? 'Posting anonymously' : 'Posting with your name'}
+        </button>
+      </div>
+
+      <Button onClick={handleSubmit} disabled={submitting || uploading} className="w-full bg-primary text-primary-foreground gap-2">
         <Send className="w-4 h-4" /> {submitting ? 'Submitting...' : 'Submit Review'}
       </Button>
     </div>
@@ -103,18 +192,42 @@ function ReviewForm({ locationType, locationId, onSubmit }: { locationType: 'cur
 }
 
 function ReviewCard({ review }: { review: Review }) {
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const avg = ((review.quietness + review.wifiQuality + review.comfort + review.lighting + review.laptopFriendly) / 5).toFixed(1);
+  const images: string[] = Array.isArray(review.images) ? review.images : [];
   return (
     <div className="bg-secondary/50 rounded-xl p-4">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-fog-sage/20 flex items-center justify-center text-sm">👤</div>
-          <span className="text-sm font-medium">{review.userName || 'Anonymous'}</span>
+          <div className="w-8 h-8 rounded-full bg-fog-sage/20 flex items-center justify-center text-sm">
+            {review.userName === 'Anonymous' ? <UserX className="w-4 h-4 text-muted-foreground" /> : <User className="w-4 h-4 text-muted-foreground" />}
+          </div>
+          <div>
+            <span className="text-sm font-medium">{review.userName || 'Anonymous'}</span>
+            <p className="text-xs text-muted-foreground/60">{new Date(review.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+          </div>
         </div>
         <div className="score-badge text-sm text-fog-gold">{avg}/5</div>
       </div>
-      {review.comment && <p className="text-sm text-muted-foreground">{review.comment}</p>}
-      <p className="text-xs text-muted-foreground/60 mt-2">{new Date(review.createdAt).toLocaleDateString()}</p>
+      {review.comment && <p className="text-sm text-muted-foreground mt-1">{review.comment}</p>}
+      {images.length > 0 && (
+        <div className="flex gap-2 mt-3 overflow-x-auto">
+          {images.map((url, i) => (
+            <button key={i} onClick={() => setLightboxImg(url)} className="shrink-0 w-20 h-20 rounded-lg overflow-hidden border border-border hover:opacity-80 transition-opacity">
+              <img src={url} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+      {/* Lightbox */}
+      {lightboxImg && (
+        <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4" onClick={() => setLightboxImg(null)}>
+          <img src={lightboxImg} alt="" className="max-w-full max-h-[80vh] rounded-xl" />
+          <button className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center" onClick={() => setLightboxImg(null)}>
+            <X className="w-5 h-5 text-white" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -142,6 +255,19 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
   const image = resolveImage('curated', location.id, defaultImage) || defaultImage;
   const locationType: 'curated' | 'community' = (location as any).isCommunitySubmitted ? 'community' : 'curated';
   const { reviews, isLoading: reviewsLoading } = useLocationReviews(locationType, location.id);
+  const [reviewSort, setReviewSort] = useState<'newest' | 'oldest' | 'highest' | 'lowest'>('newest');
+
+  const sortedReviews = [...reviews].sort((a, b) => {
+    const avgA = (a.quietness + a.wifiQuality + a.comfort + a.lighting + a.laptopFriendly) / 5;
+    const avgB = (b.quietness + b.wifiQuality + b.comfort + b.lighting + b.laptopFriendly) / 5;
+    switch (reviewSort) {
+      case 'newest': return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      case 'oldest': return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      case 'highest': return avgB - avgA;
+      case 'lowest': return avgA - avgB;
+      default: return 0;
+    }
+  });
 
   const noiseLabels: Record<number, string> = { 1: 'Very Quiet', 2: 'Quiet', 3: 'Moderate', 4: 'Lively', 5: 'Loud' };
 
@@ -163,13 +289,13 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
             onClick={onBack}
             className="w-10 h-10 rounded-full glass flex items-center justify-center shadow-lg"
           >
-            <ArrowLeft className="w-5 h-5 text-fog-charcoal" />
+            <ArrowLeft className="w-5 h-5 text-foreground" />
           </button>
           <button
             onClick={() => toggleFavorite(location.id)}
             className="w-10 h-10 rounded-full glass flex items-center justify-center shadow-lg"
           >
-            <Heart className={`w-5 h-5 ${fav ? 'fill-red-500 text-red-500' : 'text-fog-charcoal'}`} />
+            <Heart className={`w-5 h-5 ${fav ? 'fill-red-500 text-red-500' : 'text-foreground'}`} />
           </button>
         </div>
 
@@ -384,14 +510,28 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg" style={{ fontFamily: 'var(--font-display)' }}>Reviews ({reviews.length})</h2>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowReviewForm(!showReviewForm)}
-              className="text-sm"
-            >
-              {showReviewForm ? 'Cancel' : 'Write Review'}
-            </Button>
+            <div className="flex items-center gap-2">
+              {reviews.length > 1 && (
+                <select
+                  value={reviewSort}
+                  onChange={(e) => setReviewSort(e.target.value as 'newest' | 'oldest' | 'highest' | 'lowest')}
+                  className="text-xs bg-card border border-border rounded-lg px-2 py-1.5 text-foreground"
+                >
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="highest">Highest Rated</option>
+                  <option value="lowest">Lowest Rated</option>
+                </select>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowReviewForm(!showReviewForm)}
+                className="text-sm"
+              >
+                {showReviewForm ? 'Cancel' : 'Write Review'}
+              </Button>
+            </div>
           </div>
 
           {showReviewForm && (
@@ -402,7 +542,7 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
 
           {reviews.length > 0 ? (
             <div className="space-y-3">
-              {reviews.map(review => <ReviewCard key={review.id} review={review} />)}
+              {sortedReviews.map(review => <ReviewCard key={review.id} review={review} />)}
             </div>
           ) : (
             <div className="text-center py-8 text-muted-foreground text-sm">

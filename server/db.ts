@@ -537,3 +537,30 @@ export async function getTotalReviewCount(): Promise<number> {
 
   return rows[0]?.count ?? 0;
 }
+
+/** Get all reviews with pagination (admin) */
+export async function getAllReviews(
+  limit: number = 50,
+  offset: number = 0
+): Promise<Review[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(reviews)
+    .orderBy(desc(reviews.createdAt))
+    .limit(limit)
+    .offset(offset);
+}
+
+/** Update a community submission (admin editing) */
+export async function updateCommunitySubmission(
+  id: number,
+  data: Partial<InsertCommunitySubmission>
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(communitySubmissions).set(data).where(eq(communitySubmissions.id, id));
+}
