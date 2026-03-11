@@ -139,3 +139,6 @@
 - [x] Add smoother and cooler animations throughout
 - [x] Redesign discover/home page for a more sleek and professional look
 - [x] Improve overall visual polish and consistency
+
+### Admin Access
+- [x] Add login prompt when accessing /admin for unauthenticated users

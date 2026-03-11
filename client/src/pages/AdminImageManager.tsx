@@ -8,6 +8,7 @@ import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { Link } from 'wouter';
+import { getLoginUrl } from '@/const';
 import {
   ArrowLeft,
   Shield,
@@ -106,7 +107,27 @@ export default function AdminImageManager() {
     );
   }
 
-  if (!user || user.role !== 'admin') {
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+          <h1 className="text-xl font-semibold mb-2">Login Required</h1>
+          <p className="text-muted-foreground mb-4">Please log in to access the image manager.</p>
+          <div className="flex gap-3 justify-center">
+            <a href={getLoginUrl()}>
+              <Button>Log In</Button>
+            </a>
+            <Link href="/">
+              <Button variant="outline">Back to Home</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (user.role !== 'admin') {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
