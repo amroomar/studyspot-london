@@ -142,3 +142,6 @@
 
 ### Admin Access
 - [x] Add login prompt when accessing /admin for unauthenticated users
+
+### Verified Badge
+- [x] Add verified badge to community spots that admin verifies

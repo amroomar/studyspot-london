@@ -143,6 +143,9 @@ function CommunityDiscoveries({ onSelectLocation }: { onSelectLocation: (loc: Lo
     isCommunitySubmitted: true,
     submittedBy: sub.submittedBy,
     images: sub.images || [],
+    verificationStatus: sub.verificationStatus || 'unverified',
+    confirmationCount: sub.confirmationCount || 0,
+    reportCount: sub.reportCount || 0,
   }));
 
   return (
@@ -524,7 +527,13 @@ function HomeInner() {
       peakBusyTimes: 'Varies',
       website: sub.website || '',
       image: sub.images?.[0] || '',
-    }));
+      isCommunitySubmitted: true,
+      submittedBy: sub.submittedBy,
+      images: sub.images || [],
+      verificationStatus: sub.verificationStatus || 'unverified',
+      confirmationCount: sub.confirmationCount || 0,
+      reportCount: sub.reportCount || 0,
+    } as any));
   }, [submissions]);
 
   // Shared filtered locations — used by both discovery feed and map
