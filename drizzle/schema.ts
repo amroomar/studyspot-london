@@ -188,3 +188,26 @@ export const reviews = mysqlTable("reviews", {
 
 export type Review = typeof reviews.$inferSelect;
 export type InsertReview = typeof reviews.$inferInsert;
+
+/**
+ * Admin notifications — alerts for admin about new reviews, submissions, reports, etc.
+ */
+export const adminNotifications = mysqlTable("admin_notifications", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Notification type */
+  type: mysqlEnum("type", ["new_review", "new_submission", "new_report"]).notNull(),
+  /** Human-readable title */
+  title: varchar("title", { length: 255 }).notNull(),
+  /** Notification body/message */
+  message: text("message").notNull(),
+  /** Whether the admin has read this notification */
+  isRead: int("isRead").default(0).notNull(),
+  /** Optional reference ID (e.g. review ID, submission ID) */
+  referenceId: int("referenceId"),
+  /** Optional reference type for linking */
+  referenceType: varchar("referenceType", { length: 50 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type AdminNotification = typeof adminNotifications.$inferSelect;
+export type InsertAdminNotification = typeof adminNotifications.$inferInsert;

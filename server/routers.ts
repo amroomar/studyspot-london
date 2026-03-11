@@ -35,6 +35,12 @@ import {
   getTotalReviewCount,
   getAllReviews,
   updateCommunitySubmission,
+  createAdminNotification,
+  getAdminNotifications,
+  getUnreadNotificationCount,
+  markNotificationRead,
+  markAllNotificationsRead,
+  deleteAdminNotification,
 } from "./db";
 
 // ─── Helper: parse submission row for API response ──────────────────────────
@@ -280,13 +286,30 @@ export const appRouter = router({
       }))
       .mutation(async ({ ctx, input }) => {
         const { anonymous, images, ...rest } = input;
-        return createReview({
+        const userName = anonymous ? "Anonymous" : (ctx.user.name || "Anonymous");
+        const review = await createReview({
           ...rest,
           userId: ctx.user.id,
-          userName: anonymous ? "Anonymous" : (ctx.user.name || "Anonymous"),
+          userName,
           comment: rest.comment || null,
           images: images && images.length > 0 ? JSON.stringify(images) : null,
         });
+
+        // Trigger admin notification
+        try {
+          const avgRating = ((input.quietness + input.wifiQuality + input.comfort + input.lighting + input.laptopFriendly) / 5).toFixed(1);
+          await createAdminNotification({
+            type: "new_review",
+            title: `New Review by ${userName}`,
+            message: `${userName} left a ${avgRating}/5 review on a ${input.locationType} location (ID: ${input.locationId}).${input.comment ? ` "${input.comment.slice(0, 100)}${input.comment.length > 100 ? '...' : ''}"` : ''}`,
+            referenceId: review.id,
+            referenceType: "review",
+          });
+        } catch (err) {
+          console.error("[Notification] Failed to create review notification:", err);
+        }
+
+        return review;
       }),
 
     /** Upload a review image to S3 */
@@ -308,6 +331,46 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ ctx, input }) => {
         await deleteReview(input.id);
+        return { success: true };
+      }),
+  }),
+
+  // ─── Admin Notifications ─────────────────────────────────────────────────
+  notifications: router({
+    /** Get all notifications (admin only) */
+    list: adminProcedure
+      .input(z.object({
+        limit: z.number().int().min(1).max(100).optional().default(50),
+        offset: z.number().int().min(0).optional().default(0),
+      }))
+      .query(async ({ input }) => {
+        return getAdminNotifications(input.limit, input.offset);
+      }),
+
+    /** Get unread notification count (admin only) */
+    unreadCount: adminProcedure.query(async () => {
+      return getUnreadNotificationCount();
+    }),
+
+    /** Mark a single notification as read (admin only) */
+    markRead: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await markNotificationRead(input.id);
+        return { success: true };
+      }),
+
+    /** Mark all notifications as read (admin only) */
+    markAllRead: adminProcedure.mutation(async () => {
+      await markAllNotificationsRead();
+      return { success: true };
+    }),
+
+    /** Delete a notification (admin only) */
+    delete: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await deleteAdminNotification(input.id);
         return { success: true };
       }),
   }),

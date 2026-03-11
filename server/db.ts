@@ -564,3 +564,69 @@ export async function updateCommunitySubmission(
 
   await db.update(communitySubmissions).set(data).where(eq(communitySubmissions.id, id));
 }
+
+// ─── Admin Notifications ───────────────────────────────────────────────────
+
+import { adminNotifications, type InsertAdminNotification, type AdminNotification } from "../drizzle/schema";
+
+/** Create a new admin notification */
+export async function createAdminNotification(data: InsertAdminNotification): Promise<AdminNotification> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(adminNotifications).values(data);
+  const insertId = result[0].insertId;
+
+  const rows = await db.select().from(adminNotifications).where(eq(adminNotifications.id, insertId)).limit(1);
+  return rows[0];
+}
+
+/** Get all admin notifications, newest first */
+export async function getAdminNotifications(limit: number = 50, offset: number = 0): Promise<AdminNotification[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(adminNotifications)
+    .orderBy(desc(adminNotifications.createdAt))
+    .limit(limit)
+    .offset(offset);
+}
+
+/** Get unread notification count */
+export async function getUnreadNotificationCount(): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const rows = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(adminNotifications)
+    .where(eq(adminNotifications.isRead, 0));
+
+  return rows[0]?.count ?? 0;
+}
+
+/** Mark a notification as read */
+export async function markNotificationRead(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(adminNotifications).set({ isRead: 1 }).where(eq(adminNotifications.id, id));
+}
+
+/** Mark all notifications as read */
+export async function markAllNotificationsRead(): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(adminNotifications).set({ isRead: 1 }).where(eq(adminNotifications.isRead, 0));
+}
+
+/** Delete a notification */
+export async function deleteAdminNotification(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(adminNotifications).where(eq(adminNotifications.id, id));
+}

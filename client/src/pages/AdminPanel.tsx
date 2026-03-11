@@ -3,7 +3,7 @@
  * Features: submission list, verification management, report review, reviews management, community spot editing
  * London Fog design: warm tones, editorial layout
  */
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
@@ -31,9 +31,12 @@ import {
   Save,
   X,
   MessageSquare,
+  Bell,
+  BellRing,
+  CheckCheck,
 } from 'lucide-react';
 
-type Tab = 'submissions' | 'reports' | 'reviews';
+type Tab = 'submissions' | 'reports' | 'reviews' | 'notifications';
 
 const ImageMgmtIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -47,6 +50,11 @@ export default function AdminPanel() {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>('submissions');
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const unreadCountQuery = trpc.notifications.unreadCount.useQuery(undefined, {
+    enabled: !!user && user.role === 'admin',
+    refetchInterval: 30000, // Poll every 30 seconds
+  });
+  const unreadCount = (unreadCountQuery.data as number) ?? 0;
 
   if (loading) {
     return (
@@ -111,28 +119,51 @@ export default function AdminPanel() {
           </div>
 
           {/* Quick Links */}
-          <div className="mb-3">
+            <div className="mb-3 flex items-center gap-2">
             <Link href="/admin/images">
               <Button variant="outline" size="sm" className="gap-1.5">
                 <ImageMgmtIcon className="w-3.5 h-3.5" />
                 Image Manager
               </Button>
             </Link>
+            <button
+              onClick={() => setActiveTab('notifications')}
+              className="relative w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors"
+              title="Notifications"
+            >
+              {unreadCount > 0 ? (
+                <BellRing className="w-4 h-4 text-primary animate-pulse" />
+              ) : (
+                <Bell className="w-4 h-4 text-foreground" />
+              )}
+              {unreadCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1">
-            {(['submissions', 'reports', 'reviews'] as Tab[]).map(tab => (
+          <div className="flex gap-1 flex-wrap">
+            {(['submissions', 'reports', 'reviews', 'notifications'] as Tab[]).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize flex items-center gap-1.5 ${
                   activeTab === tab
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:bg-secondary'
                 }`}
               >
                 {tab}
+                {tab === 'notifications' && unreadCount > 0 && (
+                  <span className={`w-5 h-5 text-[10px] font-bold rounded-full flex items-center justify-center ${
+                    activeTab === 'notifications' ? 'bg-primary-foreground text-primary' : 'bg-red-500 text-white'
+                  }`}>
+                    {unreadCount > 99 ? '99+' : unreadCount}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -146,6 +177,7 @@ export default function AdminPanel() {
         )}
         {activeTab === 'reports' && <ReportsTab />}
         {activeTab === 'reviews' && <ReviewsTab />}
+        {activeTab === 'notifications' && <NotificationsTab />}
       </div>
     </div>
   );
@@ -785,4 +817,172 @@ function StatusBadge({ status }: { status: string }) {
       {c.label}
     </span>
   );
+}
+
+// ─── Notifications Tab ───────────────────────────────────────────────────────
+
+function NotificationsTab() {
+  const utils = trpc.useUtils();
+  const notificationsQuery = trpc.notifications.list.useQuery({ limit: 50, offset: 0 });
+  const markReadMutation = trpc.notifications.markRead.useMutation({
+    onSuccess: () => {
+      utils.notifications.list.invalidate();
+      utils.notifications.unreadCount.invalidate();
+    },
+  });
+  const markAllReadMutation = trpc.notifications.markAllRead.useMutation({
+    onSuccess: () => {
+      utils.notifications.list.invalidate();
+      utils.notifications.unreadCount.invalidate();
+      toast.success('All notifications marked as read');
+    },
+  });
+  const deleteMutation = trpc.notifications.delete.useMutation({
+    onSuccess: () => {
+      utils.notifications.list.invalidate();
+      utils.notifications.unreadCount.invalidate();
+      toast.success('Notification deleted');
+    },
+  });
+
+  const notifications = (notificationsQuery.data ?? []) as Array<{
+    id: number;
+    type: string;
+    title: string;
+    message: string;
+    isRead: number;
+    referenceId: number | null;
+    referenceType: string | null;
+    createdAt: Date;
+  }>;
+
+  const unreadCount = notifications.filter(n => !n.isRead).length;
+
+  if (notificationsQuery.isLoading) {
+    return <div className="text-center py-12 text-muted-foreground">Loading notifications...</div>;
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
+          Notifications
+        </h2>
+        {unreadCount > 0 && (
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            onClick={() => markAllReadMutation.mutate()}
+            disabled={markAllReadMutation.isPending}
+          >
+            <CheckCheck className="w-3.5 h-3.5" />
+            Mark All Read
+          </Button>
+        )}
+      </div>
+
+      {notifications.length === 0 ? (
+        <div className="text-center py-16">
+          <Bell className="w-10 h-10 text-muted-foreground mx-auto mb-3 opacity-40" />
+          <p className="text-muted-foreground">No notifications yet</p>
+          <p className="text-sm text-muted-foreground/60 mt-1">
+            You'll be notified here when users submit new reviews.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {notifications.map(notification => {
+            const isUnread = !notification.isRead;
+            const typeIcon = notification.type === 'new_review' ? (
+              <Star className="w-4 h-4 text-amber-500" />
+            ) : notification.type === 'new_submission' ? (
+              <MapPin className="w-4 h-4 text-emerald-500" />
+            ) : notification.type === 'new_report' ? (
+              <Flag className="w-4 h-4 text-red-500" />
+            ) : (
+              <Bell className="w-4 h-4 text-muted-foreground" />
+            );
+
+            const timeAgo = getTimeAgo(new Date(notification.createdAt));
+
+            return (
+              <div
+                key={notification.id}
+                className={`p-4 rounded-xl border transition-colors ${
+                  isUnread
+                    ? 'bg-primary/5 border-primary/20'
+                    : 'bg-card border-border'
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  {/* Icon */}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                    isUnread ? 'bg-primary/10' : 'bg-muted'
+                  }`}>
+                    {typeIcon}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className={`text-sm font-medium ${isUnread ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        {notification.title}
+                      </span>
+                      {isUnread && (
+                        <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {notification.message}
+                    </p>
+                    <span className="text-xs text-muted-foreground/60 mt-1 block">
+                      {timeAgo}
+                    </span>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-1 shrink-0">
+                    {isUnread && (
+                      <button
+                        onClick={() => markReadMutation.mutate({ id: notification.id })}
+                        className="w-7 h-7 rounded-full hover:bg-secondary flex items-center justify-center transition-colors"
+                        title="Mark as read"
+                      >
+                        <Eye className="w-3.5 h-3.5 text-muted-foreground" />
+                      </button>
+                    )}
+                    <button
+                      onClick={() => deleteMutation.mutate({ id: notification.id })}
+                      className="w-7 h-7 rounded-full hover:bg-destructive/10 flex items-center justify-center transition-colors"
+                      title="Delete"
+                    >
+                      <Trash2 className="w-3.5 h-3.5 text-muted-foreground hover:text-destructive" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Helper: human-readable time ago */
+function getTimeAgo(date: Date): string {
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffSec = Math.floor(diffMs / 1000);
+  const diffMin = Math.floor(diffSec / 60);
+  const diffHr = Math.floor(diffMin / 60);
+  const diffDay = Math.floor(diffHr / 24);
+
+  if (diffSec < 60) return 'Just now';
+  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffHr < 24) return `${diffHr}h ago`;
+  if (diffDay < 7) return `${diffDay}d ago`;
+  return date.toLocaleDateString();
 }

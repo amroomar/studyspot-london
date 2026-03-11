@@ -43,6 +43,13 @@
       "when": 1773202958909,
       "tag": "0005_wooden_paper_doll",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1773204044234,
+      "tag": "0006_illegal_morlocks",
+      "breakpoints": true
     }
   ]
 }

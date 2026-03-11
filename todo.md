@@ -172,3 +172,10 @@
 ### Dark Mode & Mobile Fixes
 - [x] Fix icons not visible in dark mode
 - [x] Fix mobile map button overlap
+
+### Admin Notifications
+- [x] Create admin_notifications database table
+- [x] Build tRPC endpoints for notifications (list, markRead, markAllRead, count)
+- [x] Trigger notification on new review submission
+- [x] Add notification bell with badge count to admin panel
+- [x] Add notifications tab with review details, mark-as-read, mark-all-read, and delete
