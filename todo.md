@@ -299,3 +299,6 @@
 
 ## London Image Regression Fix (Round 5)
 - [x] Fix London images reverting to stock placeholders — restore real images from location.image field and image resolver
+
+## UI Consistency
+- [x] Change London UniMode button to match Bristol UniMode button design

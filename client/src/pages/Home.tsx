@@ -307,33 +307,25 @@ function DiscoveryFeed({
 
       {/* UniMode CTA Banner — improved design */}
       {!hasActiveFilters && (
-        <Link href="/london/uni">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ scale: 1.01 }}
-            className="mb-10 relative overflow-hidden rounded-2xl cursor-pointer group"
-          >
-            <div className="relative p-6 sm:p-8 bg-gradient-to-r from-fog-charcoal via-fog-charcoal/95 to-fog-sage/30">
-              <div className="absolute inset-0 grain" />
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-10">
+          <Link href="/london/uni">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-fog-sage to-fog-charcoal p-6 sm:p-8 cursor-pointer group hover:shadow-xl transition-shadow duration-300">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4" />
               <div className="relative flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-fog-gold/20 flex items-center justify-center">
-                    <GraduationCap className="w-6 h-6 text-fog-gold" />
+                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
+                    <GraduationCap className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg text-white font-semibold" style={{ fontFamily: 'var(--font-display)' }}>UniMode</h3>
-                    <p className="text-white/60 text-sm">175 study spots across 10 London universities</p>
+                    <h3 className="text-lg sm:text-xl text-white font-semibold" style={{ fontFamily: 'var(--font-display)' }}>UniMode</h3>
+                    <p className="text-white/70 text-sm">175 study spots across 10 London universities</p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm text-white text-sm font-medium group-hover:bg-white/20 transition-colors">
-                  Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
+                <ArrowRight className="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />
               </div>
             </div>
-          </motion.div>
-        </Link>
+          </Link>
+        </motion.div>
       )}
 
       {/* Community Discoveries */}
