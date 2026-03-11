@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { MapPin, ArrowRight, BookOpen, Coffee, Wifi } from 'lucide-react';
 import { useCity, type CityId } from '@/contexts/CityContext';
 import { useLocation } from 'wouter';
+import { BRISTOL_HERO_IMAGES } from '@/lib/bristolImages';
 
 const cities = [
   {
@@ -22,7 +23,7 @@ const cities = [
     name: 'Bristol',
     subtitle: '100+ Study Spots',
     description: 'From harbourside coworking to Clifton cafes — explore Bristol\'s vibrant study scene.',
-    image: 'https://images.unsplash.com/photo-1595928642910-e1e06e5364e3?w=800&h=600&fit=crop',
+    image: BRISTOL_HERO_IMAGES.main,
     color: 'from-cyan-900/80 to-blue-900/60',
     accent: 'bg-cyan-500',
     stats: { cafes: 40, libraries: 15, coworking: 15, hidden: 30 },
@@ -35,7 +36,7 @@ export default function CitySelector() {
 
   const handleSelect = (cityId: CityId) => {
     setCity(cityId);
-    navigate(cityId === 'london' ? '/' : '/bristol');
+    navigate(cityId === 'london' ? '/london' : '/bristol');
   };
 
   return (

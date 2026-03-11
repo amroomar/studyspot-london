@@ -33,7 +33,7 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot, cityPrefix =
   const cityBadgeClass = isBristol
     ? 'bg-cyan-600/10 text-cyan-500'
     : 'bg-fog-sage/10 text-fog-sage';
-  const uniHref = isBristol ? '/bristol/uni' : '/uni';
+  const uniHref = isBristol ? '/bristol/uni' : '/london/uni';
   const uniBadgeClass = isBristol
     ? 'bg-cyan-600/10 text-cyan-500 border-cyan-600/20 hover:bg-cyan-600/20'
     : 'bg-fog-gold/10 text-fog-gold border-fog-gold/20 hover:bg-fog-gold/20';
@@ -54,11 +54,11 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot, cityPrefix =
             <Link href="/">
               <span className="text-xl text-foreground cursor-pointer hover:opacity-80 transition-opacity" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
             </Link>
-            <Link href={isBristol ? '/bristol' : '/'}>
+            <Link href={isBristol ? '/bristol' : '/london'}>
               <span className={`text-xs ${cityBadgeClass} px-2 py-0.5 rounded-full font-medium cursor-pointer hover:opacity-80 transition-opacity`}>{cityLabel}</span>
             </Link>
             {/* City switcher */}
-            <Link href={isBristol ? '/' : '/bristol'}>
+            <Link href={isBristol ? '/london' : '/bristol'}>
               <span className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground px-2 py-0.5 rounded-full border border-border/50 cursor-pointer transition-colors">
                 <ArrowLeftRight className="w-3 h-3" />
                 {isBristol ? 'London' : 'Bristol'}
@@ -161,7 +161,7 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot, cityPrefix =
         </div>
         <div className="flex items-center gap-1.5">
           {/* City switcher — mobile */}
-          <Link href={isBristol ? '/' : '/bristol'}>
+          <Link href={isBristol ? '/london' : '/bristol'}>
             <span className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground px-2 py-1 rounded-full border border-border/50 cursor-pointer transition-colors">
               <ArrowLeftRight className="w-3 h-3" />
               {isBristol ? 'London' : 'Bristol'}

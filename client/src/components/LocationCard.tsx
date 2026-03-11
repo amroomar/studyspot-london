@@ -10,6 +10,7 @@ import { type VerificationStatus } from '@/components/VerificationBadge';
 import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
+import { getBristolLocationImage } from '@/lib/bristolImages';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { motion } from 'framer-motion';
@@ -33,11 +34,15 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
   // Image resolution priority:
   // 1. Admin override (from database via ImageOverridesContext)
   // 2. Community submission image
-  // 3. Location's built-in image
-  // 4. Fallback from getLocationImage()
+  // 3. Location's built-in image (if non-empty and not unsplash placeholder)
+  // 4. Bristol-specific resolver for Bristol locations (id >= 1001)
+  // 5. London fallback from getLocationImage()
+  const isBristolLocation = location.id >= 1001;
   const defaultImage = location.image && !location.image.includes('source.unsplash')
     ? location.image
-    : getLocationImage(location.name, location.category);
+    : isBristolLocation
+      ? getBristolLocationImage(location.name, location.category)
+      : getLocationImage(location.name, location.category);
 
   const image = isCommunity
     ? (location as any).images?.[0] || defaultImage

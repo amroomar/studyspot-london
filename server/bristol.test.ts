@@ -195,8 +195,8 @@ describe("Bristol Images", () => {
     expect(BRISTOL_HERO_IMAGES.main).toBeTypeOf("string");
     expect(BRISTOL_HERO_IMAGES.library).toBeTypeOf("string");
     expect(BRISTOL_HERO_IMAGES.coworking).toBeTypeOf("string");
-    expect(BRISTOL_HERO_IMAGES.garden).toBeTypeOf("string");
-    expect(BRISTOL_HERO_IMAGES.university).toBeTypeOf("string");
+    expect(BRISTOL_HERO_IMAGES.harbourside).toBeTypeOf("string");
+    expect(BRISTOL_HERO_IMAGES.hotel).toBeTypeOf("string");
   });
 
   it("BRISTOL_CATEGORY_HERO has category mappings", () => {
@@ -204,14 +204,14 @@ describe("Bristol Images", () => {
   });
 
   it("getBristolLocationImage returns a string for any location", () => {
-    const image = getBristolLocationImage(1, "Quiet Study Cafe");
+    const image = getBristolLocationImage("Society Cafe", "Quiet Study Cafe");
     expect(image).toBeTypeOf("string");
     expect(image.startsWith("http")).toBe(true);
   });
 
   it("getBristolLocationImage returns different images for different categories", () => {
-    const cafeImage = getBristolLocationImage(1, "Quiet Study Cafe");
-    const libraryImage = getBristolLocationImage(2, "Library");
+    const cafeImage = getBristolLocationImage("Society Cafe", "Quiet Study Cafe");
+    const libraryImage = getBristolLocationImage("Bristol Central Library", "Library");
     // They may or may not be different, but both should be valid URLs
     expect(cafeImage).toBeTypeOf("string");
     expect(libraryImage).toBeTypeOf("string");

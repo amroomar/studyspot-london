@@ -307,7 +307,7 @@ function DiscoveryFeed({
 
       {/* UniMode CTA Banner — improved design */}
       {!hasActiveFilters && (
-        <Link href="/uni">
+        <Link href="/london/uni">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

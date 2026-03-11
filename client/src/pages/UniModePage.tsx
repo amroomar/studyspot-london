@@ -987,7 +987,7 @@ export default function UniModePage() {
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-30 glass border-b border-border/50 px-6 py-3">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Link href="/">
+            <Link href="/london">
               <span className="text-xl hover:opacity-80 transition-opacity cursor-pointer" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
             </Link>
             <span className="text-xs bg-fog-sage/10 text-fog-sage px-2 py-0.5 rounded-full font-medium">London</span>
@@ -1005,7 +1005,7 @@ export default function UniModePage() {
                 <ArrowLeft className="w-4 h-4" /> All Universities
               </button>
             )}
-            <Link href="/">
+            <Link href="/london">
               <Button variant="outline" size="sm" className="text-xs">
                 <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Main
               </Button>
@@ -1023,7 +1023,7 @@ export default function UniModePage() {
                 <ArrowLeft className="w-5 h-5" />
               </button>
             ) : (
-              <Link href="/">
+              <Link href="/london">
                 <div className="w-8 h-8 rounded-full hover:bg-secondary flex items-center justify-center cursor-pointer">
                   <ArrowLeft className="w-5 h-5" />
                 </div>

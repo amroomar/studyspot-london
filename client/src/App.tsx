@@ -18,12 +18,13 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      {/* City selector landing */}
+      {/* City selector — landing page */}
+      <Route path={"/"} component={CitySelector} />
       <Route path={"/cities"} component={CitySelector} />
 
       {/* London routes */}
-      <Route path={"/"} component={Home} />
-      <Route path={"/uni"} component={UniModePage} />
+      <Route path={"/london"} component={Home} />
+      <Route path={"/london/uni"} component={UniModePage} />
 
       {/* Bristol routes */}
       <Route path={"/bristol"} component={BristolHome} />

@@ -195,6 +195,7 @@ function SubmissionsTab({
   const utils = trpc.useUtils();
   const { data: submissions, isLoading } = trpc.submissions.listAll.useQuery();
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [cityFilter, setCityFilter] = useState<'all' | 'london' | 'bristol'>('all');
 
   const updateStatusMutation = trpc.submissions.updateStatus.useMutation({
     onSuccess: () => {
@@ -246,7 +247,12 @@ function SubmissionsTab({
     );
   }
 
-  const sorted = [...submissions].sort((a, b) => {
+  // Filter by city
+  const cityFiltered = cityFilter === 'all'
+    ? submissions
+    : submissions.filter(s => (s as any).city === cityFilter);
+
+  const sorted = [...cityFiltered].sort((a, b) => {
     const priority: Record<string, number> = { flagged: 0, pending_verification: 1, unverified: 2, community_verified: 3, verified: 4 };
     const statusPriority: Record<string, number> = { pending: 0, approved: 1, rejected: 2 };
     const vp = (priority[a.verificationStatus] ?? 5) - (priority[b.verificationStatus] ?? 5);
@@ -258,12 +264,30 @@ function SubmissionsTab({
 
   return (
     <div className="space-y-3">
-      <div className="text-sm text-muted-foreground mb-4">
-        {submissions.length} total submissions
-        {' · '}
-        {submissions.filter(s => s.status === 'pending').length} pending
-        {' · '}
-        {submissions.filter(s => s.verificationStatus === 'flagged').length} flagged
+      {/* City filter */}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="flex gap-1">
+          {(['all', 'london', 'bristol'] as const).map(city => (
+            <button
+              key={city}
+              onClick={() => setCityFilter(city)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors capitalize ${
+                cityFilter === city
+                  ? city === 'bristol' ? 'bg-cyan-600 text-white' : city === 'london' ? 'bg-emerald-600 text-white' : 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:bg-secondary'
+              }`}
+            >
+              {city === 'all' ? 'All Cities' : city}
+            </button>
+          ))}
+        </div>
+        <div className="text-sm text-muted-foreground">
+          {cityFiltered.length} submissions
+          {' · '}
+          {cityFiltered.filter(s => s.status === 'pending').length} pending
+          {' · '}
+          {cityFiltered.filter(s => s.verificationStatus === 'flagged').length} flagged
+        </div>
       </div>
 
       {sorted.map((sub) => {
@@ -290,6 +314,13 @@ function SubmissionsTab({
                   <span className="font-medium text-sm truncate text-foreground">{sub.name}</span>
                   <VerificationBadge status={sub.verificationStatus as VerificationStatus} compact />
                   <StatusBadge status={sub.status} />
+                  {(sub as any).city && (
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
+                      (sub as any).city === 'bristol' ? 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300'
+                    }`}>
+                      {(sub as any).city === 'bristol' ? 'Bristol' : 'London'}
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span>{sub.neighborhood}</span>

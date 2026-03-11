@@ -240,3 +240,21 @@
 - [x] Add city column to community_submissions database schema and push migration
 - [x] Update SubmissionsContext to filter by city
 - [x] Update API endpoints to accept city parameter for submissions
+
+## Bristol Fixes Round 2
+
+### Images
+- [x] Fix Bristol thumbnail not showing on /cities page (using real Clifton Bridge CDN image)
+- [x] Deep search for real Bristol venue photos (40 real images uploaded to CDN)
+- [x] Update Bristol location data with real venue-specific images (venue name matching + category pools)
+- [x] Ensure no London images appear on Bristol locations (separate getBristolLocationImage resolver)
+
+### Admin Panel
+- [x] Add Bristol admin section with all London admin features (city filter on submissions, image manager)
+- [x] Bristol admin: reviews management (shared Reviews tab works for both cities)
+- [x] Bristol admin: community submissions management (city filter: All/London/Bristol, city badges)
+- [x] Bristol admin: image manager for Bristol locations (605 total locations, city filter dropdown)
+- [x] Bristol admin: notifications for Bristol submissions/reviews (shared Notifications tab)
+
+### Landing Page
+- [x] Make city selector the default landing page (/) — London moved to /london

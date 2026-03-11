@@ -25,8 +25,11 @@ import {
 } from 'lucide-react';
 import { locations } from '@/lib/locations';
 import { uniStudySpots } from '@/lib/uniStudySpots';
+import { bristolLocations } from '@/lib/bristolLocations';
+import { bristolUniStudySpots } from '@/lib/bristolUniStudySpots';
 
 type LocationType = 'curated' | 'uni';
+type CityFilter = 'all' | 'london' | 'bristol';
 
 interface LocationEntry {
   type: LocationType;
@@ -41,6 +44,7 @@ export default function AdminImageManager() {
   const { user, loading } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'curated' | 'uni'>('all');
+  const [cityFilter, setCityFilter] = useState<CityFilter>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Get all image overrides
@@ -59,32 +63,57 @@ export default function AdminImageManager() {
     return map;
   }, [imageOverrides]);
 
-  // Build unified location list
-  const allLocations = useMemo<LocationEntry[]>(() => {
-    const curated: LocationEntry[] = locations.map(loc => ({
+  // Build unified location list with city info
+  const allLocations = useMemo<(LocationEntry & { city: 'london' | 'bristol' })[]>(() => {
+    const londonCurated = locations.map(loc => ({
       type: 'curated' as const,
       id: loc.id,
       name: loc.name,
       category: loc.category,
       neighborhood: loc.neighborhood,
       currentImage: loc.image,
+      city: 'london' as const,
     }));
 
-    const uni: LocationEntry[] = uniStudySpots.map(spot => ({
+    const londonUni = uniStudySpots.map(spot => ({
       type: 'uni' as const,
       id: spot.id,
       name: spot.name,
       category: spot.university,
       neighborhood: spot.campus,
       currentImage: spot.image || '',
+      city: 'london' as const,
     }));
 
-    return [...curated, ...uni];
+    const bristolCurated = bristolLocations.map(loc => ({
+      type: 'curated' as const,
+      id: loc.id,
+      name: loc.name,
+      category: loc.category,
+      neighborhood: loc.neighborhood,
+      currentImage: loc.image,
+      city: 'bristol' as const,
+    }));
+
+    const bristolUni = bristolUniStudySpots.map(spot => ({
+      type: 'uni' as const,
+      id: spot.id,
+      name: spot.name,
+      category: spot.category,
+      neighborhood: spot.building,
+      currentImage: spot.image || '',
+      city: 'bristol' as const,
+    }));
+
+    return [...londonCurated, ...londonUni, ...bristolCurated, ...bristolUni];
   }, []);
 
   // Filter locations
   const filteredLocations = useMemo(() => {
     let result = allLocations;
+    if (cityFilter !== 'all') {
+      result = result.filter(l => l.city === cityFilter);
+    }
     if (filterType !== 'all') {
       result = result.filter(l => l.type === filterType);
     }
@@ -97,7 +126,7 @@ export default function AdminImageManager() {
       );
     }
     return result;
-  }, [allLocations, filterType, searchQuery]);
+  }, [allLocations, cityFilter, filterType, searchQuery]);
 
   if (loading) {
     return (
@@ -164,8 +193,8 @@ export default function AdminImageManager() {
           </div>
 
           {/* Search & Filter */}
-          <div className="flex gap-2">
-            <div className="relative flex-1">
+          <div className="flex gap-2 flex-wrap">
+            <div className="relative flex-1 min-w-[200px]">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="text"
@@ -176,13 +205,22 @@ export default function AdminImageManager() {
               />
             </div>
             <select
+              value={cityFilter}
+              onChange={(e) => setCityFilter(e.target.value as CityFilter)}
+              className="px-3 py-2 rounded-lg border border-border bg-background text-sm"
+            >
+              <option value="all">All Cities</option>
+              <option value="london">London</option>
+              <option value="bristol">Bristol</option>
+            </select>
+            <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as 'all' | 'curated' | 'uni')}
               className="px-3 py-2 rounded-lg border border-border bg-background text-sm"
             >
-              <option value="all">All ({allLocations.length})</option>
-              <option value="curated">Curated ({locations.length})</option>
-              <option value="uni">University ({uniStudySpots.length})</option>
+              <option value="all">All Types</option>
+              <option value="curated">Curated</option>
+              <option value="uni">University</option>
             </select>
           </div>
         </div>
@@ -229,6 +267,11 @@ export default function AdminImageManager() {
                         loc.type === 'curated' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' : 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
                       }`}>
                         {loc.type === 'curated' ? 'Curated' : 'Uni'}
+                      </span>
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
+                        loc.city === 'bristol' ? 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300'
+                      }`}>
+                        {loc.city === 'bristol' ? 'Bristol' : 'London'}
                       </span>
                       {hasOverride && (
                         <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 font-medium">
