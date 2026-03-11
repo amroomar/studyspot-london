@@ -460,3 +460,80 @@ export async function deleteAllLocationImages(
       )
     );
 }
+
+// ─── Reviews ────────────────────────────────────────────────────────────────
+
+import { reviews, type InsertReview, type Review } from "../drizzle/schema";
+
+/** Create a new review */
+export async function createReview(data: InsertReview): Promise<Review> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(reviews).values(data);
+  const insertId = result[0].insertId;
+
+  const rows = await db.select().from(reviews).where(eq(reviews.id, insertId)).limit(1);
+  return rows[0];
+}
+
+/** Get all reviews for a specific location */
+export async function getReviewsForLocation(
+  locationType: "curated" | "uni" | "community",
+  locationId: number
+): Promise<Review[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(reviews)
+    .where(
+      and(
+        eq(reviews.locationType, locationType),
+        eq(reviews.locationId, locationId)
+      )
+    )
+    .orderBy(desc(reviews.createdAt));
+}
+
+/** Get review count for a location */
+export async function getReviewCount(
+  locationType: "curated" | "uni" | "community",
+  locationId: number
+): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const rows = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(reviews)
+    .where(
+      and(
+        eq(reviews.locationType, locationType),
+        eq(reviews.locationId, locationId)
+      )
+    );
+
+  return rows[0]?.count ?? 0;
+}
+
+/** Delete a review (admin or owner) */
+export async function deleteReview(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(reviews).where(eq(reviews.id, id));
+}
+
+/** Get total review count across all locations */
+export async function getTotalReviewCount(): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const rows = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(reviews);
+
+  return rows[0]?.count ?? 0;
+}

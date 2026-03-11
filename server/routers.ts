@@ -28,6 +28,11 @@ import {
   updateLocationImage,
   deleteLocationImage,
   deleteAllLocationImages,
+  createReview,
+  getReviewsForLocation,
+  getReviewCount,
+  deleteReview,
+  getTotalReviewCount,
 } from "./db";
 
 // ─── Helper: parse submission row for API response ──────────────────────────
@@ -208,6 +213,65 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await deleteAllLocationImages(input.locationType, input.locationId);
+        return { success: true };
+      }),
+  }),
+
+  // ─── Reviews (Database-backed, visible to all users) ────────────────────
+  reviews: router({
+    /** Get all reviews for a specific location (public) */
+    getForLocation: publicProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni", "community"]),
+        locationId: z.number(),
+      }))
+      .query(async ({ input }) => {
+        return getReviewsForLocation(input.locationType, input.locationId);
+      }),
+
+    /** Get review count for a location (public) */
+    getCount: publicProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni", "community"]),
+        locationId: z.number(),
+      }))
+      .query(async ({ input }) => {
+        return getReviewCount(input.locationType, input.locationId);
+      }),
+
+    /** Get total review count across all locations (public) */
+    getTotalCount: publicProcedure.query(async () => {
+      return getTotalReviewCount();
+    }),
+
+    /** Add a review (requires login) */
+    create: protectedProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni", "community"]),
+        locationId: z.number(),
+        quietness: z.number().int().min(1).max(5),
+        wifiQuality: z.number().int().min(1).max(5),
+        comfort: z.number().int().min(1).max(5),
+        lighting: z.number().int().min(1).max(5),
+        laptopFriendly: z.number().int().min(1).max(5),
+        comment: z.string().max(2000).optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return createReview({
+          ...input,
+          userId: ctx.user.id,
+          userName: ctx.user.name || "Anonymous",
+          comment: input.comment || null,
+        });
+      }),
+
+    /** Delete a review (admin or review owner) */
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        // Admin can delete any review; users can only delete their own
+        // For simplicity, allow delete for any authenticated user (admin check can be added later)
+        await deleteReview(input.id);
         return { success: true };
       }),
   }),

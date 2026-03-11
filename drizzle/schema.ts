@@ -153,3 +153,36 @@ export const locationImages = mysqlTable("location_images", {
 
 export type LocationImage = typeof locationImages.$inferSelect;
 export type InsertLocationImage = typeof locationImages.$inferInsert;
+
+/**
+ * Reviews — user reviews for study spots (shared across all users).
+ * locationType: 'curated' for main 310 spots, 'uni' for university spots, 'community' for community submissions
+ */
+export const reviews = mysqlTable("reviews", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Type of location being reviewed */
+  locationType: mysqlEnum("locationType", ["curated", "uni", "community"]).notNull(),
+  /** ID from the respective dataset */
+  locationId: int("locationId").notNull(),
+  /** FK to users — null for anonymous reviews */
+  userId: int("userId"),
+  /** Display name of the reviewer */
+  userName: varchar("userName", { length: 255 }).notNull(),
+  /** Quietness rating 1-5 */
+  quietness: int("quietness").notNull(),
+  /** Wi-Fi quality rating 1-5 */
+  wifiQuality: int("wifiQuality").notNull(),
+  /** Comfort rating 1-5 */
+  comfort: int("comfort").notNull(),
+  /** Lighting rating 1-5 */
+  lighting: int("lighting").notNull(),
+  /** Laptop-friendly rating 1-5 */
+  laptopFriendly: int("laptopFriendly").notNull(),
+  /** Free-text comment */
+  comment: text("comment"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Review = typeof reviews.$inferSelect;
+export type InsertReview = typeof reviews.$inferInsert;

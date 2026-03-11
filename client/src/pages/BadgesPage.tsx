@@ -4,14 +4,14 @@
  */
 import { useGamification } from '@/contexts/GamificationContext';
 import { useFavorites } from '@/contexts/FavoritesContext';
-import { useReviews } from '@/contexts/ReviewsContext';
+import { trpc } from '@/lib/trpc';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
 export default function BadgesPage() {
   const { badges, savedCount, reviewCount, checkBadges } = useGamification();
   const { favorites } = useFavorites();
-  const { totalReviewCount } = useReviews();
+  const { data: totalReviewCount = 0 } = trpc.reviews.getTotalCount.useQuery();
 
   useEffect(() => {
     checkBadges(favorites, totalReviewCount);

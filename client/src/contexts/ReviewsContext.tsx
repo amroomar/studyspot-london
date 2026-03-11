@@ -1,63 +1,125 @@
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useCallback, type ReactNode } from 'react';
+import { trpc } from '@/lib/trpc';
 
 export interface Review {
-  id: string;
+  id: number;
+  locationType: 'curated' | 'uni' | 'community';
   locationId: number;
+  userId: number | null;
+  userName: string;
   quietness: number;
   wifiQuality: number;
   comfort: number;
   lighting: number;
   laptopFriendly: number;
-  comment: string;
-  date: string;
+  comment: string | null;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface ReviewsContextType {
-  reviews: Review[];
-  addReview: (review: Omit<Review, 'id' | 'date'>) => void;
-  getReviewsForLocation: (locationId: number) => Review[];
-  getAverageRating: (locationId: number) => number | null;
-  totalReviewCount: number;
+  /** Get reviews for a specific location — returns tRPC query result */
+  useLocationReviews: (locationType: 'curated' | 'uni' | 'community', locationId: number) => {
+    reviews: Review[];
+    isLoading: boolean;
+    refetch: () => void;
+  };
+  /** Add a review (requires login) */
+  addReview: (data: {
+    locationType: 'curated' | 'uni' | 'community';
+    locationId: number;
+    quietness: number;
+    wifiQuality: number;
+    comfort: number;
+    lighting: number;
+    laptopFriendly: number;
+    comment?: string;
+  }) => Promise<void>;
+  /** Delete a review */
+  deleteReview: (id: number) => Promise<void>;
+  /** Get average rating for reviews */
+  getAverageFromReviews: (reviews: Review[]) => number | null;
 }
 
 const ReviewsContext = createContext<ReviewsContextType | null>(null);
 
 export function ReviewsProvider({ children }: { children: ReactNode }) {
-  const [reviews, setReviews] = useState<Review[]>(() => {
-    try {
-      const saved = localStorage.getItem('studyspot-reviews');
-      return saved ? JSON.parse(saved) : [];
-    } catch { return []; }
+  const utils = trpc.useUtils();
+
+  const createMutation = trpc.reviews.create.useMutation({
+    onSuccess: (_data, variables) => {
+      // Invalidate the specific location's reviews
+      utils.reviews.getForLocation.invalidate({
+        locationType: variables.locationType,
+        locationId: variables.locationId,
+      });
+      utils.reviews.getCount.invalidate({
+        locationType: variables.locationType,
+        locationId: variables.locationId,
+      });
+      utils.reviews.getTotalCount.invalidate();
+    },
   });
 
-  useEffect(() => {
-    localStorage.setItem('studyspot-reviews', JSON.stringify(reviews));
-  }, [reviews]);
+  const deleteMutation = trpc.reviews.delete.useMutation({
+    onSuccess: () => {
+      // Invalidate all review queries
+      utils.reviews.getForLocation.invalidate();
+      utils.reviews.getCount.invalidate();
+      utils.reviews.getTotalCount.invalidate();
+    },
+  });
 
-  const addReview = useCallback((review: Omit<Review, 'id' | 'date'>) => {
-    const newReview: Review = {
-      ...review,
-      id: `review-${Date.now()}`,
-      date: new Date().toISOString(),
-    };
-    setReviews(prev => [newReview, ...prev]);
+  const addReview = useCallback(async (data: {
+    locationType: 'curated' | 'uni' | 'community';
+    locationId: number;
+    quietness: number;
+    wifiQuality: number;
+    comfort: number;
+    lighting: number;
+    laptopFriendly: number;
+    comment?: string;
+  }) => {
+    await createMutation.mutateAsync(data);
+  }, [createMutation]);
+
+  const deleteReviewFn = useCallback(async (id: number) => {
+    await deleteMutation.mutateAsync({ id });
+  }, [deleteMutation]);
+
+  const getAverageFromReviews = useCallback((reviews: Review[]) => {
+    if (reviews.length === 0) return null;
+    const avg = reviews.reduce((sum, r) =>
+      sum + (r.quietness + r.wifiQuality + r.comfort + r.lighting + r.laptopFriendly) / 5, 0
+    ) / reviews.length;
+    return Math.round(avg * 10) / 10;
   }, []);
 
-  const getReviewsForLocation = useCallback((locationId: number) => {
-    return reviews.filter(r => r.locationId === locationId);
-  }, [reviews]);
-
-  const getAverageRating = useCallback((locationId: number) => {
-    const locReviews = reviews.filter(r => r.locationId === locationId);
-    if (locReviews.length === 0) return null;
-    const avg = locReviews.reduce((sum, r) =>
-      sum + (r.quietness + r.wifiQuality + r.comfort + r.lighting + r.laptopFriendly) / 5, 0
-    ) / locReviews.length;
-    return Math.round(avg * 10) / 10;
-  }, [reviews]);
+  // Hook factory for location-specific reviews
+  const useLocationReviews = useCallback((
+    locationType: 'curated' | 'uni' | 'community',
+    locationId: number
+  ) => {
+    // This will be called as a hook from components
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const query = trpc.reviews.getForLocation.useQuery(
+      { locationType, locationId },
+      { enabled: locationId > 0 }
+    );
+    return {
+      reviews: (query.data ?? []) as Review[],
+      isLoading: query.isLoading,
+      refetch: query.refetch,
+    };
+  }, []);
 
   return (
-    <ReviewsContext.Provider value={{ reviews, addReview, getReviewsForLocation, getAverageRating, totalReviewCount: reviews.length }}>
+    <ReviewsContext.Provider value={{
+      useLocationReviews,
+      addReview,
+      deleteReview: deleteReviewFn,
+      getAverageFromReviews,
+    }}>
       {children}
     </ReviewsContext.Provider>
   );

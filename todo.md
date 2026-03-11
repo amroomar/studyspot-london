@@ -155,3 +155,6 @@
 
 ### Theme Default
 - [x] Make dark mode the default, light mode toggled on
+
+### Reviews Bug
+- [x] Reviews don't show up to everyone — migrated from localStorage to database-backed tRPC

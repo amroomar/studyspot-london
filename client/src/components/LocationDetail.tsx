@@ -37,17 +37,25 @@ function AttributeRow({ icon: Icon, label, value, color }: { icon: any; label: s
   );
 }
 
-function ReviewForm({ locationId, onSubmit }: { locationId: number; onSubmit: () => void }) {
+function ReviewForm({ locationType, locationId, onSubmit }: { locationType: 'curated' | 'uni' | 'community'; locationId: number; onSubmit: () => void }) {
   const { addReview } = useReviews();
   const [ratings, setRatings] = useState({ quietness: 4, wifiQuality: 4, comfort: 4, lighting: 4, laptopFriendly: 4 });
   const [comment, setComment] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!comment.trim()) { toast.error('Please add a comment'); return; }
-    addReview({ locationId, ...ratings, comment: comment.trim() });
-    toast.success('Review submitted!');
-    setComment('');
-    onSubmit();
+    setSubmitting(true);
+    try {
+      await addReview({ locationType, locationId, ...ratings, comment: comment.trim() });
+      toast.success('Review submitted!');
+      setComment('');
+      onSubmit();
+    } catch (e: any) {
+      toast.error(e?.message || 'Failed to submit review. Please log in first.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const ratingFields = [
@@ -87,8 +95,8 @@ function ReviewForm({ locationId, onSubmit }: { locationId: number; onSubmit: ()
         placeholder="Share your study experience..."
         className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground text-sm resize-none h-24 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
       />
-      <Button onClick={handleSubmit} className="w-full bg-primary text-primary-foreground gap-2">
-        <Send className="w-4 h-4" /> Submit Review
+      <Button onClick={handleSubmit} disabled={submitting} className="w-full bg-primary text-primary-foreground gap-2">
+        <Send className="w-4 h-4" /> {submitting ? 'Submitting...' : 'Submit Review'}
       </Button>
     </div>
   );
@@ -101,12 +109,12 @@ function ReviewCard({ review }: { review: Review }) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-fog-sage/20 flex items-center justify-center text-sm">👤</div>
-          <span className="text-sm font-medium">Anonymous</span>
+          <span className="text-sm font-medium">{review.userName || 'Anonymous'}</span>
         </div>
         <div className="score-badge text-sm text-fog-gold">{avg}/5</div>
       </div>
-      <p className="text-sm text-muted-foreground">{review.comment}</p>
-      <p className="text-xs text-muted-foreground/60 mt-2">{new Date(review.date).toLocaleDateString()}</p>
+      {review.comment && <p className="text-sm text-muted-foreground">{review.comment}</p>}
+      <p className="text-xs text-muted-foreground/60 mt-2">{new Date(review.createdAt).toLocaleDateString()}</p>
     </div>
   );
 }
@@ -125,14 +133,15 @@ function getDirectionsUrl(location: Location): string {
 export default function LocationDetail({ location, onBack }: LocationDetailProps) {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { resolveImage } = useImageOverrides();
-  const { getReviewsForLocation } = useReviews();
+  const { useLocationReviews } = useReviews();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const fav = isFavorite(location.id);
   const defaultImage = location.image && !location.image.includes('source.unsplash')
     ? location.image
     : getLocationImage(location.name, location.category);
   const image = resolveImage('curated', location.id, defaultImage) || defaultImage;
-  const reviews = getReviewsForLocation(location.id);
+  const locationType: 'curated' | 'community' = (location as any).isCommunitySubmitted ? 'community' : 'curated';
+  const { reviews, isLoading: reviewsLoading } = useLocationReviews(locationType, location.id);
 
   const noiseLabels: Record<number, string> = { 1: 'Very Quiet', 2: 'Quiet', 3: 'Moderate', 4: 'Lively', 5: 'Loud' };
 
@@ -387,7 +396,7 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
 
           {showReviewForm && (
             <div className="mb-4 bg-card rounded-2xl p-4 shadow-sm border border-border/50">
-              <ReviewForm locationId={location.id} onSubmit={() => setShowReviewForm(false)} />
+              <ReviewForm locationType={locationType} locationId={location.id} onSubmit={() => setShowReviewForm(false)} />
             </div>
           )}
 
