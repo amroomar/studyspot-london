@@ -191,11 +191,7 @@ export const BRISTOL_CATEGORY_HERO: Record<string, string> = {
   'Nature/Greenery': `${CDN}/bristol-colourful-houses_3e1bfa1d.jpg`,
   'Bakery/Patisserie': `${CDN}/pinkmans_badad3a2.jpg`,
   'Hidden Gem': `${CDN}/cafe-kino_3e14323e.jpg`,
-  'Community Hub': `${CDN}/hamilton-house_1a0e4400.jpg`,
-  'Harbourside': `${CDN}/watershed_deb8dac1.jpg`,
   'Late-Night Cafe': `${CDN}/red-church-2_fd19635d.jpg`,
-  'Rooftop': `${CDN}/clifton-bridge-sunset_091e9d31.jpg`,
-  'Luxury Cafe': `${CDN}/harbour-hotel_fe37ecf9.jpg`,
 };
 
 // ── Simple hash for deterministic image selection ──

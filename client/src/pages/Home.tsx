@@ -548,6 +548,11 @@ function HomeInner() {
     return [...filteredLocations, ...communityLocations];
   }, [filteredLocations, communityLocations, showCommunityOnly]);
 
+  // All locations including community spots — for search and favorites
+  const allLocationsWithCommunity = useMemo(() => [
+    ...allLocations, ...communityLocations
+  ], [communityLocations]);
+
   return (
               <div className="min-h-screen bg-background transition-colors duration-300">
                 <Navbar
@@ -580,9 +585,9 @@ function HomeInner() {
                       />
                     </div>
                   )}
-                  {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
-                  {activeTab === 'social' && <SocialDiscoveryPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
-                  {activeTab === 'favorites' && <FavoritesPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'search' && <SearchPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'social' && <SocialDiscoveryPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} />}
+                  {activeTab === 'favorites' && <FavoritesPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} />}
                   {activeTab === 'badges' && <BadgesPage />}
                 </main>
 

@@ -32,7 +32,7 @@ export const DEFAULT_FILTERS: Filters = {
   neighborhood: 'All',
 };
 
-const CATEGORIES = [
+const DEFAULT_CATEGORIES = [
   'All', 'Quiet Study Cafe', 'Aesthetic Cafe', 'Library', 'Creative Workspace',
   'Coworking Space', 'Hotel Lounge', 'Bookstore', 'Museum/Gallery Cafe',
   'Nature/Greenery', 'Bakery/Patisserie', 'Hidden Gem', 'Rooftop', 'Late-Night Cafe', 'Luxury Cafe',
@@ -45,9 +45,11 @@ interface FilterPanelProps {
   onChange: (filters: Filters) => void;
   neighborhoods: string[];
   resultCount: number;
+  categories?: string[];
 }
 
-export default function FilterPanel({ filters, onChange, neighborhoods, resultCount }: FilterPanelProps) {
+export default function FilterPanel({ filters, onChange, neighborhoods, resultCount, categories }: FilterPanelProps) {
+  const CATEGORIES = categories || DEFAULT_CATEGORIES;
   const [open, setOpen] = useState(false);
 
   const activeCount = [

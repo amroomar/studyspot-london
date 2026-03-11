@@ -258,3 +258,19 @@
 
 ### Landing Page
 - [x] Make city selector the default landing page (/) — London moved to /london
+
+## Community Spots in Search/Near-Me & Bristol Filter Fixes
+
+### Search
+- [x] Community added spots show up in search results for London (allLocationsWithCommunity passed to SearchPage)
+- [x] Community added spots show up in search results for Bristol (allLocationsWithCommunity passed to SearchPage)
+
+### Near Me / Map
+- [x] Community spots show up when clicking "show spots near me" for London (mapLocations already included community spots)
+- [x] Community spots show up when clicking "show spots near me" for Bristol (mapLocations already included community spots)
+
+### Bristol Filters
+- [x] Fix Harbourside filter showing 0 results (removed non-existent category from BRISTOL_CATEGORY_HERO)
+- [x] Fix Rooftop filter showing 0 results (removed non-existent category from BRISTOL_CATEGORY_HERO)
+- [x] Audit all Bristol filter categories for 0-result issues (removed Community Hub, Luxury Cafe too; FilterPanel now accepts optional categories prop)
+- [x] Made FilterPanel accept optional categories prop so Bristol shows only its 12 real categories

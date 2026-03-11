@@ -282,7 +282,7 @@ function DiscoveryFeed({ onSelectLocation, filters, setFilters, filteredLocation
               <option value="score">Top Rated</option>
               <option value="name">A-Z</option>
             </select>
-            <FilterPanel filters={filters} onChange={setFilters} neighborhoods={neighborhoods} resultCount={filteredLocations.length} />
+            <FilterPanel filters={filters} onChange={setFilters} neighborhoods={neighborhoods} resultCount={filteredLocations.length} categories={['All', 'Quiet Study Cafe', 'Aesthetic Cafe', 'Library', 'Creative Workspace', 'Coworking Space', 'Hotel Lounge', 'Bookstore Cafe', 'Museum/Gallery Cafe', 'Nature/Greenery', 'Bakery/Patisserie', 'Hidden Gem', 'Late-Night Cafe']} />
           </div>
         </div>
         <ActiveFilterChips filters={filters} onChange={setFilters} />
@@ -350,6 +350,11 @@ function BristolHomeInner() {
     return [...filteredLocations, ...communityLocations] as any[];
   }, [filteredLocations, communityLocations, showCommunityOnly]);
 
+  // All locations including community spots — for search and favorites
+  const allLocationsWithCommunity = useMemo(() => [
+    ...allLocations, ...communityLocations
+  ] as any[], [communityLocations]);
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} onAddSpot={() => setShowSubmitModal(true)} cityPrefix="/bristol" />
@@ -362,9 +367,9 @@ function BristolHomeInner() {
             <MapPage locations={mapLocations} onSelectLocation={handleSelectLocation} showCommunityOnly={showCommunityOnly} onToggleCommunityOnly={() => setShowCommunityOnly(prev => !prev)} communityCount={communityLocations.length} defaultCenter={{ lat: 51.4545, lng: -2.5879 }} defaultZoom={13} />
           </div>
         )}
-        {activeTab === 'search' && <SearchPage locations={allLocations as any[]} onSelectLocation={handleSelectLocation} />}
-        {activeTab === 'social' && <SocialDiscoveryPage locations={allLocations as any[]} onSelectLocation={handleSelectLocation} customVideos={bristolSocialVideosSV} cityName="Bristol" />}
-        {activeTab === 'favorites' && <FavoritesPage locations={allLocations as any[]} onSelectLocation={handleSelectLocation} />}
+        {activeTab === 'search' && <SearchPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} />}
+        {activeTab === 'social' && <SocialDiscoveryPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} customVideos={bristolSocialVideosSV} cityName="Bristol" />}
+        {activeTab === 'favorites' && <FavoritesPage locations={allLocationsWithCommunity} onSelectLocation={handleSelectLocation} />}
         {activeTab === 'badges' && <BadgesPage />}
       </main>
       <AnimatePresence>
