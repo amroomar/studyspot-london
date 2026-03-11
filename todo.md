@@ -211,3 +211,32 @@
 - [x] City selector on landing page (/cities)
 - [x] Navbar city switcher (ArrowLeftRight icon)
 - [x] Tests for Bristol features (25 tests passing)
+
+## Bristol Full Parity Fixes
+
+### Images
+- [x] Replace AI placeholder images in Bristol with real venue photos (19 CDN images uploaded)
+- [x] Fix explore-by-type thumbnails loading in Bristol (all 12 categories have real CDN images)
+- [x] Add proper hero/discovery section image for Bristol (Clifton Bridge hero)
+- [x] Add real thumbnails to Bristol social section (12 real Bristol venue thumbnails)
+
+### Community Features
+- [x] Separate community discoveries between Bristol and London (added city column to DB schema)
+- [x] Ensure Bristol community submissions work end-to-end (SubmitSpotPage city-aware with Bristol neighborhoods)
+
+### Reviews
+- [x] Ensure reviews work the same way in Bristol as in London (reviews already scoped by locationType+locationId, no conflicts)
+
+### UniMode
+- [x] Improve buttons in Bristol UniMode (consistent shadcn Button components)
+- [x] Improve buttons in London UniMode (already using polished Button components)
+
+### Mobile & UX
+- [x] Optimize mobile experience for seamless city switching (mobile top bar with city switcher, UniMode link, dark mode toggle)
+- [x] Ensure all features work seamlessly front and backend in both cities (namespaced favorites, city-filtered submissions, all 113 tests pass)
+
+### Additional Fixes
+- [x] Namespace favorites by city in localStorage (London and Bristol have separate favorite lists)
+- [x] Add city column to community_submissions database schema and push migration
+- [x] Update SubmissionsContext to filter by city
+- [x] Update API endpoints to accept city parameter for submissions

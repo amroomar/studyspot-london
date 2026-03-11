@@ -557,7 +557,7 @@ function HomeInner() {
                 />
 
                 {/* Main content area */}
-                <main className={`${activeTab === 'map' ? '' : 'container pt-4 lg:pt-20'}`}>
+                <main className={`${activeTab === 'map' ? '' : 'container pt-14 lg:pt-20'}`}>
                   {activeTab === 'home' && (
                     <DiscoveryFeed
                       onSelectLocation={handleSelectLocation}
@@ -621,7 +621,7 @@ export default function Home() {
     <FavoritesProvider>
       <ReviewsProvider>
         <GamificationProvider>
-          <SubmissionsProvider>
+          <SubmissionsProvider city="london">
             <LiveVibeProvider>
               <HomeInner />
             </LiveVibeProvider>

@@ -36,7 +36,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 2,
@@ -68,7 +68,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Saturday mornings",
     "studyScore": 8.8,
-    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 3,
@@ -100,7 +100,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 4,
@@ -132,7 +132,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 5,
@@ -164,7 +164,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 8.6,
-    "image": "https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 6,
@@ -196,7 +196,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 7,
@@ -228,7 +228,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Saturday afternoon",
     "studyScore": 8.3,
-    "image": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 8,
@@ -260,7 +260,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend afternoons",
     "studyScore": 7.9,
-    "image": "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 9,
@@ -292,7 +292,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Early mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.1,
-    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 10,
@@ -324,7 +324,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 11,
@@ -356,7 +356,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.6,
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 12,
@@ -388,7 +388,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Weekend afternoons",
     "studyScore": 7.7,
-    "image": "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 13,
@@ -420,7 +420,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 14,
@@ -452,7 +452,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Class times",
     "studyScore": 9.0,
-    "image": "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 15,
@@ -484,7 +484,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 16,
@@ -516,7 +516,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.4,
-    "image": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 17,
@@ -548,7 +548,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.9,
-    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 18,
@@ -580,7 +580,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 19,
@@ -612,7 +612,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Early mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.2,
-    "image": "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 20,
@@ -644,7 +644,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday daytime",
     "peakBusyTimes": "Show nights",
     "studyScore": 8.3,
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 21,
@@ -676,7 +676,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.6,
-    "image": "https://images.unsplash.com/photo-1572025442646-866d16c84a54?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 22,
@@ -708,7 +708,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 23,
@@ -740,7 +740,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 24,
@@ -772,7 +772,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 25,
@@ -804,7 +804,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Morning rush",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 26,
@@ -836,7 +836,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Early mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 27,
@@ -868,7 +868,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Exhibition openings",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 28,
@@ -900,7 +900,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 29,
@@ -932,7 +932,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.3,
-    "image": "https://images.unsplash.com/photo-1526243741027-444d633d7365?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 30,
@@ -964,7 +964,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.7,
-    "image": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 31,
@@ -996,7 +996,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Morning rush",
     "studyScore": 7.2,
-    "image": "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 32,
@@ -1028,7 +1028,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.4,
-    "image": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 33,
@@ -1060,7 +1060,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Morning rush",
     "studyScore": 8.3,
-    "image": "https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 34,
@@ -1092,7 +1092,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.4,
-    "image": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 35,
@@ -1124,7 +1124,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Morning rush",
     "studyScore": 8.6,
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 36,
@@ -1156,7 +1156,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 37,
@@ -1188,7 +1188,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Early afternoon",
     "peakBusyTimes": "Dinner time",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 38,
@@ -1220,7 +1220,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 39,
@@ -1252,7 +1252,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.6,
-    "image": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 40,
@@ -1284,7 +1284,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 6.8,
-    "image": "https://images.unsplash.com/photo-1509365390695-33aee754301f?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 41,
@@ -1316,7 +1316,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 42,
@@ -1348,7 +1348,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 43,
@@ -1380,7 +1380,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.8,
-    "image": "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 44,
@@ -1412,7 +1412,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.7,
-    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 45,
@@ -1444,7 +1444,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.3,
-    "image": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 46,
@@ -1476,7 +1476,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Morning rush",
     "studyScore": 8.7,
-    "image": "https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 47,
@@ -1508,7 +1508,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 48,
@@ -1540,7 +1540,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 49,
@@ -1572,7 +1572,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.4,
-    "image": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 50,
@@ -1604,7 +1604,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.6,
-    "image": "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 51,
@@ -1636,7 +1636,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "After school",
     "studyScore": 9.2,
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 52,
@@ -1668,7 +1668,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 53,
@@ -1700,7 +1700,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 54,
@@ -1732,7 +1732,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 55,
@@ -1764,7 +1764,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 56,
@@ -1796,7 +1796,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1529007196863-d07650a3f0ea?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 57,
@@ -1828,7 +1828,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 58,
@@ -1860,7 +1860,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "After school",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 59,
@@ -1892,7 +1892,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 9.0,
-    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 60,
@@ -1924,7 +1924,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Events",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 61,
@@ -1956,7 +1956,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Events",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 62,
@@ -1988,7 +1988,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 9.0,
-    "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 63,
@@ -2020,7 +2020,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1562664377-709f2c337eb2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 64,
@@ -2052,7 +2052,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.8,
-    "image": "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 65,
@@ -2084,7 +2084,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.8,
-    "image": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 66,
@@ -2116,7 +2116,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 67,
@@ -2148,7 +2148,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 68,
@@ -2180,7 +2180,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Mid-morning",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 69,
@@ -2212,7 +2212,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.8,
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 70,
@@ -2244,7 +2244,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 9.0,
-    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 71,
@@ -2276,7 +2276,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 72,
@@ -2308,7 +2308,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 73,
@@ -2340,7 +2340,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Check-in time",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 74,
@@ -2372,7 +2372,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Sunny afternoons",
     "peakBusyTimes": "Weekends",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 75,
@@ -2404,7 +2404,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Sunny mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 6.5,
-    "image": "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 76,
@@ -2436,7 +2436,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Sunny afternoons",
     "peakBusyTimes": "Weekends",
     "studyScore": 6.8,
-    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 77,
@@ -2468,7 +2468,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Sunny afternoons",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.2,
-    "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 78,
@@ -2500,7 +2500,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Sunny afternoons",
     "peakBusyTimes": "Weekends",
     "studyScore": 6.5,
-    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 79,
@@ -2532,7 +2532,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Evenings",
     "peakBusyTimes": "Weekend brunch",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 80,
@@ -2564,7 +2564,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday evenings",
     "peakBusyTimes": "Friday/Saturday nights",
     "studyScore": 5.5,
-    "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 81,
@@ -2596,7 +2596,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Exhibition openings",
     "studyScore": 8.4,
-    "image": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 82,
@@ -2628,7 +2628,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Evenings",
     "studyScore": 6.8,
-    "image": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 83,
@@ -2660,7 +2660,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday daytime",
     "peakBusyTimes": "Show nights",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 84,
@@ -2692,7 +2692,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Weekends",
     "studyScore": 8.3,
-    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 85,
@@ -2724,7 +2724,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 8.5,
-    "image": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 86,
@@ -2756,7 +2756,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Morning rush",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 87,
@@ -2788,7 +2788,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Evenings",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 88,
@@ -2820,7 +2820,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Evenings",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 89,
@@ -2852,7 +2852,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Morning rush",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 90,
@@ -2884,7 +2884,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Morning rush",
     "studyScore": 6.5,
-    "image": "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 91,
@@ -2916,7 +2916,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Morning rush",
     "studyScore": 7.2,
-    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 92,
@@ -2948,7 +2948,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 93,
@@ -2980,7 +2980,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 94,
@@ -3012,7 +3012,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Lunch and evenings",
     "studyScore": 6.0,
-    "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 95,
@@ -3044,7 +3044,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 96,
@@ -3076,7 +3076,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "Weekend mornings",
     "studyScore": 8.0,
-    "image": "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 97,
@@ -3108,7 +3108,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "All day",
     "peakBusyTimes": "Lunch hour",
     "studyScore": 8.2,
-    "image": "https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 98,
@@ -3140,7 +3140,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "School holidays",
     "studyScore": 7.8,
-    "image": "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 99,
@@ -3172,7 +3172,7 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday afternoons",
     "peakBusyTimes": "School holidays",
     "studyScore": 7.5,
-    "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&h=400&fit=crop"
+    "image": ""
   },
   {
     "id": 100,
@@ -3204,6 +3204,6 @@ export const bristolLocations: Location[] = [
     "bestTimeStudy": "Weekday mornings",
     "peakBusyTimes": "School holidays",
     "studyScore": 7.0,
-    "image": "https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=600&h=400&fit=crop"
+    "image": ""
   }
 ];

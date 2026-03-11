@@ -115,22 +115,33 @@ export async function createSubmission(data: InsertCommunitySubmission): Promise
   return rows[0];
 }
 
-/** Get all approved community submissions, newest first */
-export async function getApprovedSubmissions(): Promise<CommunitySubmission[]> {
+/** Get all approved community submissions, newest first. Optionally filter by city. */
+export async function getApprovedSubmissions(city?: "london" | "bristol"): Promise<CommunitySubmission[]> {
   const db = await getDb();
   if (!db) return [];
+
+  const conditions = [eq(communitySubmissions.status, "approved")];
+  if (city) conditions.push(eq(communitySubmissions.city, city));
 
   return db
     .select()
     .from(communitySubmissions)
-    .where(eq(communitySubmissions.status, "approved"))
+    .where(and(...conditions))
     .orderBy(desc(communitySubmissions.createdAt));
 }
 
-/** Get all submissions (admin) */
-export async function getAllSubmissions(): Promise<CommunitySubmission[]> {
+/** Get all submissions (admin). Optionally filter by city. */
+export async function getAllSubmissions(city?: "london" | "bristol"): Promise<CommunitySubmission[]> {
   const db = await getDb();
   if (!db) return [];
+
+  if (city) {
+    return db
+      .select()
+      .from(communitySubmissions)
+      .where(eq(communitySubmissions.city, city))
+      .orderBy(desc(communitySubmissions.createdAt));
+  }
 
   return db
     .select()

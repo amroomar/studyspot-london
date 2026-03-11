@@ -1,5 +1,6 @@
 /**
  * Bristol Social Videos — TikTok & Instagram content about Bristol study spots
+ * Thumbnails use real Bristol venue photos from CDN
  */
 
 export interface BristolSocialVideo {
@@ -15,12 +16,28 @@ export interface BristolSocialVideo {
   views: number;
 }
 
+// Real Bristol venue images from CDN
+const B = {
+  societyCafe: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-society-cafe_8fa395ae.jpg',
+  stokesCroft: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-stokes-croft_a50c3138.jpg',
+  centralLibrary: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-central-library_223f6f8c.jpg',
+  coworking: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-coworking_14e1c912.png',
+  brandonHill: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-brandon-hill_31fd2884.jpg',
+  libraryInterior: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-library-interior_a469bbb4.jpg',
+  hotelLounge: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-hotel-lounge_e768c349.jpg',
+  bakery: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-bakery_ee9b489d.jpg',
+  bookshop: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-bookshop_27ed9240.jpg',
+  creativeSpace: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-creative-space_b6eb0e09.jpg',
+  wappingWharf: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-wapping-wharf_82f3d571.jpg',
+  cafeCozy: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bristol-cafe-cozy_d5f8b7fa.jpg',
+};
+
 export const bristolSocialVideos: BristolSocialVideo[] = [
   {
     id: 1,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=300&h=400&fit=crop',
+    thumbnail: B.societyCafe,
     title: 'Best cafes to study in Bristol ☕📚',
     creator: '@bristolstudent',
     tags: ['study', 'cafe', 'bristol'],
@@ -32,7 +49,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 2,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=400&fit=crop',
+    thumbnail: B.stokesCroft,
     title: 'Hidden study spots in Stokes Croft 🎨',
     creator: '@bristolvibes',
     tags: ['hidden gem', 'stokes croft', 'study'],
@@ -44,7 +61,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 3,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1568667256549-094345857637?w=300&h=400&fit=crop',
+    thumbnail: B.libraryInterior,
     title: 'UoB library tour - where to study 📖',
     creator: '@uoblife',
     tags: ['university', 'library', 'tour'],
@@ -56,7 +73,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 4,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&h=400&fit=crop',
+    thumbnail: B.coworking,
     title: 'Coworking spaces with harbour views 🌊',
     creator: '@bristolfreelancer',
     tags: ['coworking', 'harbourside', 'views'],
@@ -68,7 +85,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 5,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=300&h=400&fit=crop',
+    thumbnail: B.cafeCozy,
     title: 'Study with me at Boston Tea Party 🍵',
     creator: '@studywithme_bristol',
     tags: ['study with me', 'cafe', 'aesthetic'],
@@ -80,7 +97,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 6,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=300&h=400&fit=crop',
+    thumbnail: B.centralLibrary,
     title: 'Wills Memorial Building study vibes ✨',
     creator: '@bristolarchitecture',
     tags: ['architecture', 'historic', 'study'],
@@ -92,7 +109,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 7,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=300&h=400&fit=crop',
+    thumbnail: B.brandonHill,
     title: 'Outdoor study spots in Bristol parks 🌿',
     creator: '@greenbrislol',
     tags: ['outdoor', 'parks', 'nature'],
@@ -104,7 +121,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 8,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=400&fit=crop',
+    thumbnail: B.creativeSpace,
     title: 'UWE Frenchay campus study guide 📝',
     creator: '@uwelife',
     tags: ['uwe', 'campus', 'guide'],
@@ -116,7 +133,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 9,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300&h=400&fit=crop',
+    thumbnail: B.bakery,
     title: 'Bedminster cafe crawl for studying 🚶',
     creator: '@southbristol',
     tags: ['bedminster', 'cafe crawl', 'study'],
@@ -128,7 +145,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 10,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=300&h=400&fit=crop',
+    thumbnail: B.centralLibrary,
     title: 'Bristol Central Library - a hidden gem 💎',
     creator: '@bristollibraries',
     tags: ['library', 'central', 'free'],
@@ -140,7 +157,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 11,
     platform: 'tiktok',
     url: 'https://www.tiktok.com/@bristoluni',
-    thumbnail: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=300&h=400&fit=crop',
+    thumbnail: B.bookshop,
     title: 'Gloucester Road indie cafe study spots ☕',
     creator: '@gloucesterrd',
     tags: ['gloucester road', 'indie', 'cafe'],
@@ -152,7 +169,7 @@ export const bristolSocialVideos: BristolSocialVideo[] = [
     id: 12,
     platform: 'instagram',
     url: 'https://www.instagram.com/visitbristol',
-    thumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=400&fit=crop',
+    thumbnail: B.wappingWharf,
     title: 'Late night study spots in Bristol 🌙',
     creator: '@bristolnightowl',
     tags: ['late night', '24/7', 'study'],

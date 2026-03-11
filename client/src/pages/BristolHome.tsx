@@ -353,7 +353,7 @@ function BristolHomeInner() {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} onAddSpot={() => setShowSubmitModal(true)} cityPrefix="/bristol" />
-      <main className={`${activeTab === 'map' ? '' : 'container pt-4 lg:pt-20'}`}>
+      <main className={`${activeTab === 'map' ? '' : 'container pt-14 lg:pt-20'}`}>
         {activeTab === 'home' && (
           <DiscoveryFeed onSelectLocation={handleSelectLocation} filters={filters} setFilters={setFilters} filteredLocations={filteredLocations} sortBy={sortBy} setSortBy={setSortBy} neighborhoods={neighborhoods} />
         )}
@@ -389,7 +389,7 @@ export default function BristolHome() {
     <FavoritesProvider>
       <ReviewsProvider>
         <GamificationProvider>
-          <SubmissionsProvider>
+          <SubmissionsProvider city="bristol">
             <LiveVibeProvider>
               <BristolHomeInner />
             </LiveVibeProvider>

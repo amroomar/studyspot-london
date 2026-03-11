@@ -2,6 +2,7 @@
  * SubmissionsContext — Community-submitted study spots
  * Now backed by tRPC API + database + S3 image storage
  * Includes verification status, confirmation count, and report count
+ * Supports city filtering (london/bristol)
  */
 import { createContext, useContext, type ReactNode } from 'react';
 import { trpc } from '@/lib/trpc';
@@ -11,6 +12,7 @@ export interface SubmittedSpot {
   id: number;
   userId: number | null;
   submittedBy: string;
+  city: "london" | "bristol";
   name: string;
   category: string;
   neighborhood: string;
@@ -68,17 +70,19 @@ interface SubmissionsContextType {
   pendingCount: number;
   isLoading: boolean;
   uploadImage: (base64: string, mimeType: string, fileName?: string) => Promise<string>;
+  city: "london" | "bristol";
 }
 
 const SubmissionsContext = createContext<SubmissionsContextType | null>(null);
 
-export function SubmissionsProvider({ children }: { children: ReactNode }) {
+export function SubmissionsProvider({ children, city = "london" }: { children: ReactNode; city?: "london" | "bristol" }) {
   const utils = trpc.useUtils();
 
-  // Fetch all approved submissions from the database
-  const { data: rawSubmissions, isLoading } = trpc.submissions.list.useQuery(undefined, {
-    staleTime: 30_000, // Cache for 30 seconds
-  });
+  // Fetch approved submissions filtered by city
+  const { data: rawSubmissions, isLoading } = trpc.submissions.list.useQuery(
+    { city },
+    { staleTime: 30_000 }
+  );
 
   // Create submission mutation
   const createMutation = trpc.submissions.create.useMutation({
@@ -93,6 +97,7 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
   // Transform raw data to SubmittedSpot format
   const submissions: SubmittedSpot[] = (rawSubmissions || []).map(row => ({
     ...row,
+    city: (row.city || "london") as "london" | "bristol",
     verificationStatus: (row.verificationStatus || 'unverified') as VerificationStatus,
     googlePlaceId: row.googlePlaceId || null,
     confirmationCount: row.confirmationCount || 0,
@@ -121,6 +126,7 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
       tags: spot.tags,
       images: spot.images,
       submittedBy: spot.submittedBy,
+      city,
     });
   };
 
@@ -133,7 +139,7 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
   const pendingCount = submissions.filter(s => s.status === 'pending').length;
 
   return (
-    <SubmissionsContext.Provider value={{ submissions, addSubmission, approvedSubmissions, pendingCount, isLoading, uploadImage }}>
+    <SubmissionsContext.Provider value={{ submissions, addSubmission, approvedSubmissions, pendingCount, isLoading, uploadImage, city }}>
       {children}
     </SubmissionsContext.Provider>
   );

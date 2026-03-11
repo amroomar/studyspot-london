@@ -8,6 +8,7 @@ import { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapView } from '@/components/Map';
 import { useSubmissions } from '@/contexts/SubmissionsContext';
+import { useCity } from '@/contexts/CityContext';
 import {
   ArrowLeft, ArrowRight, MapPin, Camera, Tag, Check, X, Upload,
   Wifi, Plug, Volume2, Sun, Armchair, Laptop, Users, Star, Sparkles, Loader2
@@ -19,13 +20,26 @@ const LOCATION_TYPES = [
   'Hotel Lounge', 'Museum Cafe', 'Garden/Park', 'University Space', 'Other'
 ];
 
-const NEIGHBORHOODS = [
+const LONDON_NEIGHBORHOODS = [
   'Shoreditch', 'Soho', 'Camden', 'Islington', 'Hackney', 'Brixton',
   'Peckham', 'Dalston', 'Fitzrovia', 'Bloomsbury', 'Covent Garden',
   'South Bank', 'Kensington', 'Chelsea', 'Notting Hill', 'Mayfair',
   'Clerkenwell', 'Bermondsey', 'Whitechapel', 'Stratford', 'Greenwich',
   'Hampstead', 'Marylebone', 'Kings Cross', 'Canary Wharf', 'Other'
 ];
+
+const BRISTOL_NEIGHBORHOODS = [
+  'Clifton', 'Harbourside', 'Stokes Croft', 'Redland', 'Cotham',
+  'Gloucester Road', 'Bedminster', 'Southville', 'Old City', 'St Pauls',
+  'Montpelier', 'Bishopston', 'Easton', 'Totterdown', 'Wapping Wharf',
+  'Temple Meads', 'Broadmead', 'Hotwells', 'Westbury Park', 'Henleaze',
+  'Filton', 'Fishponds', 'Brislington', 'Knowle', 'Other'
+];
+
+const CITY_DEFAULTS = {
+  london: { lat: 51.5074, lng: -0.1278, neighborhoods: LONDON_NEIGHBORHOODS },
+  bristol: { lat: 51.4545, lng: -2.5879, neighborhoods: BRISTOL_NEIGHBORHOODS },
+};
 
 const AVAILABLE_TAGS = [
   'Quiet', 'Aesthetic', 'Laptop Friendly', 'Hidden Gem', 'Natural Light',
@@ -128,8 +142,10 @@ function RatingSlider({ label, icon: Icon, value, onChange, lowLabel, highLabel 
 }
 
 export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
+  const { city } = useCity();
+  const defaults = CITY_DEFAULTS[city] || CITY_DEFAULTS.london;
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<FormData>(INITIAL_FORM);
+  const [form, setForm] = useState<FormData>({ ...INITIAL_FORM, lat: defaults.lat, lng: defaults.lng });
   const [mapPickerActive, setMapPickerActive] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -389,7 +405,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                   >
                     <option value="">Select neighborhood...</option>
-                    {NEIGHBORHOODS.map(n => <option key={n} value={n}>{n}</option>)}
+                    {defaults.neighborhoods.map(n => <option key={n} value={n}>{n}</option>)}
                   </select>
                 </div>
 
@@ -399,7 +415,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     type="text"
                     value={form.address}
                     onChange={e => updateForm({ address: e.target.value })}
-                    placeholder="e.g. 31 Great Ormond St, London WC1N 3HZ"
+                    placeholder={city === 'bristol' ? 'e.g. 75 Stokes Croft, Bristol BS1 3RD' : 'e.g. 31 Great Ormond St, London WC1N 3HZ'}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                   />
                 </div>
@@ -469,7 +485,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     type="number"
                     step="0.0001"
                     value={form.lat}
-                    onChange={e => updateForm({ lat: parseFloat(e.target.value) || 51.5074 })}
+                    onChange={e => updateForm({ lat: parseFloat(e.target.value) || defaults.lat })}
                     className="w-full px-3 py-2 rounded-lg border border-border bg-card text-foreground text-sm"
                   />
                 </div>
@@ -479,7 +495,7 @@ export default function SubmitSpotPage({ onClose }: { onClose: () => void }) {
                     type="number"
                     step="0.0001"
                     value={form.lng}
-                    onChange={e => updateForm({ lng: parseFloat(e.target.value) || -0.1278 })}
+                    onChange={e => updateForm({ lng: parseFloat(e.target.value) || defaults.lng })}
                     className="w-full px-3 py-2 rounded-lg border border-border bg-card text-foreground text-sm"
                   />
                 </div>

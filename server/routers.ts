@@ -376,17 +376,21 @@ export const appRouter = router({
   }),
 
   submissions: router({
-    /** Get all approved community submissions (public) */
-    list: publicProcedure.query(async () => {
-      const rows = await getApprovedSubmissions();
-      return rows.map(parseSubmissionRow);
-    }),
+    /** Get all approved community submissions (public). Optionally filter by city. */
+    list: publicProcedure
+      .input(z.object({ city: z.enum(["london", "bristol"]).optional() }).optional())
+      .query(async ({ input }) => {
+        const rows = await getApprovedSubmissions(input?.city);
+        return rows.map(parseSubmissionRow);
+      }),
 
-    /** Get all submissions including pending/rejected (admin only) */
-    listAll: adminProcedure.query(async () => {
-      const rows = await getAllSubmissions();
-      return rows.map(parseSubmissionRow);
-    }),
+    /** Get all submissions including pending/rejected (admin only). Optionally filter by city. */
+    listAll: adminProcedure
+      .input(z.object({ city: z.enum(["london", "bristol"]).optional() }).optional())
+      .query(async ({ input }) => {
+        const rows = await getAllSubmissions(input?.city);
+        return rows.map(parseSubmissionRow);
+      }),
 
     /** Get a single submission by ID (public) */
     getById: publicProcedure
@@ -438,6 +442,7 @@ export const appRouter = router({
         tags: z.array(z.string()),
         images: z.array(z.string()), // S3 URLs
         submittedBy: z.string().max(255).optional(),
+        city: z.enum(["london", "bristol"]).optional().default("london"),
       }))
       .mutation(async ({ input, ctx }) => {
         // Step 1: Verify location with Google Places
@@ -450,6 +455,7 @@ export const appRouter = router({
         const row = await createSubmission({
           userId: ctx.user?.id ?? null,
           submittedBy: input.submittedBy || ctx.user?.name || "Anonymous",
+          city: input.city,
           name: input.name,
           category: input.category,
           neighborhood: input.neighborhood,

@@ -30,6 +30,9 @@ export const communitySubmissions = mysqlTable("community_submissions", {
   /** Display name of the submitter */
   submittedBy: varchar("submittedBy", { length: 255 }).notNull(),
 
+  /** City this submission belongs to: london or bristol */
+  city: mysqlEnum("city", ["london", "bristol"]).default("london").notNull(),
+
   // Core location fields
   name: varchar("name", { length: 255 }).notNull(),
   category: varchar("category", { length: 100 }).notNull(),

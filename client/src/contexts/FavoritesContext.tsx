@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
+import { useCity } from '@/contexts/CityContext';
 
 interface FavoriteList {
   id: string;
@@ -18,38 +19,54 @@ interface FavoritesContextType {
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
+const DEFAULT_LISTS: FavoriteList[] = [
+  { id: 'my-spots', name: 'My Study Spots', locationIds: [] },
+  { id: 'hidden-gems', name: 'Hidden Gems', locationIds: [] },
+  { id: 'exam-spots', name: 'Exam Study Locations', locationIds: [] },
+];
+
 export function FavoritesProvider({ children }: { children: ReactNode }) {
+  const { city } = useCity();
+
+  // Namespace localStorage keys by city so London and Bristol favorites are separate
+  const favKey = `studyspot-favorites-${city}`;
+  const listKey = `studyspot-lists-${city}`;
+
   const [favorites, setFavorites] = useState<Set<number>>(() => {
     try {
-      const saved = localStorage.getItem('studyspot-favorites');
+      const saved = localStorage.getItem(favKey);
       return saved ? new Set(JSON.parse(saved)) : new Set();
     } catch { return new Set(); }
   });
 
   const [lists, setLists] = useState<FavoriteList[]>(() => {
     try {
-      const saved = localStorage.getItem('studyspot-lists');
-      return saved ? JSON.parse(saved) : [
-        { id: 'my-spots', name: 'My Study Spots', locationIds: [] },
-        { id: 'hidden-gems', name: 'Hidden Gems', locationIds: [] },
-        { id: 'exam-spots', name: 'Exam Study Locations', locationIds: [] },
-      ];
+      const saved = localStorage.getItem(listKey);
+      return saved ? JSON.parse(saved) : DEFAULT_LISTS;
     } catch {
-      return [
-        { id: 'my-spots', name: 'My Study Spots', locationIds: [] },
-        { id: 'hidden-gems', name: 'Hidden Gems', locationIds: [] },
-        { id: 'exam-spots', name: 'Exam Study Locations', locationIds: [] },
-      ];
+      return DEFAULT_LISTS;
     }
   });
 
+  // Re-load when city changes
   useEffect(() => {
-    localStorage.setItem('studyspot-favorites', JSON.stringify(Array.from(favorites)));
-  }, [favorites]);
+    try {
+      const saved = localStorage.getItem(favKey);
+      setFavorites(saved ? new Set(JSON.parse(saved)) : new Set());
+    } catch { setFavorites(new Set()); }
+    try {
+      const saved = localStorage.getItem(listKey);
+      setLists(saved ? JSON.parse(saved) : DEFAULT_LISTS);
+    } catch { setLists(DEFAULT_LISTS); }
+  }, [city, favKey, listKey]);
 
   useEffect(() => {
-    localStorage.setItem('studyspot-lists', JSON.stringify(lists));
-  }, [lists]);
+    localStorage.setItem(favKey, JSON.stringify(Array.from(favorites)));
+  }, [favorites, favKey]);
+
+  useEffect(() => {
+    localStorage.setItem(listKey, JSON.stringify(lists));
+  }, [lists, listKey]);
 
   const toggleFavorite = useCallback((id: number) => {
     setFavorites(prev => {

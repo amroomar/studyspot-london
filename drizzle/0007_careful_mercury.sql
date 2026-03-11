@@ -1,0 +1,1 @@
+ALTER TABLE `community_submissions` ADD `city` enum('london','bristol') DEFAULT 'london' NOT NULL;

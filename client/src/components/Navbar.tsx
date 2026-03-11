@@ -151,16 +151,41 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot, cityPrefix =
         </div>
       </nav>
 
-      {/* Mobile dark mode toggle — floating button */}
-      {switchable && toggleTheme && (
-        <button
-          onClick={toggleTheme}
-          className="lg:hidden fixed top-4 right-4 z-30 w-10 h-10 rounded-full glass shadow-lg flex items-center justify-center text-foreground border border-border/50 transition-all duration-200"
-          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {theme === 'dark' ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-        </button>
-      )}
+      {/* Mobile top bar — city switcher, UniMode, dark mode */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-30 glass border-b border-border/50 px-4 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Link href="/">
+            <span className="text-base text-foreground font-semibold cursor-pointer" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
+          </Link>
+          <span className={`text-[10px] ${cityBadgeClass} px-1.5 py-0.5 rounded-full font-medium`}>{cityLabel}</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          {/* City switcher — mobile */}
+          <Link href={isBristol ? '/' : '/bristol'}>
+            <span className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground px-2 py-1 rounded-full border border-border/50 cursor-pointer transition-colors">
+              <ArrowLeftRight className="w-3 h-3" />
+              {isBristol ? 'London' : 'Bristol'}
+            </span>
+          </Link>
+          {/* UniMode — mobile */}
+          <Link href={uniHref}>
+            <span className={`flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full border cursor-pointer transition-all ${uniBadgeClass}`}>
+              <GraduationCap className="w-3 h-3" />
+              Uni
+            </span>
+          </Link>
+          {/* Dark mode toggle — mobile */}
+          {switchable && toggleTheme && (
+            <button
+              onClick={toggleTheme}
+              className="w-7 h-7 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            </button>
+          )}
+        </div>
+      </div>
     </>
   );
 }
