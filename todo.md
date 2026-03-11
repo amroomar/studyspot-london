@@ -152,3 +152,6 @@
 
 ### Image Override Bug
 - [x] Admin-set images from Image Manager do not override default location images in the app
+
+### Theme Default
+- [x] Make dark mode the default, light mode toggled on
