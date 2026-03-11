@@ -232,7 +232,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="absolute bottom-4 left-3 right-3 sm:left-4 sm:right-4 z-10 max-w-md mx-auto"
+            className="absolute bottom-24 lg:bottom-4 left-3 right-3 sm:left-4 sm:right-4 z-10 max-w-md mx-auto"
           >
             <div className="bg-card rounded-2xl shadow-xl overflow-hidden border border-border/50">
               {/* Close button */}

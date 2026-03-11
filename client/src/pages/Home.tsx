@@ -27,6 +27,9 @@ import { SubmissionsProvider, useSubmissions } from '@/contexts/SubmissionsConte
 import { LiveVibeProvider } from '@/contexts/LiveVibeContext';
 import { ChevronRight, X, Users, GraduationCap, ArrowRight, MapPin, Coffee, BookOpen, Sparkles } from 'lucide-react';
 import { Link } from 'wouter';
+import NearbyLocations from '@/components/NearbyLocations';
+import { getLocationImage } from '@/lib/images';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
@@ -326,6 +329,18 @@ function DiscoveryFeed({
             </div>
           </Link>
         </motion.div>
+      )}
+
+      {/* Nearby Locations — geolocation-based */}
+      {!hasActiveFilters && (
+        <NearbyLocations
+          locations={allLocations}
+          onSelectLocation={onSelectLocation}
+          getImage={(loc) => loc.image || getLocationImage(loc.name, loc.category)}
+          accentColor="fog-sage"
+          maxDistance={3}
+          maxResults={8}
+        />
       )}
 
       {/* Community Discoveries */}

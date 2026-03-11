@@ -30,7 +30,7 @@ export default function PWAInstallBanner() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ type: 'spring', damping: 22, stiffness: 260, delay: 1.5 }}
-            className="fixed z-40 left-0 right-0 bottom-16 lg:bottom-0"
+            className="fixed z-[35] left-0 right-0 bottom-[4.5rem] lg:bottom-0"
           >
             {/* Gradient border top */}
             <div className="h-[2px] bg-gradient-to-r from-fog-sage via-fog-gold to-cyan-500" />

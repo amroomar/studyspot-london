@@ -28,6 +28,8 @@ import { SubmissionsProvider, useSubmissions } from '@/contexts/SubmissionsConte
 import { LiveVibeProvider } from '@/contexts/LiveVibeContext';
 import { ChevronRight, X, Users, GraduationCap, ArrowRight, MapPin, Coffee, BookOpen, Sparkles, Anchor } from 'lucide-react';
 import { Link } from 'wouter';
+import NearbyLocations from '@/components/NearbyLocations';
+import { getBristolLocationImage } from '@/lib/bristolImages';
 // Convert Bristol social videos to the SocialVideo format used by SocialDiscoveryPage
 const bristolSocialVideosSV: SocialVideo[] = bristolSocialVideos.map(v => ({
   id: String(v.id),
@@ -230,6 +232,18 @@ function DiscoveryFeed({ onSelectLocation, filters, setFilters, filteredLocation
           ))}
         </div>
       </motion.div>
+
+      {/* Nearby Locations — geolocation-based */}
+      {!hasActiveFilters && (
+        <NearbyLocations
+          locations={bristolLocations as any}
+          onSelectLocation={onSelectLocation}
+          getImage={(loc) => loc.image || getBristolLocationImage(loc.name, loc.category)}
+          accentColor="cyan-600"
+          maxDistance={3}
+          maxResults={8}
+        />
+      )}
 
       {/* Community Discoveries */}
       {!hasActiveFilters && <CommunityDiscoveries onSelectLocation={onSelectLocation} />}

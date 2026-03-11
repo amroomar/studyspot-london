@@ -81,7 +81,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "printing",
       "historic"
     ],
-    "image": "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/arts-social-sciences-library_73abb880.jpg"
   },
   {
     "id": 10002,
@@ -107,7 +107,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "historic",
       "beautiful"
     ],
-    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/wills-memorial_f89ab8f7.jpg"
   },
   {
     "id": 10003,
@@ -133,7 +133,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "engineering",
       "modern"
     ],
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/queens-building_e24d37db.jpg"
   },
   {
     "id": 10004,
@@ -159,7 +159,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "group study",
       "quiet zones"
     ],
-    "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/beacon-house_2bd19d94.jpg"
   },
   {
     "id": 10005,
@@ -185,7 +185,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "central",
       "sofas"
     ],
-    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/senate-house_cde59240.jpg"
   },
   {
     "id": 10006,
@@ -211,7 +211,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "small",
       "departmental"
     ],
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/physics-library_2cb0ab46.jpg"
   },
   {
     "id": 10007,
@@ -237,7 +237,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "collaborative",
       "modern"
     ],
-    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/merchant-venturers_248a9cd1.png"
   },
   {
     "id": 10008,
@@ -263,7 +263,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "natural light",
       "flexible"
     ],
-    "image": "https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/fry-building_7086a2dd.jpg"
   },
   {
     "id": 10009,
@@ -289,7 +289,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "seminar rooms",
       "quiet"
     ],
-    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/priory-road_ccc368cb.jpg"
   },
   {
     "id": 10010,
@@ -315,7 +315,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "group work",
       "student union"
     ],
-    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/richmond-building_15bd4e5a.jpg"
   },
   {
     "id": 10011,
@@ -341,7 +341,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "beautiful",
       "music department"
     ],
-    "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/victoria-rooms_21978dbd.jpg"
   },
   {
     "id": 10012,
@@ -367,7 +367,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "biology",
       "compact"
     ],
-    "image": "https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/life-sciences_4029b9a3.jpg"
   },
   {
     "id": 10013,
@@ -393,7 +393,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "inspiring",
       "galleries"
     ],
-    "image": "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/bower-ashton_e7466165.jpg"
   },
   {
     "id": 10014,
@@ -419,7 +419,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "computers",
       "refurbished"
     ],
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/frenchay-library_f7c2d408.jpg"
   },
   {
     "id": 10015,
@@ -445,7 +445,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "late night",
       "residential"
     ],
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/student-village_43c00c2b.jpg"
   },
   {
     "id": 10016,
@@ -471,7 +471,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "modern",
       "atrium"
     ],
-    "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/exhibition-centre_ed0132a6.jpg"
   },
   {
     "id": 10017,
@@ -497,7 +497,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "engineering",
       "modern"
     ],
-    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/q-block_6afd3127.jpg"
   },
   {
     "id": 10018,
@@ -523,7 +523,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "quiet",
       "focused"
     ],
-    "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/glenside-library_f536f6e0.jpg"
   },
   {
     "id": 10019,
@@ -549,7 +549,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "natural light",
       "cafe"
     ],
-    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/business-school_59868b15.jpg"
   },
   {
     "id": 10020,
@@ -575,6 +575,6 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
       "unique view",
       "active"
     ],
-    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/centre-for-sport_86593b7b.png"
   }
 ];

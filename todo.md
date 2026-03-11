@@ -312,3 +312,9 @@
 - [x] Implement "Add to Home Screen" install prompt button
 - [x] Test PWA installability
 - [x] Make PWA install banner bigger and more prominent — full-width across bottom of screen
+
+## Bug Fixes (Round 6)
+- [x] Fix PWA install banner hidden behind bottom nav on map page
+- [x] Fix map thumbnails showing placeholders instead of real images
+- [x] Fix Bristol UniMode locations showing placeholder images — replaced all 20 with real CDN images
+- [x] Add nearby locations section with geolocation on discovery page for both London and Bristol
