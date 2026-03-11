@@ -311,3 +311,4 @@
 - [x] Add manifest link to index.html
 - [x] Implement "Add to Home Screen" install prompt button
 - [x] Test PWA installability
+- [x] Make PWA install banner bigger and more prominent — full-width across bottom of screen

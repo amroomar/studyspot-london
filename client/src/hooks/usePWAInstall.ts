@@ -9,6 +9,7 @@ export function usePWAInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
   const [showIOSInstructions, setShowIOSInstructions] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -36,6 +37,10 @@ export function usePWAInstall() {
     const isiOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     setIsIOS(isiOS);
 
+    // Detect Android
+    const isAndroidDevice = /Android/.test(ua);
+    setIsAndroid(isAndroidDevice);
+
     // Listen for the beforeinstallprompt event (Chrome/Edge/Samsung)
     const handler = (e: Event) => {
       e.preventDefault();
@@ -61,15 +66,19 @@ export function usePWAInstall() {
       return;
     }
 
-    if (!deferredPrompt) return;
-
-    await deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-
-    if (outcome === 'accepted') {
-      setIsInstalled(true);
+    if (deferredPrompt) {
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setIsInstalled(true);
+      }
+      setDeferredPrompt(null);
+      return;
     }
-    setDeferredPrompt(null);
+
+    // For browsers that don't fire beforeinstallprompt (Firefox, etc.)
+    // Show generic instructions
+    setShowIOSInstructions(true);
   }, [deferredPrompt, isIOS]);
 
   const dismiss = useCallback(() => {
@@ -81,12 +90,16 @@ export function usePWAInstall() {
     setShowIOSInstructions(false);
   }, []);
 
-  const canInstall = !isInstalled && !dismissed && (!!deferredPrompt || isIOS);
+  // Always show the banner (unless installed or dismissed)
+  // This ensures all users see the install promotion
+  const canInstall = !isInstalled && !dismissed;
 
   return {
     canInstall,
     isInstalled,
     isIOS,
+    isAndroid,
+    hasDeferredPrompt: !!deferredPrompt,
     showIOSInstructions,
     install,
     dismiss,
