@@ -274,3 +274,11 @@
 - [x] Fix Rooftop filter showing 0 results (removed non-existent category from BRISTOL_CATEGORY_HERO)
 - [x] Audit all Bristol filter categories for 0-result issues (removed Community Hub, Luxury Cafe too; FilterPanel now accepts optional categories prop)
 - [x] Made FilterPanel accept optional categories prop so Bristol shows only its 12 real categories
+
+## Bristol Images Deep Fix (Round 3)
+
+- [x] Uploaded 35 additional real Bristol venue photos to CDN (total 75+ Bristol images)
+- [x] Expanded venue image map from 30 to 150+ entries covering 99/100 Bristol locations
+- [x] Every Bristol location now resolves to a real Bristol venue photo (0 London image leaks)
+- [x] Category pools expanded with more diverse Bristol-specific images
+- [x] All 113 tests pass
