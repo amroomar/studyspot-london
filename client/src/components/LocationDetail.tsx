@@ -10,6 +10,7 @@ import { VibeDetailPanel } from '@/components/LiveVibeBadge';
 import { socialVideos } from '@/lib/socialVideos';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
+import { getBristolLocationImage } from '@/lib/bristolImages';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { useReviews, type Review } from '@/contexts/ReviewsContext';
@@ -249,10 +250,14 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
   const { useLocationReviews } = useReviews();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const fav = isFavorite(location.id);
-  const defaultImage = location.image && !location.image.includes('source.unsplash')
-    ? location.image
+  const isBristolLocation = location.id >= 10001;
+  const categoryFallback = isBristolLocation
+    ? getBristolLocationImage(location.name, location.category)
     : getLocationImage(location.name, location.category);
-  const image = resolveImage('curated', location.id, defaultImage) || defaultImage;
+  const resolvedImage = resolveImage('curated', location.id, location.image || categoryFallback);
+  const image = resolvedImage || categoryFallback;
+  const [heroImgError, setHeroImgError] = useState(false);
+  const showHeroGradient = !image || heroImgError;
   const locationType: 'curated' | 'community' = (location as any).isCommunitySubmitted ? 'community' : 'curated';
   const { reviews, isLoading: reviewsLoading } = useLocationReviews(locationType, location.id);
   const [reviewSort, setReviewSort] = useState<'newest' | 'oldest' | 'highest' | 'lowest'>('newest');
@@ -280,7 +285,16 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
     >
       {/* Hero Image */}
       <div className="relative h-[45vh] min-h-[300px]">
-        <img src={image} alt={location.name} className="w-full h-full object-cover" />
+        {showHeroGradient ? (
+          <div className="w-full h-full bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 flex items-center justify-center">
+            <div className="text-center opacity-60">
+              <MapPin className="w-12 h-12 mx-auto mb-2 text-slate-500 dark:text-slate-300" />
+              <span className="text-sm text-slate-500 dark:text-slate-300 font-medium">{location.category}</span>
+            </div>
+          </div>
+        ) : (
+          <img src={image} alt={location.name} className="w-full h-full object-cover" onError={() => setHeroImgError(true)} />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
         {/* Top bar */}

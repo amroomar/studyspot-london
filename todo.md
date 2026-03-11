@@ -282,3 +282,20 @@
 - [x] Every Bristol location now resolves to a real Bristol venue photo (0 London image leaks)
 - [x] Category pools expanded with more diverse Bristol-specific images
 - [x] All 113 tests pass
+
+## Image Display Fixes (Round 4)
+
+### Admin Image Overrides
+- [ ] Scope admin image overrides by city so London overrides don't appear on Bristol locations
+- [ ] Bristol locations should show gradient placeholder when no real image exists
+
+### Broken Images
+- [ ] Fix London locations showing broken image URLs as text in top corner
+- [ ] Add gradient placeholder fallback for any location with no valid image
+
+### Gradient Placeholder
+- [ ] Create a clean gradient placeholder component for locations without images
+- [ ] Apply gradient placeholder to both London and Bristol when image is missing/broken
+
+## London Image Regression Fix (Round 5)
+- [x] Fix London images reverting to stock placeholders — restore real images from location.image field and image resolver

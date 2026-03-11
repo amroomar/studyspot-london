@@ -33,20 +33,29 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
 
   // Image resolution priority:
   // 1. Admin override (from database via ImageOverridesContext)
-  // 2. Community submission image
-  // 3. Location's built-in image (if non-empty and not unsplash placeholder)
-  // 4. Bristol-specific resolver for Bristol locations (id >= 1001)
-  // 5. London fallback from getLocationImage()
-  const isBristolLocation = location.id >= 1001;
-  const defaultImage = location.image && !location.image.includes('source.unsplash')
-    ? location.image
-    : isBristolLocation
-      ? getBristolLocationImage(location.name, location.category)
-      : getLocationImage(location.name, location.category);
+  // 2. location.image (real venue URL from data file)
+  // 3. City-specific resolver (Bristol or London category pool)
+  // 4. If nothing found, show gradient placeholder
+  const isBristolLocation = location.id >= 10001;
+
+  // Category-based fallback (last resort before gradient)
+  const categoryFallback = isBristolLocation
+    ? getBristolLocationImage(location.name, location.category)
+    : getLocationImage(location.name, location.category);
+
+  // For both cities: admin override → location.image → category fallback
+  const resolvedImage = resolveImage(
+    'curated',
+    location.id,
+    location.image || categoryFallback
+  );
 
   const image = isCommunity
-    ? (location as any).images?.[0] || defaultImage
-    : resolveImage('curated', location.id, defaultImage) || defaultImage;
+    ? (location as any).images?.[0] || location.image || categoryFallback
+    : resolvedImage || categoryFallback;
+
+  const [imgError, setImgError] = useState(false);
+  const showGradient = !image || imgError;
 
   const noiseLabel = location.noiseLevel <= 2 ? 'Quiet' : location.noiseLevel <= 3 ? 'Moderate' : 'Lively';
 
@@ -68,14 +77,26 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
       <div className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-500 border border-border/30">
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
-          <div className={`absolute inset-0 bg-muted transition-opacity duration-500 ${imgLoaded ? 'opacity-0' : 'opacity-100'}`} />
-          <img
-            src={image}
-            alt={location.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            onLoad={() => setImgLoaded(true)}
-          />
+          {showGradient ? (
+            <div className="w-full h-full bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 flex items-center justify-center">
+              <div className="text-center opacity-60">
+                <MapPin className="w-8 h-8 mx-auto mb-1 text-slate-500 dark:text-slate-300" />
+                <span className="text-xs text-slate-500 dark:text-slate-300 font-medium">{location.category}</span>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className={`absolute inset-0 bg-muted transition-opacity duration-500 ${imgLoaded ? 'opacity-0' : 'opacity-100'}`} />
+              <img
+                src={image}
+                alt={location.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                onLoad={() => setImgLoaded(true)}
+                onError={() => setImgError(true)}
+              />
+            </>
+          )}
           {/* Score badge + verified badge together */}
           <div className="absolute top-3 left-3 flex items-center gap-1.5">
             <div className="score-badge bg-card/90 backdrop-blur-sm text-card-foreground px-2.5 py-1 rounded-lg text-sm shadow-sm flex items-center gap-1">

@@ -7,7 +7,7 @@ import type { Location } from './locations';
 
 export const bristolLocations: Location[] = [
   {
-    "id": 1,
+    "id": 10001,
     "name": "Boston Tea Party Stokes Croft",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -39,7 +39,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 2,
+    "id": 10002,
     "name": "Society Cafe Farr's Lane",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -71,7 +71,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 3,
+    "id": 10003,
     "name": "Full Court Press",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -103,7 +103,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 4,
+    "id": 10004,
     "name": "Watershed Cafe & Bar",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -135,7 +135,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 5,
+    "id": 10005,
     "name": "Hotplate",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -167,7 +167,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 6,
+    "id": 10006,
     "name": "Love Bristol Cafe",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -199,7 +199,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 7,
+    "id": 10007,
     "name": "Coffee #1 Clifton",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -231,7 +231,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 8,
+    "id": 10008,
     "name": "Hatter House Cafe",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -263,7 +263,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 9,
+    "id": 10009,
     "name": "Spicer & Cole",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -295,7 +295,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 10,
+    "id": 10010,
     "name": "The Canteen",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -327,7 +327,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 11,
+    "id": 10011,
     "name": "Brew Coffee Co",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -359,7 +359,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 12,
+    "id": 10012,
     "name": "Mrs. Potts Chocolate House",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -391,7 +391,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 13,
+    "id": 10013,
     "name": "Illustrate",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -423,7 +423,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 14,
+    "id": 10014,
     "name": "Folk House Cafe",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -455,7 +455,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 15,
+    "id": 10015,
     "name": "Cafe Kino",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -487,7 +487,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 16,
+    "id": 10016,
     "name": "Pinkmans",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -519,7 +519,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 17,
+    "id": 10017,
     "name": "Mokoko Bakery",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -551,7 +551,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 18,
+    "id": 10018,
     "name": "Wayland's Yard",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -583,7 +583,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 19,
+    "id": 10019,
     "name": "The Crafty Egg Stokes Croft",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -615,7 +615,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 20,
+    "id": 10020,
     "name": "Tobacco Factory Theatres Cafe",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -647,7 +647,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 21,
+    "id": 10021,
     "name": "Bocabar",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -679,7 +679,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 22,
+    "id": 10022,
     "name": "Playground Coffee House",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -711,7 +711,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 23,
+    "id": 10023,
     "name": "Friska Glass Wharf",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -743,7 +743,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 24,
+    "id": 10024,
     "name": "The Bristol Loaf Bedminster",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -775,7 +775,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 25,
+    "id": 10025,
     "name": "Coffee Under Pressure",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -807,7 +807,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 26,
+    "id": 10026,
     "name": "Mocha Mocha",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -839,7 +839,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 27,
+    "id": 10027,
     "name": "The Arnolfini Cafe",
     "type": "Quiet Study Cafe",
     "category": "Museum/Gallery Cafe",
@@ -871,7 +871,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 28,
+    "id": 10028,
     "name": "Primrose Cafe",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -903,7 +903,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 29,
+    "id": 10029,
     "name": "The Old Bookshop",
     "type": "Quiet Study Cafe",
     "category": "Bookstore Cafe",
@@ -935,7 +935,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 30,
+    "id": 10030,
     "name": "Spoke & Stringer",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -967,7 +967,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 31,
+    "id": 10031,
     "name": "Little Victories",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -999,7 +999,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 32,
+    "id": 10032,
     "name": "N\u00b012 Easton",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1031,7 +1031,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 33,
+    "id": 10033,
     "name": "25A Old Market",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1063,7 +1063,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 34,
+    "id": 10034,
     "name": "FED 313",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1095,7 +1095,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 35,
+    "id": 10035,
     "name": "The Cloakroom Cafe",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1127,7 +1127,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 36,
+    "id": 10036,
     "name": "Workhouse Cafe",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1159,7 +1159,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 37,
+    "id": 10037,
     "name": "Poco",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1191,7 +1191,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 38,
+    "id": 10038,
     "name": "East Village Cafe",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1223,7 +1223,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 39,
+    "id": 10039,
     "name": "Bakesmiths",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -1255,7 +1255,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 40,
+    "id": 10040,
     "name": "Flour House",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -1287,7 +1287,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 41,
+    "id": 10041,
     "name": "Coffee + Beer",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1319,7 +1319,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 42,
+    "id": 10042,
     "name": "Monty Carlos",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1351,7 +1351,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 43,
+    "id": 10043,
     "name": "The Red Church",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1383,7 +1383,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 44,
+    "id": 10044,
     "name": "Catley's",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1415,7 +1415,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 45,
+    "id": 10045,
     "name": "Peggy's Bristol",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -1447,7 +1447,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 46,
+    "id": 10046,
     "name": "1B Pitville",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -1479,7 +1479,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 47,
+    "id": 10047,
     "name": "Coffee #1 Welsh Back",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1511,7 +1511,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 48,
+    "id": 10048,
     "name": "The Bristol Loaf Beacon",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -1543,7 +1543,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 49,
+    "id": 10049,
     "name": "Lounge Southville",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -1575,7 +1575,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 50,
+    "id": 10050,
     "name": "Ahh Toots",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -1607,7 +1607,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 51,
+    "id": 10051,
     "name": "Bristol Central Library",
     "type": "Library",
     "category": "Library",
@@ -1639,7 +1639,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 52,
+    "id": 10052,
     "name": "Clifton Library",
     "type": "Library",
     "category": "Library",
@@ -1671,7 +1671,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 53,
+    "id": 10053,
     "name": "Bedminster Library",
     "type": "Library",
     "category": "Library",
@@ -1703,7 +1703,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 54,
+    "id": 10054,
     "name": "Bishopston Library",
     "type": "Library",
     "category": "Library",
@@ -1735,7 +1735,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 55,
+    "id": 10055,
     "name": "Henleaze Library",
     "type": "Library",
     "category": "Library",
@@ -1767,7 +1767,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 56,
+    "id": 10056,
     "name": "Redland Library",
     "type": "Library",
     "category": "Library",
@@ -1799,7 +1799,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 57,
+    "id": 10057,
     "name": "Knowle Library",
     "type": "Library",
     "category": "Library",
@@ -1831,7 +1831,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 58,
+    "id": 10058,
     "name": "Fishponds Library",
     "type": "Library",
     "category": "Library",
@@ -1863,7 +1863,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 59,
+    "id": 10059,
     "name": "DeskLodge Old Market",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -1895,7 +1895,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 60,
+    "id": 10060,
     "name": "Engine Shed",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -1927,7 +1927,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 61,
+    "id": 10061,
     "name": "Hamilton House",
     "type": "Coworking Space",
     "category": "Creative Workspace",
@@ -1959,7 +1959,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 62,
+    "id": 10062,
     "name": "Origin Workspace",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -1991,7 +1991,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 63,
+    "id": 10063,
     "name": "Runway East Bristol",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -2023,7 +2023,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 64,
+    "id": 10064,
     "name": "Spaces Glass Wharf",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -2055,7 +2055,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 65,
+    "id": 10065,
     "name": "The Guild",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -2087,7 +2087,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 66,
+    "id": 10066,
     "name": "Raw Space",
     "type": "Coworking Space",
     "category": "Creative Workspace",
@@ -2119,7 +2119,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 67,
+    "id": 10067,
     "name": "Redbrick House",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -2151,7 +2151,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 68,
+    "id": 10068,
     "name": "Broad Quay House",
     "type": "Coworking Space",
     "category": "Coworking Space",
@@ -2183,7 +2183,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 69,
+    "id": 10069,
     "name": "Hotel du Vin Bristol",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2215,7 +2215,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 70,
+    "id": 10070,
     "name": "Bristol Harbour Hotel",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2247,7 +2247,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 71,
+    "id": 10071,
     "name": "The Bristol Hotel",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2279,7 +2279,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 72,
+    "id": 10072,
     "name": "Mercure Bristol Grand Hotel",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2311,7 +2311,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 73,
+    "id": 10073,
     "name": "Hilton Garden Inn Bristol",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2343,7 +2343,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 74,
+    "id": 10074,
     "name": "Brandon Hill & Cabot Tower",
     "type": "Nature/Greenery",
     "category": "Nature/Greenery",
@@ -2375,7 +2375,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 75,
+    "id": 10075,
     "name": "Castle Park",
     "type": "Nature/Greenery",
     "category": "Nature/Greenery",
@@ -2407,7 +2407,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 76,
+    "id": 10076,
     "name": "The Downs",
     "type": "Nature/Greenery",
     "category": "Nature/Greenery",
@@ -2439,7 +2439,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 77,
+    "id": 10077,
     "name": "St Andrew's Churchyard",
     "type": "Nature/Greenery",
     "category": "Nature/Greenery",
@@ -2471,7 +2471,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 78,
+    "id": 10078,
     "name": "Greville Smyth Park",
     "type": "Nature/Greenery",
     "category": "Nature/Greenery",
@@ -2503,7 +2503,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 79,
+    "id": 10079,
     "name": "The Crafty Egg Bedminster",
     "type": "Late-Night Cafe",
     "category": "Late-Night Cafe",
@@ -2535,7 +2535,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 80,
+    "id": 10080,
     "name": "Kongs of King Street",
     "type": "Late-Night Cafe",
     "category": "Late-Night Cafe",
@@ -2567,7 +2567,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 81,
+    "id": 10081,
     "name": "Spike Island Cafe",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -2599,7 +2599,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 82,
+    "id": 10082,
     "name": "The Grain Barge",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -2631,7 +2631,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 83,
+    "id": 10083,
     "name": "Wardrobe Theatre Cafe",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -2663,7 +2663,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 84,
+    "id": 10084,
     "name": "Storysmith",
     "type": "Quiet Study Cafe",
     "category": "Bookstore Cafe",
@@ -2695,7 +2695,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 85,
+    "id": 10085,
     "name": "Emmeline",
     "type": "Quiet Study Cafe",
     "category": "Aesthetic Cafe",
@@ -2727,7 +2727,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 86,
+    "id": 10086,
     "name": "Tradewind Espresso",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -2759,7 +2759,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 87,
+    "id": 10087,
     "name": "Redpoint Climbing Centre Cafe",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -2791,7 +2791,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 88,
+    "id": 10088,
     "name": "Arnos Manor Hotel Lounge",
     "type": "Hotel Lounge",
     "category": "Hotel Lounge",
@@ -2823,7 +2823,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 89,
+    "id": 10089,
     "name": "Tincan Coffee",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -2855,7 +2855,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 90,
+    "id": 10090,
     "name": "Small Street Espresso",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -2887,7 +2887,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 91,
+    "id": 10091,
     "name": "Hart's Bakery",
     "type": "Quiet Study Cafe",
     "category": "Bakery/Patisserie",
@@ -2919,7 +2919,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 92,
+    "id": 10092,
     "name": "Ahh Toots Totterdown",
     "type": "Quiet Study Cafe",
     "category": "Hidden Gem",
@@ -2951,7 +2951,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 93,
+    "id": 10093,
     "name": "Bristolian Cafe",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -2983,7 +2983,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 94,
+    "id": 10094,
     "name": "Wapping Wharf Container Yard",
     "type": "Quiet Study Cafe",
     "category": "Creative Workspace",
@@ -3015,7 +3015,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 95,
+    "id": 10095,
     "name": "Bristolian Cafe & Bar",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -3047,7 +3047,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 96,
+    "id": 10096,
     "name": "Alchemy 198",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -3079,7 +3079,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 97,
+    "id": 10097,
     "name": "Caf\u00e9 Grounded",
     "type": "Quiet Study Cafe",
     "category": "Quiet Study Cafe",
@@ -3111,7 +3111,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 98,
+    "id": 10098,
     "name": "M Shed Cafe",
     "type": "Quiet Study Cafe",
     "category": "Museum/Gallery Cafe",
@@ -3143,7 +3143,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 99,
+    "id": 10099,
     "name": "Bristol Museum & Art Gallery Cafe",
     "type": "Quiet Study Cafe",
     "category": "Museum/Gallery Cafe",
@@ -3175,7 +3175,7 @@ export const bristolLocations: Location[] = [
     "image": ""
   },
   {
-    "id": 100,
+    "id": 10100,
     "name": "We The Curious Cafe",
     "type": "Quiet Study Cafe",
     "category": "Museum/Gallery Cafe",

@@ -3663,7 +3663,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.6,
-    "image": "https://www.google.com/maps/@51.618405,-0.176518,3a,82.2y,49.38h,87.19t/data=!3m8!1e1!3m6!1sAF1QipOsQk4TYi3Oz1mRM18Vp_GyRIxPckyi2_CvwvkV!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipOsQk4TYi3Oz1mRM18Vp_GyRIxPckyi2_CvwvkV%3Dw900-h600-k-no-pi2.8100000000000023-ya37.579999809265146-ro0-fo100!7i10528!8i5264?entry=ttu"
+    "image": ""
   },
   {
     "id": 115,

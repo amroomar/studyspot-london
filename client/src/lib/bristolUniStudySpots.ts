@@ -58,7 +58,7 @@ export const bristolUniversities: BristolUniversity[] = [
 
 export const bristolUniStudySpots: BristolUniStudySpot[] = [
   {
-    "id": 1,
+    "id": 10001,
     "universityId": 1,
     "name": "Arts and Social Sciences Library",
     "building": "Tyndall Avenue",
@@ -84,7 +84,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
   },
   {
-    "id": 2,
+    "id": 10002,
     "universityId": 1,
     "name": "Wills Memorial Library",
     "building": "Wills Memorial Building",
@@ -110,7 +110,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
   },
   {
-    "id": 3,
+    "id": 10003,
     "universityId": 1,
     "name": "Queen's Building Study Space",
     "building": "Queen's Building",
@@ -136,7 +136,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
   },
   {
-    "id": 4,
+    "id": 10004,
     "universityId": 1,
     "name": "Beacon House",
     "building": "Beacon House",
@@ -162,7 +162,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop"
   },
   {
-    "id": 5,
+    "id": 10005,
     "universityId": 1,
     "name": "Senate House Study Lounge",
     "building": "Senate House",
@@ -188,7 +188,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
   },
   {
-    "id": 6,
+    "id": 10006,
     "universityId": 1,
     "name": "Physics Library",
     "building": "HH Wills Physics Laboratory",
@@ -214,7 +214,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop"
   },
   {
-    "id": 7,
+    "id": 10007,
     "universityId": 1,
     "name": "Merchant Venturers Building",
     "building": "Merchant Venturers Building",
@@ -240,7 +240,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop"
   },
   {
-    "id": 8,
+    "id": 10008,
     "universityId": 1,
     "name": "Fry Building",
     "building": "Fry Building",
@@ -266,7 +266,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop"
   },
   {
-    "id": 9,
+    "id": 10009,
     "universityId": 1,
     "name": "Priory Road Complex",
     "building": "Priory Road",
@@ -292,7 +292,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop"
   },
   {
-    "id": 10,
+    "id": 10010,
     "universityId": 1,
     "name": "Richmond Building",
     "building": "Richmond Building",
@@ -318,7 +318,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop"
   },
   {
-    "id": 11,
+    "id": 10011,
     "universityId": 1,
     "name": "Victoria Rooms",
     "building": "Victoria Rooms",
@@ -344,7 +344,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop"
   },
   {
-    "id": 12,
+    "id": 10012,
     "universityId": 1,
     "name": "Life Sciences Library",
     "building": "Life Sciences Building",
@@ -370,7 +370,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=600&h=400&fit=crop"
   },
   {
-    "id": 13,
+    "id": 10013,
     "universityId": 2,
     "name": "Bower Ashton Library",
     "building": "Bower Ashton Campus",
@@ -396,7 +396,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&h=400&fit=crop"
   },
   {
-    "id": 14,
+    "id": 10014,
     "universityId": 2,
     "name": "Frenchay Library",
     "building": "Frenchay Campus",
@@ -422,7 +422,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop"
   },
   {
-    "id": 15,
+    "id": 10015,
     "universityId": 2,
     "name": "Student Village Study Hub",
     "building": "Student Village",
@@ -448,7 +448,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
   },
   {
-    "id": 16,
+    "id": 10016,
     "universityId": 2,
     "name": "Exhibition Centre",
     "building": "Exhibition & Conference Centre",
@@ -474,7 +474,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop"
   },
   {
-    "id": 17,
+    "id": 10017,
     "universityId": 2,
     "name": "Q Block Study Space",
     "building": "Q Block",
@@ -500,7 +500,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop"
   },
   {
-    "id": 18,
+    "id": 10018,
     "universityId": 2,
     "name": "Glenside Library",
     "building": "Glenside Campus",
@@ -526,7 +526,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop"
   },
   {
-    "id": 19,
+    "id": 10019,
     "universityId": 2,
     "name": "Bristol Business School Atrium",
     "building": "Bristol Business School",
@@ -552,7 +552,7 @@ export const bristolUniStudySpots: BristolUniStudySpot[] = [
     "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
   },
   {
-    "id": 20,
+    "id": 10020,
     "universityId": 2,
     "name": "Centre for Sport Study Zone",
     "building": "Centre for Sport",
