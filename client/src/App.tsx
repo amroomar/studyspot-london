@@ -13,6 +13,7 @@ import BristolUniModePage from "./pages/BristolUniModePage";
 import CitySelector from "./pages/CitySelector";
 import AdminPanel from "./pages/AdminPanel";
 import AdminImageManager from "./pages/AdminImageManager";
+import PWAInstallBanner from "./components/PWAInstallBanner";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -53,6 +54,7 @@ function App() {
             <ImageOverridesProvider>
               <Toaster />
               <Router />
+              <PWAInstallBanner />
             </ImageOverridesProvider>
           </CityProvider>
         </TooltipProvider>

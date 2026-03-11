@@ -302,3 +302,12 @@
 
 ## UI Consistency
 - [x] Change London UniMode button to match Bristol UniMode button design
+
+## PWA Support
+- [x] Create web app manifest (manifest.json) with app name, icons, theme colors
+- [x] Generate PWA app icons in multiple sizes
+- [x] Create service worker for offline caching
+- [x] Register service worker in the app
+- [x] Add manifest link to index.html
+- [x] Implement "Add to Home Screen" install prompt button
+- [x] Test PWA installability
