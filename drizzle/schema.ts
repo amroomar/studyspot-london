@@ -129,3 +129,27 @@ export const locationReports = mysqlTable("location_reports", {
 
 export type LocationReport = typeof locationReports.$inferSelect;
 export type InsertLocationReport = typeof locationReports.$inferInsert;
+
+/**
+ * Location image overrides — admin-managed images for curated and uni locations.
+ * locationType: 'curated' for main locations, 'uni' for university study spots
+ * locationId: the id from the respective dataset
+ */
+export const locationImages = mysqlTable("location_images", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Type of location: curated (main 310 spots) or uni (university spots) */
+  locationType: mysqlEnum("locationType", ["curated", "uni"]).notNull(),
+  /** ID from the respective dataset */
+  locationId: int("locationId").notNull(),
+  /** S3 URL for the image */
+  imageUrl: text("imageUrl").notNull(),
+  /** Optional caption/alt text */
+  caption: varchar("caption", { length: 500 }),
+  /** Display order (lower = first) */
+  displayOrder: int("displayOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LocationImage = typeof locationImages.$inferSelect;
+export type InsertLocationImage = typeof locationImages.$inferInsert;

@@ -114,3 +114,28 @@
 - [x] Fix UniMode image rendering — 149/175 have permanent real images (85%)
 - [x] Replace all manuscdn temporary URLs with permanent URLs
 - [x] Verify images display correctly — all 55 tests pass
+
+## Bug Fixes & UI Improvements (Round 3)
+
+### Bugs
+- [x] Fix favorites: allow adding locations to custom lists
+- [x] Fix social page: missing TikTok/Instagram thumbnails
+- [x] Fix discover page: only showing 60 locations instead of 300+ (load-more pagination)
+- [x] Fix search page: location thumbnail images not updated to real photos
+
+### Admin Image Management
+- [x] Add admin panel section for managing location images
+- [x] Allow manual image URL editing for all 310 main locations
+- [x] Allow manual image URL editing for all 175 UniMode locations
+- [x] Save image changes to database/persistent storage (location_images table)
+
+### Map Improvements
+- [x] Show community-submitted locations on the map
+- [x] Add filter toggle to show/hide community spots on map
+
+### UI/UX Enhancements
+- [x] Add dark mode toggle with proper theme switching
+- [x] Improve button styles (more polished, consistent)
+- [x] Add smoother and cooler animations throughout
+- [x] Redesign discover/home page for a more sleek and professional look
+- [x] Improve overall visual polish and consistency

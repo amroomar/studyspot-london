@@ -151,7 +151,7 @@ export default function SearchPage({ locations, onSelectLocation }: SearchPagePr
                   onClick={() => onSelectLocation(loc)}
                 >
                   <img
-                    src={getLocationImage(loc.name, loc.category)}
+                    src={loc.image || getLocationImage(loc.name, loc.category)}
                     alt={loc.name}
                     className="w-20 h-20 rounded-lg object-cover shrink-0"
                   />

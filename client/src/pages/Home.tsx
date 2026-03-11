@@ -3,6 +3,7 @@
  * London Fog design: atmospheric, warm, editorial
  * Combines discovery feed, map, search, favorites, badges, social, submit
  * Features: community submissions, live vibe, heatmap, community discoveries
+ * Improved: smoother animations, sleeker UI, dark mode support, load-more pagination
  */
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -23,7 +24,7 @@ import { GamificationProvider } from '@/contexts/GamificationContext';
 import { ReviewsProvider } from '@/contexts/ReviewsContext';
 import { SubmissionsProvider, useSubmissions } from '@/contexts/SubmissionsContext';
 import { LiveVibeProvider } from '@/contexts/LiveVibeContext';
-import { ChevronRight, X, Sparkles, Users, GraduationCap, ArrowRight } from 'lucide-react';
+import { ChevronRight, X, Users, GraduationCap, ArrowRight, MapPin, Coffee, BookOpen, Sparkles } from 'lucide-react';
 import { Link } from 'wouter';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
@@ -69,9 +70,9 @@ function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: 
   if (filters.wifi) chips.push({ label: 'Wi-Fi', clear: () => onChange({ ...filters, wifi: false }) });
   if (filters.plugs) chips.push({ label: 'Plugs', clear: () => onChange({ ...filters, plugs: false }) });
   if (filters.laptopFriendly) chips.push({ label: 'Laptop Friendly', clear: () => onChange({ ...filters, laptopFriendly: false }) });
-  if (filters.noiseMax < 5) chips.push({ label: `Noise ≤${filters.noiseMax}`, clear: () => onChange({ ...filters, noiseMax: 5 }) });
+  if (filters.noiseMax < 5) chips.push({ label: `Noise \u2264${filters.noiseMax}`, clear: () => onChange({ ...filters, noiseMax: 5 }) });
   if (filters.priceLevel !== 'All') chips.push({ label: filters.priceLevel, clear: () => onChange({ ...filters, priceLevel: 'All' }) });
-  if (filters.minScore > 0) chips.push({ label: `Score ≥${filters.minScore}`, clear: () => onChange({ ...filters, minScore: 0 }) });
+  if (filters.minScore > 0) chips.push({ label: `Score \u2265${filters.minScore}`, clear: () => onChange({ ...filters, minScore: 0 }) });
 
   if (chips.length === 0) return null;
 
@@ -83,6 +84,8 @@ function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={chip.clear}
           className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-medium hover:bg-primary/20 transition-colors"
         >
@@ -143,14 +146,19 @@ function CommunityDiscoveries({ onSelectLocation }: { onSelectLocation: (loc: Lo
   }));
 
   return (
-    <div className="mb-8">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-fog-sage/10 flex items-center justify-center">
-            <Users className="w-4 h-4 text-fog-sage" />
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      className="mb-10"
+    >
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-fog-sage/10 flex items-center justify-center">
+            <Users className="w-4.5 h-4.5 text-fog-sage" />
           </div>
           <div>
-            <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Community Discoveries</h2>
+            <h2 className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>Community Discoveries</h2>
             <p className="text-xs text-muted-foreground">{submissions.length} spots submitted by users</p>
           </div>
         </div>
@@ -162,7 +170,38 @@ function CommunityDiscoveries({ onSelectLocation }: { onSelectLocation: (loc: Lo
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+/** Stats bar below hero */
+function StatsBar() {
+  const stats = [
+    { icon: Coffee, label: 'Cafes', value: '150+' },
+    { icon: BookOpen, label: 'Libraries', value: '60+' },
+    { icon: MapPin, label: 'Neighborhoods', value: '40+' },
+    { icon: Sparkles, label: 'Hidden Gems', value: '30+' },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
+    >
+      {stats.map(({ icon: Icon, label, value }) => (
+        <div key={label} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border/50">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <p className="text-lg font-semibold text-foreground" style={{ fontFamily: 'var(--font-mono)' }}>{value}</p>
+            <p className="text-xs text-muted-foreground">{label}</p>
+          </div>
+        </div>
+      ))}
+    </motion.div>
   );
 }
 
@@ -183,6 +222,7 @@ function DiscoveryFeed({
   setSortBy: (s: 'score' | 'name') => void;
   neighborhoods: string[];
 }) {
+  const [visibleCount, setVisibleCount] = useState(30);
   const topRated = useMemo(() =>
     [...allLocations].sort((a, b) => b.studyScore - a.studyScore).slice(0, 8),
   []);
@@ -192,29 +232,38 @@ function DiscoveryFeed({
 
   const hasActiveFilters = JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS);
 
+  // Reset visible count when filters change
+  useEffect(() => {
+    setVisibleCount(30);
+  }, [filters, sortBy]);
+
   return (
     <div className="pb-24 lg:pb-8">
-      {/* Hero Section */}
-      <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 mb-8 overflow-hidden">
-        <div className="relative h-[50vh] min-h-[360px] max-h-[500px]">
+      {/* Hero Section — refined with better gradient and typography */}
+      <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 mb-10 overflow-hidden">
+        <div className="relative h-[52vh] min-h-[380px] max-h-[520px]">
           <img
             src={HERO_IMAGES.main}
             alt="London study spot"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/5" />
           <div className="absolute inset-0 grain" />
 
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-12">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-3 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm mb-4">
+                <MapPin className="w-3.5 h-3.5 text-fog-gold" />
+                <span className="text-white/90 text-xs font-medium">London, United Kingdom</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-3 leading-[1.1] tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
                 Find your perfect<br />study spot
               </h1>
-              <p className="text-white/70 text-base sm:text-lg max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="text-white/60 text-base sm:text-lg max-w-lg leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
                 Discover {allLocations.length}+ curated cafes, libraries, and hidden gems across London.
               </p>
             </motion.div>
@@ -222,34 +271,45 @@ function DiscoveryFeed({
         </div>
       </div>
 
-      {/* Featured Categories — Horizontal scroll */}
-      <div className="mb-8">
-        <h2 className="text-xl mb-4" style={{ fontFamily: 'var(--font-display)' }}>Explore by Type</h2>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 custom-scrollbar" style={{ scrollbarWidth: 'none' }}>
+      {/* Stats Bar */}
+      <StatsBar />
+
+      {/* Featured Categories — Horizontal scroll with improved cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
+        className="mb-10"
+      >
+        <h2 className="text-xl mb-4 text-foreground" style={{ fontFamily: 'var(--font-display)' }}>Explore by Type</h2>
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
           {Object.entries(CATEGORY_HERO).map(([cat, img]) => (
-            <button
+            <motion.button
               key={cat}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setFilters({ ...DEFAULT_FILTERS, category: cat })}
-              className={`relative shrink-0 w-36 h-24 rounded-xl overflow-hidden group ${
-                filters.category === cat ? 'ring-2 ring-primary ring-offset-2' : ''
+              className={`relative shrink-0 w-40 h-28 rounded-2xl overflow-hidden group ${
+                filters.category === cat ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''
               }`}
             >
-              <img src={img} alt={cat} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <span className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium leading-tight">{cat}</span>
-            </button>
+              <img src={img} alt={cat} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <span className="absolute bottom-2.5 left-3 right-3 text-white text-xs font-medium leading-tight">{cat}</span>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* UniMode CTA Banner */}
+      {/* UniMode CTA Banner — improved design */}
       {!hasActiveFilters && (
         <Link href="/uni">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8 relative overflow-hidden rounded-2xl cursor-pointer group"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.01 }}
+            className="mb-10 relative overflow-hidden rounded-2xl cursor-pointer group"
           >
             <div className="relative p-6 sm:p-8 bg-gradient-to-r from-fog-charcoal via-fog-charcoal/95 to-fog-sage/30">
               <div className="absolute inset-0 grain" />
@@ -263,7 +323,7 @@ function DiscoveryFeed({
                     <p className="text-white/60 text-sm">175 study spots across 10 London universities</p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors" style={{ backgroundColor: '#2e2927', color: '#ffffff' }}>
+                <div className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm text-white text-sm font-medium group-hover:bg-white/20 transition-colors">
                   Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -279,12 +339,17 @@ function DiscoveryFeed({
       {!hasActiveFilters && (
         <>
           {/* Top Rated Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Top Rated</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-10"
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>Top Rated</h2>
               <button
                 onClick={() => { setFilters({ ...DEFAULT_FILTERS, minScore: 8 }); }}
-                className="flex items-center gap-1 text-sm text-primary hover:underline"
+                className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
               >
                 See all <ChevronRight className="w-4 h-4" />
               </button>
@@ -296,15 +361,20 @@ function DiscoveryFeed({
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Hidden Gems Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>Hidden Gems</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mb-10"
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>Hidden Gems</h2>
               <button
                 onClick={() => setFilters({ ...DEFAULT_FILTERS, category: 'Hidden Gem' })}
-                className="flex items-center gap-1 text-sm text-primary hover:underline"
+                className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
               >
                 See all <ChevronRight className="w-4 h-4" />
               </button>
@@ -316,21 +386,21 @@ function DiscoveryFeed({
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </>
       )}
 
       {/* All Locations with Filters */}
       <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>
             {filters.category !== 'All' ? filters.category : 'All Study Spots'}
           </h2>
           <div className="flex items-center gap-2">
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'score' | 'name')}
-              className="text-sm bg-card border border-border rounded-lg px-2 py-1.5 text-foreground"
+              className="text-sm bg-card border border-border rounded-xl px-3 py-2 text-foreground appearance-none cursor-pointer hover:border-primary/50 transition-colors"
             >
               <option value="score">Top Rated</option>
               <option value="name">A-Z</option>
@@ -347,29 +417,46 @@ function DiscoveryFeed({
         {/* Active filter chips */}
         <ActiveFilterChips filters={filters} onChange={setFilters} />
 
-        <p className="text-sm text-muted-foreground mb-4">{filteredLocations.length} spots found</p>
+        <p className="text-sm text-muted-foreground mb-5">{filteredLocations.length} spots found</p>
 
         {filteredLocations.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-lg text-muted-foreground mb-2">No spots match your filters</p>
-            <button
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-20"
+          >
+            <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+              <MapPin className="w-7 h-7 text-muted-foreground" />
+            </div>
+            <p className="text-lg text-foreground mb-2 font-medium">No spots match your filters</p>
+            <p className="text-sm text-muted-foreground mb-4">Try adjusting your criteria to discover more places</p>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setFilters(DEFAULT_FILTERS)}
-              className="text-primary hover:underline text-sm"
+              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Clear all filters
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filteredLocations.slice(0, 60).map((loc, i) => (
-                <LocationCard key={loc.id} location={loc} onClick={() => onSelectLocation(loc)} index={i} />
+              {filteredLocations.slice(0, visibleCount).map((loc, i) => (
+                <LocationCard key={loc.id} location={loc} onClick={() => onSelectLocation(loc)} index={i < 30 ? i : 0} />
               ))}
             </div>
 
-            {filteredLocations.length > 60 && (
-              <div className="text-center py-8">
-                <p className="text-sm text-muted-foreground">Showing 60 of {filteredLocations.length} results. Use filters to narrow down.</p>
+            {filteredLocations.length > visibleCount && (
+              <div className="text-center py-10">
+                <motion.button
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setVisibleCount(prev => prev + 30)}
+                  className="px-8 py-3.5 bg-primary text-primary-foreground rounded-2xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg"
+                >
+                  Load More ({filteredLocations.length - visibleCount} remaining)
+                </motion.button>
               </div>
             )}
           </>
@@ -379,7 +466,8 @@ function DiscoveryFeed({
   );
 }
 
-export default function Home() {
+/** Inner component that has access to SubmissionsContext */
+function HomeInner() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
 
   useEffect(() => {
@@ -393,6 +481,10 @@ export default function Home() {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [sortBy, setSortBy] = useState<'score' | 'name'>('score');
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showCommunityOnly, setShowCommunityOnly] = useState(false);
+
+  // Get community submissions for the map
+  const { submissions } = useSubmissions();
 
   const handleSelectLocation = useCallback((loc: Location) => {
     setSelectedLocation(loc);
@@ -403,18 +495,51 @@ export default function Home() {
     return Array.from(hoods).sort();
   }, []);
 
+  // Convert community submissions to Location objects for the map
+  const communityLocations: Location[] = useMemo(() => {
+    return submissions.map(sub => ({
+      id: sub.id + 100000,
+      name: sub.name,
+      type: sub.category,
+      category: sub.category,
+      neighborhood: sub.neighborhood,
+      address: sub.address,
+      lat: sub.lat || 51.515,
+      lng: sub.lng || -0.1,
+      wifi: sub.wifiQuality >= 3 ? 'yes' : 'limited',
+      plugSockets: sub.laptopFriendly >= 3 ? 'yes' : 'limited',
+      noiseLevel: sub.noiseLevel,
+      lightingQuality: sub.lightingQuality >= 4 ? 'excellent' : sub.lightingQuality >= 3 ? 'good' : 'average',
+      seatingComfort: sub.seatingComfort >= 4 ? 'excellent' : sub.seatingComfort >= 3 ? 'good' : 'average',
+      laptopFriendly: sub.laptopFriendly >= 3 ? 'yes' : 'limited',
+      crowdLevel: sub.crowdLevel <= 2 ? 'low' : sub.crowdLevel <= 3 ? 'moderate' : 'high',
+      tableSize: 'standard',
+      priceLevel: sub.priceLevel,
+      studyScore: sub.studyScore || 7.0,
+      atmosphere: sub.atmosphere || '',
+      tags: sub.tags,
+      openingHours: 'Check venue',
+      bestTimeStudy: '',
+      coffeeQuality: sub.category === 'Cafe' ? 'good' : 'N/A',
+      peakBusyTimes: 'Varies',
+      website: sub.website || '',
+      image: sub.images?.[0] || '',
+    }));
+  }, [submissions]);
+
   // Shared filtered locations — used by both discovery feed and map
+  // Include community spots in the map view
   const filteredLocations = useMemo(() =>
     applyFilters(allLocations, filters, sortBy),
   [filters, sortBy]);
 
+  const mapLocations = useMemo(() => {
+    if (showCommunityOnly) return communityLocations;
+    return [...filteredLocations, ...communityLocations];
+  }, [filteredLocations, communityLocations, showCommunityOnly]);
+
   return (
-    <FavoritesProvider>
-      <ReviewsProvider>
-        <GamificationProvider>
-          <SubmissionsProvider>
-            <LiveVibeProvider>
-              <div className="min-h-screen bg-background">
+              <div className="min-h-screen bg-background transition-colors duration-300">
                 <Navbar
                   activeTab={activeTab}
                   onTabChange={setActiveTab}
@@ -436,7 +561,13 @@ export default function Home() {
                   )}
                   {activeTab === 'map' && (
                     <div className="fixed inset-0 lg:top-14">
-                      <MapPage locations={filteredLocations} onSelectLocation={handleSelectLocation} />
+                      <MapPage
+                        locations={mapLocations}
+                        onSelectLocation={handleSelectLocation}
+                        showCommunityOnly={showCommunityOnly}
+                        onToggleCommunityOnly={() => setShowCommunityOnly(prev => !prev)}
+                        communityCount={communityLocations.length}
+                      />
                     </div>
                   )}
                   {activeTab === 'search' && <SearchPage locations={allLocations} onSelectLocation={handleSelectLocation} />}
@@ -469,6 +600,17 @@ export default function Home() {
                   )}
                 </AnimatePresence>
               </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <FavoritesProvider>
+      <ReviewsProvider>
+        <GamificationProvider>
+          <SubmissionsProvider>
+            <LiveVibeProvider>
+              <HomeInner />
             </LiveVibeProvider>
           </SubmissionsProvider>
         </GamificationProvider>

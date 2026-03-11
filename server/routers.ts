@@ -22,6 +22,12 @@ import {
   getReportsForSubmission,
   getAllPendingReports,
   updateReportStatus,
+  getAllLocationImages,
+  getLocationImages,
+  setLocationImage,
+  updateLocationImage,
+  deleteLocationImage,
+  deleteAllLocationImages,
 } from "./db";
 
 // ─── Helper: parse submission row for API response ──────────────────────────
@@ -108,6 +114,102 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+  }),
+
+  // ─── Location Image Management (Admin) ──────────────────────────────────
+  locationImages: router({
+    /** Get all image overrides (public - used to overlay on default images) */
+    getAll: publicProcedure.query(async () => {
+      return getAllLocationImages();
+    }),
+
+    /** Get images for a specific location (public) */
+    getForLocation: publicProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni"]),
+        locationId: z.number(),
+      }))
+      .query(async ({ input }) => {
+        return getLocationImages(input.locationType, input.locationId);
+      }),
+
+    /** Upload and set an image for a location (admin only) */
+    upload: adminProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni"]),
+        locationId: z.number(),
+        base64: z.string(),
+        mimeType: z.string(),
+        caption: z.string().max(500).optional(),
+        displayOrder: z.number().int().min(0).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const ext = input.mimeType.split("/")[1] || "jpg";
+        const fileKey = `location-images/${input.locationType}/${input.locationId}/${nanoid(12)}.${ext}`;
+        const buffer = Buffer.from(input.base64, "base64");
+
+        const { url } = await storagePut(fileKey, buffer, input.mimeType);
+
+        return setLocationImage({
+          locationType: input.locationType,
+          locationId: input.locationId,
+          imageUrl: url,
+          caption: input.caption,
+          displayOrder: input.displayOrder,
+        });
+      }),
+
+    /** Set image URL directly (admin only) - for pasting URLs */
+    setUrl: adminProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni"]),
+        locationId: z.number(),
+        imageUrl: z.string().url(),
+        caption: z.string().max(500).optional(),
+        displayOrder: z.number().int().min(0).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        return setLocationImage({
+          locationType: input.locationType,
+          locationId: input.locationId,
+          imageUrl: input.imageUrl,
+          caption: input.caption,
+          displayOrder: input.displayOrder,
+        });
+      }),
+
+    /** Update an existing image record (admin only) */
+    update: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        imageUrl: z.string().url().optional(),
+        caption: z.string().max(500).optional(),
+        displayOrder: z.number().int().min(0).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        await updateLocationImage(id, data);
+        return { success: true };
+      }),
+
+    /** Delete a specific image (admin only) */
+    delete: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await deleteLocationImage(input.id);
+        return { success: true };
+      }),
+
+    /** Delete all images for a location (admin only) */
+    deleteAll: adminProcedure
+      .input(z.object({
+        locationType: z.enum(["curated", "uni"]),
+        locationId: z.number(),
+      }))
+      .mutation(async ({ input }) => {
+        await deleteAllLocationImages(input.locationType, input.locationId);
+        return { success: true };
+      }),
   }),
 
   submissions: router({

@@ -1,7 +1,7 @@
 /**
  * LocationCard — London Fog design
  * Large image, frosted glass info overlay, warm shadows
- * Fixed: removed redundant tag display (Wi-Fi/Laptop shown as icons, not also as tags)
+ * Improved animations, dark mode compatible
  */
 import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles } from 'lucide-react';
 import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
@@ -39,16 +39,17 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: Math.min(index * 0.06, 0.3), ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.4, delay: Math.min(index * 0.04, 0.24), ease: [0.25, 0.46, 0.45, 0.94] }}
+      whileHover={{ y: -4 }}
       className="group relative cursor-pointer"
       onClick={onClick}
     >
-      <div className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-shadow duration-500">
+      <div className="relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-500 border border-border/30">
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
-          <div className={`absolute inset-0 bg-fog-warm transition-opacity duration-500 ${imgLoaded ? 'opacity-0' : 'opacity-100'}`} />
+          <div className={`absolute inset-0 bg-muted transition-opacity duration-500 ${imgLoaded ? 'opacity-0' : 'opacity-100'}`} />
           <img
             src={image}
             alt={location.name}
@@ -57,19 +58,19 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
             onLoad={() => setImgLoaded(true)}
           />
           {/* Score badge */}
-          <div className="absolute top-3 left-3 score-badge bg-white/90 backdrop-blur-sm text-fog-charcoal px-2.5 py-1 rounded-lg text-sm shadow-sm">
+          <div className="absolute top-3 left-3 score-badge bg-card/90 backdrop-blur-sm text-card-foreground px-2.5 py-1 rounded-lg text-sm shadow-sm">
             {location.studyScore.toFixed(1)}
           </div>
           {/* Favorite button */}
           <button
             onClick={(e) => { e.stopPropagation(); toggleFavorite(location.id); }}
-            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-white transition-colors"
+            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-card transition-colors"
           >
-            <Heart className={`w-4.5 h-4.5 transition-colors ${fav ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
+            <Heart className={`w-4.5 h-4.5 transition-colors ${fav ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
           </button>
           {/* Category badge */}
           <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
-            <div className="glass rounded-full px-3 py-1.5 text-xs font-medium text-fog-charcoal flex items-center gap-1.5">
+            <div className="glass rounded-full px-3 py-1.5 text-xs font-medium flex items-center gap-1.5">
               <span>{CATEGORY_ICONS[location.category] || '📍'}</span>
               <span>{location.category}</span>
             </div>

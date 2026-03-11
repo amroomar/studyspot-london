@@ -2,10 +2,11 @@
  * Navbar — London Fog design
  * Frosted glass navigation bar, fixed at bottom on mobile, top on desktop
  * Tabs: Discover, Search, Social, Map, Saved, Badges
- * Features: "Add a Spot" button
+ * Features: "Add a Spot" button, Dark mode toggle
  */
-import { Home, Map, Heart, Award, Search, Play, Plus, GraduationCap } from 'lucide-react';
+import { Home, Map, Heart, Award, Search, Play, Plus, GraduationCap, Moon, Sun } from 'lucide-react';
 import { Link } from 'wouter';
+import { useTheme } from '@/contexts/ThemeContext';
 
 type Tab = 'home' | 'map' | 'search' | 'social' | 'favorites' | 'badges';
 
@@ -25,13 +26,15 @@ const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
 ];
 
 export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProps) {
+  const { theme, toggleTheme, switchable } = useTheme();
+
   return (
     <>
       {/* Desktop top nav */}
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-30 glass border-b border-border/50 px-6 py-3">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
+            <span className="text-xl text-foreground" style={{ fontFamily: 'var(--font-display)' }}>StudySpot</span>
             <span className="text-xs bg-fog-sage/10 text-fog-sage px-2 py-0.5 rounded-full font-medium">London</span>
           </div>
           <div className="flex items-center gap-1">
@@ -39,7 +42,7 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
               <button
                 key={id}
                 onClick={() => onTabChange(id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                   activeTab === id
                     ? 'bg-primary text-primary-foreground shadow-sm'
                     : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
@@ -56,10 +59,20 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
                 UniMode
               </span>
             </Link>
+            {/* Dark mode toggle — desktop */}
+            {switchable && toggleTheme && (
+              <button
+                onClick={toggleTheme}
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground hover:bg-secondary hover:text-foreground transition-all duration-200"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            )}
             {/* Add Spot button — desktop */}
             <button
               onClick={onAddSpot}
-              className="ml-2 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-fog-sage text-white hover:bg-fog-sage/90 transition-all shadow-sm"
+              className="ml-1 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-fog-sage text-white hover:bg-fog-sage/90 transition-all shadow-sm"
             >
               <Plus className="w-4 h-4" />
               Add a Spot
@@ -109,6 +122,17 @@ export default function Navbar({ activeTab, onTabChange, onAddSpot }: NavbarProp
           ))}
         </div>
       </nav>
+
+      {/* Mobile dark mode toggle — floating button */}
+      {switchable && toggleTheme && (
+        <button
+          onClick={toggleTheme}
+          className="lg:hidden fixed top-4 right-4 z-30 w-10 h-10 rounded-full glass shadow-lg flex items-center justify-center text-foreground border border-border/50 transition-all duration-200"
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+        </button>
+      )}
     </>
   );
 }

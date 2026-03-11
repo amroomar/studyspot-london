@@ -28,6 +28,14 @@ import {
 
 type Tab = 'submissions' | 'reports';
 
+const ImageMgmtIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+    <circle cx="9" cy="9" r="2"/>
+    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+  </svg>
+);
+
 export default function AdminPanel() {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>('submissions');
@@ -73,6 +81,16 @@ export default function AdminPanel() {
               </h1>
               <p className="text-sm text-muted-foreground">Manage community submissions and reports</p>
             </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="mb-3">
+            <Link href="/admin/images">
+              <Button variant="outline" size="sm" className="gap-1.5">
+                <ImageMgmtIcon className="w-3.5 h-3.5" />
+                Image Manager
+              </Button>
+            </Link>
           </div>
 
           {/* Tabs */}

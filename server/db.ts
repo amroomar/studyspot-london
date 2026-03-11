@@ -360,3 +360,103 @@ export async function updateReportStatus(id: number, status: "pending" | "review
 
   await db.update(locationReports).set({ status }).where(eq(locationReports.id, id));
 }
+
+// ─── Location Images (Admin) ────────────────────────────────────────────────
+
+import { locationImages, type InsertLocationImage, type LocationImage } from "../drizzle/schema";
+
+/** Get all images for a specific location */
+export async function getLocationImages(
+  locationType: "curated" | "uni",
+  locationId: number
+): Promise<LocationImage[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db
+    .select()
+    .from(locationImages)
+    .where(
+      and(
+        eq(locationImages.locationType, locationType),
+        eq(locationImages.locationId, locationId)
+      )
+    )
+    .orderBy(locationImages.displayOrder);
+}
+
+/** Get all location image overrides (for bulk loading) */
+export async function getAllLocationImages(): Promise<LocationImage[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(locationImages).orderBy(locationImages.locationType, locationImages.locationId);
+}
+
+/** Set/replace the image for a location (upsert by locationType + locationId + displayOrder) */
+export async function setLocationImage(data: {
+  locationType: "curated" | "uni";
+  locationId: number;
+  imageUrl: string;
+  caption?: string;
+  displayOrder?: number;
+}): Promise<LocationImage> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(locationImages).values({
+    locationType: data.locationType,
+    locationId: data.locationId,
+    imageUrl: data.imageUrl,
+    caption: data.caption || null,
+    displayOrder: data.displayOrder ?? 0,
+  });
+
+  const insertId = result[0].insertId;
+  const rows = await db.select().from(locationImages).where(eq(locationImages.id, insertId)).limit(1);
+  return rows[0];
+}
+
+/** Update an existing location image */
+export async function updateLocationImage(
+  id: number,
+  data: { imageUrl?: string; caption?: string; displayOrder?: number }
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const updateData: Record<string, unknown> = {};
+  if (data.imageUrl !== undefined) updateData.imageUrl = data.imageUrl;
+  if (data.caption !== undefined) updateData.caption = data.caption;
+  if (data.displayOrder !== undefined) updateData.displayOrder = data.displayOrder;
+
+  if (Object.keys(updateData).length > 0) {
+    await db.update(locationImages).set(updateData).where(eq(locationImages.id, id));
+  }
+}
+
+/** Delete a location image */
+export async function deleteLocationImage(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(locationImages).where(eq(locationImages.id, id));
+}
+
+/** Delete all images for a location */
+export async function deleteAllLocationImages(
+  locationType: "curated" | "uni",
+  locationId: number
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db
+    .delete(locationImages)
+    .where(
+      and(
+        eq(locationImages.locationType, locationType),
+        eq(locationImages.locationId, locationId)
+      )
+    );
+}

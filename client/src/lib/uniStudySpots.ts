@@ -100,9 +100,9 @@ export const ACCESS_ICONS: Record<string, string> = {
 export const uniStudySpots: UniStudySpot[] = [
   {
     "id": 1,
+    "universityId": "ucl",
     "name": "Bartlett Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "Ground Floor, Central House, 14 Upper Woburn Place, WC1H 0NN",
@@ -122,14 +122,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A modern library for architecture and built environment students.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/bartlett-library.jpg"
   },
   {
     "id": 2,
+    "universityId": "ucl",
     "name": "Cruciform Hub",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "UCL Cruciform Building, Gower Street, London WC1E 6AE",
@@ -147,14 +147,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A hub for medical students with access to specialized collections.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/medium_image/public/cruciform-hub.jpg"
   },
   {
     "id": 3,
+    "universityId": "ucl",
     "name": "Great Ormond Street Institute of Child Health Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "30 Guilford Street, London, WC1N 1EH",
@@ -172,14 +172,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A specialized library for child health, offering a quiet study environment.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/news/sites/news/files/styles/large_image/public/gosh_library_large.jpg"
   },
   {
     "id": 4,
+    "universityId": "ucl",
     "name": "Institute of Archaeology Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "5th Floor, Institute of Archaeology, 31-34 Gordon Square, WC1H 0PY",
@@ -198,14 +198,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A quiet and focused library for archaeology and heritage studies.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/media/images/2022/10/ioa_library_3.jpg?itok=p8-X4b4F"
   },
   {
     "id": 5,
+    "universityId": "ucl",
     "name": "Institute of Orthopaedics Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Stanmore",
     "address": "First Floor, Sir Herbert Seddon Teaching Centre, Royal National Orthopaedic Hospital, Brockley Hill, Stanmore, HA7 4LP",
@@ -223,14 +223,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A specialized library for orthopaedics with a quiet study environment.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/institute-of-orthopaedics-library.jpg"
   },
   {
     "id": 6,
+    "universityId": "ucl",
     "name": "IOE Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "Newsam Library and Archives, 20 Bedford Way, London WC1H 0AL",
@@ -248,14 +248,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "Europe's largest education library, with extensive collections and a variety of study spaces.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/ucl_large_image/public/ioe-library-ucl.jpg"
   },
   {
     "id": 7,
+    "universityId": "ucl",
     "name": "The Joint Library of Ophthalmology, Moorfields Eye Hospital & UCL Institute of Ophthalmology",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "UCL Institute of Ophthalmology, 11- 43 Bath Street, London, EC1V 9EL",
@@ -273,14 +273,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "The leading ophthalmic library in Europe, supporting research, teaching and clinical work.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/ophthalmology-library-review_0.jpg"
   },
   {
     "id": 8,
+    "universityId": "ucl",
     "name": "Language & Speech Science Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "Chandler House, 2 Wakefield St, London WC1N 1PF",
@@ -298,14 +298,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A specialist library with a large collection of speech and language therapy tests.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/news/sites/news/files/styles/large_image/public/migrated-files/lass-library.jpg"
   },
   {
     "id": 9,
+    "universityId": "ucl",
     "name": "Main Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "Wilkins Building, Gower Street, WC1E 6BT",
@@ -326,14 +326,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "The iconic main library of UCL, with a beautiful dome and a vast collection.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/main-library-flaxman-gallery.jpg"
   },
   {
     "id": 10,
+    "universityId": "ucl",
     "name": "Queen Square Institute of Neurology, Queen Square Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "First Floor, 23 Queen Square, London, WC1N, UK",
@@ -352,14 +352,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A specialist library for neurology and brain sciences, offering a very quiet study environment.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://www.alamy.com/stock-photo-ucl-queen-square-institute-of-neurology-library-london-uk-122732459.html"
   },
   {
     "id": 11,
+    "universityId": "ucl",
     "name": "Royal Free Hospital Medical Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Hampstead",
     "address": "Rowland Hill Street, Hampstead, London. NW3 2PF",
@@ -377,14 +377,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A large medical library with a range of study spaces.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/news/sites/news/files/styles/large_image/public/rfh_library_1.jpg"
   },
   {
     "id": 12,
+    "universityId": "ucl",
     "name": "School of Pharmacy Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "University Library",
     "campus": "Bloomsbury",
     "address": "1st floor, 29-39 Brunswick Square, London, WC1N 1AX",
@@ -402,14 +402,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A specialist library for pharmaceutical sciences.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.ucl.ac.uk/library/sites/library/files/styles/large_image/public/school-of-pharmacy-library.jpg"
   },
   {
     "id": 13,
+    "universityId": "ucl",
     "name": "UCL Student Centre",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Keycard Study Space",
     "campus": "Bloomsbury",
     "address": "27-28 Gordon Square, London WC1H 0AW",
@@ -430,14 +430,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A modern and popular 24/7 student hub with a mix of social and quiet study areas.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://images.squarespace-cdn.com/content/v1/5d0dc22f70b70c00015d510a/1609695880107-X5C9KSAJFV49NAJVD0QU/BlByFeb2019_167.jpg"
   },
   {
     "id": 14,
+    "universityId": "ucl",
     "name": "The British Library",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Public Library",
     "campus": "Bloomsbury",
     "address": "96 Euston Road, London NW1 2DB",
@@ -456,14 +456,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "The UK's national library, a vast and impressive space for focused research and study.",
-    "studyScore": 10.0,
+    "studyScore": 10,
     "image": "https://c8.alamy.com/comp/H67J5Y/the-kings-library-in-the-british-library-london-H67J5Y.jpg"
   },
   {
     "id": 15,
+    "universityId": "ucl",
     "name": "Dillons Coffee, Waterstones",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Nearby Study Cafe",
     "campus": "Bloomsbury",
     "address": "82 Gower Street, London WC1E 6EQ",
@@ -483,14 +483,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A bustling cafe inside a large bookstore, perfect for a study break or group work.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://images.happycow.net/venues/1024/20/29/hcmp202947_909969.jpeg"
   },
   {
     "id": 16,
+    "universityId": "ucl",
     "name": "Paper and Cup",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Nearby Study Cafe",
     "campus": "Shoreditch",
     "address": "18 Calvert Avenue, London E2 7JP",
@@ -510,14 +510,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A cozy, not-for-profit cafe and bookstore with a relaxed atmosphere.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://sct.org.uk/wp-content/uploads/2021/11/2021_11_4_SCT_Restoration-Station003-1360x546.jpg.webp"
   },
   {
     "id": 17,
+    "universityId": "ucl",
     "name": "Costa Coffee St Pancras",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Nearby Study Cafe",
     "campus": "Bloomsbury",
     "address": "London St Pancras International, London N1C 4QP",
@@ -539,14 +539,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A busy 24/7 coffee shop inside a major train station, suitable for late-night study sessions or group work.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://www.railadvent.co.uk/wp-content/uploads/2023/05/London-St-Pancras-International_New-Costa-Coffee-Store-Upper-Level-002.jpg"
   },
   {
     "id": 18,
+    "universityId": "ucl",
     "name": "Starbucks, The Brunswick Centre",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Nearby Study Cafe",
     "campus": "Bloomsbury",
     "address": "The Brunswick, The Brunswick Centre, London, WC1N 1AW",
@@ -566,14 +566,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A popular coffeehouse with a comfortable and inviting atmosphere.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/kBuUFuoiAEmPwPez.jpg?Expires=1804686877&Signature=uEO7KLkYqMvnz85wEP0~JQbxpHz-7e3nqYC0MlNzFvOwj2Nc7kFMsphzYHJ~MgcyO7Wbc2Mvs8kF0F-AKsZqLSCttcuzMKj9k2vtlAMtovZqRBqXQIvgE7Tus-GydACcWuwyy5NgMKOM4Vzm5amNOUK0nDOIHXTSPKp7XA6hNm1PYQt1OThCiMvqsSFJUM62B0~e8WIjyF6ciQGbVZJmIKjs5VkT1qgLwZn35796u3nQCkd1pL70~w8HE7uArVPjgtAdEt19sclcRG42j7KCEtycTByWv65kAUhox~A4AEsYqLwxV40DwlYye~lc247xcHq59XY0bjXzHW-lwQX~KA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 19,
+    "universityId": "ucl",
     "name": "Jerry Kirk Seminar Room",
     "university": "UCL",
-    "universityId": "ucl",
     "locationType": "Bookable Study Room",
     "campus": "Hampstead",
     "address": "Royal Free Hospital, Pond Street, London NW3 2QG",
@@ -592,14 +592,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A seminar room available for student use outside of teaching hours.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.ucl.ac.uk/medical-sciences/sites/medical_sciences/files/styles/large_image/public/migrated-images/1_2.jpg"
   },
   {
     "id": 20,
+    "universityId": "kcl",
     "name": "Maughan Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Strand",
     "address": "Maughan Library, Chancery Lane, London WC2A 1LR",
@@ -620,14 +620,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7 during the second semester",
     "atmosphere": "A 19th-century neo-Gothic building, formerly the home of the Public Record Office. It has a dodecagonal reading room and a former medieval chapel.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://c8.alamy.com/comp/GHP095/domed-reading-room-maughan-library-kings-college-london-london-united-GHP095.jpg"
   },
   {
     "id": 21,
+    "universityId": "kcl",
     "name": "Institute of Psychiatry, Psychology & Neuroscience Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Denmark Hill",
     "address": "16 De Crespigny Park, Camberwell, London SE5 8AF",
@@ -646,14 +646,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Extended hours until 01:00 AM on weekdays",
     "atmosphere": "One of the largest psychiatric libraries in Western Europe, with a focus on psychology, neuroscience, and related fields.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/LnYDycmvqaolorwL.jpg?Expires=1804686904&Signature=Y4~~gCAiF6scjfiK6HpXGA3qHImoae-JDut-ZFT3UFKov20urHps9-X30c6gS1usUnumukAWFxMEGQgpc2x7CqJ~LY8Up5eDAaogyddX16YGir2sexbVzFymPYmi7MLgy5eUzkQnlxX99Bp01kAL9x56keXG~NND2fJertYpfXfo3Op-xZ-3u-DjppM-wGklKu8J0pk~3OYFm4ngwAG07ZIseiH0VyPB3NHgVScV8~xJqgZJms5gY-tNUpaopfQCPQFaeVk7KDi9R5Zzf3ui-AXi0-U02ty7De32MyOn6f2Br51kh4tpthZtPoImEJCxE8KUIzE8dJj5PDUnif0dwg__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 22,
+    "universityId": "kcl",
     "name": "Weston Education Centre Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Denmark Hill",
     "address": "10 Cutcombe Rd, Brixton, London SE5 9RJ",
@@ -672,14 +672,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "09:00-01:00, with 24/7 spaces available when closed",
     "atmosphere": "A modern, purpose-built teaching centre with a variety of study spaces.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.flickr.com/photos/kingscollegelondon/15020972587"
   },
   {
     "id": 23,
+    "universityId": "kcl",
     "name": "New Hunt's House Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Guy's",
     "address": "New Hunt's House, Newcomen St, London SE1 1UL",
@@ -699,14 +699,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A modern library with a variety of study spaces, covering all aspects of biomedical science.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.kcl.ac.uk/new-hunts-house"
   },
   {
     "id": 24,
+    "universityId": "kcl",
     "name": "Wills Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Guy's",
     "address": "Newcomen Street, London SE1 1UL",
@@ -725,14 +725,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A silent study space with a collection of books in locked cabinets.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://roarnews.co.uk/wp-content/uploads/2024/09/5-1024x771.jpg"
   },
   {
     "id": 25,
+    "universityId": "kcl",
     "name": "St Thomas' House Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "St Thomas'",
     "address": "St Thomas' House Library, Lambeth Palace Road, London SE1 7EH",
@@ -754,14 +754,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A refurbished library with a variety of study spaces, including a cafe/discussion zone.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.kcl.ac.uk/visit/st-thomas-house-library"
   },
   {
     "id": 26,
+    "universityId": "kcl",
     "name": "Franklin-Wilkins Library",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "University Library",
     "campus": "Waterloo",
     "address": "Franklin-Wilkins Building, 150 Stamford Street, London SE1 9NH",
@@ -781,14 +781,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A large library with a variety of study spaces, supporting nursing, midwifery, and other health science students.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.wilsonmason.co.uk/wp-content/uploads/2016/11/slide-franklin-wilkins-library-1.jpg"
   },
   {
     "id": 27,
+    "universityId": "kcl",
     "name": "IoPPN - ASB 3rd Floor Seminar Room 3",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Bookable Study Room",
     "campus": "Denmark Hill",
     "address": "16 De Crespigny Park, Camberwell, London SE5 8AF",
@@ -807,14 +807,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Bookable during university hours",
     "atmosphere": "A quiet seminar room ideal for group discussions or individual study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.kcl.ac.uk/newsevents/facilities/assets/ioppn/standard-classroom-2.jpg"
   },
   {
     "id": 28,
+    "universityId": "kcl",
     "name": "IoPPN - ASB Group Room",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Bookable Study Room",
     "campus": "Denmark Hill",
     "address": "16 De Crespigny Park, Camberwell, London SE5 8AF",
@@ -832,14 +832,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Bookable during university hours",
     "atmosphere": "A room designed for group work and collaboration.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.kcl.ac.uk/newh/assets/ioppn/library/ioppn-library-2-800x450.jpg"
   },
   {
     "id": 29,
+    "universityId": "kcl",
     "name": "James Black Centre - Large Ground Floor Seminar Room",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Bookable Study Room",
     "campus": "Denmark Hill",
     "address": "125 Coldharbour Lane, London, SE5 9NU",
@@ -857,14 +857,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Bookable during university hours",
     "atmosphere": "A spacious seminar room on the ground floor, perfect for larger study groups.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.walterlilly.co.uk/wp-content/uploads/2015/10/2-JBC-1500x1000.jpg"
   },
   {
     "id": 30,
+    "universityId": "kcl",
     "name": "The Loft - Bush House SE Wing",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Keycard Study Space",
     "campus": "Strand",
     "address": "Bush House, 30 Aldwych, London, WC2B 4BG",
@@ -884,14 +884,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "University hours",
     "atmosphere": "A silent study space on the 7th floor of Bush House, perfect for deep focus work.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://roarnews.co.uk/wp-content/uploads/2024/01/IMG_20240122_122525-2048x1536.jpg"
   },
   {
     "id": 31,
+    "universityId": "kcl",
     "name": "The Meadow - Bush House SE Wing",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Campus Study Lounge",
     "campus": "Strand",
     "address": "Bush House, 30 Aldwych, London, WC2B 4BG",
@@ -909,14 +909,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "University hours",
     "atmosphere": "An informal study space on the 8th floor of Bush House with a relaxed atmosphere.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://www.lts-architects.co.uk/project/bush-house-student-union/"
   },
   {
     "id": 32,
+    "universityId": "kcl",
     "name": "The Shack - Bush House SE Wing",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Campus Cafe",
     "campus": "Strand",
     "address": "Bush House, 30 Aldwych, London, WC2B 4BG",
@@ -935,14 +935,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Cafe hours",
     "atmosphere": "A bustling cafe on the ground floor of Bush House, great for a social study session.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://res.cloudinary.com/kclsu-media/image/upload/v1574696775/website_uploads/Spaces/Shack/IMG_2972_bfedpc.jpg"
   },
   {
     "id": 33,
+    "universityId": "kcl",
     "name": "King's Building - Student Informal Study Area",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Campus Study Lounge",
     "campus": "Strand",
     "address": "King's Building, Strand, London, WC2R 2LS",
@@ -961,14 +961,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "University hours",
     "atmosphere": "Informal study areas on the ground and second floors of the King's Building.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/eVVLDCoyGVVtnvfI.jpg?Expires=1804686979&Signature=pjC21Vev4uPcWKlUBKX-WyKQ2DWcbjkafc9bMMPb17i~25~VCeqRwhpSZx8DLMa3r0xREvr3NAC8e7IPxIezQKMwb1Ia6DaZxODVkN0Hmmg2rFNVe2t2ZjnWd1CBVFoDKTw0B-NUDcBY7jDUrn6jIgqtvqrUVlASV2XCLsFiALR0cauuZyDWH8HVEfvpOb5L33EoZ5MXHN5FpEwiZLsI4I9rmvoOxfGj8p0FzezdtFnLy2fSq1ewCA7GHCZH8WDsvI~qOpBK2xTSBH~0jm4QxrSkhIo21jxE8zZANmSRnQcEmedxAcoIaHA~lEWoiFonV0MLI~4xKTd4Q-HjH8V~Kw__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 34,
+    "universityId": "kcl",
     "name": "Shepherd's House",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Computer Lab",
     "campus": "Guy's",
     "address": "Guy's Campus, London SE1 1UL",
@@ -986,14 +986,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "University hours",
     "atmosphere": "Shepherd's House contains several computer labs and study spaces.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.kcl.ac.uk/newimages/crop/main/780x440/shepherds-house.jpg?f=2"
   },
   {
     "id": 35,
+    "universityId": "kcl",
     "name": "The Shed Café",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Campus Cafe",
     "campus": "Guy's",
     "address": "Guy's Campus, London SE1 1UL",
@@ -1012,14 +1012,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Cafe hours",
     "atmosphere": "An informal study environment with access to coffee and snacks.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.kclsu.org/asset/Organisation/6013/SHED-CAFE-KCLSU-KING-S-COLLEGE-LONDON-STUDENTS-UNION.jpg"
   },
   {
     "id": 36,
+    "universityId": "kcl",
     "name": "Watch House - Somerset House",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Nearby Study Cafe",
     "campus": "Strand",
     "address": "East Wing, Somerset House, Strand, London WC2R 1LA",
@@ -1039,14 +1039,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon - Fri 8am - 6pm, Sat - Sun 9am - 6pm",
     "atmosphere": "A beautiful coffee house in a historic building, perfect for a quiet and inspiring study session.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://watchhouse.com/cdn/shop/files/WH-Somerset-1-1.jpg?v=1695047879&width=1500"
   },
   {
     "id": 37,
+    "universityId": "kcl",
     "name": "Press Coffee - Fleet Street",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Nearby Study Cafe",
     "campus": "Strand",
     "address": "3 Fleet St, London EC4Y 1AU",
@@ -1065,14 +1065,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon - Fri 7am - 5pm, Sat - Sun 9am - 4pm",
     "atmosphere": "A specialty coffee shop with a cozy basement, ideal for a focused study session away from the hustle and bustle.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://media-cdn.tripadvisor.com/media/photo-s/1a/c3/3b/9b/the-fleet-street-press.jpg"
   },
   {
     "id": 38,
+    "universityId": "kcl",
     "name": "Press Coffee - Chancery Lane",
     "university": "King's College London",
-    "universityId": "kcl",
     "locationType": "Nearby Study Cafe",
     "campus": "Strand",
     "address": "81 Chancery Ln, London WC2A 1DD",
@@ -1091,14 +1091,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon - Fri 7:30am - 4:30pm",
     "atmosphere": "A cozy cafe with great coffee, perfect for a productive study session near the Maughan Library.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.deliciousmagazine.co.uk/wp-content/uploads/2023/02/Press-Coffee-600x600.jpg"
   },
   {
     "id": 39,
+    "universityId": "qmul",
     "name": "Mile End Library",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "University Library",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1119,14 +1119,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "Mile End Library is the largest of the Queen Mary University of London libraries, providing a range of study spaces and services to support learning and research.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://www.qmul.ac.uk/library/media/library/using-the-library/locations-and-study-spaces/Ben_Pipe_Photo_112024_QMUL_049-(2).jpg"
   },
   {
     "id": 40,
+    "universityId": "qmul",
     "name": "Whitechapel Library",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "University Library",
     "campus": "Whitechapel",
     "address": "Garrod Building, Turner Street, Whitechapel, London E1 2AD",
@@ -1145,14 +1145,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "Whitechapel Library is situated in the School of Medicine and Dentistry's Whitechapel Campus. It offers a range of study spaces and is home to the medicine and dentistry collection.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.qmul.ac.uk/about/queen-mary-heritage/media/queen-mary-heritage/images/18.jpg"
   },
   {
     "id": 41,
+    "universityId": "qmul",
     "name": "West Smithfield Library",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "University Library",
     "campus": "West Smithfield",
     "address": "West Smithfield, London EC1A 7BE",
@@ -1171,14 +1171,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "West Smithfield Library is situated within the Bart's NHS hospital complex and houses a small medical collection. With its adjoining basement study space it offers a mix of quiet and discussion zone spaces.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.qmul.ac.uk/library/media/library/images/content-images/west-smithfield-library-815x510.jpg"
   },
   {
     "id": 42,
+    "universityId": "qmul",
     "name": "The Hive",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Keycard Study Space",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1197,14 +1197,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "The Hive is a library managed study space at Mile End Campus.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://alcema.co.uk/wp-content/uploads/2019/11/Alcema-Westminster-University-1-800x600.jpg"
   },
   {
     "id": 43,
+    "universityId": "qmul",
     "name": "Graduate Centre 7th Floor Study Space",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Keycard Study Space",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1224,14 +1224,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "The Postgraduate Common Room and Terrace provides comfortable relaxed seating for individual and social study.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.qmul.ac.uk/library/media/library/images/spaces/GC-7th-floor-2.jpg"
   },
   {
     "id": 44,
+    "universityId": "qmul",
     "name": "Ground Café",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Cafe",
     "campus": "Mile End",
     "address": "329 Mile End Road, London E1 4NT",
@@ -1250,14 +1250,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Thu 8am-8pm, Fri 8am-6pm, Sat 10am-4pm",
     "atmosphere": "Relax in the most popular café spot on campus! We serve up a delicious range of ethical coffee, matchas, refreshing smoothies, sandwiches, toasted paninis, salads, sushi and delicious pastries, cookies & treats!",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/BiNwZzaWUAPImyem.png?Expires=1804687096&Signature=tPK98K7VoC4mpUr5iWwANVI6ImkLd4hGX~3NjsSYJ3qKrVDnOit8JOcbbFhWX4pQf1kD8Ho1uH70uW~K1Vvz7agjCGiiVeirQhqqAZ6yvzeug29Lv3LfDPhBn7yRIv~UNuTBFUJac8OtR0LEOIRxJ8R4vgGvR0F2O1qsa~78x~R31nBdfRXWwhoEJA31BtWRTeyFdDbqaooQVWL3v-XfwY1n~eUL47-mwNmqFM9uKSTQLBqJSOGOL-0z8yVR47KQBEUcrF8q1ZdOGvsCwHuJF0vToSBeAK0SjWIkS6oSBSLjlHC~mB58HXfpXCQOo8v7f6p0FTxmFcxu3l0NPBAU0g__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 45,
+    "universityId": "qmul",
     "name": "Canalside",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Study Lounge",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1277,14 +1277,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24 Hours",
     "atmosphere": "Canalside offers a relaxed environment for students to study and revise. Its brilliant location means that the floor-to-ceiling windows let in the sunlight.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://pbs.twimg.com/media/Fqc2X9MWIAAXVDA.jpg"
   },
   {
     "id": 46,
+    "universityId": "qmul",
     "name": "Francis Bancroft Building Computer Labs",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Computer Lab",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1302,14 +1302,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "Computer labs in the Francis Bancroft building offer a quiet space for individual study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.accessable.co.uk/media/13293/francis-bancroft-building-1.jpg"
   },
   {
     "id": 47,
+    "universityId": "qmul",
     "name": "Queens' Building Computer Labs",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Computer Lab",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1327,14 +1327,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "Computer labs in the Queens' building offer a quiet space for individual study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.top-tec.co.uk/wp-content/uploads/2020/01/QMUL-3.png"
   },
   {
     "id": 48,
+    "universityId": "qmul",
     "name": "The Coffee Room",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Nearby Study Cafe",
     "campus": "Mile End",
     "address": "6a Grove Road, E3 5AX, London",
@@ -1354,14 +1354,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun 7am-6pm",
     "atmosphere": "A cosy, intimate space that enjoys a loyal local following.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://onthegrid.city/imager/s3_amazonaws_com/onthegrid.city/assets/grid/london/mile-end-bow/the-coffee-room/DSC_0807_299006722e285f47655d17d1c9136337.jpg"
   },
   {
     "id": 49,
+    "universityId": "qmul",
     "name": "Idea Store Whitechapel",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Public Library",
     "campus": "Whitechapel",
     "address": "321 Whitechapel Road, London E1 1BU",
@@ -1380,14 +1380,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 11am-3pm",
     "atmosphere": "A modern public library with a range of services and study spaces.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwep4kXt8XdEnaoZYCt3HI1HkP-TcetpbJQMs80NBMcTV0B5IhVYES-qnbAJT3vvfieHLlUdFwh7sWoJQCYb0h0zJAtuz91ZoNz56eIaVXKrIAtR5mX9kNuCae8mBok1Z3mIIPYN4_g=w203-h270-k-no"
   },
   {
     "id": 50,
+    "universityId": "qmul",
     "name": "Arts Two",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Study Lounge",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1406,14 +1406,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "A spacious study area with large windows and plenty of natural light.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.qmul.ac.uk/venues/media/qmvenues/images/Arts-Two---Exterior.jpg"
   },
   {
     "id": 51,
+    "universityId": "qmul",
     "name": "Cafe Grad",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Cafe",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1432,14 +1432,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "A cafe located in the Graduate Centre, offering a range of food and drinks.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://media.gettyimages.com/id/923636944/photo/cafe-space-queen-mary-university-graduate-centre-london.jpg?s=1024x1024&w=gi&k=20&c=2_8-4Z-2X2b8Y8w8Q8Q8Q8Q8Q8Q8Q8Q8Q8Q="
   },
   {
     "id": 52,
+    "universityId": "qmul",
     "name": "The Nest",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Study Lounge",
     "campus": "Mile End",
     "address": "Mile End Road, London E1 4NS",
@@ -1457,14 +1457,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "A dedicated space for students to relax and study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.qmsu.org/pageassets/hub/SU-Hub-The-Nest-5.jpg"
   },
   {
     "id": 53,
+    "universityId": "qmul",
     "name": "The Griff",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Cafe",
     "campus": "Whitechapel",
     "address": "Garrod Building, Turner Street, London E1 2AD",
@@ -1483,14 +1483,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 10am-8pm",
     "atmosphere": "A student space serving coffee, food, and drinks, with events in the evenings.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://www.qmsu.org/asset/Organisation/6933/The-Griff-2.png"
   },
   {
     "id": 54,
+    "universityId": "qmul",
     "name": "Old Library",
     "university": "Queen Mary University of London",
-    "universityId": "qmul",
     "locationType": "Campus Study Lounge",
     "campus": "Whitechapel",
     "address": "Garrod Building, Turner Street, London E1 2AD",
@@ -1509,14 +1509,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A stunning student space perfect for studying, socialising and group meetings with friends and coursemates.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.qmul.ac.uk/venues/media/qmvenues/images/P1034710.jpg"
   },
   {
     "id": 55,
+    "universityId": "city",
     "name": "Northampton Square Library",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "University Library",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1537,14 +1537,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Open until 22:00",
     "atmosphere": "A multi-level library with designated zones for group, quiet, and silent study.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.citystgeorges.ac.uk/student-life/student-support/library-services"
   },
   {
     "id": 56,
+    "universityId": "city",
     "name": "Business Library",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "University Library",
     "campus": "Bunhill Row",
     "address": "106 Bunhill Row, London, EC1Y 8TZ",
@@ -1564,14 +1564,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Open until 22:00",
     "atmosphere": "A library primarily for postgraduate students with quiet study areas and a Silent Study Zone.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://blogs.city.ac.uk/developingatcity/files/2016/11/City-Business-Library-2-1024x768.jpg"
   },
   {
     "id": 57,
+    "universityId": "city",
     "name": "Law Library",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "University Library",
     "campus": "Northampton Square",
     "address": "Sebastian Street, London, EC1V 0HB",
@@ -1590,14 +1590,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Open until 18:00",
     "atmosphere": "A library for law students with silent study spaces and bookable group study rooms.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.city.ac.uk/__data/assets/image/0007/237994/Law-Library-2.jpg"
   },
   {
     "id": 58,
+    "universityId": "city",
     "name": "Barbican Centre",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Public Library",
     "campus": "Barbican",
     "address": "Silk Street, London, EC2Y 8DS",
@@ -1618,14 +1618,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A large arts centre with various public spaces, including a library, that are suitable for studying.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.allthelibraries.com/wp-content/uploads/2017/01/barbican-library-london-1000x750.jpg"
   },
   {
     "id": 59,
+    "universityId": "city",
     "name": "Bubba Oasis Islington",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Nearby Study Cafe",
     "campus": "Angel",
     "address": "57-58 Upper St, London, N1 0NY",
@@ -1647,14 +1647,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A vibrant and stylish cafe with a relaxed atmosphere, suitable for both work and socializing.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://www.bubbaoasis.com/wp-content/uploads/2022/11/Rooftop-long-shot-day-time-scaled.jpg"
   },
   {
     "id": 60,
+    "universityId": "city",
     "name": "Frequency Coffee Angel",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Nearby Study Cafe",
     "campus": "Angel",
     "address": "13 Camden Passage, London, N1 8EA",
@@ -1674,14 +1674,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A specialty coffee shop with a calm and focused atmosphere, ideal for individual study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://res.cloudinary.com/the-infatuation/image/upload/c_fill,w_3840,ar_4:3,g_center,f_auto/images/Frequency_Exterior_Aleksandra_Boruch_London15_ltlqdl"
   },
   {
     "id": 61,
+    "universityId": "city",
     "name": "FWD:Coffee",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Nearby Study Cafe",
     "campus": "Clerkenwell",
     "address": "161A Whitecross St, London, EC1Y 8JL",
@@ -1701,14 +1701,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A bright, modern café tucked away in Clerkenwell, built for productivity.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://fwdcoffee.co.uk/cdn/shop/files/437391696_962232085604603_3916929244090356713_n.jpg?v=1740489612&width=3200"
   },
   {
     "id": 62,
+    "universityId": "city",
     "name": "Finsbury Library",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Public Library",
     "campus": "Angel",
     "address": "245 St. John Street, London, EC1V 4NB",
@@ -1728,14 +1728,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon & Thu: 9am-8pm, Tue, Wed, Fri, Sat: 9am-5pm",
     "atmosphere": "A public library with study space and free Wi-Fi.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://thomasguignard.photo/wp-content/uploads/2018/10/Finsbury-Library-London-1-1024x682.jpg"
   },
   {
     "id": 63,
+    "universityId": "city",
     "name": "Joe & The Juice Upper Street",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Nearby Study Cafe",
     "campus": "Angel",
     "address": "297 Upper Street, London, N1 2TU",
@@ -1754,14 +1754,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A popular chain cafe with a lively atmosphere, suitable for short study sessions.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://content.joejuice.com/locations/297-upper-street"
   },
   {
     "id": 64,
+    "universityId": "city",
     "name": "Uncommon - Highbury & Islington",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Creative Workspace",
     "campus": "Angel",
     "address": "25 Horsell Road, London, N5 1XL",
@@ -1782,14 +1782,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website",
     "atmosphere": "A modern and stylish coworking space with a range of flexible workspace options.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://res.cloudinary.com/drgsl7o5p/images/w_1024,h_683,c_scale/f_auto,q_100/v1747657214/wordpress_assets/UN-24_06127UN-24_2/UN-24_06127UN-24_2.jpg?_i=AA"
   },
   {
     "id": 65,
+    "universityId": "city",
     "name": "Group Study Rooms - Northampton Square Library",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Bookable Study Room",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1807,14 +1807,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies, check website for booking availability",
     "atmosphere": "Ten bookable group study rooms equipped with large screens or whiteboards.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://library.sgul.ac.uk/assets/60c0a58222394.jpg/width/480"
   },
   {
     "id": 66,
+    "universityId": "city",
     "name": "24/7 PC Labs - Drysdale Building",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Computer Lab",
     "campus": "Northampton Square",
     "address": "Drysdale Building, Northampton Square, London, EC1V 0HB",
@@ -1833,14 +1833,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "24/7",
     "atmosphere": "A 24/7 accessible computer lab for students.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.top-tec.co.uk/wp-content/uploads/2018/05/City-University-Teaching-Lab-1-1000x714.png"
   },
   {
     "id": 67,
+    "universityId": "city",
     "name": "Ozone Coffee Roasters",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Nearby Study Cafe",
     "campus": "Shoreditch",
     "address": "11 Leonard St, London EC2A 4AQ",
@@ -1861,14 +1861,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 7:00-22:00, Sat-Sun: 8:30-17:30",
     "atmosphere": "A spacious and stylish coffee house with a rustic design, offering a great environment for both individual and group study.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://cdn.shopify.com/s/files/1/0633/2169/6559/files/Ozone-Shoreditch-5.jpg?v=1681888203"
   },
   {
     "id": 68,
+    "universityId": "city",
     "name": "The Bridge Food Court - Kick'n Chick'n",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1886,13 +1886,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A food court outlet serving chicken dishes.",
-    "studyScore": 3.0
+    "studyScore": 3
   },
   {
     "id": 69,
+    "universityId": "city",
     "name": "The Bridge Food Court - City Market",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1910,13 +1910,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A food court outlet with a variety of options.",
-    "studyScore": 3.0
+    "studyScore": 3
   },
   {
     "id": 70,
+    "universityId": "city",
     "name": "The Bridge Food Court - Plant Powered",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1934,13 +1934,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A food court outlet serving plant-based meals.",
-    "studyScore": 3.0
+    "studyScore": 3
   },
   {
     "id": 71,
+    "universityId": "city",
     "name": "The Bridge Food Court - Brew and Baker",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1959,13 +1959,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 10am-5pm",
     "atmosphere": "A cafe in the food court serving coffee and baked goods.",
-    "studyScore": 5.0
+    "studyScore": 5
   },
   {
     "id": 72,
+    "universityId": "city",
     "name": "Coffee House",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -1984,14 +1984,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-4:30pm",
     "atmosphere": "A campus coffee shop.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/o4AABgA4A7pE-GgqgDDezAnCgffgDqLAnfAAMf~tplv-photomode-zoom-720x720.jpeg?x-expires=1710331200&x-signature=x%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2B%2-8%3D"
   },
   {
     "id": 73,
+    "universityId": "city",
     "name": "City Café",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "University Building, Northampton Square, London, EC1V 0HB",
@@ -2010,14 +2010,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-5pm",
     "atmosphere": "A campus cafe.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://www.thornlighting.com/en/about-us/press/thorn-luminaires-add-a-fresh-look-to-the-newly-refurbished-city-university-of-london/ec_gb_2017_a_22_london_university_568x372.jpg/@@images/e85e3df7-a728-40bf-8d16-06d905d28b2d.jpeg"
   },
   {
     "id": 74,
+    "universityId": "city",
     "name": "Tait Garden Café",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "Tait Building, Northampton Square, London, EC1V 0HB",
@@ -2036,14 +2036,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-4:30pm",
     "atmosphere": "A cafe in the Tait Building with a garden.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://stemkogroup.com/wp-content/uploads/2019/11/City-University-Tait-Building.jpg"
   },
   {
     "id": 75,
+    "universityId": "city",
     "name": "College Café",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Northampton Square",
     "address": "College Building, Northampton Square, London, EC1V 0HB",
@@ -2062,13 +2062,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-4pm",
     "atmosphere": "A cafe in the College Building.",
-    "studyScore": 5.0
+    "studyScore": 5
   },
   {
     "id": 76,
+    "universityId": "city",
     "name": "The Foyer - Brew and Baker",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Bunhill Row",
     "address": "106 Bunhill Row, London, EC1Y 8TZ",
@@ -2087,13 +2087,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-5pm",
     "atmosphere": "A cafe in the foyer of the Bunhill Row building.",
-    "studyScore": 5.0
+    "studyScore": 5
   },
   {
     "id": 77,
+    "universityId": "city",
     "name": "CLS Café",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Gray's Inn",
     "address": "City Law School Building, 4 Gray's Inn Place, London, WC1R 5DX",
@@ -2112,14 +2112,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 9am-4:30pm",
     "atmosphere": "A cafe in the City Law School building.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://www.citystgeorges.ac.uk/_media/images/kopp-2.jpg"
   },
   {
     "id": 78,
+    "universityId": "city",
     "name": "Cafe33 - FSQ",
     "university": "City, University of London",
-    "universityId": "city",
     "locationType": "Campus Cafe",
     "campus": "Finsbury Square",
     "address": "33 Finsbury Square, London, EC2A 1AG",
@@ -2138,14 +2138,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-5pm, Tue & Thu until 7pm, Sat: 8am-5pm, Sun: 8am-3pm",
     "atmosphere": "A cafe at the Finsbury Square campus.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://www.bayes.city.ac.uk/__data/assets/image/0005/607757/Finsbury-Square-rebrand.jpg"
   },
   {
     "id": 79,
+    "universityId": "westminster",
     "name": "Cavendish Library",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "University Library",
     "campus": "Cavendish",
     "address": "115 New Cavendish Street, London, W1W 6UW",
@@ -2165,14 +2165,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A large, modern library with a wide range of resources and study spaces.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/vetNhRwjAkczlEYz.jpg?Expires=1804687227&Signature=R5FPqhNJMJtbkmuSXkBZbih-5E1SFwuIClqqLT7u~DIwxl2ndBgWllKem0oT7nCu2RQMu8whbkohfCIgPz5Tkq67qQAho8kaqgtstMroDm~fZR8x~QZ7eKnrlCZe0tho-Pc9~XFKO9Fus7jwWwau~VqOrs6P5jDBIc7FDzXIKRr7jCeiYBf13gV5QGO4GNDaVzpIgkAqWNBUFxLDhcuox4bwY9MnbfYCWW11~VDPW22j-jsOve5rHR1lzgJxqDIlxz6vQC7pOV3UKcPb0x9xaiCFwyIIvtorJiaHXs0509GuNj~qb~KuTeXyo8hZlKrVDni2uUuOfxU5a8BT7CScAg__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 80,
+    "universityId": "westminster",
     "name": "Harrow Library",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "University Library",
     "campus": "Harrow",
     "address": "Watford Road, Northwick Park, Middlesex, HA1 3TP",
@@ -2193,14 +2193,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A library focused on creative arts and media, with specialized resources and equipment.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://images.squarespace-cdn.com/content/v1/555c6a87e4b08c1536289d9f/1467290422436-56SO5N2M65F6MA62540W/RT_Westminster_01.jpg?format=1500w"
   },
   {
     "id": 81,
+    "universityId": "westminster",
     "name": "Marylebone Library",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "University Library",
     "campus": "Marylebone",
     "address": "35 Marylebone Road, London, NW1 5LS",
@@ -2220,14 +2220,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A library with a focus on business, architecture, and finance.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://images.squarespace-cdn.com/content/v1/555c6a87e4b08c33655b8ea9/1567703395965-6R02UPLLC68I6V3T2B08/RockTownsend_MaryleboneLibrary_01.jpg"
   },
   {
     "id": 82,
+    "universityId": "westminster",
     "name": "The Hive",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Keycard Study Space",
     "campus": "Cavendish",
     "address": "115 New Cavendish Street, London, W1W 6XH",
@@ -2245,14 +2245,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A social learning space on the lower ground floor of the Cavendish campus.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://alcema.co.uk/wp-content/uploads/2022/08/image00001-800x600.jpg"
   },
   {
     "id": 83,
+    "universityId": "westminster",
     "name": "The Hideaway",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Cafe",
     "campus": "Regent",
     "address": "309 Regent Street, London, W1B 2UW",
@@ -2271,14 +2271,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A modern and rustic cafe with music and a Starbucks, can be lively.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/esBSCbFaILVXYfmO.jpg?Expires=1804687248&Signature=qTzRthtxlw7yMafxLMztrd4SQRUgCjPhsXLlOePAoUtCmC1UlS2soRWyqjyuUkjLfFXlw4c0X0Pky3KRzn55xpcYGOVJRWtjpM4krFH4C-7Al-kcW56HZWZ-mlsTO1Z5hEnMPLDK0z8DdcgYzZh5Q7Fg8z5d5DwFzfBtNDvLHpH6-XF~FyW2coQBnIPtUH6AmKvmur~Gf1AzwIZCyPiBANXHUGFoGy7bVwVoAJdCDEqmiuOH8Auq~9iz-Moa-VqVjAd9s-RR5VjkPkarb~~142gEwHJCJMImL-qvznk~SnENw8Y5puKNBEx27HkN4vjSx1OP87v~9MjcSX16RJ9FCg__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 84,
+    "universityId": "westminster",
     "name": "Fyvie Hall",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Creative Workspace",
     "campus": "Regent",
     "address": "309 Regent Street, London, W1B 2HW",
@@ -2297,14 +2297,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for booking availability",
     "atmosphere": "A large, historic hall that can be used for study when not booked for events.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.westminster.ac.uk/sites/default/public-files/styles/panel_image_4_4_1200px_/public/general-images/Fyvie-Hall-Interior-3.jpg?itok=0hdqstkA"
   },
   {
     "id": 85,
+    "universityId": "westminster",
     "name": "The Refectory - Regent Campus",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Cafe",
     "campus": "Regent",
     "address": "309 Regent Street, London, W1B 2HW",
@@ -2323,14 +2323,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A bustling campus cafe, good for a quick bite and some light work.",
-    "studyScore": 4.0,
+    "studyScore": 4,
     "image": "https://www.westminster.ac.uk/sites/default/public-files/styles/panel_image_1_2_768px_/public/general-images/_0003_highres_20130610_UoW_Regents_0073.jpg?itok=hHaiZ5wO"
   },
   {
     "id": 86,
+    "universityId": "westminster",
     "name": "Students' Union - Regent Campus",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Study Lounge",
     "campus": "Regent",
     "address": "309 Regent Street, London, W1B 2HW",
@@ -2348,14 +2348,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A social hub for students, can be busy and noisy.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://assets-cdn.sums.su/WM/Website_images/Hideaway.jpg"
   },
   {
     "id": 87,
+    "universityId": "westminster",
     "name": "Kiss the Hippo Coffee Fitzrovia",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Nearby Study Cafe",
     "campus": "Cavendish",
     "address": "50 Berners St, London W1T 3NG",
@@ -2376,14 +2376,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check their website",
     "atmosphere": "A calm, modern space with sustainable values, great for focused work.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://images.squarespace-cdn.com/content/v1/62ce8b5390e2f52570b9c13a/1659545709461-8T43O07QRRPDUVFFYWM7/Kiss-The-Hippo-london-coffee-shop-10.jpg"
   },
   {
     "id": 88,
+    "universityId": "westminster",
     "name": "Kaffeine",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Nearby Study Cafe",
     "campus": "Cavendish",
     "address": "66 Great Titchfield St, London W1W 7QJ",
@@ -2401,14 +2401,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check their website",
     "atmosphere": "A high-energy cafe with quality espresso and relaxed seating.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://sprudge.com/wp-content/uploads/2015/10/Kaffeine-GTS-Sprudge-12.jpg"
   },
   {
     "id": 89,
+    "universityId": "westminster",
     "name": "Store Street Espresso",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Nearby Study Cafe",
     "campus": "Regent",
     "address": "40 Store St, London WC1E 7DB",
@@ -2428,14 +2428,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check their website",
     "atmosphere": "A minimalist cafe with a dependable work-friendly vibe.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.urban75.org/blog/images/store-street-espresso-coffee-bar-03.jpg"
   },
   {
     "id": 90,
+    "universityId": "westminster",
     "name": "WatchHouse Fitzrovia",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Nearby Study Cafe",
     "campus": "Cavendish",
     "address": "56 Wells St, London W1T 3QQ",
@@ -2456,14 +2456,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check their website",
     "atmosphere": "A sleek, stylish cafe with good coffee and quiet work zones.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://watchhouse.com/cdn/shop/files/WH_Fitzrovia_2022_Day_2_18_of_33_1500x.jpg"
   },
   {
     "id": 91,
+    "universityId": "westminster",
     "name": "Costa Coffee",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Nearby Study Cafe",
     "campus": "Regent",
     "address": "13 Charlotte Place, London W1T 1SN",
@@ -2481,13 +2481,13 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check their website",
     "atmosphere": "A reliable go-to for dependable coffee and quiet weekday studying.",
-    "studyScore": 7.0
+    "studyScore": 7
   },
   {
     "id": 92,
+    "universityId": "westminster",
     "name": "Marylebone Library (Public)",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Public Library",
     "campus": "Marylebone",
     "address": "9-11 New Cavendish St, London W1G 9UQ",
@@ -2507,14 +2507,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for details",
     "atmosphere": "A public library with a good selection of books and a dedicated study area.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://images.squarespace-cdn.com/content/v1/55ee3e88e4b03243c5897335/1567700190532-J49V8S5A0N9V4V8F1YV8/Marylebone-Library-University-of-Westminster-by-Rock-Townsend-Architects-4.jpg"
   },
   {
     "id": 93,
+    "universityId": "westminster",
     "name": "The Learning Platform",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Keycard Study Space",
     "campus": "Marylebone",
     "address": "35 Marylebone Road, London, NW1 5LS",
@@ -2533,14 +2533,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A dynamic space for formal and informal learning, with a variety of seating arrangements.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/OwXEbPZhGsKJxXoz.jpg?Expires=1804687309&Signature=ULwquuImzLKNfY~TDsQA0oz5sxn~JFeZUPfON-MrU7GMuDW1~4Q-9KooHSqyBCVTbQBQLtmG4b0CW1A5GQhkw39awwEuqB1Mgq6seikUQPhFFol6-zsPbe0haT2l~Jl-eRqyBHLg~TN-oPxt2d~NocGSUFVahJbjVa0AN9cfR5UqB1mKy3li1onXtM8VCI8Qg-LvMpvmXN8Ktp8BI8pq5qQ8MP6anqdtIchEHY4kdI66toKHKiSgd0PEq84PA7DDlU8jgKeBBK4zOUkn2pRagUHH640can4hGSBTcpYHEXZue1AMKhIsnqSiehvffuCGNEuSla4hGyNGBoAqq45ukA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 94,
+    "universityId": "westminster",
     "name": "Coffee Shop - Marylebone Campus",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Cafe",
     "campus": "Marylebone",
     "address": "35 Marylebone Road, London, NW1 5LS",
@@ -2559,14 +2559,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A campus coffee shop, convenient for a quick break or informal meeting.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://images.squarespace-cdn.com/content/v1/552f768be4b0431579415897/1591782730990-9J3V3K8Y4Z3X3J3V3K8Y/Rock+Townsend+Architects+Learning+Platform+1.jpg"
   },
   {
     "id": 95,
+    "universityId": "westminster",
     "name": "The Forum",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Study Lounge",
     "campus": "Harrow",
     "address": "Watford Road, Northwick Park, Middlesex, HA1 3TP",
@@ -2585,14 +2585,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A modern and open-plan space for students to meet, work, and relax.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.westminster.ac.uk/sites/default/files/styles/image_component_desktop/public/images/harrow-campus-the-forum-building.jpg"
   },
   {
     "id": 96,
+    "universityId": "westminster",
     "name": "The Refectory - Harrow Campus",
     "university": "University of Westminster",
-    "universityId": "westminster",
     "locationType": "Campus Cafe",
     "campus": "Harrow",
     "address": "Watford Road, Northwick Park, Middlesex, HA1 3TP",
@@ -2611,14 +2611,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check university website for details",
     "atmosphere": "A large refectory with a variety of food options, can be noisy during peak hours.",
-    "studyScore": 4.0,
+    "studyScore": 4,
     "image": "https://www.targetenglishinternational.com/wp-content/uploads/2021/11/London-Harrow-Refectory-480x480.jpg"
   },
   {
     "id": 97,
+    "universityId": "rhul",
     "name": "Crosslands",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Founder's Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2638,14 +2638,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-4pm",
     "atmosphere": "A stylish bar with a relaxed atmosphere, suitable for both socialising and studying.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://venue.royalholloway.ac.uk/media/11497/crosslands-bar-area.jpg"
   },
   {
     "id": 98,
+    "universityId": "rhul",
     "name": "Founder's Kitchen",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Founder's Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2664,14 +2664,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11am-2pm, 6pm-8pm",
     "atmosphere": "A large dining hall with a wide variety of food options.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://www.royalholloway.ac.uk/media/11877/founders-kitchen-hero-banner.jpg"
   },
   {
     "id": 99,
+    "universityId": "rhul",
     "name": "The Hub",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2690,14 +2690,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A modern and buzzing social space with a wide choice of international food.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://www.accessable.co.uk/uploads/venues/2573/7a25c69a-4812-456e-9526-11a650158ac3.jpg"
   },
   {
     "id": 100,
+    "universityId": "rhul",
     "name": "Kimiko Japanese Kitchen",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "The Hub, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2716,14 +2716,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A modern Japanese kitchen inside The Hub.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://www.spaceworksinteriors.com/wp-content/uploads/2020/01/Kimiko-2.jpg"
   },
   {
     "id": 101,
+    "universityId": "rhul",
     "name": "Imagine",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "The Hub, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2743,14 +2743,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 11:30am-2:30pm",
     "atmosphere": "A colourful and quieter social space, unlike anywhere else on campus.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/TbyUKVDNBSahPHmW.jpg?Expires=1804687358&Signature=OaFGTFsxcXaa96777pl3lXGl4jKbJSfRlZ7wdkq4WZrSdY6M-~LAYf4KWgF64EBfSjM90pUcLT8~CTeEL9C8vWfxnvIaHrmpE0gQdL0aDkMH3RoflbudVcJ9jTYOIMKx3TYpl1C1FwyDgqyu67JUpCM2Kmdug9DbwCR8Mfrqh5QcrDL9qXC3PxNuARfvUhsYQL6DGWvrdqGPWTucSL-xS5RoB1jQ~gXRcY5ai3~F2KlzenRrMwIyCspoujmR9VTFJdsq-RlZcqMmGKnqOjqTQ-jXceVt6FubX3xdbN922qS8ZhNsTt8zFoppvj-pVQ8OE1CAsldE1WZ97XpeN38stg__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 102,
+    "universityId": "rhul",
     "name": "Social Bite",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Emily Wilding Davison Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2770,14 +2770,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-6pm",
     "atmosphere": "A cafe with a social mission, serving great coffee and snacks.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://social-bite.co.uk/wp-content/uploads/2023/02/Social-Bite-External-shot-1-scaled.jpg"
   },
   {
     "id": 103,
+    "universityId": "rhul",
     "name": "Boilerhouse Café",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2797,14 +2797,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8:30am-6pm",
     "atmosphere": "A stunning cafe in a Victorian Boilerhouse, perfect for a light lunch or coffee.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://c8.alamy.com/comp/HYFY90/boilerhouse-cafe-at-the-royal-holloway-university-of-london-HYFY90.jpg"
   },
   {
     "id": 104,
+    "universityId": "rhul",
     "name": "The Union Shop",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Campus Cafe",
     "campus": "Egham",
     "address": "Emily Wilding Davison Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2822,14 +2822,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 8am-11pm",
     "atmosphere": "A convenience store for all your essentials.",
-    "studyScore": 1.0,
+    "studyScore": 1,
     "image": "https://www.thehurstgroup.co.uk/wp-content/uploads/2018/10/Hurst-Joinery-Royal-Holloway-2-of-13-5152x3864.jpg"
   },
   {
     "id": 105,
+    "universityId": "rhul",
     "name": "The Packhorse",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Nearby Study Cafe",
     "campus": "Egham",
     "address": "Egham Hill, Egham, Surrey, TW20 0BQ",
@@ -2848,14 +2848,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 12pm-11pm",
     "atmosphere": "A lively pub with a student-friendly atmosphere.",
-    "studyScore": 4.0,
+    "studyScore": 4,
     "image": "https://c-i-c-ltd.co.uk/wp-content/uploads/2019/04/Packhorse-Royal-Hollway-outside-new-1024x768.jpg"
   },
   {
     "id": 106,
+    "universityId": "rhul",
     "name": "Golden Cafe",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Nearby Study Cafe",
     "campus": "Egham",
     "address": "20 High St, Egham TW20 9DT",
@@ -2874,14 +2874,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat: 7am-5pm, Sun: 8am-4pm",
     "atmosphere": "A traditional English cafe with a friendly atmosphere.",
-    "studyScore": 6.0,
+    "studyScore": 6,
     "image": "https://media-cdn.tripadvisor.com/media/photo-s/0d/7b/3b/9b/golden-cafe.jpg"
   },
   {
     "id": 107,
+    "universityId": "rhul",
     "name": "Caffe Gondola",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Nearby Study Cafe",
     "campus": "Egham",
     "address": "55 High St, Egham TW20 9EX",
@@ -2900,14 +2900,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat: 9am-5pm",
     "atmosphere": "A family-run Italian restaurant with a sophisticated setting.",
-    "studyScore": 5.0,
+    "studyScore": 5,
     "image": "https://venue.royalholloway.ac.uk/wp-content/uploads/2023/09/1-1-1376x774.jpg"
   },
   {
     "id": 108,
+    "universityId": "rhul",
     "name": "Whisper Zone",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Bookable Study Room",
     "campus": "Egham",
     "address": "Emily Wilding Davison Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2926,14 +2926,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 8am-12am",
     "atmosphere": "A quiet study space where you can be sure of having a desk.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://i.ytimg.com/vi/JjCj8JN2s2o/maxresdefault.jpg"
   },
   {
     "id": 109,
+    "universityId": "rhul",
     "name": "Group Study Rooms",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Bookable Study Room",
     "campus": "Egham",
     "address": "Emily Wilding Davison Building, Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -2951,14 +2951,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 8am-12am",
     "atmosphere": "Bookable rooms for group work, equipped with screens and HDMI cables.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.accessable.co.uk/media/13796/study-room.jpg?width=1195&height=900&mode=max"
   },
   {
     "id": 110,
+    "universityId": "rhul",
     "name": "Egham Library",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Public Library",
     "campus": "Egham",
     "address": "High Street, Egham, Surrey, TW20 9EA",
@@ -2977,14 +2977,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Tue-Sat: 9:30am-5pm",
     "atmosphere": "A public library with a quiet atmosphere, suitable for individual study.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.royalholloway.ac.uk/media/11875/emily-wilding-davison-building.jpg"
   },
   {
     "id": 111,
+    "universityId": "rhul",
     "name": "Shilling Building",
     "university": "Royal Holloway University of London",
-    "universityId": "rhul",
     "locationType": "Creative Workspace",
     "campus": "Egham",
     "address": "Royal Holloway, University of London, Egham, Surrey, TW20 0EX",
@@ -3003,14 +3003,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 9am-5pm",
     "atmosphere": "A modern building with creative and collaborative spaces.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://www.royalholloway.ac.uk/media/11731/beatrice-shilling-3.jpg"
   },
   {
     "id": 112,
+    "universityId": "ual",
     "name": "Camberwell College of Art Library and Learning Zone",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "Camberwell",
     "address": "45-65 Peckham Road, London SE5 8UF",
@@ -3029,14 +3029,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/lWjLaEKSGtEKjFzQ.jpg?Expires=1804687401&Signature=Xehzyyea9wjwI-n7rKImHNiNnpSSN1EcQhbMJEHev3cefnhSZ9VvE32zqn4Z4lOvX~mVNifsKk4f1mv7idPCDi5yfXHTJZXtXVcVLIibnOQo-YII4lg94I2YM3XTkD7PH1JYWq4YUcHs4nRsSSo8QE3BTDwYlYZ8pBl1eCWVI2dKB9vZbsqERe7j3SCOMVDVTMnQ~5mdu7VvHP4jozBzPd2BFzdFBj07dqMIqcZjHhVAj~BFfjJGfokSoeIfGZIaoBBbXR6szSdCclpaiHtfGPOveI3DjuAKDLOx5schuWEettF4N2EUKRTwIfoYF86ZGWBJsEJoiNTwLBDIBl-umQ__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 113,
+    "universityId": "ual",
     "name": "Central Saint Martins Library and Learning Zone",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "King's Cross",
     "address": "1 Granary Square, London N1C 4AA",
@@ -3056,14 +3056,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://media.gettyimages.com/id/170498472/photo/central-saint-martins-london-united-kingdom-architect-stanto.jpg?s=1024x1024&w=gi&k=20&c=s58LIDZTg2phGX6-CM7qi6t62EK6D7TViJaNl6Q9F5M="
   },
   {
     "id": 114,
+    "universityId": "ual",
     "name": "Chelsea College of Art Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "Chelsea",
     "address": "16 John Islip Street, London SW1P 4JU",
@@ -3082,14 +3082,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://pbs.twimg.com/profile_banners/975875904/1653486968/600x200"
   },
   {
     "id": 115,
+    "universityId": "ual",
     "name": "London College of Communication Library and Learning Zone",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "Elephant & Castle",
     "address": "Elephant & Castle, London SE1 6SB",
@@ -3108,14 +3108,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://i0.wp.com/learningenvironmentdesign.net/wp-content/uploads/2015/04/LCC-Learning-Zone-2.jpg"
   },
   {
     "id": 116,
+    "universityId": "ual",
     "name": "London College of Fashion Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "East Bank",
     "address": "105 Carpenter's Road, London E20 2AR",
@@ -3135,14 +3135,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.arts.ac.uk/__data/assets/image/0027/448029/LCF-Archives-1.jpg"
   },
   {
     "id": 117,
+    "universityId": "ual",
     "name": "Wimbledon College of Art Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "Wimbledon",
     "address": "Merton Hall Road, London SW19 3QA",
@@ -3161,14 +3161,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "",
     "atmosphere": "",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://cdn.rt.emap.com/wp-content/uploads/sites/4/2023/07/27155349/%C2%A9BenBlossom_UALWimbledon_LR_S-13.jpg"
   },
   {
     "id": 118,
+    "universityId": "ual",
     "name": "Camberwell Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "Camberwell",
     "address": "17-21 Camberwell Church St, London SE5 8TR",
@@ -3187,14 +3187,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A local public library with a dedicated study area.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://www.arts.ac.uk/__data/assets/image/0033/42729/Camberwell-library-social-learning-space.jpg"
   },
   {
     "id": 119,
+    "universityId": "ual",
     "name": "Peckham Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "Camberwell",
     "address": "122 Peckham Hill St, London SE15 5JR",
@@ -3212,14 +3212,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A modern and iconic library with various study spaces.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d Peckham_Library_-_geograph.org.uk_-_1423385.jpg/1280px-Peckham_Library_-_geograph.org.uk_-_1423385.jpg"
   },
   {
     "id": 120,
+    "universityId": "ual",
     "name": "The British Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "King's Cross",
     "address": "96 Euston Rd, London NW1 2DB",
@@ -3239,14 +3239,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A world-renowned library with vast reading rooms and a silent, scholarly atmosphere.",
-    "studyScore": 10.0,
+    "studyScore": 10,
     "image": "https://c8.alamy.com/comp/H67J5Y/the-kings-library-in-the-british-library-london-H67J5Y.jpg"
   },
   {
     "id": 121,
+    "universityId": "ual",
     "name": "Pimlico Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "Chelsea",
     "address": "Lupus Street, London SW1V 3EY",
@@ -3265,14 +3265,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A community library with study spaces and a good selection of books.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/BNwpBXWymVLJOHYw.jpeg?Expires=1804687532&Signature=PNfJFRl3mIR10qWvNKLncVKgfyZaLEPej2iJVAOMGgaRdpm3BTf~OFYjyC21cUi-ar7xsU4CQYa6i9rLgEAhKAYBBf4TKaWnaa0qNkZYuIQpFhn6z3LT3S-a7~1tXcF2tEdOuwZ235JR7PK2P-Oze1ta5P~-dg3q1buTkekxQ4-G5PCHmh1IQicAVweADOZkkLgWZD6qlb7gqtX63v4OmRgmIf6SYfxdr5GEtSdsxW8RcrsGkQdCWPyOtrYv2s~bL3ILHNph-OUsf5MLk4jnaqna~jMxoqIRLOSZzPyk8-OGAjFHY42zCEc-XAToMzvXQgGmoju79kLaxqXoTeUaBw__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
     "id": 122,
+    "universityId": "ual",
     "name": "Southwark Heritage Centre and Walworth Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "Elephant & Castle",
     "address": "145-147 Walworth Road, London SE17 1RW",
@@ -3291,14 +3291,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A modern library with a heritage centre, offering a bright and spacious study environment.",
-    "studyScore": 8.0,
+    "studyScore": 8,
     "image": "https://southwarknews.co.uk/wp-content/uploads/2021/02/SHC-walworth-library-900x506.jpg"
   },
   {
     "id": 123,
+    "universityId": "ual",
     "name": "UCL East Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "University Library",
     "campus": "East Bank",
     "address": "Marshgate, 7 Sidings Street, Stratford, London, E20 2AE",
@@ -3319,14 +3319,14 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A new, modern library with a variety of study spaces and resources.",
-    "studyScore": 9.0,
+    "studyScore": 9,
     "image": "https://res.cloudinary.com/stanton-williams/image/upload/q_auto,f_auto,w_1920/v1696259469/SW-00-Marshgate-Hufton-Crow-Photo-09.jpg"
   },
   {
     "id": 124,
+    "universityId": "ual",
     "name": "Wimbledon Library",
     "university": "University of the Arts London",
-    "universityId": "ual",
     "locationType": "Public Library",
     "campus": "Wimbledon",
     "address": "35 Wimbledon Hill Rd, London SW19 7NB",
@@ -3345,10 +3345,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Check website for hours",
     "atmosphere": "A large public library with a good range of study spaces.",
-    "studyScore": 7.0,
+    "studyScore": 7,
     "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/yhmVAEgkWgjbiYVh.jpg?Expires=1804687463&Signature=lYqKQulZE~o3c0rTvuHkyLqQ69NoTFSB0PNyuYS91dvXB3KatLey48aBpFbiZUMY48Tc1jQQ2IAvsGXjLhYqvsn0CD3tD3gDKGYyisEi2bJ~kINj62ZlXdLu-BhcCWn-MlNc4Dy2bY9L6IUOL~IUPUg1xu8snkc0STfPsKgM~-1TN4O5vl-1jQfX36g0fvFJ4K3XmcV0RGtTTCyHgybJgyaYTSwOtOBvylOS9aGkL1bbMzvhPcaPRLf0AwZ-Bvvxm4YYczmCuKBUYjrs60MtpJcHdQOEt7j-93WZrp1uRSc7ZcIliV7fDYQd7G-wgZImx7d1JN1Lhf0mFMPFm20CQA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 125,
+    "universityId": "imperial",
     "name": "Abdus Salam Library (Central Library)",
     "university": "Imperial College London",
     "locationType": "University Library",
@@ -3371,11 +3373,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8:30am-11pm, Sat-Sun 10am-7pm",
     "atmosphere": "The main Imperial library with 430,000+ books, private study rooms, group areas, silent zones, and views of Queen's Lawn. The Library Cafe is nearby for breaks.",
     "studyScore": 9.2,
-    "image": "https://www.imperial.ac.uk/newsarchive/images/main/newseventsimage_1688134758789_mainnews2012_x1.jpg",
-    "id": 125,
-    "universityId": "imperial"
+    "image": "https://www.imperial.ac.uk/newsarchive/images/main/newseventsimage_1688134758789_mainnews2012_x1.jpg"
   },
   {
+    "id": 126,
+    "universityId": "imperial",
     "name": "GoStudy Silent Study",
     "university": "Imperial College London",
     "locationType": "Keycard Study Space",
@@ -3397,12 +3399,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 8am-10pm",
     "atmosphere": "Dedicated silent study area on Level 5 of the Chemistry Building. Individual desks with power outlets in a distraction-free environment.",
-    "studyScore": 9.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/OkTTvoNQccRaVfTz.jpeg?Expires=1804687448&Signature=LTq59dWMD86FJ0VRuI-L0xPhFmFgcvEKL0-tqIKc0QshUgpWiCjqCYMSdl55ycO7CgWcOa14UwBuX1hmctrxlSjsUdn1u5MRpb3oPdyAKuZa5Z7XFD8PScVzEbaDjbAO4sbtN8iSPaYfhgheT7MxxapzCyed8L4Tjlb0DfGKGl7I0AzT3qcJP1~mN0JtVvnhdQAhtvDrieUH~ActD9F-pYIAKs91Bs9mYxSuY~VQBeNTIg8SOssAzAXh1Ybe3yEd3H7J8EPl-LLgmrvsEuLI4p7Pgwd68YqvfaehfTrvZhUohyYAWRYrgTe8yKOBR68N~QcjbIqQd3TN61zZC4uOTA__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 126,
-    "universityId": "imperial"
+    "studyScore": 9,
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/OkTTvoNQccRaVfTz.jpeg?Expires=1804687448&Signature=LTq59dWMD86FJ0VRuI-L0xPhFmFgcvEKL0-tqIKc0QshUgpWiCjqCYMSdl55ycO7CgWcOa14UwBuX1hmctrxlSjsUdn1u5MRpb3oPdyAKuZa5Z7XFD8PScVzEbaDjbAO4sbtN8iSPaYfhgheT7MxxapzCyed8L4Tjlb0DfGKGl7I0AzT3qcJP1~mN0JtVvnhdQAhtvDrieUH~ActD9F-pYIAKs91Bs9mYxSuY~VQBeNTIg8SOssAzAXh1Ybe3yEd3H7J8EPl-LLgmrvsEuLI4p7Pgwd68YqvfaehfTrvZhUohyYAWRYrgTe8yKOBR68N~QcjbIqQd3TN61zZC4uOTA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 127,
+    "universityId": "imperial",
     "name": "GoStudy Group Study",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3424,11 +3426,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-10pm",
     "atmosphere": "Collaborative study space with whiteboards and group tables on Level 4 of the Chemistry Building. Breakout spaces available for informal discussion.",
     "studyScore": 8.5,
-    "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/Go-Study-2--tojpeg_1678794397292_x2.jpg",
-    "id": 127,
-    "universityId": "imperial"
+    "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/Go-Study-2--tojpeg_1678794397292_x2.jpg"
   },
   {
+    "id": 128,
+    "universityId": "imperial",
     "name": "Student Space (Sherfield Building)",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3450,11 +3452,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-8pm",
     "atmosphere": "Central student hub in the Sherfield Building with comfortable seating, study tables, and proximity to campus amenities.",
     "studyScore": 7.8,
-    "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/new-student-space--tojpeg_1547748615295_x2.jpg",
-    "id": 128,
-    "universityId": "imperial"
+    "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/new-student-space--tojpeg_1547748615295_x2.jpg"
   },
   {
+    "id": 129,
+    "universityId": "imperial",
     "name": "Chemistry Cafe",
     "university": "Imperial College London",
     "locationType": "Campus Cafe",
@@ -3477,11 +3479,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-5pm",
     "atmosphere": "Popular campus cafe with booths and tables with power outlets. A casual environment for studying between classes, with food and beverages available.",
     "studyScore": 7.5,
-    "image": "https://www.imperial.ac.uk/media/000/011/307/Chemistry-Cafe-2.jpg",
-    "id": 129,
-    "universityId": "imperial"
+    "image": "https://www.imperial.ac.uk/media/000/011/307/Chemistry-Cafe-2.jpg"
   },
   {
+    "id": 130,
+    "universityId": "imperial",
     "name": "Skempton Building Study Area",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3504,11 +3506,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-9pm",
     "atmosphere": "Modern engineering building with individual study carrels, group study rooms, open-plan areas, and a cafe. Popular with engineering students.",
     "studyScore": 8.3,
-    "image": "https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/civil-and-environmental-engineering/facilities/Skempton-Building---Room-208-(Computer-Room).jpg",
-    "id": 130,
-    "universityId": "imperial"
+    "image": "https://www.imperial.ac.uk/media/imperial-college/faculty-of-engineering/civil-and-environmental-engineering/facilities/Skempton-Building---Room-208-(Computer-Room).jpg"
   },
   {
+    "id": 131,
+    "universityId": "imperial",
     "name": "Huxley Building Study Space",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3529,12 +3531,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 8am-9pm",
     "atmosphere": "Computing and Mathematics building with quiet study areas. Individual desks and a focused atmosphere popular with STEM students.",
-    "studyScore": 8.0,
-    "image": "https://www.imperialvenues.co.uk/wp-content/uploads/2023/10/Huxley-Building-DSC05385-scaled.jpg",
-    "id": 131,
-    "universityId": "imperial"
+    "studyScore": 8,
+    "image": "https://www.imperialvenues.co.uk/wp-content/uploads/2023/10/Huxley-Building-DSC05385-scaled.jpg"
   },
   {
+    "id": 132,
+    "universityId": "imperial",
     "name": "Royal School of Mines Common Room",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3555,11 +3557,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-6pm",
     "atmosphere": "Student common room in the historic Royal School of Mines building. Comfortable seating for informal study and socialising.",
     "studyScore": 6.8,
-    "universityId": "imperial",
-    "id": 132,
     "image": "https://www.imperial.ac.uk/ImageCropToolT4/imageTool/uploaded-images/IMG_1361--tojpeg_1478602379292_x2.jpg"
   },
   {
+    "id": 133,
+    "universityId": "imperial",
     "name": "Charing Cross Campus Library",
     "university": "Imperial College London",
     "locationType": "University Library",
@@ -3582,11 +3584,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 9am-7pm",
     "atmosphere": "Medical campus library with silent study areas and group study rooms. Serves medical students at the Charing Cross Hospital campus.",
     "studyScore": 8.5,
-    "image": "https://www.icsmsu.com/wp-content/uploads/2021/10/reynolds-building-library-computer-cluster-scaled.jpg",
-    "id": 133,
-    "universityId": "imperial"
+    "image": "https://www.icsmsu.com/wp-content/uploads/2021/10/reynolds-building-library-computer-cluster-scaled.jpg"
   },
   {
+    "id": 134,
+    "universityId": "imperial",
     "name": "Imperial College Union Building",
     "university": "Imperial College London",
     "locationType": "Campus Study Lounge",
@@ -3609,11 +3611,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-11pm",
     "atmosphere": "The student union building with various spaces for studying and socialising. Can be lively but offers dedicated quiet areas during exam periods.",
     "studyScore": 6.5,
-    "image": "https://www.imperialcollegeunion.org/sites/default/files/styles/x_large/public/images/2022-09/Beit%20Quad%20%281%29.jpg?itok=xQYw-g8p",
-    "id": 134,
-    "universityId": "imperial"
+    "image": "https://www.imperialcollegeunion.org/sites/default/files/styles/x_large/public/images/2022-09/Beit%20Quad%20%281%29.jpg?itok=xQYw-g8p"
   },
   {
+    "id": 135,
+    "universityId": "imperial",
     "name": "Library Cafe",
     "university": "Imperial College London",
     "locationType": "Campus Cafe",
@@ -3635,11 +3637,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-5pm",
     "atmosphere": "Campus cafe adjacent to the Central Library. Good for quick study sessions with coffee, though seating can be limited during peak hours.",
     "studyScore": 6.5,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/QRCKdBIyfelsDsko.jpg?Expires=1804687544&Signature=FG5z6rJJpgEPJYYOxnUTZd46lRs~rbHAyq4tOl9mSnSmLorqXiq13p99qi0VXcIKoZOCY16L1Zs7mZBRfC4d9QdwSj9DtkyxXwyqL26vXFBklcNY9oaKRToqvIsHV7eDcUKThQgJ5Cl4n7Fgo0TBxf7Pqv0a6gnvB-bz90NZl6bFtuaEP6OPf-2Sc22CKvo97mo1uiizrQ~XC8XSSiJ3FCyr2e6gmVfnT2rWVFPAidg7kO~tfnYOY1ZmD~RREJyRe0WztNYSLrBn88xxR9jGhouL-B3t0ElurcDI3WPDo~gxabAt2lHRW1iXBkmZzIhjJYpPVUq69O3dv695ctDHaA__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 135,
-    "universityId": "imperial"
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/QRCKdBIyfelsDsko.jpg?Expires=1804687544&Signature=FG5z6rJJpgEPJYYOxnUTZd46lRs~rbHAyq4tOl9mSnSmLorqXiq13p99qi0VXcIKoZOCY16L1Zs7mZBRfC4d9QdwSj9DtkyxXwyqL26vXFBklcNY9oaKRToqvIsHV7eDcUKThQgJ5Cl4n7Fgo0TBxf7Pqv0a6gnvB-bz90NZl6bFtuaEP6OPf-2Sc22CKvo97mo1uiizrQ~XC8XSSiJ3FCyr2e6gmVfnT2rWVFPAidg7kO~tfnYOY1ZmD~RREJyRe0WztNYSLrBn88xxR9jGhouL-B3t0ElurcDI3WPDo~gxabAt2lHRW1iXBkmZzIhjJYpPVUq69O3dv695ctDHaA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 136,
+    "universityId": "imperial",
     "name": "V&A Cafe",
     "university": "Imperial College London",
     "locationType": "Nearby Study Cafe",
@@ -3661,12 +3663,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Daily 10am-5:30pm",
     "atmosphere": "The stunning V&A Museum cafe with ornate Victorian interiors. A beautiful and inspiring space for creative work, though not ideal for long study sessions.",
-    "studyScore": 7.0,
-    "image": "https://assets-cdn.vam.ac.uk/2017/06/27/09/19/51/e1b44075-ad8e-4499-a211-4360359242e8/320.jpg",
-    "id": 136,
-    "universityId": "imperial"
+    "studyScore": 7,
+    "image": "https://assets-cdn.vam.ac.uk/2017/06/27/09/19/51/e1b44075-ad8e-4499-a211-4360359242e8/320.jpg"
   },
   {
+    "id": 137,
+    "universityId": "imperial",
     "name": "Fernandez & Wells South Kensington",
     "university": "Imperial College London",
     "locationType": "Nearby Study Cafe",
@@ -3689,11 +3691,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7:30am-6pm, Sat-Sun 8am-6pm",
     "atmosphere": "Artisan cafe on Exhibition Road popular with Imperial students. Quality coffee and pastries in a relaxed setting with some laptop-friendly seating.",
     "studyScore": 7.2,
-    "universityId": "imperial",
-    "id": 137,
     "image": "https://www.brian-coffee-spot.com/wp-content/uploads/wow-slider-plugin/266/images/dsc_9372.jpg"
   },
   {
+    "id": 138,
+    "universityId": "imperial",
     "name": "EL&N South Kensington",
     "university": "Imperial College London",
     "locationType": "Nearby Study Cafe",
@@ -3716,11 +3718,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Daily 8am-8pm",
     "atmosphere": "Instagram-famous pink-themed cafe near South Kensington station. Aesthetic interior with good WiFi, popular for creative work and study sessions.",
     "studyScore": 6.8,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/MLSURtKXLXBGcjPT.jpg?Expires=1804687546&Signature=bKQsM0vrZ3rhKeHoY8Pr3-PaRXY69MALjBNwvLgJwZV8LZmwUQ9L7Kiex14HGZ-xRyL~8uY-3LW5V7rMwql-xKQ7vFq--BaGeSSiTTME5ln6I8jADIQYi~tg5Lnv3SydxOQMDj~ZuHqusCCV7N22zEEajaBYu3RF3eC9tStwO~RkEZy~Vl78HpcvtUa~MeNLFbpo7ItLQNTaxL-spA8gBhSFZqhyEAQiALsGsd3cuVGK9WjbrJwUuikRiEfhsm7hxo9saGD58TSX8t6ZRdALuWUMRM1nf~S2QEiiSWNHv5RW12sqldlcH~vbG1M~oijAH72V4~G7n6p8O1jUXF~MTA__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 138,
-    "universityId": "imperial"
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/MLSURtKXLXBGcjPT.jpg?Expires=1804687546&Signature=bKQsM0vrZ3rhKeHoY8Pr3-PaRXY69MALjBNwvLgJwZV8LZmwUQ9L7Kiex14HGZ-xRyL~8uY-3LW5V7rMwql-xKQ7vFq--BaGeSSiTTME5ln6I8jADIQYi~tg5Lnv3SydxOQMDj~ZuHqusCCV7N22zEEajaBYu3RF3eC9tStwO~RkEZy~Vl78HpcvtUa~MeNLFbpo7ItLQNTaxL-spA8gBhSFZqhyEAQiALsGsd3cuVGK9WjbrJwUuikRiEfhsm7hxo9saGD58TSX8t6ZRdALuWUMRM1nf~S2QEiiSWNHv5RW12sqldlcH~vbG1M~oijAH72V4~G7n6p8O1jUXF~MTA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 139,
+    "universityId": "imperial",
     "name": "Cafe Forum",
     "university": "Imperial College London",
     "locationType": "Nearby Study Cafe",
@@ -3743,11 +3745,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7am-7pm, Sat-Sun 8am-6pm",
     "atmosphere": "Spacious independent cafe on Gloucester Road, a favourite among Imperial students for its generous seating, power outlets, and relaxed atmosphere.",
     "studyScore": 7.8,
-    "image": "https://images.squarespace-cdn.com/content/v1/5bb1ded4e666691d4bde0ad3/1541674937407-F9X0GLJ5MQ4YVW6MOPM6/Architecture-London-Design-Freehaus-Workspace-Imperial-College-9.jpg",
-    "id": 139,
-    "universityId": "imperial"
+    "image": "https://images.squarespace-cdn.com/content/v1/5bb1ded4e666691d4bde0ad3/1541674937407-F9X0GLJ5MQ4YVW6MOPM6/Architecture-London-Design-Freehaus-Workspace-Imperial-College-9.jpg"
   },
   {
+    "id": 140,
+    "universityId": "imperial",
     "name": "Kensington Central Library",
     "university": "Imperial College London",
     "locationType": "Public Library",
@@ -3769,12 +3771,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat 9:30am-5pm",
     "atmosphere": "Large public library near High Street Kensington with quiet study areas, free WiFi, and computer access. A good alternative when campus is busy.",
-    "studyScore": 8.0,
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Kensington_Central_Library_01.JPG",
-    "id": 140,
-    "universityId": "imperial"
+    "studyScore": 8,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Kensington_Central_Library_01.JPG"
   },
   {
+    "id": 141,
+    "universityId": "imperial",
     "name": "Pret A Manger South Kensington",
     "university": "Imperial College London",
     "locationType": "Nearby Study Cafe",
@@ -3796,11 +3798,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 6am-9pm, Sat-Sun 7am-8pm",
     "atmosphere": "Convenient chain cafe near South Kensington station. Quick coffee and food with some seating for short study sessions.",
     "studyScore": 5.5,
-    "image": "https://images.happycow.net/venues/1024/10/53/hcmp105375_322960.jpeg",
-    "id": 141,
-    "universityId": "imperial"
+    "image": "https://images.happycow.net/venues/1024/10/53/hcmp105375_322960.jpeg"
   },
   {
+    "id": 142,
+    "universityId": "lse",
     "name": "LSE Library",
     "university": "LSE",
     "locationType": "University Library",
@@ -3824,11 +3826,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-12am, Sat-Sun 10am-9pm",
     "atmosphere": "LSE's flagship library with 2,500 study places across multiple floors. Features silent zones, open study areas, bookable group rooms, and PC areas. Modern architecture with excellent natural light.",
     "studyScore": 9.5,
-    "image": "https://www.akt-uk.com/wp-content/uploads/2020/09/1328-LSE-Library-05.jpg",
-    "id": 142,
-    "universityId": "lse"
+    "image": "https://www.akt-uk.com/wp-content/uploads/2020/09/1328-LSE-Library-05.jpg"
   },
   {
+    "id": 143,
+    "universityId": "lse",
     "name": "Centre Building Study Spaces",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -3852,11 +3854,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7am-10pm",
     "atmosphere": "Multi-floor study building with department-specific workspaces. Features a dramatic winding staircase and incredible views of London from upper floors. Peaceful yet populated.",
     "studyScore": 8.8,
-    "image": "https://blogsmedia.lse.ac.uk/blogs.dir/43/files/2023/04/Event-header-CBG_1260_Miranda-Neal.jpg",
-    "id": 143,
-    "universityId": "lse"
+    "image": "https://blogsmedia.lse.ac.uk/blogs.dir/43/files/2023/04/Event-header-CBG_1260_Miranda-Neal.jpg"
   },
   {
+    "id": 144,
+    "universityId": "lse",
     "name": "Marshall Building",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -3880,11 +3882,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7am-10pm",
     "atmosphere": "LSE's newest building (2022) with modern, colourful study spaces on each floor. Comfortable sofa-like seating, round tables, a rooftop balcony with views, and a ground-floor cafe.",
     "studyScore": 8.5,
-    "image": "https://www.graftonarchitects.ie/images/11876087/1500x0/noborder/d889981f3317a6e165303496f445846a.jpg",
-    "id": 144,
-    "universityId": "lse"
+    "image": "https://www.graftonarchitects.ie/images/11876087/1500x0/noborder/d889981f3317a6e165303496f445846a.jpg"
   },
   {
+    "id": 145,
+    "universityId": "lse",
     "name": "Sir Arthur Lewis Building",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -3908,11 +3910,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-9pm",
     "atmosphere": "Beautifully located next to the Royal Courts of Justice and Lincoln's Inn Fields. Very quiet and peaceful with a cafe on the ground floor. Scenic workspace that encourages productivity.",
     "studyScore": 8.7,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/uaAWbIXdUbgTGfUj.jpg?Expires=1804687587&Signature=PLcOMw0BMedu5fkWA0JKgZ3TqAHhZpZLdi3AfBbwZJ-xDXas2n~Tw6eHX3-1n47OshEMX4Nnuv~JPCaGMCbnwPLSe1~px9Qu5YGjQWY71ekYBLzY4SAZU024BHZD6L21abRqNOeVtPeAKHLWVMsPXAOuY07sDzsZaZkYqYSJHUz1cKcNNOOzjWpr3KVEdgaKhmFiCoqegGTU636Q2zbSEtTX2US3Ah9klAx1~fmABSiQqi9Jv1wL~gCH0gd3ten4VcstWHlNqw3ttIXMFnbaTzD~6PP0f9mc8X0d33PebcxzPc2vxmXExnEWlU4JOUAChjWfetiGj2MdKyopvFnkEQ__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 145,
-    "universityId": "lse"
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/uaAWbIXdUbgTGfUj.jpg?Expires=1804687587&Signature=PLcOMw0BMedu5fkWA0JKgZ3TqAHhZpZLdi3AfBbwZJ-xDXas2n~Tw6eHX3-1n47OshEMX4Nnuv~JPCaGMCbnwPLSe1~px9Qu5YGjQWY71ekYBLzY4SAZU024BHZD6L21abRqNOeVtPeAKHLWVMsPXAOuY07sDzsZaZkYqYSJHUz1cKcNNOOzjWpr3KVEdgaKhmFiCoqegGTU636Q2zbSEtTX2US3Ah9klAx1~fmABSiQqi9Jv1wL~gCH0gd3ten4VcstWHlNqw3ttIXMFnbaTzD~6PP0f9mc8X0d33PebcxzPc2vxmXExnEWlU4JOUAChjWfetiGj2MdKyopvFnkEQ__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 146,
+    "universityId": "lse",
     "name": "LSE Garrick",
     "university": "LSE",
     "locationType": "Campus Cafe",
@@ -3934,12 +3936,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 8am-8pm",
     "atmosphere": "Two-floor campus restaurant where many students set up for the day. Daily changing menu on ground floor, pizza on top floor. Lively but productive atmosphere.",
-    "studyScore": 7.0,
-    "image": "https://www.lse.ac.uk/student-life/catering/restaurants-and-cafes/~/media/imgs/catering/garrick-2.jpg",
-    "id": 146,
-    "universityId": "lse"
+    "studyScore": 7,
+    "image": "https://www.lse.ac.uk/student-life/catering/restaurants-and-cafes/~/media/imgs/catering/garrick-2.jpg"
   },
   {
+    "id": 147,
+    "universityId": "lse",
     "name": "New Academic Building (NAB)",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -3962,11 +3964,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-9pm",
     "atmosphere": "Study spaces with views over Lincoln's Inn Fields. Quiet departmental areas with good natural light and modern facilities.",
     "studyScore": 8.3,
-    "image": "https://grimshaw.global/media/2507/nab_lr_25.jpg",
-    "id": 147,
-    "universityId": "lse"
+    "image": "https://grimshaw.global/media/2507/nab_lr_25.jpg"
   },
   {
+    "id": 148,
+    "universityId": "lse",
     "name": "LSE Library Study Rooms",
     "university": "LSE",
     "locationType": "Bookable Study Room",
@@ -3988,12 +3990,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 8am-12am",
     "atmosphere": "Bookable private study rooms within the LSE Library. Perfect for group projects, virtual interviews, or focused individual work in complete quiet.",
-    "studyScore": 9.0,
-    "image": "https://blogs.lse.ac.uk/management/files/2019/11/study-pods.jpg",
-    "id": 148,
-    "universityId": "lse"
+    "studyScore": 9,
+    "image": "https://blogs.lse.ac.uk/management/files/2019/11/study-pods.jpg"
   },
   {
+    "id": 149,
+    "universityId": "lse",
     "name": "Connaught House Computer Lab",
     "university": "LSE",
     "locationType": "Computer Lab",
@@ -4015,11 +4017,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-9pm",
     "atmosphere": "Computer lab with desktop PCs and printing facilities. Quiet environment suitable for focused work and research.",
     "studyScore": 7.5,
-    "image": "https://info.lse.ac.uk/current-students/images/digital-skills-lab/laptop-and-pc-areas/connaught-house-750x422.jpg",
-    "id": 149,
-    "universityId": "lse"
+    "image": "https://info.lse.ac.uk/current-students/images/digital-skills-lab/laptop-and-pc-areas/connaught-house-750x422.jpg"
   },
   {
+    "id": 150,
+    "universityId": "lse",
     "name": "Clement House Study Area",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -4041,11 +4043,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-8pm",
     "atmosphere": "Departmental study areas and common rooms in Clement House. Mix of quiet study spaces and social areas for group work.",
     "studyScore": 7.2,
-    "image": "https://www.lse.ac.uk/Assets/UPLOADS/images/Estates/clement-house/Clement-House-teaching-room-2.jpg",
-    "id": 150,
-    "universityId": "lse"
+    "image": "https://www.lse.ac.uk/Assets/UPLOADS/images/Estates/clement-house/Clement-House-teaching-room-2.jpg"
   },
   {
+    "id": 151,
+    "universityId": "lse",
     "name": "Old Building Common Room",
     "university": "LSE",
     "locationType": "Campus Study Lounge",
@@ -4067,11 +4069,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 8am-8pm",
     "atmosphere": "Student common room in the historic Old Building. Social atmosphere with seating for informal study and group discussions.",
     "studyScore": 6.5,
-    "image": "https://www.hawkinsbrown.com/cms/images/projects/LSE-Old-Building/_1600x1067_crop_center-center_90/2215_N11.jpg",
-    "id": 151,
-    "universityId": "lse"
+    "image": "https://www.hawkinsbrown.com/cms/images/projects/LSE-Old-Building/_1600x1067_crop_center-center_90/2215_N11.jpg"
   },
   {
+    "id": 152,
+    "universityId": "lse",
     "name": "Chestnut Bakery",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4093,12 +4095,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri 7am-6pm, Sat 8am-5pm",
     "atmosphere": "Popular bakery-cafe on Kingsway, a favourite among LSE students. Fresh pastries, good coffee, and a relaxed atmosphere for studying.",
-    "studyScore": 7.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/hzIvMQHSFtNnCdBf.png?Expires=1804687626&Signature=mh0G8-nGh3o64FWBtEqYjNSamExWHa8zAhCwIwcj7MFpK-uvnC0hik3MJPK83UYf-J4JcOVnIf4F1-9Gw~wuCboRwYqlbFs82PSd4diwD31r2CgB~MVkrYtxHGQv1y-pxWqoy2A0D2oxPnwhXsAjxqNj8Xz-TEqKx7-I7rWFw3Rx2a6skEp-Fb0P9RUboauPyB3yfddp0I7IwaKuQ9pWuCWT9mji6ogtbsWfRlf6reSEHOk~m0m8DdHViT726xXgGO3LSDSjylBrNSmDHG-tIxdhHosX9F3vMzqdQ8NdCy-qfN7PRKhGFUmBgUeuCkXx-Xzh4cOaphAer46gQjjj9w__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 152,
-    "universityId": "lse"
+    "studyScore": 7,
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/hzIvMQHSFtNnCdBf.png?Expires=1804687626&Signature=mh0G8-nGh3o64FWBtEqYjNSamExWHa8zAhCwIwcj7MFpK-uvnC0hik3MJPK83UYf-J4JcOVnIf4F1-9Gw~wuCboRwYqlbFs82PSd4diwD31r2CgB~MVkrYtxHGQv1y-pxWqoy2A0D2oxPnwhXsAjxqNj8Xz-TEqKx7-I7rWFw3Rx2a6skEp-Fb0P9RUboauPyB3yfddp0I7IwaKuQ9pWuCWT9mji6ogtbsWfRlf6reSEHOk~m0m8DdHViT726xXgGO3LSDSjylBrNSmDHG-tIxdhHosX9F3vMzqdQ8NdCy-qfN7PRKhGFUmBgUeuCkXx-Xzh4cOaphAer46gQjjj9w__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 153,
+    "universityId": "lse",
     "name": "Drury 188-189",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4121,11 +4123,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7:30am-5pm, Sat 9am-5pm",
     "atmosphere": "Excellent specialty coffee shop on Drury Lane with a study-friendly atmosphere. Popular with LSE students for its quality brews and laptop-friendly seating.",
     "studyScore": 7.5,
-    "image": "https://drury188189.co.uk/wp-content/uploads/2021/11/dury188-189-best-cafe-london-covent-garden-300x195.webp",
-    "id": 153,
-    "universityId": "lse"
+    "image": "https://drury188189.co.uk/wp-content/uploads/2021/11/dury188-189-best-cafe-london-covent-garden-300x195.webp"
   },
   {
+    "id": 154,
+    "universityId": "lse",
     "name": "London Review Bookshop Cafe",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4148,12 +4150,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat 10am-6:30pm",
     "atmosphere": "Quiet literary cafe attached to the London Review of Books shop. An intellectual atmosphere perfect for reading and focused study work.",
-    "studyScore": 8.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/NBazHZwheSOMxWaX.jpg?Expires=1804687627&Signature=VCWr4Ts-vSRHrrCX25elcpXqzUsQ3iJT6uIoNmP6zmAwl-fKWCpRQg3fx8Yt00ES9~U2i3I6249iWYWyupmYug8Imu~BFbcvR7K2LYOJMudBYUi1qcDvj310Yue~kVLDuYke39y24cy0veq~Rcrh1eacnlA174VZDZwjte-04lwDZOT4oCwQZL3pZOZWMAE4GQSjgPgOCX06BLk5jPL4lZCOLWyqrUVjM50wa2lYrRdWz9RDgCy370FT1uU9vPF8XJTcMoWSerMfmeDVFObK-T41nEQ3dPuq4XNvVJHCy5dWX39~kPH5Aax819JcKM1OsubkxiGP9QmrsEqyo7c9aA__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 154,
-    "universityId": "lse"
+    "studyScore": 8,
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/NBazHZwheSOMxWaX.jpg?Expires=1804687627&Signature=VCWr4Ts-vSRHrrCX25elcpXqzUsQ3iJT6uIoNmP6zmAwl-fKWCpRQg3fx8Yt00ES9~U2i3I6249iWYWyupmYug8Imu~BFbcvR7K2LYOJMudBYUi1qcDvj310Yue~kVLDuYke39y24cy0veq~Rcrh1eacnlA174VZDZwjte-04lwDZOT4oCwQZL3pZOZWMAE4GQSjgPgOCX06BLk5jPL4lZCOLWyqrUVjM50wa2lYrRdWz9RDgCy370FT1uU9vPF8XJTcMoWSerMfmeDVFObK-T41nEQ3dPuq4XNvVJHCy5dWX39~kPH5Aax819JcKM1OsubkxiGP9QmrsEqyo7c9aA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 155,
+    "universityId": "lse",
     "name": "Notes Coffee Covent Garden",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4176,11 +4178,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7:30am-7pm, Sat-Sun 9am-6pm",
     "atmosphere": "Spacious specialty coffee shop near Covent Garden with plenty of seating and power outlets. Popular with students and freelancers for extended study sessions.",
     "studyScore": 7.8,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/ooyGmEBpkIVRiOAB.webp?Expires=1804687723&Signature=lkUU~MdflQKR5PgLOiqoKGWnlj6rxUPUgYBkOI4r9npNuFaOB~QoCC79~BzThjbAiwZEw34IOz5mNs0Qh2RKiiib99H-3VuNH5mxfBnctQj7vKoZ3pbFiFv3~rbZ9BvvRui-7eGtb1Hflo6N~qDZ~UVpjnRa3eQzTuot0E-6dsTVt227f5pC6W7d0u47eM~ObZqjH4GjuEsVQa9utOGeKj01~DsN2xp2dP2DTaadr51kWDwFHlUIEkDevtRFW4nVtKnq6IZLHWTLAVMzLent9Z-B-sorNuCmwzU7obNuRsji1Hl8cBGLtVm35mBdyEQOjg-oivRiVB10SJ0NXOz7NA__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 155,
-    "universityId": "lse"
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/ooyGmEBpkIVRiOAB.webp?Expires=1804687723&Signature=lkUU~MdflQKR5PgLOiqoKGWnlj6rxUPUgYBkOI4r9npNuFaOB~QoCC79~BzThjbAiwZEw34IOz5mNs0Qh2RKiiib99H-3VuNH5mxfBnctQj7vKoZ3pbFiFv3~rbZ9BvvRui-7eGtb1Hflo6N~qDZ~UVpjnRa3eQzTuot0E-6dsTVt227f5pC6W7d0u47eM~ObZqjH4GjuEsVQa9utOGeKj01~DsN2xp2dP2DTaadr51kWDwFHlUIEkDevtRFW4nVtKnq6IZLHWTLAVMzLent9Z-B-sorNuCmwzU7obNuRsji1Hl8cBGLtVm35mBdyEQOjg-oivRiVB10SJ0NXOz7NA__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 156,
+    "universityId": "lse",
     "name": "Fleet Street Press",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4203,11 +4205,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 7am-6pm",
     "atmosphere": "Dedicated work-friendly cafe on Fleet Street with a focus on productivity. Good coffee, reliable WiFi, and an atmosphere that encourages focused work.",
     "studyScore": 7.5,
-    "image": "https://s3-media0.fl.yelpcdn.com/bphoto/g8GkWru20nO1og3U__F_jw/o.jpg",
-    "id": 156,
-    "universityId": "lse"
+    "image": "https://s3-media0.fl.yelpcdn.com/bphoto/g8GkWru20nO1og3U__F_jw/o.jpg"
   },
   {
+    "id": 157,
+    "universityId": "lse",
     "name": "Monmouth Coffee Borough",
     "university": "LSE",
     "locationType": "Nearby Study Cafe",
@@ -4227,12 +4229,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat 7:30am-6pm",
     "atmosphere": "Iconic London coffee roaster known for exceptional single-origin coffee. Small space focused on the coffee experience rather than laptop work.",
-    "studyScore": 4.0,
-    "image": "https://media.timeout.com/images/105293933/image.jpg",
-    "id": 157,
-    "universityId": "lse"
+    "studyScore": 4,
+    "image": "https://media.timeout.com/images/105293933/image.jpg"
   },
   {
+    "id": 158,
+    "universityId": "lse",
     "name": "Holborn Library",
     "university": "LSE",
     "locationType": "Public Library",
@@ -4255,11 +4257,11 @@ export const uniStudySpots: UniStudySpot[] = [
     "openingHours": "Mon-Fri 10am-7pm, Sat 10am-5pm",
     "atmosphere": "Camden public library near LSE campus with quiet study areas, free WiFi, and computer access. A reliable alternative when the LSE Library is full.",
     "studyScore": 7.5,
-    "image": "https://designinglibraries.org.uk/media/qx3d1qik/holborn-library007.jpg?width=1172&height=659&v=1dbd5f72864e1a0",
-    "id": 158,
-    "universityId": "lse"
+    "image": "https://designinglibraries.org.uk/media/qx3d1qik/holborn-library007.jpg?width=1172&height=659&v=1dbd5f72864e1a0"
   },
   {
+    "id": 159,
+    "universityId": "lse",
     "name": "Lincoln's Inn Fields",
     "university": "LSE",
     "locationType": "Creative Workspace",
@@ -4282,12 +4284,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Daily 7am-dusk",
     "atmosphere": "London's largest public square, right next to LSE campus. Beautiful green space perfect for outdoor study sessions in warmer months. Benches and lawns available.",
-    "studyScore": 6.0,
-    "image": "https://www.feixandmerlin.com/wp-content/uploads/2018/10/LSE-35LIF-Feix-and-Merlin-Architects-2-2000x1125.jpg",
-    "id": 159,
-    "universityId": "lse"
+    "studyScore": 6,
+    "image": "https://www.feixandmerlin.com/wp-content/uploads/2018/10/LSE-35LIF-Feix-and-Merlin-Architects-2-2000x1125.jpg"
   },
   {
+    "id": 160,
+    "universityId": "soas",
     "name": "SOAS Library",
     "university": "SOAS University of London",
     "locationType": "University Library",
@@ -4310,12 +4312,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-11pm, Sat-Sun: 9:30am-10pm",
     "atmosphere": "A large, comprehensive library with a mix of silent, individual, and group study areas. It is the main library for SOAS and a hub of student activity.",
-    "studyScore": 8.0,
-    "image": "https://www.soas.ac.uk/soas-library",
-    "id": 160,
-    "universityId": "soas"
+    "studyScore": 8,
+    "image": "https://www.soas.ac.uk/soas-library"
   },
   {
+    "id": 161,
+    "universityId": "soas",
     "name": "Group Study Rooms (Level E)",
     "university": "SOAS University of London",
     "locationType": "Bookable Study Room",
@@ -4335,12 +4337,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-11pm, Sat-Sun: 9:30am-10pm",
     "atmosphere": "A series of rooms on Level E of the SOAS Library designated for group work. They are not bookable and are available on a first-come, first-served basis.",
-    "studyScore": 7.0,
-    "image": "https://www.soas.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-06/SOAS%20Library.jpg?itok=T4V3v0iK",
-    "id": 161,
-    "universityId": "soas"
+    "studyScore": 7,
+    "image": "https://www.soas.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-06/SOAS%20Library.jpg?itok=T4V3v0iK"
   },
   {
+    "id": 162,
+    "universityId": "soas",
     "name": "Main Reading Room (Computer Room)",
     "university": "SOAS University of London",
     "locationType": "Computer Lab",
@@ -4360,12 +4362,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-11pm, Sat-Sun: 9:30am-10pm",
     "atmosphere": "The main computer room in the library, offering a quiet space for individual study with access to university computers.",
-    "studyScore": 8.0,
-    "image": "https://www.soas.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-03/SOAS%20Library.jpg?itok=Vf7Lh1x9",
-    "id": 162,
-    "universityId": "soas"
+    "studyScore": 8,
+    "image": "https://www.soas.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-03/SOAS%20Library.jpg?itok=Vf7Lh1x9"
   },
   {
+    "id": 163,
+    "universityId": "soas",
     "name": "Language Labs (E35-E37)",
     "university": "SOAS University of London",
     "locationType": "Computer Lab",
@@ -4386,12 +4388,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-11pm, Sat-Sun: 9:30am-10pm",
     "atmosphere": "Specialized computer labs for language study, equipped with relevant software and resources. They are air-conditioned and provide a focused environment.",
-    "studyScore": 8.0,
-    "image": "https://i.ytimg.com/vi/m-b7y_a-Y-c/maxresdefault.jpg",
-    "id": 163,
-    "universityId": "soas"
+    "studyScore": 8,
+    "image": "https://i.ytimg.com/vi/m-b7y_a-Y-c/maxresdefault.jpg"
   },
   {
+    "id": 164,
+    "universityId": "soas",
     "name": "The World's Kitchen",
     "university": "SOAS University of London",
     "locationType": "Campus Cafe",
@@ -4412,12 +4414,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Lunchtime",
     "atmosphere": "A bustling and social cafe in the heart of the Paul Webley Wing, popular with students for its affordable and diverse food options. It can get crowded during peak hours.",
-    "studyScore": 5.0,
-    "image": "https://www.soas.ac.uk/sites/default/files/styles/uncropped_medium/public/2023-10/23cba2cb-9b60-4d16-a625-77e7d587e4fa.png?itok=NBjK3ceA",
-    "id": 164,
-    "universityId": "soas"
+    "studyScore": 5,
+    "image": "https://www.soas.ac.uk/sites/default/files/styles/uncropped_medium/public/2023-10/23cba2cb-9b60-4d16-a625-77e7d587e4fa.png?itok=NBjK3ceA"
   },
   {
+    "id": 165,
+    "universityId": "soas",
     "name": "Store Street Espresso",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4438,12 +4440,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 7:30am-6pm, Sat-Sun: 8am-6pm",
     "atmosphere": "A popular study spot for students, known for its excellent coffee and two-story layout that accommodates both solo and group study sessions. Its proximity to Senate House makes it a convenient option for SOAS students.",
-    "studyScore": 8.0,
-    "universityId": "soas",
-    "id": 165,
+    "studyScore": 8,
     "image": "https://images.ctfassets.net/v3n26e09qg2r/52p4E0T0G8C8g2k2q2W2oY/1b9b4b4c8c2c8c0c8c8c8c8c8c8c8c8c/store-street-espresso-london.jpg"
   },
   {
+    "id": 166,
+    "universityId": "soas",
     "name": "Redemption Roasters",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4463,12 +4465,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 7:30am-6pm, Sat-Sun: 8am-6pm",
     "atmosphere": "A coffee shop with a social mission, Redemption Roasters offers specialty coffee in a relaxed setting. It's a good spot for a quick coffee break or a short study session.",
-    "studyScore": 6.0,
-    "image": "https://redemptionroasters.com/cdn/shop/files/General_Banners_1000px_x_2500px_0012_RedemptionRoasters_June_Lifestyle_Shoot_043.webp?v=1721124428&width=3840",
-    "id": 166,
-    "universityId": "soas"
+    "studyScore": 6,
+    "image": "https://redemptionroasters.com/cdn/shop/files/General_Banners_1000px_x_2500px_0012_RedemptionRoasters_June_Lifestyle_Shoot_043.webp?v=1721124428&width=3840"
   },
   {
+    "id": 167,
+    "universityId": "soas",
     "name": "Burr & Co.",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4489,12 +4491,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sun: 7am-7pm",
     "atmosphere": "A Victorian-inspired coffee house with a sophisticated ambiance. It attracts a mix of students, tourists, and professionals, offering a pleasant environment for studying or meetings.",
-    "studyScore": 7.0,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/68/4e/2d/burr-co.jpg",
-    "id": 167,
-    "universityId": "soas"
+    "studyScore": 7,
+    "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/68/4e/2d/burr-co.jpg"
   },
   {
+    "id": 168,
+    "universityId": "soas",
     "name": "Junior Common Room (JCR)",
     "university": "SOAS University of London",
     "locationType": "Campus Study Lounge",
@@ -4515,12 +4517,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Accessible during Main Building opening hours",
     "atmosphere": "A versatile space for students to relax, socialize, and study. It is also used for events, so it can be lively at times.",
-    "studyScore": 6.0,
-    "image": "https://soasspirit.co.uk/wp-content/uploads/2023/11/IMG_20231028_151953-1.jpg",
-    "id": 168,
-    "universityId": "soas"
+    "studyScore": 6,
+    "image": "https://soasspirit.co.uk/wp-content/uploads/2023/11/IMG_20231028_151953-1.jpg"
   },
   {
+    "id": 169,
+    "universityId": "soas",
     "name": "British Library Reading Rooms",
     "university": "SOAS University of London",
     "locationType": "Public Library",
@@ -4543,12 +4545,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Varies by reading room, generally Mon-Sat",
     "atmosphere": "A world-renowned library with a scholarly and silent atmosphere, perfect for deep and focused work. The reading rooms are spacious and well-lit, providing an inspiring environment for research and study.",
-    "studyScore": 10.0,
-    "image": "https://www.bl.uk/britishlibrary/~/media/bl/global/visit/reading-rooms/reading-room-v2.jpg",
-    "id": 169,
-    "universityId": "soas"
+    "studyScore": 10,
+    "image": "https://www.bl.uk/britishlibrary/~/media/bl/global/visit/reading-rooms/reading-room-v2.jpg"
   },
   {
+    "id": 170,
+    "universityId": "soas",
     "name": "Wellcome Collection Library",
     "university": "SOAS University of London",
     "locationType": "Public Library",
@@ -4572,12 +4574,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Tue-Sat: 10am-6pm",
     "atmosphere": "A beautiful and inspiring library with a focus on health and medicine. It offers a mix of quiet study areas, a collaborative work zone, and a stunning Reading Room, making it a versatile and popular study spot.",
-    "studyScore": 9.0,
-    "image": "https://wellcomecollection.org/images/W0076707",
-    "id": 170,
-    "universityId": "soas"
+    "studyScore": 9,
+    "image": "https://wellcomecollection.org/images/W0076707"
   },
   {
+    "id": 171,
+    "universityId": "soas",
     "name": "Senate House Library Cafe",
     "university": "SOAS University of London",
     "locationType": "Campus Cafe",
@@ -4598,12 +4600,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-6pm",
     "atmosphere": "Located on the ground floor of the iconic Senate House, this cafe is open to the public and offers a vibrant atmosphere with a mix of students and academics. It's a good spot for a coffee break or a casual study session.",
-    "studyScore": 6.0,
-    "image": "https://www.london.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-10/bloom-cafe-senate-house-750x500.jpg",
-    "id": 171,
-    "universityId": "soas"
+    "studyScore": 6,
+    "image": "https://www.london.ac.uk/sites/default/files/styles/max_1300x1300/public/2022-10/bloom-cafe-senate-house-750x500.jpg"
   },
   {
+    "id": 172,
+    "universityId": "soas",
     "name": "Bloomsbury Coffee House",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4624,12 +4626,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 8am-5pm, Sat-Sun: 9am-5pm",
     "atmosphere": "A cozy and quiet basement cafe, popular with locals and students. It's a great spot for focused work and reading, with a welcoming and relaxed atmosphere.",
-    "studyScore": 8.0,
-    "image": "https://cdn.squaremeal.co.uk/restaurants/4157/bloomsbury_coffee_house_2012_-_bch_web.jpg?w=918&h=520&fit=crop&auto=format%2Ccompress",
-    "id": 172,
-    "universityId": "soas"
+    "studyScore": 8,
+    "image": "https://cdn.squaremeal.co.uk/restaurants/4157/bloomsbury_coffee_house_2012_-_bch_web.jpg?w=918&h=520&fit=crop&auto=format%2Ccompress"
   },
   {
+    "id": 173,
+    "universityId": "soas",
     "name": "Dillons Cafe (Waterstones)",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4651,12 +4653,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Sat: 9am-9pm, Sun: 12pm-6pm",
     "atmosphere": "A bustling cafe located within the large Waterstones bookstore on Gower Street. It's a popular spot for students from nearby universities and offers a lively atmosphere for studying and socializing.",
-    "studyScore": 7.0,
-    "image": "https://images.happycow.net/venues/1024/16/39/hcmp163987_635562.jpeg",
-    "id": 173,
-    "universityId": "soas"
+    "studyScore": 7,
+    "image": "https://images.happycow.net/venues/1024/16/39/hcmp163987_635562.jpeg"
   },
   {
+    "id": 174,
+    "universityId": "soas",
     "name": "Fortitude Bakehouse",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4678,12 +4680,12 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 7:30am-3pm, Sat-Sun: 8am-3pm",
     "atmosphere": "A popular and trendy bakery known for its delicious cakes and pastries. It's more of a takeaway spot with limited seating, so it's not ideal for long study sessions, but it's a great place to grab a coffee and a treat.",
-    "studyScore": 3.0,
-    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/NsiWZsLVOWfbxWCa.webp?Expires=1804687775&Signature=vMsvk~KFev5KSqOKphpGGI55wuv3SnqBjrN-HfFC7kBqMhh3TKepvGpgxaDinqR-g67P0ooRi-WjJBgFrN1z5S1MJ5Pr1C2Cskw~ODBcu-n61IIiLIsu8Zq7gw4ybNytLwKBO3rnQMdCb2jJbaqBfGcYjZ6C0kVXZyVkgUaBv862TxkB01Xo5QBeas0gE0ryrEtY6cWglNMwtt0VLo1lJK9nSSm627TirLYhkQIMgmN74cTN-KTFKGDZj8NlihX7fKX-rm2tElnC5rwpXZiqm5SuU91-W~I-Bg12T3lELN0oj0D9Nc-7jZbXL8-Z2amcOEv3E6MT~epGk71xS-dImg__&Key-Pair-Id=K2HSFNDJXOU9YS",
-    "id": 174,
-    "universityId": "soas"
+    "studyScore": 3,
+    "image": "https://private-us-east-1.manuscdn.com/user_upload_by_module/session_file/310519663360861914/NsiWZsLVOWfbxWCa.webp?Expires=1804687775&Signature=vMsvk~KFev5KSqOKphpGGI55wuv3SnqBjrN-HfFC7kBqMhh3TKepvGpgxaDinqR-g67P0ooRi-WjJBgFrN1z5S1MJ5Pr1C2Cskw~ODBcu-n61IIiLIsu8Zq7gw4ybNytLwKBO3rnQMdCb2jJbaqBfGcYjZ6C0kVXZyVkgUaBv862TxkB01Xo5QBeas0gE0ryrEtY6cWglNMwtt0VLo1lJK9nSSm627TirLYhkQIMgmN74cTN-KTFKGDZj8NlihX7fKX-rm2tElnC5rwpXZiqm5SuU91-W~I-Bg12T3lELN0oj0D9Nc-7jZbXL8-Z2amcOEv3E6MT~epGk71xS-dImg__&Key-Pair-Id=K2HSFNDJXOU9YS"
   },
   {
+    "id": 175,
+    "universityId": "soas",
     "name": "Caffè Tropea",
     "university": "SOAS University of London",
     "locationType": "Nearby Study Cafe",
@@ -4705,9 +4707,7 @@ export const uniStudySpots: UniStudySpot[] = [
     ],
     "openingHours": "Mon-Fri: 7am-6pm",
     "atmosphere": "A charming, family-run Italian cafe located in the heart of Russell Square. It offers beautiful views of the park and a relaxed atmosphere, making it a pleasant spot for a coffee break or a casual study session, though it can get busy during peak hours.",
-    "studyScore": 6.0,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0d/f0/2b/e8/the-cafe-in-the-garden.jpg",
-    "id": 175,
-    "universityId": "soas"
+    "studyScore": 6,
+    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0d/f0/2b/e8/the-cafe-in-the-garden.jpg"
   }
 ];
