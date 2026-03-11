@@ -145,3 +145,7 @@
 
 ### Verified Badge
 - [x] Add verified badge to community spots that admin verifies
+
+### UI Fixes
+- [x] Fix map/satellite button overlapping with study spots count text on map page
+- [x] Move verified badge next to rating number on LocationCard

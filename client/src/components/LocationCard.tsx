@@ -2,9 +2,10 @@
  * LocationCard — London Fog design
  * Large image, frosted glass info overlay, warm shadows
  * Improved animations, dark mode compatible
+ * Verified badge shown next to rating number
  */
-import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles } from 'lucide-react';
-import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
+import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles, BadgeCheck } from 'lucide-react';
+import { type VerificationStatus } from '@/components/VerificationBadge';
 import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
@@ -23,6 +24,8 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
   const [imgLoaded, setImgLoaded] = useState(false);
   const fav = isFavorite(location.id);
   const isCommunity = 'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted;
+  const verificationStatus: VerificationStatus | undefined = isCommunity ? (location as any).verificationStatus : undefined;
+  const isVerified = verificationStatus === 'verified';
   const image = isCommunity && (location as any).images?.[0]
     ? (location as any).images[0]
     : location.image && !location.image.includes('source.unsplash')
@@ -57,9 +60,14 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
             loading="lazy"
             onLoad={() => setImgLoaded(true)}
           />
-          {/* Score badge */}
-          <div className="absolute top-3 left-3 score-badge bg-card/90 backdrop-blur-sm text-card-foreground px-2.5 py-1 rounded-lg text-sm shadow-sm">
-            {location.studyScore.toFixed(1)}
+          {/* Score badge + verified badge together */}
+          <div className="absolute top-3 left-3 flex items-center gap-1.5">
+            <div className="score-badge bg-card/90 backdrop-blur-sm text-card-foreground px-2.5 py-1 rounded-lg text-sm shadow-sm flex items-center gap-1">
+              {location.studyScore.toFixed(1)}
+              {isVerified && (
+                <BadgeCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              )}
+            </div>
           </div>
           {/* Favorite button */}
           <button
@@ -68,7 +76,7 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
           >
             <Heart className={`w-4.5 h-4.5 transition-colors ${fav ? 'fill-red-500 text-red-500' : 'text-muted-foreground'}`} />
           </button>
-          {/* Category badge */}
+          {/* Category badge + community label */}
           <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
             <div className="glass rounded-full px-3 py-1.5 text-xs font-medium flex items-center gap-1.5">
               <span>{CATEGORY_ICONS[location.category] || '📍'}</span>
@@ -78,9 +86,6 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
               <div className="bg-fog-sage/90 backdrop-blur-sm text-white rounded-full px-2.5 py-1.5 text-[10px] font-semibold flex items-center gap-1">
                 <Sparkles className="w-3 h-3" /> Community
               </div>
-            )}
-            {isCommunity && (location as any).verificationStatus && (location as any).verificationStatus !== 'unverified' && (
-              <VerificationBadge status={(location as any).verificationStatus as VerificationStatus} compact />
             )}
           </div>
         </div>

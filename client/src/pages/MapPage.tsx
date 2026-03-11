@@ -156,49 +156,50 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
         onMapReady={handleMapReady}
       />
 
-      {/* Top controls */}
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 gap-2 flex-wrap">
+      {/* Top controls — positioned below Google Maps native controls */}
+      <div className="absolute top-16 left-4 z-10">
         {/* Location count badge */}
         <div className="glass rounded-full px-4 py-2 shadow-lg">
           <span className="text-sm font-medium text-fog-charcoal">{locations.length} study spots</span>
         </div>
+      </div>
 
-        <div className="flex items-center gap-2">
-          {/* Community filter toggle */}
-          {communityCount > 0 && onToggleCommunityOnly && (
-            <button
-              onClick={onToggleCommunityOnly}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
-                showCommunityOnly
-                  ? 'bg-fog-sage text-white'
-                  : 'glass text-fog-charcoal hover:bg-white/90'
-              }`}
-            >
-              <Users className="w-4 h-4" />
-              Community ({communityCount})
-            </button>
-          )}
-
-          {/* Heatmap toggle */}
+      {/* Right-side controls — positioned below Google Maps type selector */}
+      <div className="absolute top-16 right-4 z-10 flex items-center gap-2">
+        {/* Community filter toggle */}
+        {communityCount > 0 && onToggleCommunityOnly && (
           <button
-            onClick={() => setShowHeatmap(prev => !prev)}
+            onClick={onToggleCommunityOnly}
             className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
-              showHeatmap
-                ? 'bg-fog-gold text-white'
+              showCommunityOnly
+                ? 'bg-fog-sage text-white'
                 : 'glass text-fog-charcoal hover:bg-white/90'
             }`}
           >
-            {showHeatmap ? (
-              <>
-                <MapIcon className="w-4 h-4" /> Pins View
-              </>
-            ) : (
-              <>
-                <Flame className="w-4 h-4" /> Study Heatmap
-              </>
-            )}
+            <Users className="w-4 h-4" />
+            Community ({communityCount})
           </button>
-        </div>
+        )}
+
+        {/* Heatmap toggle */}
+        <button
+          onClick={() => setShowHeatmap(prev => !prev)}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg text-sm font-medium transition-all ${
+            showHeatmap
+              ? 'bg-fog-gold text-white'
+              : 'glass text-fog-charcoal hover:bg-white/90'
+          }`}
+        >
+          {showHeatmap ? (
+            <>
+              <MapIcon className="w-4 h-4" /> Pins View
+            </>
+          ) : (
+            <>
+              <Flame className="w-4 h-4" /> Study Heatmap
+            </>
+          )}
+        </button>
       </div>
 
       {/* Heatmap legend */}
@@ -208,7 +209,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="absolute top-16 right-4 z-10 glass rounded-xl px-4 py-3 shadow-lg"
+            className="absolute top-28 right-4 z-10 glass rounded-xl px-4 py-3 shadow-lg"
           >
             <p className="text-xs font-semibold text-fog-charcoal mb-2">Study Density</p>
             <div className="flex items-center gap-1.5">
