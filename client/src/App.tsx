@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ImageOverridesProvider } from "./contexts/ImageOverridesContext";
 import Home from "./pages/Home";
 import UniModePage from "./pages/UniModePage";
 import AdminPanel from "./pages/AdminPanel";
@@ -32,8 +33,10 @@ function App() {
         switchable
       >
         <TooltipProvider>
-          <Toaster />
-          <Router />
+          <ImageOverridesProvider>
+            <Toaster />
+            <Router />
+          </ImageOverridesProvider>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

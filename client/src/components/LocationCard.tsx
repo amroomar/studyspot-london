@@ -3,6 +3,7 @@
  * Large image, frosted glass info overlay, warm shadows
  * Improved animations, dark mode compatible
  * Verified badge shown next to rating number
+ * Uses admin image overrides when available
  */
 import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles, BadgeCheck } from 'lucide-react';
 import { type VerificationStatus } from '@/components/VerificationBadge';
@@ -10,6 +11,7 @@ import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -21,16 +23,25 @@ interface LocationCardProps {
 
 export default function LocationCard({ location, onClick, index = 0 }: LocationCardProps) {
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { resolveImage } = useImageOverrides();
   const [imgLoaded, setImgLoaded] = useState(false);
   const fav = isFavorite(location.id);
   const isCommunity = 'isCommunitySubmitted' in location && (location as any).isCommunitySubmitted;
   const verificationStatus: VerificationStatus | undefined = isCommunity ? (location as any).verificationStatus : undefined;
   const isVerified = verificationStatus === 'verified';
-  const image = isCommunity && (location as any).images?.[0]
-    ? (location as any).images[0]
-    : location.image && !location.image.includes('source.unsplash')
-      ? location.image
-      : getLocationImage(location.name, location.category);
+
+  // Image resolution priority:
+  // 1. Admin override (from database via ImageOverridesContext)
+  // 2. Community submission image
+  // 3. Location's built-in image
+  // 4. Fallback from getLocationImage()
+  const defaultImage = location.image && !location.image.includes('source.unsplash')
+    ? location.image
+    : getLocationImage(location.name, location.category);
+
+  const image = isCommunity
+    ? (location as any).images?.[0] || defaultImage
+    : resolveImage('curated', location.id, defaultImage) || defaultImage;
 
   const noiseLabel = location.noiseLevel <= 2 ? 'Quiet' : location.noiseLevel <= 3 ? 'Moderate' : 'Lively';
 

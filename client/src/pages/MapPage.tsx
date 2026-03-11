@@ -10,6 +10,7 @@ import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { Heart, MapPin, X, Navigation, ExternalLink, Wifi, Plug, Volume2, Flame, Map as MapIcon, Users } from 'lucide-react';
 import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -30,6 +31,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { resolveImage } = useImageOverrides();
   const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
   const heatmapRef = useRef<google.maps.visualization.HeatmapLayer | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -257,7 +259,7 @@ export default function MapPage({ locations, onSelectLocation, showCommunityOnly
                 onClick={() => onSelectLocation(selectedLocation)}
               >
                 <img
-                  src={selectedLocation.image || getLocationImage(selectedLocation.name, selectedLocation.category)}
+                  src={resolveImage('curated', selectedLocation.id, selectedLocation.image || getLocationImage(selectedLocation.name, selectedLocation.category))}
                   alt={selectedLocation.name}
                   className="w-28 h-full min-h-[120px] object-cover shrink-0"
                 />

@@ -18,6 +18,7 @@ import {
   type University,
 } from '@/lib/uniStudySpots';
 import { getUniSpotImage } from '@/lib/uniImages';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { MapView } from '@/components/Map';
 import {
   ArrowLeft,
@@ -134,7 +135,9 @@ function applyUniFilters(spots: UniStudySpot[], filters: UniFilters, sortBy: str
 
 function UniSpotCard({ spot, onClick, index = 0 }: { spot: UniStudySpot; onClick: () => void; index?: number }) {
   const [imgLoaded, setImgLoaded] = useState(false);
-  const image = getUniSpotImage(spot.name, spot.locationType, spot.image);
+  const { resolveImage } = useImageOverrides();
+  const defaultImage = getUniSpotImage(spot.name, spot.locationType, spot.image);
+  const image = resolveImage('uni', spot.id, defaultImage) || defaultImage;
 
   return (
     <motion.div
@@ -222,7 +225,9 @@ function UniSpotCard({ spot, onClick, index = 0 }: { spot: UniStudySpot; onClick
 // ─── UniSpotDetail ─────────────────────────────────────────────────────────
 
 function UniSpotDetail({ spot, onBack }: { spot: UniStudySpot; onBack: () => void }) {
-  const image = getUniSpotImage(spot.name, spot.locationType, spot.image);
+  const { resolveImage } = useImageOverrides();
+  const defaultImage = getUniSpotImage(spot.name, spot.locationType, spot.image);
+  const image = resolveImage('uni', spot.id, defaultImage) || defaultImage;
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}&travelmode=transit`;
 
   return (
@@ -575,6 +580,7 @@ function CampusMapView({
   const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
   const mapRef = useRef<google.maps.Map | null>(null);
   const [previewSpot, setPreviewSpot] = useState<UniStudySpot | null>(null);
+  const { resolveImage } = useImageOverrides();
 
   const createMarkers = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
@@ -656,7 +662,7 @@ function CampusMapView({
               </button>
               <div className="flex gap-3">
                 <img
-                  src={getUniSpotImage(previewSpot.name, previewSpot.locationType, previewSpot.image)}
+                  src={resolveImage('uni', previewSpot.id, getUniSpotImage(previewSpot.name, previewSpot.locationType, previewSpot.image))}
                   alt={previewSpot.name}
                   className="w-20 h-20 rounded-xl object-cover shrink-0"
                 />

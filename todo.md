@@ -149,3 +149,6 @@
 ### UI Fixes
 - [x] Fix map/satellite button overlapping with study spots count text on map page
 - [x] Move verified badge next to rating number on LocationCard
+
+### Image Override Bug
+- [x] Admin-set images from Image Manager do not override default location images in the app

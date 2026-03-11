@@ -4,6 +4,7 @@
  * Features: create lists, add/remove locations to lists, view list contents
  */
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { Heart, MapPin, Plus, Bookmark, ChevronLeft, ListPlus, X, Trash2, FolderOpen } from 'lucide-react';
@@ -19,6 +20,7 @@ interface FavoritesPageProps {
 
 export default function FavoritesPage({ locations, onSelectLocation }: FavoritesPageProps) {
   const { favorites, lists, toggleFavorite, createList, addToList, removeFromList } = useFavorites();
+  const { resolveImage } = useImageOverrides();
   const [newListName, setNewListName] = useState('');
   const [showNewList, setShowNewList] = useState(false);
   const [activeListId, setActiveListId] = useState<string | null>(null);
@@ -139,7 +141,7 @@ export default function FavoritesPage({ locations, onSelectLocation }: Favorites
                 onClick={() => onSelectLocation(loc)}
               >
                 <img
-                  src={loc.image || getLocationImage(loc.name, loc.category)}
+                  src={resolveImage('curated', loc.id, loc.image || getLocationImage(loc.name, loc.category))}
                   alt={loc.name}
                   className="w-20 h-20 rounded-lg object-cover shrink-0"
                 />
@@ -249,7 +251,7 @@ export default function FavoritesPage({ locations, onSelectLocation }: Favorites
               onClick={() => onSelectLocation(loc)}
             >
               <img
-                src={loc.image || getLocationImage(loc.name, loc.category)}
+                src={resolveImage('curated', loc.id, loc.image || getLocationImage(loc.name, loc.category))}
                 alt={loc.name}
                 className="w-20 h-20 rounded-lg object-cover shrink-0"
               />

@@ -11,6 +11,7 @@ import { socialVideos } from '@/lib/socialVideos';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { useReviews, type Review } from '@/contexts/ReviewsContext';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -123,12 +124,14 @@ function getDirectionsUrl(location: Location): string {
 
 export default function LocationDetail({ location, onBack }: LocationDetailProps) {
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { resolveImage } = useImageOverrides();
   const { getReviewsForLocation } = useReviews();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const fav = isFavorite(location.id);
-  const image = location.image && !location.image.includes('source.unsplash')
+  const defaultImage = location.image && !location.image.includes('source.unsplash')
     ? location.image
     : getLocationImage(location.name, location.category);
+  const image = resolveImage('curated', location.id, defaultImage) || defaultImage;
   const reviews = getReviewsForLocation(location.id);
 
   const noiseLabels: Record<number, string> = { 1: 'Very Quiet', 2: 'Quiet', 3: 'Moderate', 4: 'Lively', 5: 'Loud' };

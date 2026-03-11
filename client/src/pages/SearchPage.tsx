@@ -6,6 +6,7 @@ import { Search, MapPin, Navigation, Loader2 } from 'lucide-react';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { useFavorites } from '@/contexts/FavoritesContext';
+import { useImageOverrides } from '@/contexts/ImageOverridesContext';
 import { Heart } from 'lucide-react';
 import { useState, useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
@@ -28,6 +29,7 @@ export default function SearchPage({ locations, onSelectLocation }: SearchPagePr
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [loadingLocation, setLoadingLocation] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { resolveImage } = useImageOverrides();
 
   const requestLocation = useCallback(() => {
     setLoadingLocation(true);
@@ -151,7 +153,7 @@ export default function SearchPage({ locations, onSelectLocation }: SearchPagePr
                   onClick={() => onSelectLocation(loc)}
                 >
                   <img
-                    src={loc.image || getLocationImage(loc.name, loc.category)}
+                    src={resolveImage('curated', loc.id, loc.image || getLocationImage(loc.name, loc.category))}
                     alt={loc.name}
                     className="w-20 h-20 rounded-lg object-cover shrink-0"
                   />
