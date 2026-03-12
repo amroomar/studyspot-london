@@ -318,3 +318,10 @@
 - [x] Fix map thumbnails showing placeholders instead of real images
 - [x] Fix Bristol UniMode locations showing placeholder images — replaced all 20 with real CDN images
 - [x] Add nearby locations section with geolocation on discovery page for both London and Bristol
+
+## Marketing
+- [x] Create printable marketing poster/infographic with QR code for StudySpot app
+
+## Bristol Duplicate Images Fix
+- [x] Identify all Bristol locations sharing duplicate images (69 out of 100 had duplicates)
+- [x] Replace duplicates with unique real venue photos — now 98/100 unique (only Ahh Toots chain shares intentionally)
