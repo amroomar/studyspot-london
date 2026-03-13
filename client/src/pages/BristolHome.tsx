@@ -15,6 +15,7 @@ import Navbar from '@/components/Navbar';
 import LocationCard from '@/components/LocationCard';
 import LocationDetail from '@/components/LocationDetail';
 import FilterPanel, { type Filters, DEFAULT_FILTERS } from '@/components/FilterPanel';
+import { isOpenNow } from '@/lib/openingHours';
 import MapPage from '@/pages/MapPage';
 import SearchPage from '@/pages/SearchPage';
 import FavoritesPage from '@/pages/FavoritesPage';
@@ -63,6 +64,7 @@ function applyFilters(locations: typeof allLocations, filters: Filters, sortBy: 
   if (filters.laptopFriendly) result = result.filter(l => l.laptopFriendly === 'yes');
   if (filters.priceLevel !== 'All') result = result.filter(l => l.priceLevel === 'All' ? true : l.priceLevel === filters.priceLevel);
   if (filters.minScore > 0) result = result.filter(l => l.studyScore >= filters.minScore);
+  if (filters.openNow) result = result.filter(l => isOpenNow(l.openingHours));
   if (sortBy === 'score') result = [...result].sort((a, b) => b.studyScore - a.studyScore);
   else result = [...result].sort((a, b) => a.name.localeCompare(b.name));
   return result;
@@ -70,6 +72,7 @@ function applyFilters(locations: typeof allLocations, filters: Filters, sortBy: 
 
 function ActiveFilterChips({ filters, onChange }: { filters: Filters; onChange: (f: Filters) => void }) {
   const chips: { label: string; clear: () => void }[] = [];
+  if (filters.openNow) chips.push({ label: 'Open Now', clear: () => onChange({ ...filters, openNow: false }) });
   if (filters.category !== 'All') chips.push({ label: filters.category, clear: () => onChange({ ...filters, category: 'All' }) });
   if (filters.neighborhood !== 'All') chips.push({ label: filters.neighborhood, clear: () => onChange({ ...filters, neighborhood: 'All' }) });
   if (filters.wifi) chips.push({ label: 'Wi-Fi', clear: () => onChange({ ...filters, wifi: false }) });

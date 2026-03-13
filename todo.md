@@ -325,3 +325,8 @@
 ## Bristol Duplicate Images Fix
 - [x] Identify all Bristol locations sharing duplicate images (69 out of 100 had duplicates)
 - [x] Replace duplicates with unique real venue photos — now 98/100 unique (only Ahh Toots chain shares intentionally)
+
+## New Features (Round 7)
+- [x] Open Now filter and badge on location cards (parse opening hours, show Open/Closed/Closing Soon)
+- [x] Share a Spot button on location detail pages (Web Share API with fallback)
+- [x] Audit and fix Live Study Vibe feature — ensure it works and add busyness history graph

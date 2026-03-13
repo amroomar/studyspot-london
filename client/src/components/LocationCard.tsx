@@ -8,6 +8,7 @@
 import { Heart, Wifi, Plug, Volume2, MapPin, Sparkles, BadgeCheck } from 'lucide-react';
 import { type VerificationStatus } from '@/components/VerificationBadge';
 import { VibeBadgeCompact } from '@/components/LiveVibeBadge';
+import { OpenBadgeCompact } from '@/components/OpenStatusBadge';
 import { type Location } from '@/lib/locations';
 import { getLocationImage, CATEGORY_ICONS } from '@/lib/images';
 import { getBristolLocationImage } from '@/lib/bristolImages';
@@ -148,6 +149,7 @@ export default function LocationCard({ location, onClick, index = 0 }: LocationC
               <span className="flex items-center gap-1"><Plug className="w-3.5 h-3.5 text-fog-sage" /> Plugs</span>
             )}
             <span className="flex items-center gap-1"><Volume2 className="w-3.5 h-3.5 text-fog-sage" /> {noiseLabel}</span>
+            <OpenBadgeCompact openingHours={location.openingHours} />
             <VibeBadgeCompact locationId={location.id} />
           </div>
 

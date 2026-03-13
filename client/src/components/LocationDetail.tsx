@@ -3,7 +3,7 @@
  * London Fog design: large hero image, editorial layout, frosted glass elements
  * Includes Google Maps buttons and improved UX
  */
-import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles, Camera, X, User, UserX, ArrowUpDown } from 'lucide-react';
+import { ArrowLeft, Heart, ExternalLink, MapPin, Clock, Wifi, Plug, Volume2, Sun, Armchair, Laptop, Star, Send, Navigation, Map, Play, Sparkles, Camera, X, User, UserX, ArrowUpDown, Share2, Copy, Check } from 'lucide-react';
 import VerificationBadge, { type VerificationStatus } from '@/components/VerificationBadge';
 import ConfirmReportButtons from '@/components/ConfirmReportButtons';
 import { VibeDetailPanel } from '@/components/LiveVibeBadge';
@@ -233,6 +233,45 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
+/** Share button with Web Share API and clipboard fallback */
+function ShareButton({ location }: { location: Location }) {
+  const [copied, setCopied] = useState(false);
+  const isBristol = location.id >= 10001;
+  const cityPath = isBristol ? 'bristol' : 'london';
+  const shareUrl = `${window.location.origin}/${cityPath}`;
+  const shareTitle = `${location.name} — StudySpot`;
+  const shareText = `Check out ${location.name} in ${location.neighborhood} on StudySpot! Study Score: ${location.studyScore.toFixed(1)}/10`;
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
+      } catch (e) {
+        // User cancelled share
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+        setCopied(true);
+        toast.success('Link copied to clipboard!');
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        toast.error('Failed to copy link');
+      }
+    }
+  };
+
+  return (
+    <button
+      onClick={handleShare}
+      className="w-10 h-10 rounded-full glass flex items-center justify-center shadow-lg transition-transform active:scale-90"
+      title="Share this spot"
+    >
+      {copied ? <Check className="w-5 h-5 text-green-500" /> : <Share2 className="w-5 h-5 text-foreground" />}
+    </button>
+  );
+}
+
 /** Build a Google Maps search URL for a location */
 function getGoogleMapsUrl(location: Location): string {
   const query = encodeURIComponent(`${location.name}, ${location.neighborhood}, London`);
@@ -305,12 +344,15 @@ export default function LocationDetail({ location, onBack }: LocationDetailProps
           >
             <ArrowLeft className="w-5 h-5 text-foreground" />
           </button>
-          <button
-            onClick={() => toggleFavorite(location.id)}
-            className="w-10 h-10 rounded-full glass flex items-center justify-center shadow-lg"
-          >
-            <Heart className={`w-5 h-5 ${fav ? 'fill-red-500 text-red-500' : 'text-foreground'}`} />
-          </button>
+          <div className="flex items-center gap-2">
+            <ShareButton location={location} />
+            <button
+              onClick={() => toggleFavorite(location.id)}
+              className="w-10 h-10 rounded-full glass flex items-center justify-center shadow-lg"
+            >
+              <Heart className={`w-5 h-5 ${fav ? 'fill-red-500 text-red-500' : 'text-foreground'}`} />
+            </button>
+          </div>
         </div>
 
         {/* Bottom info on hero */}

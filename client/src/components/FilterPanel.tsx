@@ -14,6 +14,7 @@ export interface Filters {
   wifi: boolean;
   plugs: boolean;
   laptopFriendly: boolean;
+  openNow: boolean;
   priceLevel: string;
   minScore: number;
   searchQuery: string;
@@ -26,6 +27,7 @@ export const DEFAULT_FILTERS: Filters = {
   wifi: false,
   plugs: false,
   laptopFriendly: false,
+  openNow: false,
   priceLevel: 'All',
   minScore: 0,
   searchQuery: '',
@@ -58,6 +60,7 @@ export default function FilterPanel({ filters, onChange, neighborhoods, resultCo
     filters.wifi,
     filters.plugs,
     filters.laptopFriendly,
+    filters.openNow,
     filters.priceLevel !== 'All',
     filters.minScore > 0,
     filters.neighborhood !== 'All',
@@ -196,6 +199,7 @@ export default function FilterPanel({ filters, onChange, neighborhoods, resultCo
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-foreground block">Requirements</label>
                   {[
+                    { key: 'openNow' as const, label: 'Open Now', icon: '🕓' },
                     { key: 'wifi' as const, label: 'Wi-Fi Available', icon: '📶' },
                     { key: 'plugs' as const, label: 'Plug Sockets', icon: '🔌' },
                     { key: 'laptopFriendly' as const, label: 'Laptop Friendly', icon: '💻' },
