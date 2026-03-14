@@ -369,3 +369,4 @@
 - [x] Fix unexpected error when clicking area links on London/Bristol landing pages (wrapped with FavoritesProvider)
 - [x] Add browser push notifications when Pomodoro timer completes (Notification API)
 - [x] Support mobile notifications for PWA-installed users (service worker showNotification + notificationclick handler)
+- [x] Show session duration in push notifications when timer completes

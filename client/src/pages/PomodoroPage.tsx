@@ -182,19 +182,23 @@ async function requestNotificationPermission(): Promise<boolean> {
   return result === 'granted';
 }
 
-function sendTimerNotification(mode: TimerMode, locationName: string | null) {
+function sendTimerNotification(mode: TimerMode, locationName: string | null, durationMinutes: number) {
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
 
   const isFocus = mode === 'focus';
+  const durationStr = durationMinutes >= 60
+    ? `${Math.floor(durationMinutes / 60)}h ${durationMinutes % 60 > 0 ? `${durationMinutes % 60}m` : ''}`
+    : `${durationMinutes}m`;
+
   const title = isFocus
-    ? 'Focus session complete!'
+    ? `${durationStr} focus session complete!`
     : mode === 'break'
-    ? 'Break is over!'
-    : 'Long break is over!';
+    ? `${durationStr} break is over!`
+    : `${durationStr} long break is over!`;
 
   const body = isFocus
-    ? `Great work${locationName ? ` at ${locationName}` : ''}! Time for a break.`
-    : 'Ready to focus again? Start your next session.';
+    ? `Great work${locationName ? ` at ${locationName}` : ''}! You focused for ${durationStr}. Time for a break.`
+    : `You rested for ${durationStr}. Ready to focus again? Start your next session.`;
 
   const icon = '/icons/icon-192x192.png';
   const badge = '/icons/icon-96x96.png';
@@ -1015,7 +1019,8 @@ export default function PomodoroPage() {
 
   const handleTimerComplete = useCallback(() => {
     if (soundEnabled) playNotificationSound();
-    if (notificationsEnabled) sendTimerNotification(mode, linkedLocationName);
+    const sessionDuration = mode === 'focus' ? focusDuration : mode === 'break' ? breakDuration : longBreakDuration;
+    if (notificationsEnabled) sendTimerNotification(mode, linkedLocationName, sessionDuration);
     setState('idle');
 
     const now = new Date().toISOString();
