@@ -28,6 +28,41 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Handle messages from the client for persistent timer notifications
+self.addEventListener('message', (event) => {
+  const { type, data } = event.data || {};
+
+  if (type === 'TIMER_UPDATE') {
+    // Show/update persistent notification with current countdown
+    const { timeLeft, mode, locationName, state: timerState } = data;
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const modeLabel = mode === 'focus' ? 'Focusing' : mode === 'break' ? 'Break' : 'Long Break';
+    const title = `${timeStr} — ${modeLabel}`;
+    const body = locationName
+      ? `Studying at ${locationName}`
+      : timerState === 'paused' ? 'Timer paused' : 'Stay focused!';
+
+    self.registration.showNotification(title, {
+      body,
+      icon: '/icons/icon-192x192.png',
+      badge: '/icons/icon-96x96.png',
+      tag: 'studyspot-timer-ongoing',
+      silent: true,
+      requireInteraction: false,
+      data: { url: '/timer', ongoing: true },
+    });
+  }
+
+  if (type === 'TIMER_CLEAR') {
+    // Dismiss the persistent notification when timer stops
+    self.registration.getNotifications({ tag: 'studyspot-timer-ongoing' }).then(notifications => {
+      notifications.forEach(n => n.close());
+    });
+  }
+});
+
 // Notification click: open the timer page when user taps the notification
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
