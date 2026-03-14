@@ -21,7 +21,7 @@ import {
 import { useLiveVibe, type VibeStatus } from '@/contexts/LiveVibeContext';
 import { locations as londonLocations, type Location } from '@/lib/locations';
 import { bristolLocations } from '@/lib/bristolLocations';
-import { saveActiveTimer, clearActiveTimer } from '@/components/FloatingTimer';
+import { saveActiveTimer, clearActiveTimer, loadActiveTimer } from '@/components/FloatingTimer';
 import { trpc } from '@/lib/trpc';
 
 // ─── Types ───────────────────────────────────────────────────────────
@@ -792,18 +792,29 @@ export default function PomodoroPage() {
   const { checkIn } = useLiveVibe();
   const [location] = useLocation();
 
+  // Restore timer state from localStorage on mount (so navigation doesn't reset)
+  const savedTimer = useMemo(() => loadActiveTimer(), []);
+
   // Timer state
-  const [mode, setMode] = useState<TimerMode>('focus');
-  const [state, setState] = useState<TimerState>('idle');
+  const [mode, setMode] = useState<TimerMode>(savedTimer?.mode ?? 'focus');
+  const [state, setState] = useState<TimerState>(savedTimer?.state ?? 'idle');
   const [focusDuration, setFocusDuration] = useState(25);
   const [breakDuration, setBreakDuration] = useState(5);
   const [longBreakDuration, setLongBreakDuration] = useState(15);
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
-  const [completedPomodoros, setCompletedPomodoros] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (!savedTimer) return 25 * 60;
+    // If it was running, account for elapsed time while away
+    if (savedTimer.state === 'running') {
+      const elapsed = Math.floor((Date.now() - savedTimer.lastTick) / 1000);
+      return Math.max(0, savedTimer.timeLeft - elapsed);
+    }
+    return savedTimer.timeLeft;
+  });
+  const [completedPomodoros, setCompletedPomodoros] = useState(savedTimer?.completedPomodoros ?? 0);
 
   // Location linking
-  const [linkedLocationId, setLinkedLocationId] = useState<number | null>(null);
-  const [linkedLocationName, setLinkedLocationName] = useState<string | null>(null);
+  const [linkedLocationId, setLinkedLocationId] = useState<number | null>(savedTimer?.linkedLocationId ?? null);
+  const [linkedLocationName, setLinkedLocationName] = useState<string | null>(savedTimer?.linkedLocationName ?? null);
   const [showLocationPicker, setShowLocationPicker] = useState(false);
 
   // UI state
@@ -817,7 +828,7 @@ export default function PomodoroPage() {
   const [sessions, setSessions] = useState<StudySession[]>(loadSessions);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sessionStartRef = useRef<string | null>(null);
+  const sessionStartRef = useRef<string | null>(savedTimer?.sessionStart ?? null);
 
   // Calculate total time for current mode
   const totalTime = useMemo(() => {
@@ -892,11 +903,14 @@ export default function PomodoroPage() {
         totalTime,
         lastTick: Date.now(),
         linkedLocationName,
+        linkedLocationId,
+        sessionStart: sessionStartRef.current,
+        completedPomodoros,
       });
-    } else {
+    } else if (state === 'idle') {
       clearActiveTimer();
     }
-  }, [state, mode, timeLeft, totalTime, linkedLocationName]);
+  }, [state, mode, timeLeft, totalTime, linkedLocationName, linkedLocationId, completedPomodoros]);
 
   const handleTimerComplete = useCallback(() => {
     if (soundEnabled) playNotificationSound();
@@ -1009,6 +1023,7 @@ export default function PomodoroPage() {
       mode === 'break' ? breakDuration * 60 :
       longBreakDuration * 60
     );
+    clearActiveTimer();
   };
 
   const handleModeSwitch = (newMode: TimerMode) => {
@@ -1020,6 +1035,7 @@ export default function PomodoroPage() {
       newMode === 'break' ? breakDuration * 60 :
       longBreakDuration * 60
     );
+    clearActiveTimer();
   };
 
   return (

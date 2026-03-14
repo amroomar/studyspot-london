@@ -20,6 +20,9 @@ export interface ActiveTimerState {
   totalTime: number; // total seconds for this mode
   lastTick: number; // Date.now() of last tick — used to compute elapsed while away
   linkedLocationName: string | null;
+  linkedLocationId?: number | null;
+  sessionStart?: string | null; // ISO string of when the session started
+  completedPomodoros?: number;
 }
 
 export function saveActiveTimer(t: ActiveTimerState) {

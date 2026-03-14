@@ -363,3 +363,6 @@
 - [x] Allow community-submitted spots to be linked to the timer (Curated/Community tabs in location picker)
 - [x] Timer state persisted via localStorage for cross-page continuity
 - [x] Hover tooltip shows linked location name and study/break status (desktop)
+
+### Bug Fixes
+- [x] Fix timer resetting when navigating away and back to /timer page (state persisted via localStorage)
