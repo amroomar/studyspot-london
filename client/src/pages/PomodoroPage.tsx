@@ -182,21 +182,6 @@ async function requestNotificationPermission(): Promise<boolean> {
   return result === 'granted';
 }
 
-// Persistent ongoing notification — updates every few seconds via service worker
-function updateOngoingNotification(timeLeft: number, totalTime: number, mode: TimerMode, timerState: TimerState, locationName: string | null) {
-  if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) return;
-  if (!('Notification' in window) || Notification.permission !== 'granted') return;
-  navigator.serviceWorker.controller.postMessage({
-    type: 'TIMER_UPDATE',
-    data: { timeLeft, totalTime, mode, locationName, state: timerState },
-  });
-}
-
-function clearOngoingNotification() {
-  if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) return;
-  navigator.serviceWorker.controller.postMessage({ type: 'TIMER_CLEAR' });
-}
-
 function sendTimerNotification(mode: TimerMode, locationName: string | null, durationMinutes: number) {
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
 
@@ -987,23 +972,17 @@ export default function PomodoroPage() {
     };
   }, [state]);
 
-  // Update document title with timer + persistent notification
+  // Update document title with timer
   useEffect(() => {
     if (state === 'running' || state === 'paused') {
       const m = Math.floor(timeLeft / 60);
       const s = timeLeft % 60;
       document.title = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')} — StudySpot Timer`;
-      // Update persistent notification every 5 seconds (to avoid excessive updates)
-      if (notificationsEnabled && timeLeft % 5 === 0) {
-        updateOngoingNotification(timeLeft, totalTime, mode, state, linkedLocationName);
-      }
     } else {
       document.title = 'Study Timer — StudySpot';
-      // Clear persistent notification when timer stops
-      if (notificationsEnabled) clearOngoingNotification();
     }
     return () => { document.title = 'StudySpot'; };
-  }, [timeLeft, state, notificationsEnabled, mode, linkedLocationName]);
+  }, [timeLeft, state]);
 
   // Persist active timer state for the FloatingTimer widget
   useEffect(() => {
@@ -1040,8 +1019,6 @@ export default function PomodoroPage() {
 
   const handleTimerComplete = useCallback(() => {
     if (soundEnabled) playNotificationSound();
-    // Clear the persistent countdown notification before showing the completion one
-    clearOngoingNotification();
     const sessionDuration = mode === 'focus' ? focusDuration : mode === 'break' ? breakDuration : longBreakDuration;
     if (notificationsEnabled) sendTimerNotification(mode, linkedLocationName, sessionDuration);
     setState('idle');
@@ -1154,7 +1131,6 @@ export default function PomodoroPage() {
       longBreakDuration * 60
     );
     clearActiveTimer();
-    clearOngoingNotification();
   };
 
   const handleModeSwitch = (newMode: TimerMode) => {
