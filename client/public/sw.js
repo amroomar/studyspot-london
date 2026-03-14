@@ -28,6 +28,26 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Notification click: open the timer page when user taps the notification
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || '/timer';
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      // Focus existing tab if open
+      for (const client of windowClients) {
+        if (client.url.includes(url) && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      // Otherwise open a new tab
+      if (clients.openWindow) {
+        return clients.openWindow(url);
+      }
+    })
+  );
+});
+
 // Fetch: network-first for API, cache-first for static assets
 self.addEventListener('fetch', (event) => {
   const { request } = event;

@@ -23,6 +23,7 @@ import { locations as londonLocations, type Location } from '@/lib/locations';
 import { bristolLocations } from '@/lib/bristolLocations';
 import { saveActiveTimer, clearActiveTimer, loadActiveTimer } from '@/components/FloatingTimer';
 import { trpc } from '@/lib/trpc';
+import { Bell, BellOff } from 'lucide-react';
 
 // ─── Types ───────────────────────────────────────────────────────────
 type TimerMode = 'focus' | 'break' | 'long-break';
@@ -167,6 +168,61 @@ function isYesterday(dateStr: string): boolean {
 }
 
 // ─── Sound ───────────────────────────────────────────────────────────
+// ─── Push Notification Helpers ──────────────────────────────────────
+function getNotificationPermission(): NotificationPermission | 'unsupported' {
+  if (!('Notification' in window)) return 'unsupported';
+  return Notification.permission;
+}
+
+async function requestNotificationPermission(): Promise<boolean> {
+  if (!('Notification' in window)) return false;
+  if (Notification.permission === 'granted') return true;
+  if (Notification.permission === 'denied') return false;
+  const result = await Notification.requestPermission();
+  return result === 'granted';
+}
+
+function sendTimerNotification(mode: TimerMode, locationName: string | null) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+
+  const isFocus = mode === 'focus';
+  const title = isFocus
+    ? 'Focus session complete!'
+    : mode === 'break'
+    ? 'Break is over!'
+    : 'Long break is over!';
+
+  const body = isFocus
+    ? `Great work${locationName ? ` at ${locationName}` : ''}! Time for a break.`
+    : 'Ready to focus again? Start your next session.';
+
+  const icon = '/icons/icon-192x192.png';
+  const badge = '/icons/icon-96x96.png';
+
+  try {
+    // Try service worker notification first (works when tab is in background / mobile PWA)
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.ready.then(registration => {
+        registration.showNotification(title, {
+          body,
+          icon,
+          badge,
+          tag: 'studyspot-timer',
+          data: { url: '/timer' },
+        } as NotificationOptions).catch(() => {
+          // Fallback to regular Notification
+          new Notification(title, { body, icon, badge, tag: 'studyspot-timer' });
+        });
+      });
+    } else {
+      // Fallback: regular Notification API
+      new Notification(title, { body, icon, badge, tag: 'studyspot-timer' });
+    }
+  } catch {
+    // Silent fail
+  }
+}
+
 function playNotificationSound() {
   try {
     const ctx = new AudioContext();
@@ -674,20 +730,26 @@ function SettingsPanel({
   breakDuration,
   longBreakDuration,
   soundEnabled,
+  notificationsEnabled,
+  notificationPermission,
   onFocusChange,
   onBreakChange,
   onLongBreakChange,
   onSoundToggle,
+  onNotificationToggle,
   onClose,
 }: {
   focusDuration: number;
   breakDuration: number;
   longBreakDuration: number;
   soundEnabled: boolean;
+  notificationsEnabled: boolean;
+  notificationPermission: NotificationPermission | 'unsupported';
   onFocusChange: (d: number) => void;
   onBreakChange: (d: number) => void;
   onLongBreakChange: (d: number) => void;
   onSoundToggle: () => void;
+  onNotificationToggle: () => void;
   onClose: () => void;
 }) {
   return (
@@ -781,6 +843,27 @@ function SettingsPanel({
               {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
             </button>
           </div>
+
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-sm text-muted-foreground">Push Notifications</span>
+              {notificationPermission === 'denied' && (
+                <p className="text-[10px] text-destructive mt-0.5">Blocked in browser settings</p>
+              )}
+              {notificationPermission === 'unsupported' && (
+                <p className="text-[10px] text-muted-foreground mt-0.5">Not supported in this browser</p>
+              )}
+            </div>
+            <button
+              onClick={onNotificationToggle}
+              disabled={notificationPermission === 'denied' || notificationPermission === 'unsupported'}
+              className={`p-2 rounded-lg transition-colors ${
+                notificationsEnabled ? 'bg-fog-sage/20 text-fog-sage' : 'bg-secondary text-muted-foreground'
+              } disabled:opacity-40 disabled:cursor-not-allowed`}
+            >
+              {notificationsEnabled ? <Bell className="w-5 h-5" /> : <BellOff className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -819,6 +902,10 @@ export default function PomodoroPage() {
 
   // UI state
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(() => {
+    try { return localStorage.getItem('studyspot-notifications') === 'true'; } catch { return false; }
+  });
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission | 'unsupported'>(() => getNotificationPermission());
   const [showSettings, setShowSettings] = useState(false);
   const [showXPPopup, setShowXPPopup] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'timer' | 'stats' | 'achievements'>('timer');
@@ -912,8 +999,23 @@ export default function PomodoroPage() {
     }
   }, [state, mode, timeLeft, totalTime, linkedLocationName, linkedLocationId, completedPomodoros]);
 
+  const handleNotificationToggle = useCallback(async () => {
+    if (notificationsEnabled) {
+      setNotificationsEnabled(false);
+      localStorage.setItem('studyspot-notifications', 'false');
+    } else {
+      const granted = await requestNotificationPermission();
+      setNotificationPermission(getNotificationPermission());
+      if (granted) {
+        setNotificationsEnabled(true);
+        localStorage.setItem('studyspot-notifications', 'true');
+      }
+    }
+  }, [notificationsEnabled]);
+
   const handleTimerComplete = useCallback(() => {
     if (soundEnabled) playNotificationSound();
+    if (notificationsEnabled) sendTimerNotification(mode, linkedLocationName);
     setState('idle');
 
     const now = new Date().toISOString();
@@ -1311,10 +1413,13 @@ export default function PomodoroPage() {
             breakDuration={breakDuration}
             longBreakDuration={longBreakDuration}
             soundEnabled={soundEnabled}
+            notificationsEnabled={notificationsEnabled}
+            notificationPermission={notificationPermission}
             onFocusChange={d => { setFocusDuration(d); if (mode === 'focus' && state === 'idle') setTimeLeft(d * 60); }}
             onBreakChange={d => { setBreakDuration(d); if (mode === 'break' && state === 'idle') setTimeLeft(d * 60); }}
             onLongBreakChange={d => { setLongBreakDuration(d); if (mode === 'long-break' && state === 'idle') setTimeLeft(d * 60); }}
             onSoundToggle={() => setSoundEnabled(!soundEnabled)}
+            onNotificationToggle={handleNotificationToggle}
             onClose={() => setShowSettings(false)}
           />
         )}

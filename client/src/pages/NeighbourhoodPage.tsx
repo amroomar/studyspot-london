@@ -4,6 +4,7 @@
  * Shows all study spots in that neighbourhood with rich meta, internal links, and structured data
  */
 import { useMemo, useState, useEffect } from 'react';
+import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { useRoute, Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { locations as londonLocations, type Location } from '@/lib/locations';
@@ -350,14 +351,22 @@ function NeighbourhoodContent({ city, slug }: { city: 'london' | 'bristol'; slug
 export function LondonNeighbourhoodPage() {
   const [, params] = useRoute('/london/area/:slug');
   if (!params?.slug) return null;
-  return <NeighbourhoodContent city="london" slug={params.slug} />;
+  return (
+    <FavoritesProvider>
+      <NeighbourhoodContent city="london" slug={params.slug} />
+    </FavoritesProvider>
+  );
 }
 
 // Bristol neighbourhood page
 export function BristolNeighbourhoodPage() {
   const [, params] = useRoute('/bristol/area/:slug');
   if (!params?.slug) return null;
-  return <NeighbourhoodContent city="bristol" slug={params.slug} />;
+  return (
+    <FavoritesProvider>
+      <NeighbourhoodContent city="bristol" slug={params.slug} />
+    </FavoritesProvider>
+  );
 }
 
 // Neighbourhood directory page

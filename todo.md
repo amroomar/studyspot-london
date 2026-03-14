@@ -366,3 +366,6 @@
 
 ### Bug Fixes
 - [x] Fix timer resetting when navigating away and back to /timer page (state persisted via localStorage)
+- [x] Fix unexpected error when clicking area links on London/Bristol landing pages (wrapped with FavoritesProvider)
+- [x] Add browser push notifications when Pomodoro timer completes (Notification API)
+- [x] Support mobile notifications for PWA-installed users (service worker showNotification + notificationclick handler)
