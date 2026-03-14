@@ -330,3 +330,36 @@
 - [x] Open Now filter and badge on location cards (parse opening hours, show Open/Closed/Closing Soon)
 - [x] Share a Spot button on location detail pages (Web Share API with fallback)
 - [x] Audit and fix Live Study Vibe feature — ensure it works and add busyness history graph
+
+## New Features (Round 8)
+
+### SEO Neighbourhood Landing Pages
+- [x] Extract all unique neighbourhoods from London and Bristol location data
+- [x] Create dynamic routes /london/area/:slug and /bristol/area/:slug
+- [x] Build SEO-optimized neighbourhood landing page with stats, categories, sort, and SEO content
+- [x] Add neighbourhood directory pages (/london/areas, /bristol/areas)
+- [x] Internal linking between neighbourhood pages, nearby areas, and main discovery page
+- [x] Breadcrumb navigation on all neighbourhood pages
+
+### Gamified Pomodoro Study Timer
+- [x] Build Pomodoro timer component with 25/5 work/break cycles + long break every 4
+- [x] Add gamification: XP earned per session, streak tracking, level progression (10+ levels)
+- [x] Visual timer with animated ring/circle progress, tick marks, glow effect
+- [x] Sound notifications for session end (dual-tone Web Audio)
+- [x] Allow linking timer to a specific study spot location (location picker modal)
+- [x] Feed completed study sessions into the Live Vibe busyness graph via checkIn
+- [x] Show study stats (total time today, sessions completed, current streak, all-time stats)
+- [x] 12 achievements/badges system (First Focus, Study Marathon, On Fire, etc.)
+- [x] Settings panel for custom focus/break/long-break durations
+- [x] Timer link added to Navbar (desktop and mobile)
+- [x] Tab-based UI (Timer / Stats / Awards)
+- [x] XP bar with level progression and level titles
+- [x] Document title updates with timer countdown
+
+### Pomodoro Timer UX Improvements
+- [x] Remove Timer link from Navbar (desktop and mobile)
+- [x] Add sticky floating timer icon in top-right corner (visible on all pages except /timer)
+- [x] Floating icon shows timer state: idle (breathing pulse), running (countdown + progress ring + glow), paused (blinking dot)
+- [x] Allow community-submitted spots to be linked to the timer (Curated/Community tabs in location picker)
+- [x] Timer state persisted via localStorage for cross-page continuity
+- [x] Hover tooltip shows linked location name and study/break status (desktop)

@@ -14,6 +14,9 @@ import CitySelector from "./pages/CitySelector";
 import AdminPanel from "./pages/AdminPanel";
 import AdminImageManager from "./pages/AdminImageManager";
 import PWAInstallBanner from "./components/PWAInstallBanner";
+import { LondonNeighbourhoodPage, BristolNeighbourhoodPage, NeighbourhoodDirectory } from "./pages/NeighbourhoodPage";
+import PomodoroPage from "./pages/PomodoroPage";
+import FloatingTimer from "./components/FloatingTimer";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -26,10 +29,19 @@ function Router() {
       {/* London routes */}
       <Route path={"/london"} component={Home} />
       <Route path={"/london/uni"} component={UniModePage} />
+      <Route path={"/london/areas"}>{ () => <NeighbourhoodDirectory city="london" /> }</Route>
+      <Route path={"/london/area/:slug"} component={LondonNeighbourhoodPage} />
 
       {/* Bristol routes */}
       <Route path={"/bristol"} component={BristolHome} />
       <Route path={"/bristol/uni"} component={BristolUniModePage} />
+      <Route path={"/bristol/areas"}>{ () => <NeighbourhoodDirectory city="bristol" /> }</Route>
+      <Route path={"/bristol/area/:slug"} component={BristolNeighbourhoodPage} />
+
+      {/* Pomodoro Timer */}
+      <Route path={"/timer"} component={PomodoroPage} />
+      <Route path={"/london/timer"} component={PomodoroPage} />
+      <Route path={"/bristol/timer"} component={PomodoroPage} />
 
       {/* Admin routes */}
       <Route path={"/admin"} component={AdminPanel} />
@@ -54,6 +66,7 @@ function App() {
             <ImageOverridesProvider>
               <Toaster />
               <Router />
+              <FloatingTimer />
               <PWAInstallBanner />
             </ImageOverridesProvider>
           </CityProvider>
