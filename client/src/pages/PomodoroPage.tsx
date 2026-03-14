@@ -183,12 +183,12 @@ async function requestNotificationPermission(): Promise<boolean> {
 }
 
 // Persistent ongoing notification — updates every few seconds via service worker
-function updateOngoingNotification(timeLeft: number, mode: TimerMode, timerState: TimerState, locationName: string | null) {
+function updateOngoingNotification(timeLeft: number, totalTime: number, mode: TimerMode, timerState: TimerState, locationName: string | null) {
   if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) return;
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
   navigator.serviceWorker.controller.postMessage({
     type: 'TIMER_UPDATE',
-    data: { timeLeft, mode, locationName, state: timerState },
+    data: { timeLeft, totalTime, mode, locationName, state: timerState },
   });
 }
 
@@ -995,7 +995,7 @@ export default function PomodoroPage() {
       document.title = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')} — StudySpot Timer`;
       // Update persistent notification every 5 seconds (to avoid excessive updates)
       if (notificationsEnabled && timeLeft % 5 === 0) {
-        updateOngoingNotification(timeLeft, mode, state, linkedLocationName);
+        updateOngoingNotification(timeLeft, totalTime, mode, state, linkedLocationName);
       }
     } else {
       document.title = 'Study Timer — StudySpot';

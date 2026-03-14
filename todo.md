@@ -371,3 +371,4 @@
 - [x] Support mobile notifications for PWA-installed users (service worker showNotification + notificationclick handler)
 - [x] Show session duration in push notifications when timer completes
 - [x] Show persistent/ongoing notification with live countdown while timer is running (viewable from notification shade)
+- [x] Make persistent notification update in-place (single notif) with text progress bar instead of spawning new ones

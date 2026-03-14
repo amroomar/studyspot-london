@@ -33,25 +33,40 @@ self.addEventListener('message', (event) => {
   const { type, data } = event.data || {};
 
   if (type === 'TIMER_UPDATE') {
-    // Show/update persistent notification with current countdown
-    const { timeLeft, mode, locationName, state: timerState } = data;
+    // Update persistent notification in-place with countdown + progress bar
+    const { timeLeft, totalTime, mode, locationName, state: timerState } = data;
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     const modeLabel = mode === 'focus' ? 'Focusing' : mode === 'break' ? 'Break' : 'Long Break';
     const title = `${timeStr} — ${modeLabel}`;
-    const body = locationName
-      ? `Studying at ${locationName}`
-      : timerState === 'paused' ? 'Timer paused' : 'Stay focused!';
 
-    self.registration.showNotification(title, {
-      body,
-      icon: '/icons/icon-192x192.png',
-      badge: '/icons/icon-96x96.png',
-      tag: 'studyspot-timer-ongoing',
-      silent: true,
-      requireInteraction: false,
-      data: { url: '/timer', ongoing: true },
+    // Build text progress bar
+    const total = totalTime || 1;
+    const elapsed = total - timeLeft;
+    const progress = Math.min(elapsed / total, 1);
+    const barLength = 20;
+    const filled = Math.round(progress * barLength);
+    const progressBar = '\u2588'.repeat(filled) + '\u2591'.repeat(barLength - filled);
+    const pct = Math.round(progress * 100);
+
+    let bodyLine = timerState === 'paused' ? '\u23F8 Paused' : `${progressBar} ${pct}%`;
+    if (locationName) bodyLine += `\n\uD83D\uDCCD ${locationName}`;
+
+    // Close existing notification first, then show updated one
+    // Using the same tag replaces the notification in-place
+    self.registration.getNotifications({ tag: 'studyspot-timer-ongoing' }).then(existing => {
+      existing.forEach(n => n.close());
+      self.registration.showNotification(title, {
+        body: bodyLine,
+        icon: '/icons/icon-192x192.png',
+        badge: '/icons/icon-96x96.png',
+        tag: 'studyspot-timer-ongoing',
+        renotify: false,
+        silent: true,
+        requireInteraction: true,
+        data: { url: '/timer', ongoing: true },
+      });
     });
   }
 
