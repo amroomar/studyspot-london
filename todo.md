@@ -383,3 +383,9 @@
 - [x] Search for real venue photos for 44 new London study spots (43 from parallel search + 12 manual batch)
 - [x] Upload all 44 images to CDN via manus-upload-file --webdev
 - [x] Update all 44 location entries with CDN image URLs (0 remaining without images)
+
+### Fix TikTok Thumbnails
+- [x] Identified 107 broken image URLs across all sources (TikTok, TripAdvisor, Squarespace, blogs, etc.)
+- [x] Searched for replacement images in parallel for all 107 spots
+- [x] Uploaded all 107 replacement images to stable CloudFront CDN
+- [x] Updated locations.ts — broken images reduced from 107 to 0 (152 now on CDN, 201 on stable third-party hosts)

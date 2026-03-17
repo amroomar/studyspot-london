@@ -61,7 +61,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "Weekdays",
     "peakBusyTimes": "Evenings",
     "studyScore": 9.5,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/1c/c8/99/3b/cast-iron-bar-grill.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/0_KZKrAACbzLHL26VqyqpwS8_1773771549952_na1fn_L2hvbWUvdWJ1bnR1L2xvbmRvbl9tYXJyaW90dF9rZW5zaW5ndG9u_417b20ec.webp"
   },
   {
     "id": 2,
@@ -188,7 +188,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 9.5,
-    "image": "https://imagedelivery.net/NTBbUGXbgnQKXhDzmZxa9Q/e53896f0-9f6b-4702-9c45-fc62c96b6400/public"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/1_CwIvsjY66iLvsZyyJgE5Dp_1773771511992_na1fn_L2hvbWUvdWJ1bnR1L3VuY29tbW9uX2hpZ2hidXJ5X2FuZF9pc2xpbmd0b24_f308e247.webp"
   },
   {
     "id": 6,
@@ -222,7 +222,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 9.5,
-    "image": "https://thebeaumont.com/wp-content/uploads/2023/09/The-Beaumont-Hotel-Gatsbys-Room-1-2-1.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/2_w5Sdd4OMDgLdow1NhU1UEd_1773771542335_na1fn_L2hvbWUvdWJ1bnR1L2dhdHNieXNfcm9vbV9iZWFtb3VudF9ob3RlbA_ecc407c9.webp"
   },
   {
     "id": 7,
@@ -479,7 +479,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "daytime",
     "studyScore": 9.2,
-    "image": "https://images.adsttc.com/media/images/559a/f5f0/e58e/ce32/5400/017d/large_jpg/porta_alta-1.jpg?1436218852"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/3_SxPR23b7ghPEAtKG8PxNKc_1773771584752_na1fn_L2hvbWUvdWJ1bnR1L1NlY29uZEhvbWUtU3BpdGFsZmllbGRzLUxvbmRvbg_2e625929.webp"
   },
   {
     "id": 15,
@@ -545,7 +545,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 9.2,
-    "image": "https://digital.ihg.com/is/image/ihg/kimpton-fitzroy-london-4000x3001-v2"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/4_K93vytXnvuQRSHPHlWCUrb_1773771571383_na1fn_L2hvbWUvdWJ1bnR1L2tpbXB0b25fZml0enJveV9sb25kb24_864b56e1.jpeg"
   },
   {
     "id": 17,
@@ -704,7 +704,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 8.9,
-    "image": "https://www.southbankcentre.co.uk/sites/default/files/styles/original_image/public/2020-01/National-Poetry-Library-2019-%C2%A9-Pete-Woodhead-2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/5_yFsDR4IQO5BTmVuwybgSIH_1773771479060_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0pIUWwwRGMyRVVLUQ_521f33e6.jpg"
   },
   {
     "id": 22,
@@ -736,7 +736,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 8.9,
-    "image": "https://vanda-production-assets.s3.amazonaws.com/2019/02/13/11/13/46/2c4b8b3a-7b3b-4b4f-9c4c-6c1b7b1b7b1b/nal-1.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/6_AwkJSFo7KUIZHSmvPliCVC_1773771523916_na1fn_L2hvbWUvdWJ1bnR1L05hdGlvbmFsX0FydF9MaWJyYXJ5X1YmQV9NdXNldW1fTG9uZG9u_0ee59093.jpeg"
   },
   {
     "id": 23,
@@ -863,7 +863,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 8.9,
-    "image": "https://c.yell.com/t_bigSquare,f_auto/3f2f4625-bc74-47b3-b4b7-1f60b113f3a0_image_jpeg.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/7_TJN0g04aKjFjm75iE6jmjX_1773771575134_na1fn_L2hvbWUvdWJ1bnR1L29sZF9sb25kb25fcm9hZF9jYWZlX2V4dGVyaW9y_7b176944.webp"
   },
   {
     "id": 27,
@@ -925,7 +925,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes",
     "studyScore": 8.9,
-    "image": "https://assets.venues.othership.com/uploads/28d7e429-7073-4a89-87c6-e015b133fcfb/Club%20Quarters_St%20Pauls_Common%20Area_1.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/8_Ec3EsAAAnwQE9JIclKnMdE_1773771661103_na1fn_L2hvbWUvdWJ1bnR1L3RoZV9jb3VudGVyX2xvdW5nZQ_fa4241dd.jpeg"
   },
   {
     "id": 29,
@@ -1145,7 +1145,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 8.9,
-    "image": "https://static.dezeen.com/uploads/2023/07/socca-restaurant-fabled-studio-interior-london-french-riviera_dezeen_2364_col_2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/9_NqNIJhplbrXxDeqCVV0Sxn_1773771559952_na1fn_L2hvbWUvdWJ1bnR1L2NhZG9nYW5fY2FmZQ_2bb79417.jpeg"
   },
   {
     "id": 36,
@@ -1176,7 +1176,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 8.7,
-    "image": "https://scontent.flhr10-2.fna.fbcdn.net/v/t1.6435-9/59955392_2300100460230345_8836365293452918784_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=9a7j_4g-38wQ7kNvgE83m5_&_nc_ht=scontent.flhr10-2.fna&oh=00_AYB21Z4Y9x2x-g3f3B4b2B1e3b0Y2Z0Z2Z0Z2Z0Z2Z0Z&oe=664F7E8B"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/10_kZSbEhVqbyQoGkeNjnwAgt_1773771549390_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0ZnenA3Mzk5UVJjMg_97bb014e.jpg"
   },
   {
     "id": 37,
@@ -1240,7 +1240,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 8.7,
-    "image": "https://europeancoffeetrip.com/wp-content/uploads/city-guides/cafes/18827/sofu-coffee_1728933046_3478865000631765880_68286135279.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/11_NGCeAqkTy6JvFxvQHp8NqL_1773771553639_na1fn_L2hvbWUvdWJ1bnR1L3NvZnVfY29mZmVl_690a9bdf.jpg"
   },
   {
     "id": 39,
@@ -1337,7 +1337,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 8.7,
-    "image": "https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/08/22093754/Host-Cafe-by-mr_columbustravel-1024x683.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/12_R0FnZMKbeZMGserpnoBNba_1773771574696_na1fn_L2hvbWUvdWJ1bnR1L2hvc3RfY2FmZV9sb25kb24_3b54f960.webp"
   },
   {
     "id": 42,
@@ -1369,7 +1369,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 8.7,
-    "image": "https://images.happycow.net/venues/1024/26/04/h-260468-1384912.jpeg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/13_ghXNKYpWmZt6nfIoI2OWtC_1773771558086_na1fn_L2hvbWUvdWJ1bnR1L2thdmVfY2FmZV9sb25kb24_32c98e65.jpeg"
   },
   {
     "id": 43,
@@ -1463,7 +1463,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "mid-afternoon",
     "peakBusyTimes": "unknown",
     "studyScore": 8.4,
-    "image": "https://www.london.ac.uk/sites/default/files/styles/max_2600x2600/public/2022-09/goldsmiths-reading-room-senate-house-library.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/14_mXmHNxDIOF6UfWHtzoo0IT_1773771724539_na1fn_L2hvbWUvdWJ1bnR1L3NlbmF0ZV9ob3VzZV9saWJyYXJ5_655cdd8a.webp"
   },
   {
     "id": 46,
@@ -1527,7 +1527,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "afternoons",
     "peakBusyTimes": "mornings (hotel breakfast)",
     "studyScore": 8.4,
-    "image": "https://i.guim.co.uk/img/media/af66329f16784b64c0a05711db14ddd18f1ae26b/0_262_5755_3453/master/5755.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/15_KJ1skvgRpASdQqnTKidTFr_1773771665926_na1fn_L2hvbWUvdWJ1bnR1L3RoZV9waWxncm1fZXh0ZXJpb3I_67fdf2e1.jpeg"
   },
   {
     "id": 48,
@@ -1719,7 +1719,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 8.4,
-    "image": "https://storage.googleapis.com/tagvenue-prod/media/cache/venue_carousel/uploads/prod/venue/55452/41f0a58a-5e5c-11e9-8c8f-0a580a24041e.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/16_O9JGSurp5gHjvNe4VrOwez_1773771573238_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1l0VzdKTmVWU3ExWg_aca61948.jpeg"
   },
   {
     "id": 54,
@@ -1750,7 +1750,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 8.4,
-    "image": "https://images.adsttc.com/media/images/5be9/f33a/08a5/e52d/8400/004c/large_jpg/LTS_Architects_Science_Gallery_London_Photography_by_Peter_Landers_05.jpg?1542058797"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/17_T6wLd6PFedggGouiZktH8O_1773771488220_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3ZDYTNGWXM5YmVnYQ_95869a78.jpg"
   },
   {
     "id": 55,
@@ -1847,7 +1847,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "Between 10 am–5 pm",
     "peakBusyTimes": "evenings",
     "studyScore": 8.2,
-    "image": "https://assets.venues.othership.com/uploads/d7f02c60-20a4-41fd-9aef-729c82052fee/20210922-9a8f942a-a869-47bc-a586-e32512c86b31.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/18_bZlNRN0spjIQMvuBpmwYUQ_1773771547302_na1fn_L2hvbWUvdWJ1bnR1L2JhcmJpY2FuX2NpbmVtYV9jYWZlX2Jhcg_e24a1786.jpg"
   },
   {
     "id": 58,
@@ -1912,7 +1912,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "unknown",
     "studyScore": 8.2,
-    "image": "https://images.squarespace-cdn.com/content/v1/5f56333d68352335787a19d4/1609949980199-2Y5R92N3B44T4J8B4Z8T/TheWren-7.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/19_tX0KdOwYO26A1THrJuAnwb_1773771535311_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0V1MVpBNDYwTVRxYw_ca680f4e.jpg"
   },
   {
     "id": 60,
@@ -2108,7 +2108,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 8.2,
-    "image": "https://images.happycow.net/venues/1024/17/62/h-176299-894243.jpeg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/20_qZSZ2MosNtkPcIFKJQO5vg_1773771600383_na1fn_L2hvbWUvdWJ1bnR1L2V0aGljYWxfYmVhbl9jb21wYW55_95d27dfc.jpg"
   },
   {
     "id": 66,
@@ -2139,7 +2139,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes",
     "studyScore": 8.2,
-    "image": "https://assets.venues.othership.com/uploads/d62075fc-02e1-42ce-a17b-49b9fdf24b36/image%201-9c634b9b-ac5f-4bfe-b529-5735234c718c.webp"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/21_sdzNVqAGgWJEmtgTcnF97C_1773771721136_na1fn_L2hvbWUvdWJ1bnR1L3NhbnRhbmRlcl93b3JrX2NhZmVfY2hlYXBzaWRl_7f17dd00.png"
   },
   {
     "id": 67,
@@ -2201,7 +2201,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "any time",
     "peakBusyTimes": "unknown",
     "studyScore": 8.2,
-    "image": "https://hubble.imgix.net/uploads/space/7714/1580831539.jpg?auto=format%2Ccompress&fit=max&q=50&w=1280"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/22_BE19BBAXhvFQjlyrVJp20y_1773771641612_na1fn_L2hvbWUvdWJ1bnR1L3doaXRlY2hhcGVsLXRoaW5rLWZhY3Rvcnk_56a33aa6.webp"
   },
   {
     "id": 69,
@@ -2264,7 +2264,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "lunchtime",
     "studyScore": 8.2,
-    "image": "https://assets.venues.othership.com/uploads/edcb313c-bdba-469f-97db-68c9468379a7/Santander%20Work%20Caf%C3%A9%20London%202.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/23_y8zF1qNwkaKDCFCHr8Uv71_1773771617521_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL09odk9tVmZHNXA2WA_3c1b3995.png"
   },
   {
     "id": 71,
@@ -2295,7 +2295,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 8.2,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipN-m2XgR3v_qg9t3wY2QZz-Zz3Y_w8X_xO-J_k=w1080-h607-n-k-no"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/24_PFI5DCJND0o8E9HAAMzKUD_1773771670638_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0gxYkNPRFFVRGlDcw_4600bfba.jpg"
   },
   {
     "id": 72,
@@ -2327,7 +2327,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "lunchtime",
     "studyScore": 8.2,
-    "image": "https://assets.venues.othership.com/uploads/342cffa9-2a97-4241-80c2-9779d9c9c50e/image%201-462b02d0-225b-4a0c-869d-928527244f59.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/25_Npme1R4UmR5qvM2THMO1Uh_1773771642342_na1fn_L2hvbWUvdWJ1bnR1L3NhbnRhbmRlcl93b3JrX2NhZmVfa2Vuc2luZ3Rvbg_0f8f08d7.png"
   },
   {
     "id": 73,
@@ -2487,7 +2487,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "unknown",
     "studyScore": 7.9,
-    "image": "https://www.barbican.org.uk/sites/default/files/styles/original/public/images/2018-05/barbican-library-from-the-bridge.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/26_y8624ULCFz2KPgOMUbWKox_1773771647137_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1g2QlpuQWRrNUsxSg_5d0162c8.jpg"
   },
   {
     "id": 78,
@@ -2711,7 +2711,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings and afternoons",
     "peakBusyTimes": "evenings and weekends",
     "studyScore": 7.9,
-    "image": "https://hoteldesigns.net/wp-content/uploads/2022/04/1HS-Goddard-Gibbs-2-1600x1000.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/27_bzoe3mIQ2JtcbDSPFhvz3U_1773771586904_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1VmSDF0Mmd0N09mVg_24e199ca.jpg"
   },
   {
     "id": 85,
@@ -2742,7 +2742,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.6,
-    "image": "https://images.squarespace-cdn.com/content/v1/5c705ecb51f4d4c18997db3f/1552333671231-5Y8L3T4XW8Y2Z6Z6XG4Z/ke17ZwdGBToddI8pDm48kPJXHKy2-mnvrsdpGQjlhod7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UaB848krcd3qkwqpuYxQae3U-p2N5e_i3_r7B5Q_2G94CjFDmaFnM34I-jS-2v-A/vagabond+n7+islington+coffee+shop+london+sarah+freia.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/28_gIE0MNkXFETlKDfWQUmoNA_1773771694469_na1fn_L2hvbWUvdWJ1bnR1L3ZhZ2Fib25kX2NvZmZlZV9yb2FzdGVycw_7ddb302d.jpeg"
   },
   {
     "id": 86,
@@ -2773,7 +2773,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 7.6,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipPAf-zZ-E1jJ_J-H_j_j_j_j_j_j_j_j_j_j_j/w408-h306-k-no"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/29_5SFnW1F3Cd3LCW3qvI7qc9_1773771591212_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL09mbEgyZUdGeHBDWA_4a8f87b6.jpg"
   },
   {
     "id": 87,
@@ -2836,7 +2836,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 7.6,
-    "image": "https://urban-adventurer.net/wp-content/uploads/2018/10/Fuckoffee-Interior-2-900x675.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/30_gFthyZU3wZbvg09UeS171A_1773771657829_na1fn_L2hvbWUvdWJ1bnR1L2Z1Y2tvZmZlZQ_955b0e65.jpg"
   },
   {
     "id": 89,
@@ -2902,7 +2902,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "evenings",
     "studyScore": 7.6,
-    "image": "https://www.datocms-assets.com/12813/1656599139-the-hoxton-holborn-lounge-2.jpg?auto=format&w=1500"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/31_Aykat10pegGpvzxc8EgEJm_1773771591270_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzZZc1FGM3ZCMENDNQ_3f1d1c76.jpg"
   },
   {
     "id": 91,
@@ -3375,7 +3375,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "unknown",
     "studyScore": 7.6,
-    "image": "https://www.wework.com/ideas/wp-content/uploads/2019/07/5-Merchant-Square_Lobby-1-1440x810.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/32_OlZqT4iortPEITUKnFaVsh_1773771702512_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3RxVmZ4QURoWnBXaw_629afba3.jpg"
   },
   {
     "id": 106,
@@ -3407,7 +3407,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 7.6,
-    "image": "https://www.wearekindred.com/wp-content/uploads/2022/08/DSC_9949-768x512.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/33_ht74HEoKudx7yxQu7puIno_1773771776115_na1fn_L2hvbWUvdWJ1bnR1L2tpbmRyZWQtbG9uZG9uLWNhZmUtaGlnaC1yZXM_f6875501.webp"
   },
   {
     "id": 107,
@@ -3569,7 +3569,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "weekday mornings",
     "studyScore": 7.6,
-    "image": "https://www.broadsheet.com.au/media/cache/a6/23/a623a85198a89b9a82697678914677f2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/34_Hqg2WSxQaCGjfL2gHlkjmT_1773771769144_na1fn_L2hvbWUvdWJ1bnR1L2ZyZWRfY29mZmVlX2xvbmRvbl9leHRlcmlvcg_f2bbf0d8.webp"
   },
   {
     "id": 112,
@@ -3695,7 +3695,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 7.6,
-    "image": "https://othership.com/wp-content/uploads/2022/11/nhow-2-2493x785.png"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/35_QoKNUYM95uTaL4Mwnb7G4g_1773771637958_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3VIUVlBSDcyUHhKOQ_1afbc7ba.jpg"
   },
   {
     "id": 116,
@@ -3823,7 +3823,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "breakfast meetings",
     "peakBusyTimes": "unknown",
     "studyScore": 7.4,
-    "image": "https://www.rosewoodhotels.com/image_library/v2000_1500_1600x1200/wn/gsq/the-chancery-rosewood-gsq-2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/36_rfLgJ8vAajosuCtikmQfKA_1773771651335_na1fn_L2hvbWUvdWJ1bnR1L0dTUV9Mb25kb25fY2FmZV9iYXI_0effb0cd.webp"
   },
   {
     "id": 120,
@@ -3886,7 +3886,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes",
     "studyScore": 7.4,
-    "image": "https://freshcup.com/wp-content/uploads/2017/03/Gentlemen-Baristas-cafe.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/37_f7x5lW3AsdAVGfZbW7aH67_1773771718435_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzBZOVdEQXU5blc0Nw_5bf82da8.jpg"
   },
   {
     "id": 122,
@@ -3949,7 +3949,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.4,
-    "image": "https://the-little-battersea-bakery.wheree.com/images/biz/23396539/the-little-battersea-bakery-2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/38_cZVRR87eNTvnu8aDyr0Ytv_1773771739321_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL29BWUpZdm1sSmhodw_741c44de.jpg"
   },
   {
     "id": 124,
@@ -4044,7 +4044,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 7.4,
-    "image": "https://static.wixstatic.com/media/e15425_0a5a40a38e824345980a29c46d43b3cb~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/e15425_0a5a40a38e824345980a29c46d43b3cb~mv2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/39_UaJCqmXOUntXLefy8oDwQi_1773771621518_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL01nSVBJaXN4bmxIWg_1181a1de.jpg"
   },
   {
     "id": 127,
@@ -4393,7 +4393,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 7.4,
-    "image": "https://www.marx-memorial-library.org.uk/sites/default/files/styles/large/public/2022-06/IMG_20220608_151045.jpg?itok=j-5g5eJ-"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/40_WSeTB8xzp9fxE6IzxsECXV_1773771630359_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzZwTW5Vem4zMVVCcA_cb91f03a.jpg"
   },
   {
     "id": 138,
@@ -4424,7 +4424,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes",
     "studyScore": 7.4,
-    "image": "http://www.starbucksmelody.com/wp-content/uploads/2015/11/20151107_142755-700x1244.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/41_9kigxHSrMxi7U2zLsN4m0s_1773771647656_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1ZpVmh5MGVBeXhadw_84948c39.jpg"
   },
   {
     "id": 139,
@@ -4517,7 +4517,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 7.4,
-    "image": "https://www.tripadvisor.com/Restaurant_Review-g186338-d26848273-Reviews-Ole_Steen-London_England.html"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/42_QPu3JBu9c4aS4eipiPyl6D_1773771652295_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2VheHk0OUpDa1pSbw_216134da.jpg"
   },
   {
     "id": 142,
@@ -4548,7 +4548,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 7.4,
-    "image": "https://lh3.googleusercontent.com/p/AF1QipN-9y8r3Y2k9f8G_9q3g2A4e2b1d7n7c6k6F8w=s1360-w1360-h1020"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/43_wRPxzcgTuLq8QUHHkye8Mw_1773771774212_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2FmbnJCRUtndkd6aA_464ea03a.jpg"
   },
   {
     "id": 143,
@@ -4642,7 +4642,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.1,
-    "image": "https://attendantcoffee.com/cdn/shop/files/Attendant-shoreditch-1_1440x.jpg?v=1623757828"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/44_3QVIvWZ7wY2cPPz7QERCya_1773771673312_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1JzTWFtRjdIU05lSg_335deafc.jpg"
   },
   {
     "id": 146,
@@ -4707,7 +4707,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 7.1,
-    "image": "https://static.wixstatic.com/media/e2cf36_08552385e2b743e590b633482557835f~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e2cf36_08552385e2b743e590b633482557835f~mv2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/45_btaRcIXGvz1fR29gbjNzA3_1773771734393_na1fn_L2hvbWUvdWJ1bnR1L2xvdmVfc2hhY2tfbG9uZG9u_2de121b5.jpg"
   },
   {
     "id": 148,
@@ -4740,7 +4740,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.1,
-    "image": "https://travelinsighter.com/wp-content/uploads/2024/02/townhouse-spitalfields-london-1.webp"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/46_ShuotWwH7X9xO8MR6pmJef_1773771764508_na1fn_L2hvbWUvdWJ1bnR1L3Rvd25ob3VzZV9zcGl0YWxmaWVsZHM_a118eecd.webp"
   },
   {
     "id": 149,
@@ -4836,7 +4836,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "evenings and weekends",
     "studyScore": 7.1,
-    "image": "https://www.allthelibraries.com/wp-content/uploads/2017/01/barbican-library-london-1000x750.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/47_l64knxo9cuRbRQzBEiBNDu_1773771716464_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0ZMNmhOeXJ5NUlZNw_976785ec.jpg"
   },
   {
     "id": 152,
@@ -4963,7 +4963,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 7.1,
-    "image": "https://www.firmdalehotels.com/media/images/sized/media/images/hotels/ham_yard_hotel/Ham-Yard-Hotel-London-Restaurant-2_2560x1700.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/48_GoO4UOzCI1DrgMXfGWSM5t_1773771714431_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzJJR0xWMWZFWVdiMg_ffa73061.jpg"
   },
   {
     "id": 156,
@@ -5027,7 +5027,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "evenings and weekends",
     "studyScore": 7.1,
-    "image": "https://www.barbican.org.uk/sites/default/files/styles/original/public/2022-09/Lakeside.jpg?itok=p-gLh4yC"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/49_M694ZEDrTnYMZ1KjUwMlPj_1773771690069_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0JBRVhNMjdMUzN2Nw_4cb9a46b.jpg"
   },
   {
     "id": 158,
@@ -5059,7 +5059,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.1,
-    "image": "https://www.royalacademy.org.uk/sites/default/files/styles/retina_1800_1012/public/RA-Grand-Cafe-2-1800x1012.jpg?itok=F-U8_d1s"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/50_TcuUjS52VFGX9hsau0iZBE_1773771797934_na1fn_L2hvbWUvdWJ1bnR1L3JveWFsX2FjYWRlbXlfb2ZfYXJ0c19jYWZl_c5388abe.jpeg"
   },
   {
     "id": 159,
@@ -5155,7 +5155,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 7.1,
-    "image": "https://gomag.com/wp-content/uploads/2022/03/IMG_20220309_182629_224.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/51_eWG0GSR6lXKPYz8LNLrApC_1773771692574_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3dYZ2I1WlFVcDhjcQ_29e8098c.jpg"
   },
   {
     "id": 162,
@@ -5437,7 +5437,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 7.1,
-    "image": "https://www.royalacademy.org.uk/sites/default/files/styles/retina_desktop/public/2023-09/RA-cafe-2.jpg?itok=F-YwZJqC"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/52_a6lrEt54Erh0NFCZFsjaaK_1773771690495_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1A5M0d1NlZEQkU2OA_d979b78e.jpg"
   },
   {
     "id": 171,
@@ -5687,7 +5687,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "evenings",
     "studyScore": 6.8,
-    "image": "https://www.assouline.com/cdn/shop/files/MA_Swans_Bar_2_2048x.jpg?v=1614323414"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/53_4NmTnZ0BuGFnb1IEvjLctW_1773771689317_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2cxbjREVmtlamFlZg_f15f18ea.jpg"
   },
   {
     "id": 179,
@@ -5749,7 +5749,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "late night/early morning",
     "peakBusyTimes": "unknown",
     "studyScore": 6.8,
-    "image": "https://images.ctfassets.net/64fde841d16d/7p9BrCgST7A0enAGD1I13k/3b45e278f10b35b8a1d0a33385438d1a/Polo_Bar_interior.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/54_17ACV5LPP1HZw5unr3JLjW_1773771703272_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzJEV09lWE9aUzFvbQ_2f770c0d.webp"
   },
   {
     "id": 181,
@@ -5813,7 +5813,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.8,
-    "image": "https://whitemulberries.com/cdn/shop/files/SKD_2_1500x.jpg?v=1613177138"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/55_FTod9p8fkWvhAVuQlHG0k9_1773771793081_na1fn_L2hvbWUvdWJ1bnR1L3doaXRlX211bGJlcnJpZXNfbWFyeWxlYm9uZQ_2cb0d1ab.jpeg"
   },
   {
     "id": 183,
@@ -5845,7 +5845,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 6.8,
-    "image": "https://images.squarespace-cdn.com/content/v1/5734f3ff4d088e2c5b08fe13/1553443389188-62C93256F793E805459W/keith-petitou.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/56_DCpOgmYIl27qyjzCyeUIq8_1773771766145_na1fn_L2hvbWUvdWJ1bnR1L1BldGl0b3VfQ2FmZV9Mb25kb24_43d85926.jpg"
   },
   {
     "id": 184,
@@ -5938,7 +5938,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.6,
-    "image": "https://cdn.shopify.com/s/files/1/0633/2169/6559/files/Ozone-Shoreditch-5.jpg?v=1681888203"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/57_F9bvb03UhBzGU2eQRn4kEA_1773771800542_na1fn_L2hvbWUvdWJ1bnR1L296b25lX2NvZmZlZV9yb2FzdGVycw_24ddf9bd.webp"
   },
   {
     "id": 187,
@@ -5970,7 +5970,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes, weekends",
     "studyScore": 6.6,
-    "image": "https://images.squarespace-cdn.com/content/v1/53b53f2ce4b01cb395242081/1579885243343-3J6X8X3X3X3X3X3X3X3X/caravan-kings-cross-restaurant.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/58_rgKyiXtN7QmDPCj8jIJQRy_1773771802511_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL255ZTJ0OTRSWUdGSw_2894fa88.jpg"
   },
   {
     "id": 188,
@@ -6003,7 +6003,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "unknown",
     "studyScore": 6.6,
-    "image": "https://laptopfriendly.co/images/uploads/place/photo/513/Cafebotanical._Hogarth_House__136_High_Holborn__London_WC1V_6PX__United_Kingdom_2022-09-22_14-36-37.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/59_W9qYW6twfqpyYS7u5XxUaG_1773771828473_na1fn_L2hvbWUvdWJ1bnR1L2NhZmVfYm90YW5pY2FsX2xvbmRvbg_24073640.webp"
   },
   {
     "id": 189,
@@ -6066,7 +6066,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "weekends",
     "studyScore": 6.6,
-    "image": "https://www.theinfatuation.com/images/reviews/greenberry-cafe/banners/1579274035.46.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/60_1pMsIdG5lMQObJkVyDd6tY_1773771902810_na1fn_L2hvbWUvdWJ1bnR1L2dyZWVuYmVycnlfY2FmZQ_1e39ab7e.webp"
   },
   {
     "id": 191,
@@ -6098,7 +6098,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "unknown",
     "studyScore": 6.6,
-    "image": "https://images.squarespace-cdn.com/content/v1/551959b5e4b0694b4b915957/1569333976232-Z62YPT33S2INSB89PLGH/IMG_0949.jpg?format=1500w"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/61_YpWq1k8GeCZ5VKaLIqQcIB_1773771771926_na1fn_L2hvbWUvdWJ1bnR1L3RlYV9hbmRfdGF0dGxl_337e3997.webp"
   },
   {
     "id": 192,
@@ -6131,7 +6131,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.6,
-    "image": "https://images.squarespace-cdn.com/content/v1/5c7d3c9b840b166a3428f792/1574782921755-G3G3F3S7X3X3X3X3X3X3/14-Hills-Restaurant-London-Make-Bespoke-Studio-2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/62_qMh4O0WEGvdvY04AUw4kEk_1773771805238_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3pWMHpxZ2kwOHRhMA_e692c4ff.jpg"
   },
   {
     "id": 193,
@@ -6163,7 +6163,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.6,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-o/0e/5c/3d/3a/photo2jpg.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/63_cXV3j7Sen0rwtWeUBMHXji_1773771773500_na1fn_L2hvbWUvdWJ1bnR1L1RhdGVfQnJpdGFpbl9EamFuZ29seV9DYWZl_7d9b3de5.webp"
   },
   {
     "id": 194,
@@ -6258,7 +6258,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "weekends",
     "studyScore": 6.6,
-    "image": "https://luxurylondon.co.uk/wp-content/uploads/2024/05/Seventy-Five-at-Liberty-restaurant-review-2-1.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/64_y8iMRTsYPVbFzIQfYPlynH_1773771798724_na1fn_L2hvbWUvdWJ1bnR1L3NldmVudHktZml2ZS1saWJlcnR5LWxvbmRvbg_e5d5da90.webp"
   },
   {
     "id": 197,
@@ -6415,7 +6415,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 6.3,
-    "image": "https://www.tallyworkspace.com/images/venues/labs-camden-atrium/3.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/65_WQ8pT4nA5qQHQ6Ong33YEe_1773771845187_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2tVQW9pVzRiVlBVRg_197902d0.jpg"
   },
   {
     "id": 202,
@@ -6511,7 +6511,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends and school holidays",
     "studyScore": 6.3,
-    "image": "https://www.benugo.com/wp-content/uploads/2023/07/Benugo-Natural-History-Museum-Garden-Kitchen-2-797x490.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/66_58T1T0Rs71OG2pqIPQXJiB_1773771827857_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1pNblRQcXp0bjgxQg_ff470daa.jpg"
   },
   {
     "id": 205,
@@ -6731,7 +6731,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "lunchtime",
     "studyScore": 6.1,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0d/8a/3a/5e/cafe-in-the-crypt.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/67_0GL72JrPqDqBv8yY0qmWOt_1773771883126_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzhFRzM0eDhWS1BCTA_b4edbf4b.jpg"
   },
   {
     "id": 212,
@@ -6885,7 +6885,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "after school hours",
     "studyScore": 6.1,
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d Peckham_Library_-_geograph.org.uk_-_1423385.jpg/1280px-Peckham_Library_-_geograph.org.uk_-_1423385.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/68_N0Yoz3S8PBciW7mqmjHfAK_1773771805044_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0lDYU02Mm9YcEM4bg_e22e5d5e.jpg"
   },
   {
     "id": 217,
@@ -6917,7 +6917,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 6.1,
-    "image": "https://www.withinlondon.com/wp-content/uploads/2016/01/Daunt-Books-Marylebone.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/69_lI4WmD2DFg9pdkFsji9EFK_1773771789518_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzZhYUFqNVBETjRTMQ_53275507.jpg"
   },
   {
     "id": 218,
@@ -6979,7 +6979,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.1,
-    "image": "https://pbs.twimg.com/media/GL2_B5yWMAA2FfC.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/70_H6IDC9xDx3lUcCgWMBVZTp_1773771791676_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2RXS01uVmdhbHNtbw_a4f2d477.jpg"
   },
   {
     "id": 220,
@@ -7041,7 +7041,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 6.1,
-    "image": "https://cuppachaii.co.uk/wp-content/uploads/2023/11/WhatsApp-Image-2023-11-22-at-16.11.31.jpeg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/71_7epXD15ie7BcrnrKo1Zs4w_1773771845875_na1fn_L2hvbWUvdWJ1bnR1L2N1cHBhX2NoYWlpX2xvbmRvbg_99189b2f.jpg"
   },
   {
     "id": 222,
@@ -7319,7 +7319,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.8,
-    "image": "https://images.squarespace-cdn.com/content/v1/57d68712579fb3b4b3ce5e3c/1668525355894-6ZJ9Y7J3J6Z3ZJ3ZJ3ZJ/FHC+-+Oct+22+-+65+of+100.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/72_cQoxkUctDZWW46H1q2Qsbi_1773771859157_na1fn_L2hvbWUvdWJ1bnR1L2ZseWluZ19ob3JzZV9jb2ZmZWVfaG9sYm9ybg_53d759b8.webp"
   },
   {
     "id": 231,
@@ -7351,7 +7351,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "evenings and weekends",
     "studyScore": 5.8,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/17/3c/2d/a3/interiors.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/73_8Is4g0mwYpCFVzmW8CNuYJ_1773771856900_na1fn_L2hvbWUvdWJ1bnR1L3Nob3JlZGl0Y2hfZ3JpbmRfdHJpcGFkdmlzb3I_444f3523.webp"
   },
   {
     "id": 232,
@@ -7476,7 +7476,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 5.8,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0d/9a/3f/5e/the-cafe-at-foyles.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/74_VaRyZuBBfkKXkKkPrCLECd_1773771914511_na1fn_L2hvbWUvdWJ1bnR1L2NhZmVfYXRfZm95bGVz_05c79b16.jpg"
   },
   {
     "id": 236,
@@ -7567,7 +7567,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 5.8,
-    "image": "https://s0.geograph.org.uk/geophotos/06/21/25/6212567_d55b7373.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/75_OeES4BLZ8TNmkQfdDHMS9F_1773771912173_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2lMMmxDRGNtdnlrdA_e3f0d64a.jpg"
   },
   {
     "id": 239,
@@ -7849,7 +7849,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.8,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0f/6c/3b/5f/great-court-restaurant.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/76_XpDKl68Y3XrQLWaNPYhHdk_1773771846954_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzRmTVlxclp5YkNBeQ_3b37b077.jpg"
   },
   {
     "id": 248,
@@ -7880,7 +7880,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 5.8,
-    "image": "https://images.ctfassets.net/6erps4xmmr6n/30A7E2pQ1cAsyo2g6ai2iY/2291a81b6c82662645add5d3f7684d1c/GAILs_St_Johns_Wood.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/77_wTXg9porVjCpv7swCI2qlB_1773771888990_na1fn_L2hvbWUvdWJ1bnR1L2dhaWxzX2Jha2VyeV9zdF9qb2huc193b29k_5035ceb8.webp"
   },
   {
     "id": 249,
@@ -7973,7 +7973,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday afternoons",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.8,
-    "image": "https://retaildesignblog.net/wp-content/uploads/2016/07/Joe-and-the-Juice-by-CDS-Group-London-UK-05.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/78_hxksNnFPOhB3Lww6L2HplK_1773771814570_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1FaZUp6WE5MWW1zQw_26fbed5c.jpg"
   },
   {
     "id": 252,
@@ -8036,7 +8036,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 5.5,
-    "image": "https://www.origincoffee.co.uk/cdn/shop/files/origin_coffee_shoreditch_24.11.2021_15.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/79_rDsASzmGCciaDvuUTW49my_1773771936839_na1fn_L2hvbWUvdWJ1bnR1L29yaWdpbl9jb2ZmZWVfc2hvcmVkaXRjaA_67f71ac3.jpeg"
   },
   {
     "id": 254,
@@ -8068,7 +8068,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekends",
     "studyScore": 5.5,
-    "image": "https://img.restaurantguru.com/w550/h367/r9f8-The-Nook-Hampstead-interior.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/80_0p4GgcgiP9GZhluKHKIwFH_1773771908743_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1VmTTVqM21GNU13VA_50f651c5.jpg"
   },
   {
     "id": 255,
@@ -8100,7 +8100,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "anytime",
     "peakBusyTimes": "unknown",
     "studyScore": 5.5,
-    "image": "https://dutchgirlinlondon.com/wp-content/uploads/2016/08/libreria-bookshop-london.jpg?w=700"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/81_JUXjcFekayEvkthFhMU92e_1773771890513_na1fn_L2hvbWUvdWJ1bnR1L2xpYnJlcmlhX2xvbmRvbg_18233915.jpg"
   },
   {
     "id": 256,
@@ -8131,7 +8131,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 5.5,
-    "image": "https://www.timeandleisure.co.uk/wp-content/uploads/2023/08/Three-Apes-1-1024x683.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/82_htU7YVSQkahBHbqHBPrkak_1773771861329_na1fn_L2hvbWUvdWJ1bnR1L3RocmVlX2FwZXNfY29mZmVlX2V4dGVyaW9y_ea9372a6.jpeg"
   },
   {
     "id": 257,
@@ -8163,7 +8163,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "unknown",
     "studyScore": 5.5,
-    "image": "https://www.london-se1.co.uk/news/image/3285_l.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/83_NVUK1sQwgq5Awm4tAe40fw_1773771849207_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1FadGpnTzdkVHN0VA_2a63d6a9.jpg"
   },
   {
     "id": 258,
@@ -8225,7 +8225,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "off-peak hours",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.5,
-    "image": "https://www.britishmuseum.org/sites/default/files/styles/uncropped_medium/public/2022-09/the-court-cafe-1000x500.jpg?itok=y5b5f8Yg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/84_TQmxyn157fQIifNzG258Fg_1773771894961_na1fn_L2hvbWUvdWJ1bnR1L3ZlbnVlX2ltYWdl_b465aab1.jpg"
   },
   {
     "id": 260,
@@ -8256,7 +8256,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "off-peak hours",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.5,
-    "image": "https://www.bloomsburylondon.com/media/2887/bch-may-23-1.jpg?width=1000&height=1000"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/85_35juMLBmAW0sqDdeiAcsdw_1773771870653_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0ZveTlKbnc0T0pqVQ_d9d2a6de.jpg"
   },
   {
     "id": 261,
@@ -8287,7 +8287,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "early mornings or late afternoons",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.5,
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Pret_a_Manger%2C_St_Martin%27s_Lane%2C_London.JPG"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/86_ZGRyn4P73QwLFztjgCJjMr_1773771855753_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3J0NkQ3clBLcHhMRQ_0cf04110.jpg"
   },
   {
     "id": 262,
@@ -8382,7 +8382,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "weekday lunchtimes, Saturday mornings",
     "studyScore": 5.3,
-    "image": "https://caravanandco.com/cdn/shop/files/Caravan-Exmouth-Market-4.jpg?v=1685545593&width=1500"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/87_jAqein5FnsDSKC9c1DQdav_1773771912567_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3Y0OVcyQmJPeHoydQ_1bb2e7de.jpg"
   },
   {
     "id": 265,
@@ -8414,7 +8414,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 5.3,
-    "image": "https://res.cloudinary.com/the-infatuation/image/upload/v1638885Infatuation/images/Juliet_s_Quality_Foods_Interior_AleksandraBoruch_London-5_cz5men.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/88_iVuONoRBWLOwzxmgMxWCKF_1773771998926_na1fn_L2hvbWUvdWJ1bnR1L2p1bGlldHNfcXVhbGl0eV9mb29kcw_5903473b.webp"
   },
   {
     "id": 266,
@@ -8539,7 +8539,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "off-peak hours",
     "peakBusyTimes": "lunchtime",
     "studyScore": 5.3,
-    "image": "https://static.wixstatic.com/media/a68953_39383425771941998b8591053999ef2f~mv2.jpg/v1/fill/w_1442,h_766,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a68953_39383425771941998b8591053999ef2f~mv2.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/89_qPT3fdZM4IXdPbzX6PkTWg_1773772017719_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzhBWkpnelVybEVzcA_f2221b86.jpg"
   },
   {
     "id": 270,
@@ -8665,7 +8665,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "off-peak hours",
     "peakBusyTimes": "lunchtime and weekends",
     "studyScore": 5.0,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/1b/d3/86/9f/our-cosy-basement-seating.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/90_2JgwhsMU4h74p49haPrBq6_1773771889750_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3NkaGRacDM5ck9VYg_b91223e9.jpg"
   },
   {
     "id": 274,
@@ -8885,7 +8885,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "Off-peak hours",
     "peakBusyTimes": "Lunchtime",
     "studyScore": 4.7,
-    "image": "https://media-cdn.tripadvisor.com/media/photo-s/04/5b/93/9b/pret-a-manger.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/91_SsDKTXTgbccGX9hWCoeLZj_1773772003665_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0dFSWVQYTFlOVNjVg_a46b5fba.jpg"
   },
   {
     "id": 281,
@@ -8947,7 +8947,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.7,
-    "image": "https://candaceabroad.com/wp-content/uploads/2023/06/cafes-in-st-johns-wood.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/92_y869z4xUvBHQsZef8Nl44q_1773771890022_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL3M1Sm9xOWlwZU1ZVQ_e0f829d3.jpg"
   },
   {
     "id": 283,
@@ -9006,7 +9006,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "late night/early morning",
     "peakBusyTimes": "evenings",
     "studyScore": 4.7,
-    "image": "https://images.prismic.io/andco/29d5a1ded176214354056283a31321711232049a_vq-bloomsbury-3.jpg?auto=compress,format"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/93_GVGpd7QIxEZ1z6Mkn36kCj_1773772024127_na1fn_L2hvbWUvdWJ1bnR1L3ZxX2Jsb29tc2J1cnlfaW50ZXJpb3I_8091b60a.avif"
   },
   {
     "id": 285,
@@ -9068,7 +9068,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "early mornings",
     "peakBusyTimes": "breakfast",
     "studyScore": 4.7,
-    "image": "https://chiswickcalendar.co.uk/wp-content/uploads/2021/05/Cafe-403.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/94_QdpjRJDor4FsV22jcj1C5r_1773772044538_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0tUZEZCTHByTVVoUw_a6650b84.jpg"
   },
   {
     "id": 287,
@@ -9099,7 +9099,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekday mornings",
     "peakBusyTimes": "evenings",
     "studyScore": 4.7,
-    "image": "https://i0.wp.com/mysohotimes.co.uk/wp-content/uploads/2021/11/My-Place-Soho-1-scaled.jpg?resize=1536%2C1024&ssl=1"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/95_qS0zvjqhRIGkorPdpsj07i_1773771934742_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzLzdTbmxzVTNUNEExZA_25cce20c.jpg"
   },
   {
     "id": 288,
@@ -9127,7 +9127,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.7,
-    "image": "https://lh5.googleusercontent.com/p/AF1QipN-g-5B5F3b3E6b6F3e3e3e3e3e3e3e3e3e=w408-h306-k-no"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/96_yU0Im2cPD6Jescel3geZVA_1773771975600_na1fn_L2hvbWUvdWJ1bnR1L2pvZV9hbmRfdGhlX2p1aWNlX2Z1bGhhbQ_8cc372a2.jpeg"
   },
   {
     "id": 289,
@@ -9155,7 +9155,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.7,
-    "image": "https://source.unsplash.com/800x600/?cafe,coffee,cozy&sig=995"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/97_UDps6rgNmMHLBAYALcKYgE_1773771995332_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9qb2VfYW5kX3RoZV9qdWljZV9oYW1tZXJzbWl0aA_a7d7ae29.jpeg"
   },
   {
     "id": 290,
@@ -9183,7 +9183,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.7,
-    "image": "https://laptopfriendly.co/images/places/store-street-espresso-hammersmith.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/98_UaEqGkqpS2vkpvR7mFnbw7_1773771972964_na1fn_L2hvbWUvdWJ1bnR1L3N0b3JlX3N0cmVldF9lc3ByZXNzb19pbnRlcmlvcg_899bb3ce.jpeg"
   },
   {
     "id": 291,
@@ -9213,7 +9213,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.7,
-    "image": "https://images.squarespace-cdn.com/content/v1/5c055862fcf7fd74ea08acc0/1684236794779-1Y9J2X3J8Y8Z8Y8Y8Y8Y/Urban+Baristas+Goldhawk+Road.png?format=1500w"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/99_hfazj5A9pGng0wljQLe6IM_1773772000540_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0RSMXNXTEFRWHZXOA_92b644b4.jpg"
   },
   {
     "id": 292,
@@ -9397,7 +9397,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "evenings",
     "studyScore": 4.2,
-    "image": "https://images.squarespace-cdn.com/content/v1/5d0a1829c0860c0001fe6973/1633523328329-E842B03J52113435552A/21Soho-Green-Room-29.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/100_F4v4QOORTsHmRqU1AKJIla_1773771961302_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL2M3TWF3QkdNRmRkTw_031b8cc2.jpg"
   },
   {
     "id": 298,
@@ -9429,7 +9429,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays",
     "peakBusyTimes": "weekends",
     "studyScore": 4.2,
-    "image": "https://images.squarespace-cdn.com/content/v1/5c3e3c8d31d4df1c03493943/1559602999055-9Y7X8X3X8X3X8X3X8X3X/kevin-stools-and-tables.jpg?format=2500w"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/101_KKi7Ctz7WgPjZ7h3nwczM6_1773772091189_na1fn_L2hvbWUvdWJ1bnR1L2R1c3R5X2tudWNrbGVfYmFrZXJ5X2xvbmRvbg_69f445f9.jpeg"
   },
   {
     "id": 299,
@@ -9460,7 +9460,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "unknown",
     "studyScore": 4.2,
-    "image": "https://www.couvertureandthegarbstore.com/cdn/shop/articles/Layla_Bakery_1024x1024.jpg?v=1641556554"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/102_LRz4ZlRU7SlNWRHmeGPayh_1773772018727_na1fn_L2hvbWUvdWJ1bnR1L2xheWxhX2luZmF0dWF0aW9u_0a80be92.jpeg"
   },
   {
     "id": 300,
@@ -9616,7 +9616,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "weekends",
     "studyScore": 3.9,
-    "image": "https://saltertonartsreview.com/wp-content/uploads/2022/06/Kenwood-House-London-1024x768.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/103_OgE4cjKZqaOlHVBxFTktDD_1773771956997_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL0lUZlFYWHo5NWt5Sg_c76d79d9.jpg"
   },
   {
     "id": 305,
@@ -9679,7 +9679,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "weekdays, outside of school holidays",
     "peakBusyTimes": "weekends and school holidays",
     "studyScore": 3.7,
-    "image": "https://www.benugo.com/wp-content/uploads/2022/08/Benugo-Science-Museum-Gallery-Cafe-scaled.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/104_aEKxiW4nbOEs4AnI2qMOWc_1773771988188_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC9zZWFyY2hfaW1hZ2VzL1laT0czOGVpOGNydA_dcd4b06b.jpg"
   },
   {
     "id": 307,
@@ -9741,7 +9741,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "unknown",
     "peakBusyTimes": "weekends",
     "studyScore": 3.4,
-    "image": "https://www.coolplaces.co.uk/assets/images/places/2998-kenwood-brew-house-cafe-hampstead-london-nw3-7jr.jpg"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/105_7bXvVKDPEmdKhYKmOLeJhx_1773772071814_na1fn_L2hvbWUvdWJ1bnR1L2JyZXdfaG91c2VfY2FmZQ_5a73ca74.jpg"
   },
   {
     "id": 309,
@@ -9803,7 +9803,7 @@ export const locations: Location[] = [
     "bestTimeStudy": "N/A",
     "peakBusyTimes": "weekends",
     "studyScore": 1.8,
-    "image": "https://i0.wp.com/wrapyourlipsaroundthis.com/wp-content/uploads/2026/01/Buns-From-Home-Islington-2.jpg?resize=1125%2C1500&ssl=1"
+    "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663360861914/iS6PF6sNRzFgoX75DyiZb8/106_tiU8Wa2k6IgDX1jnsxYZZD_1773772048898_na1fn_L2hvbWUvdWJ1bnR1L2J1bnNfZnJvbV9ob21l_f26e9206.webp"
   },
   {
     "id": 311,
