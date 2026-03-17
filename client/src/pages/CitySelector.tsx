@@ -11,7 +11,7 @@ const cities = [
   {
     id: 'london' as CityId,
     name: 'London',
-    subtitle: '310+ Study Spots',
+    subtitle: '350+ Study Spots',
     description: 'From Shoreditch cafes to Bloomsbury libraries — discover the best places to study across the capital.',
     image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop',
     color: 'from-emerald-900/80 to-amber-900/60',

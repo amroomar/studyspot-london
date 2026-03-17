@@ -488,7 +488,7 @@ function HomeInner() {
     document.title = 'StudySpot London \u2014 Best Cafes, Libraries & Study Spaces';
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Discover 310+ curated study spots across London. Find quiet cafes, libraries, coworking spaces, and university study rooms with reviews and maps.');
+      metaDesc.setAttribute('content', 'Discover 350+ curated study spots across London. Find quiet cafes, libraries, coworking spaces, and university study rooms with reviews and maps.');
     }
   }, []);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);

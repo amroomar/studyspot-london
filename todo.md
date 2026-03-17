@@ -373,3 +373,8 @@
 - [x] Show persistent/ongoing notification with live countdown while timer is running (viewable from notification shade)
 - [x] Make persistent notification update in-place (single notif) with text progress bar instead of spawning new ones
 - [x] Remove persistent countdown notification — only notify when timer finishes
+
+### TikTok Study Spot Research
+- [x] Deep search TikTok, The Infatuation, Reddit, blogs for London study spots via titles, captions, hashtags, comments
+- [x] Cross-reference and validate 60 discovered spots (49 valid, 9 closed, 5 duplicates = 44 new unique)
+- [x] Add 44 new locations to the London dataset (310 → 354 total spots)
