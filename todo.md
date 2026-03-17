@@ -378,3 +378,8 @@
 - [x] Deep search TikTok, The Infatuation, Reddit, blogs for London study spots via titles, captions, hashtags, comments
 - [x] Cross-reference and validate 60 discovered spots (49 valid, 9 closed, 5 duplicates = 44 new unique)
 - [x] Add 44 new locations to the London dataset (310 → 354 total spots)
+
+### New Spots Image Search
+- [x] Search for real venue photos for 44 new London study spots (43 from parallel search + 12 manual batch)
+- [x] Upload all 44 images to CDN via manus-upload-file --webdev
+- [x] Update all 44 location entries with CDN image URLs (0 remaining without images)
